@@ -1,0 +1,36 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer>
+      <setting name="UsedSolutionBuilderID">0</setting>
+    </integer>
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:HomeController.cs" caret="275" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:UserRepositoryTest.cs" caret="0" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="0" scrollPosition="0|63" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="222" scrollPosition="0|12" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:HomeController.cs" caret="227" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="703" scrollPosition="0|12" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="364" scrollPosition="0|12" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="0" scrollPosition="0|0" />
+    </RecentEdits>
+  </RecentFiles>
+  <UnitTestRunner>
+    <CustomStartDirectory>
+    </CustomStartDirectory>
+    <UseShadowCopy>True</UseShadowCopy>
+    <UseCustomFolder>False</UseCustomFolder>
+    <EnableUnitTesting>True</EnableUnitTesting>
+    <Providers />
+  </UnitTestRunner>
+</Configuration>

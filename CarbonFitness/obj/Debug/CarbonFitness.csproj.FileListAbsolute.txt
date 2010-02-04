@@ -1,0 +1,10 @@
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.pdb
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.dll
+D:\Development\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.dll
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.pdb

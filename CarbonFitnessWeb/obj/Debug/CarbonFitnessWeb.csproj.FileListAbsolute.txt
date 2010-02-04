@@ -1,0 +1,7 @@
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.pdb

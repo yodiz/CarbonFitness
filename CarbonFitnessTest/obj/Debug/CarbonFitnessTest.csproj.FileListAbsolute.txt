@@ -1,0 +1,28 @@
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.pdb
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.pdb
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.pdb
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\WatiN.Core.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\Interop.SHDocVw.dll
+C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\WatiN.Core.xml
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Interop.SHDocVw.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\WatiN.Core.xml
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\WatiN.Core.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\nunit.framework.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\nunit.framework.xml
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll.config
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessWeb.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Moq.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessWeb.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Moq.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Moq.xml
