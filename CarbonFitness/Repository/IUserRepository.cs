@@ -1,9 +1,8 @@
 using CarbonFitness.Model;
+using SharpArch.Core.PersistenceSupport.NHibernate;
 
 namespace CarbonFitness.Repository {
-    public interface IUserRepository {
-        int Create(User user);
-        User Get(int userId);
+    public interface IUserRepository : INHibernateRepositoryWithTypedId<User, int> {
         User Get(string userName);
     }
 }

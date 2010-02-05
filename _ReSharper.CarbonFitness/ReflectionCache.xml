@@ -13,4 +13,13 @@
   <Assembly Name="WatiN.Core, Version=2.0.20.0, Culture=neutral, PublicKeyToken=db7cfd3acb5ad44e" Image="7e264779-eb74-4034-a2df-5dcf29011918" Timestamp="634008784291559147" XmlDocIndexTimestamp="634008784294859147" />
   <Assembly Name="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" Image="74c04a9a-b4a3-4055-beb9-cf38adb31ac9" Timestamp="633522222640000000" XmlDocIndexTimestamp="633522222640000000" />
   <Assembly Name="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920" Image="1ddf9d90-c648-4270-a11d-3d4993f9de15" Timestamp="634008853204349147" XmlDocIndexTimestamp="634008853205549147" />
+  <Assembly Name="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006" Image="0892b84b-9430-465d-898d-3841ab67d886" Timestamp="634009615734438000" />
+  <Assembly Name="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" Image="b8431276-108f-42d9-b5af-c5faa9844ee4" Timestamp="634009615719108000" XmlDocIndexTimestamp="634009615727028000" />
+  <Assembly Name="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006" Image="06a18903-7ed7-40d4-bf3c-633e3b8633ff" Timestamp="634009615733048000" />
+  <Assembly Name="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc" Image="47f03da7-ed3d-44e9-b125-601743822d8c" Timestamp="634009615695148000" />
+  <Assembly Name="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc" Image="617bb79a-f3f7-4849-a359-cc8565fa29fa" Timestamp="634009615687138000" XmlDocIndexTimestamp="634009615687968000" />
+  <Assembly Name="SharpArch.Testing.NUnit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006" Image="5400a570-5ef7-4445-b15f-71bc12314e59" Timestamp="634009615736018000" />
+  <Assembly Name="FluentNHibernate, Version=0.1.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880" Image="5e033703-ff6c-4c77-89d9-4ac0e7815c40" Timestamp="634009615697218000" />
+  <Assembly Name="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" Image="ea718144-07a5-42ca-84be-5f50438929b9" Timestamp="634009615699338000" XmlDocIndexTimestamp="634009615700468000" />
+  <Assembly Name="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" Image="f80b0feb-d72d-4345-a884-65494949b66c" Timestamp="634009615741398000" />
 </Assemblies>

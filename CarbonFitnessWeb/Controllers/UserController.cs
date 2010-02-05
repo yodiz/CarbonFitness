@@ -1,17 +1,17 @@
 ﻿using System.Web.Mvc;
+using CarbonFitness.Model;
 using CarbonFitness.Repository;
 
 namespace CarbonFitnessWeb.Controllers {
     public class UserController : Controller {
-
-        public IUserRepository UserRepository { get; private set; }
-
         public UserController() : this(new UserRepository()) {
         }
 
         public UserController(IUserRepository ur) {
             UserRepository = ur;
         }
+
+        public IUserRepository UserRepository { get; private set; }
 
         public ActionResult Index() {
             return View();
@@ -23,17 +23,15 @@ namespace CarbonFitnessWeb.Controllers {
 
         [HttpPost]
         public ActionResult Create(string userName) {
-            return RedirectToAction("Details");
+            //Save...
+            var user = UserRepository.SaveOrUpdate(new User { Username= userName});
+
+            return RedirectToAction("Details", new { id = user.Id });
         }
 
-        // /User/View/23
-        public ActionResult Details(string userName)
-        {
-            
-            var user = this.UserRepository.Get(userName);
-
-            this.ViewData["user"] = user;
-
+        public ActionResult Details(string userName) {
+            var user = UserRepository.Get(userName);
+            ViewData["user"] = user;
             return View();
         }
     }

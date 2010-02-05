@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SharpArch.Core.DomainModel;
 
-namespace CarbonFitness.Model
-{
-    public class User
-    {
-
-        public string Username { get; set; }
-
+namespace CarbonFitness.Model {
+    public class User : Entity {
         public User() {
+            
+        }
+        
+        public User(string username) {
+            Username = username;
         }
 
-        public User(string username)
-        {
-            this.Username = username;
-        }
-
-
+        public virtual string Username { get; set; }
     }
 }
