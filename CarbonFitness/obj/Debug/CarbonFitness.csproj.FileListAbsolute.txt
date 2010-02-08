@@ -5,9 +5,8 @@ C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\C
 C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.pdb
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.pdb
-D:\Development\CarbonFitness\CarbonFitness\obj\Debug\ResolveAssemblyReference.cache
-D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.dll
-D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitness\bin\Debug\FluentNHibernate.dll
+D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Iesi.Collections.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\NHibernate.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\SharpArch.Core.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\SharpArch.Data.dll
@@ -15,10 +14,8 @@ D:\Development\CarbonFitness\CarbonFitness\bin\Debug\NHibernate.Linq.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Castle.DynamicProxy2.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\log4net.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-D:\Development\CarbonFitness\CarbonFitness\bin\Debug\FluentNHibernate.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\NHibernate.Validator.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Newtonsoft.Json.dll
-D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Iesi.Collections.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Castle.Core.dll
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Castle.DynamicProxy2.xml
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\SharpArch.Core.pdb
@@ -29,3 +26,6 @@ D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Iesi.Collections.xml
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\NHibernate.xml
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\SharpArch.Data.pdb
 D:\Development\CarbonFitness\CarbonFitness\bin\Debug\Castle.Core.xml
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.dll
+D:\Development\CarbonFitness\CarbonFitness\obj\Debug\CarbonFitness.pdb

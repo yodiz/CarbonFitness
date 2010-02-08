@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using CarbonFitness;
 
 namespace CarbonFitnessWeb.Models
 {
@@ -16,15 +17,6 @@ namespace CarbonFitnessWeb.Models
     // unit test code that calls its members. The interface and helper class below demonstrate
     // how to create an abstract wrapper around such a type in order to make the AccountController
     // code unit testable.
-
-    public interface IMembershipService
-    {
-        int MinPasswordLength { get; }
-
-        bool ValidateUser(string userName, string password);
-        MembershipCreateStatus CreateUser(string userName, string password, string email);
-        bool ChangePassword(string userName, string oldPassword, string newPassword);
-    }
 
     public class AccountMembershipService : IMembershipService
     {

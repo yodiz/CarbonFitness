@@ -51,6 +51,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\Moq.3.1.416.3-bin\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="MvcContrib.TestHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tools\SharpArchitecture\bin\MvcContrib.TestHelper.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\NHibernate.dll</HintPath>
@@ -64,11 +68,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Data.dll</HintPath>
     </Reference>
+    <Reference Include="SharpArch.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Testing.NUnit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Testing.NUnit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -80,6 +89,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -97,8 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\AccountLogOnTest.cs" />
     <Compile Include="Integration\CreateUserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\AccountController\LogOnTest.cs" />
+    <Compile Include="Test\CarbonFitnessMembershipProviderTest.cs" />
     <Compile Include="Test\UserCotroller\DetailsTest.cs" />
     <Compile Include="Test\UserCotroller\CreateTest.cs" />
     <Compile Include="Test\UserCotroller\RepositoryMock.cs" />

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using CarbonFitness;
 using CarbonFitnessWeb.Models;
 
 namespace CarbonFitnessWeb.Controllers
@@ -110,8 +111,7 @@ namespace CarbonFitnessWeb.Controllers
             Justification = "Needs to take same parameter type as Controller.Redirect()")]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 if (MembershipService.ValidateUser(model.UserName, model.Password))
                 {
                     FormsService.SignIn(model.UserName, model.RememberMe);

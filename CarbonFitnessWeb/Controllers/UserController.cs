@@ -22,17 +22,16 @@ namespace CarbonFitnessWeb.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create(string userName) {
+        public ActionResult Create(string userName, string password) {
             //Save...
-            var user = UserRepository.SaveOrUpdate(new User { Username= userName});
+            var user = UserRepository.SaveOrUpdate(new User { Username= userName, Password=password });
 
             return RedirectToAction("Details", new { id = user.Id });
         }
 
-        public ActionResult Details(string userName) {
-            var user = UserRepository.Get(userName);
-            ViewData["user"] = user;
-            return View();
+        public ActionResult Details(int Id) {
+            var user = UserRepository.Get(Id);
+            return View(user);
         }
     }
 }

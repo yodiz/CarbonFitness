@@ -2,6 +2,7 @@
 using CarbonFitness.Model;
 using CarbonFitness.Repository;
 using CarbonFitnessWeb.Controllers;
+using Moq;
 using NUnit.Framework;
 
 namespace CarbonFitnessTest.Test.UserCotroller {
@@ -9,15 +10,19 @@ namespace CarbonFitnessTest.Test.UserCotroller {
     public class DetailsTest {
         [Test]
         public void detailsShouldReturnUser() {
-            var userRepository = RepositoryMock.GetUserRepository();
+            IUserRepository userRepository;
+            var factory = new MockFactory(MockBehavior.Strict);
+            var mock = factory.Create<IUserRepository>();
+            mock.Setup(x => x.Get(1)).Returns(new User { Username = "kalle" });
+            userRepository = mock.Object;
 
             var controller = new UserController(userRepository);
-            var viewResult = (ViewResult) controller.Details("username");
+            var viewResult = (ViewResult) controller.Details(1);
 
-            var user = (User)viewResult.ViewData["User"];
+            var user = (User) viewResult.ViewData.Model;
 
             Assert.IsInstanceOfType(typeof(User), user);
-            Assert.AreEqual("username", user.Username);
+            Assert.AreEqual("kalle", user.Username);
         }
     }
 }

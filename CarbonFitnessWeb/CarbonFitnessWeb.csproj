@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=0.1.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tools\SharpArchitecture\bin\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tools\SharpArchitecture\bin\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Core.dll</HintPath>
@@ -38,6 +46,10 @@
     <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -77,6 +89,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewConstants\AccountConstant.cs" />
+    <Compile Include="ViewConstants\UserConstant.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -114,6 +128,9 @@
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
       <Name>CarbonFitness</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NHibernate.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,52 +15,57 @@
   <RecentFiles>
     <RecentFiles>
       <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="0" scrollPosition="0|63" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="423" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="0" scrollPosition="0|3" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:View.aspx" caret="404" scrollPosition="0|0" />
       <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:HomeController.cs" caret="275" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Create.aspx" caret="330" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:IUserRepository.cs" caret="0" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="240" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="383" scrollPosition="0|3" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:UserRepositoryTest.cs" caret="434" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="219" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="644" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="554" scrollPosition="0|2" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="181" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="494" scrollPosition="0|8" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="447" scrollPosition="0|3" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Create.aspx" caret="414" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Details.aspx" caret="399" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="497" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="764" scrollPosition="0|13" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="668" scrollPosition="0|2" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2413" scrollPosition="0|6" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="345" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="162" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="197" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="835" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:IUserRepository.cs" caret="220" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="709" scrollPosition="0|7" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="204" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:Hibernate.cfg.xml" caret="658" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:NHibernate.config" caret="703" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="420" scrollPosition="0|3" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="734" scrollPosition="0|9" />
     </RecentFiles>
     <RecentEdits>
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:View.aspx" caret="381" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Create.aspx" caret="330" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="1654" scrollPosition="0|15" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="503" scrollPosition="0|6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="843" scrollPosition="0|15" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="182" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="182" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|12" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="240" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|15" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="1448" scrollPosition="0|17" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|18" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|3" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="383" scrollPosition="0|3" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="150" scrollPosition="0|3" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="679" scrollPosition="0|19" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="679" scrollPosition="0|20" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="616" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="186" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="710" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="328" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="377" scrollPosition="0|11" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="21" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="679" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="679" scrollPosition="0|11" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="410" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="884" scrollPosition="0|12" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="1057" scrollPosition="0|13" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="1270" scrollPosition="0|17" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="325" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="0" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="325" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="414" scrollPosition="0|6" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="414" scrollPosition="0|6" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2395" scrollPosition="0|6" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2399" scrollPosition="0|6" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="320" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="604" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="320" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="254" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="624" scrollPosition="0|7" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="1762" scrollPosition="0|25" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="2125" scrollPosition="0|31" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="343" scrollPosition="0|1" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|8" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="274" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="162" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="2125" scrollPosition="0|37" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="1561" scrollPosition="0|31" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|3" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|6" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|6" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="734" scrollPosition="0|9" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="301" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="1074" scrollPosition="0|15" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:NHibernate.config" caret="1122" scrollPosition="0|0" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
@@ -80,45 +85,45 @@
       <Item value="using" priority="1" />
       <Item value="var" priority="4" />
       <Item value="Html" priority="1" />
-      <Item value="Test" priority="1" />
-      <Item value="public" priority="6" />
-      <Item value="void" priority="1" />
-      <Item value="new" priority="8" />
+      <Item value="Test" priority="2" />
+      <Item value="public" priority="9" />
+      <Item value="void" priority="3" />
+      <Item value="new" priority="13" />
       <Item value="UserController" priority="2" />
       <Item value="userController" priority="0" />
       <Item value="UserControllerTest" priority="2" />
       <Item value="string" priority="3" />
-      <Item value="Assert" priority="7" />
+      <Item value="Assert" priority="8" />
       <Item value="result" priority="3" />
       <Item value="Moq" priority="2" />
-      <Item value="mock" priority="10" />
-      <Item value="Mock" priority="2" />
+      <Item value="mock" priority="13" />
+      <Item value="Mock" priority="3" />
       <Item value="c" priority="2" />
       <Item value="System" priority="0" />
       <Item value="Linq" priority="0" />
       <Item value="r" priority="0" />
       <Item value="HttpPost" priority="0" />
-      <Item value="return" priority="2" />
-      <Item value="this" priority="5" />
+      <Item value="return" priority="3" />
+      <Item value="this" priority="12" />
       <Item value="RedirectToAction" priority="0" />
       <Item value="ViewContext" priority="0" />
-      <Item value="controller" priority="1" />
+      <Item value="controller" priority="2" />
       <Item value="ViewResult" priority="0" />
       <Item value="viewResult" priority="6" />
       <Item value="RedirectToRouteResult" priority="0" />
       <Item value="a" priority="0" />
       <Item value="pair" priority="0" />
       <Item value="GetType" priority="0" />
-      <Item value="typeof" priority="0" />
-      <Item value="int" priority="0" />
-      <Item value="user" priority="3" />
-      <Item value="User" priority="4" />
+      <Item value="typeof" priority="1" />
+      <Item value="int" priority="3" />
+      <Item value="user" priority="4" />
+      <Item value="User" priority="14" />
       <Item value="Nullable" priority="0" />
       <Item value="null" priority="0" />
-      <Item value="UserRepository" priority="3" />
-      <Item value="userRepository" priority="1" />
-      <Item value="userName" priority="2" />
-      <Item value="IUserRepository" priority="4" />
+      <Item value="UserRepository" priority="4" />
+      <Item value="userRepository" priority="2" />
+      <Item value="userName" priority="5" />
+      <Item value="IUserRepository" priority="6" />
       <Item value="List" priority="0" />
       <Item value="List&lt;User&gt;" priority="0" />
       <Item value="_users" priority="2" />
@@ -127,20 +132,43 @@
       <Item value="ur" priority="0" />
       <Item value="DbUserRepository" priority="0" />
       <Item value="decimal" priority="0" />
-      <Item value="Username" priority="0" />
+      <Item value="Username" priority="3" />
       <Item value="RepositoryMock" priority="0" />
       <Item value="is" priority="0" />
       <Item value="equals" priority="0" />
       <Item value="Constraint" priority="0" />
       <Item value="ConstraintBuilder" priority="1" />
       <Item value="Controller" priority="0" />
+      <Item value="It" priority="1" />
+      <Item value="MockFactory" priority="3" />
+      <Item value="MockBehavior" priority="1" />
+      <Item value="factory" priority="1" />
+      <Item value="idRouteValue" priority="1" />
+      <Item value="object" priority="0" />
+      <Item value="userId" priority="0" />
+      <Item value="SharpArch" priority="0" />
+      <Item value="Data" priority="0" />
+      <Item value="NHibernate" priority="0" />
+      <Item value="INHibernateRepositoryWithTypedId" priority="1" />
+      <Item value="Id" priority="1" />
+      <Item value="Iesi" priority="0" />
+      <Item value="Collections" priority="0" />
+      <Item value="DictionarySet" priority="0" />
+      <Item value="HybridSet" priority="0" />
+      <Item value="CarbonFitness" priority="0" />
+      <Item value="Maps" priority="0" />
+      <Item value="AutoPersistenceModelGenerator" priority="0" />
+      <Item value="am" priority="0" />
+      <Item value="NHibernateSession" priority="0" />
+      <Item value="base" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper`1">
       <Item value="BeginForm" priority="0" />
       <Item value="TextBox" priority="0" />
+      <Item value="LabelFor" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitnessWeb.Controllers.UserController">
-      <Item value="Create" priority="3" />
+      <Item value="Create" priority="4" />
       <Item value="ActionInvoker" priority="0" />
       <Item value="ViewData" priority="0" />
       <Item value="UserRepository" priority="0" />
@@ -153,9 +181,9 @@
       <Item value="Get" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Mock`1">
-      <Item value="Setup" priority="4" />
+      <Item value="Setup" priority="5" />
       <Item value="SetupGet" priority="0" />
-      <Item value="Object" priority="1" />
+      <Item value="Object" priority="4" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.ControllerContext">
       <Item value="HttpContext" priority="1" />
@@ -179,7 +207,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
       <Item value="AreEqual" priority="1" />
-      <Item value="That" priority="4" />
+      <Item value="That" priority="5" />
       <Item value="IsInstanceOfType" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.RedirectToRouteResult">
@@ -201,10 +229,13 @@
       <Item value="Empty" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Model.User">
-      <Item value="Username" priority="2" />
+      <Item value="Username" priority="3" />
+      <Item value="Id" priority="5" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Repository.UserRepository">
-      <Item value="Get" priority="0" />
+      <Item value="Get" priority="1" />
+      <Item value="SaveOrUpdate" priority="1" />
+      <Item value="FindOne" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
       <Item value="Count" priority="0" />
@@ -220,10 +251,12 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Repository.IUserRepository">
       <Item value="Get" priority="2" />
+      <Item value="Create" priority="1" />
+      <Item value="SaveOrUpdate" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.ISetup`2">
       <Item value="Callback" priority="0" />
-      <Item value="Returns" priority="3" />
+      <Item value="Returns" priority="5" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.IReturnsResult`1">
       <Item value="Raises" priority="0" />
@@ -254,6 +287,32 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:WatiN.Core.Element">
       <Item value="Exists" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ASP.views_user_details_aspx">
+      <Item value="ViewData" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Moq.It">
+      <Item value="Is" priority="2" />
+      <Item value="IsAny" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Moq.MockBehavior">
+      <Item value="Strict" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Moq.MockFactory">
+      <Item value="Create" priority="1" />
+      <Item value="VerifyAll" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="ToString" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitness.Maps.AutoPersistenceModelGenerator">
+      <Item value="Generate" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@SharpArch.Data.NHibernate.NHibernateSession">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase">
+      <Item value="SetUp" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

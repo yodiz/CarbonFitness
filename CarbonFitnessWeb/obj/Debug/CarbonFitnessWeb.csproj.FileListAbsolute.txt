@@ -1,12 +1,11 @@
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.pdb
-D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
-D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.dll
-D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.dll
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\FluentNHibernate.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Data.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Web.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.Linq.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\log4net.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Newtonsoft.Json.dll
@@ -15,8 +14,6 @@ D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Castle.DynamicProxy2.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Microsoft.Practices.ServiceLocation.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Iesi.Collections.dll
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.dll
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\FluentNHibernate.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\log4net.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Newtonsoft.Json.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.Validator.xml
@@ -24,5 +21,10 @@ D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Castle.DynamicProxy2.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Data.pdb
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Iesi.Collections.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.xml
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Iesi.Collections.xml
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Web.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
