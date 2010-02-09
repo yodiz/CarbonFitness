@@ -7,8 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest", "Carbon
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D207746-212F-4BD7-8984-69F54FD730B6}"
 	ProjectSection(SolutionItems) = preProject
-		CarbonFitness.vsmdi = CarbonFitness.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		carbonfitness.vsmdi = carbonfitness.vsmdi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessWeb", "CarbonFitnessWeb\CarbonFitnessWeb.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"

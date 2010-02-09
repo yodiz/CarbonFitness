@@ -64,3 +64,6 @@ D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Testing.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\MvcContrib.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\MvcContrib.TestHelper.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Rhino.Mocks.xml
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.xml

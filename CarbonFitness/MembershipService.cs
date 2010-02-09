@@ -1,23 +1,34 @@
-﻿
+﻿using System;
 using System.Web.Security;
+using CarbonFitness.Model;
+using CarbonFitness.Repository;
 
-namespace CarbonFitness
-{
-    public class MembershipService : IMembershipService
-    {
-        public int MinPasswordLength {
-            get { throw new System.NotImplementedException(); } }
+namespace CarbonFitness {
+	public class MembershipService : IMembershipService {
+		public MembershipService(IUserRepository userRepository) {
+			UserRepository = userRepository;
+		}
 
-        public bool ValidateUser(string userName, string password) {
-            return true;
-        }
+		protected IUserRepository UserRepository { get; set; }
 
-        public MembershipCreateStatus CreateUser(string userName, string password, string email) {
-            throw new System.NotImplementedException();
-        }
+		public int MinPasswordLength { get { return 4; } }
 
-        public bool ChangePassword(string userName, string oldPassword, string newPassword) {
-            throw new System.NotImplementedException();
-        }
-    }
+		public bool ValidateUser(string userName, string password) {
+			User user = UserRepository.Get(userName);
+			if (user != null && user.Password == password) {
+				return true;
+			}
+
+			return false;
+		}
+
+		//public MembershipCreateStatus CreateUser(string userName, string password, string email) {
+		//   throw new NotImplementedException();
+		//}
+
+		public bool ChangePassword(string userName, string oldPassword, string newPassword) {
+			throw new NotImplementedException();
+		}
+
+	}
 }

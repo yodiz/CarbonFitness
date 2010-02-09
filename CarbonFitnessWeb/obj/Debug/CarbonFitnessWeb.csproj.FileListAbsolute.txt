@@ -28,3 +28,6 @@ D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Web.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
 D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.xml

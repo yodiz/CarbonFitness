@@ -1,42 +1,42 @@
 ﻿using CarbonFitnessWeb.ViewConstants;
 using NUnit.Framework;
 using WatiN.Core;
+using WatiN.Core.Constraints;
 
-namespace CarbonFitnessTest.Integration
-{
-    [TestFixture]
-    public class AccountLogOnTest
-    {
-        private const string url = "http://localhost:49639/Account/LogOn";
-        [Test]
-        public void shouldGotoUserCreateWhenClickingRegister()
-        {
-            using (var browser = new IE(url))
-            {
-                var userNameConstraint = Find.ByText("Register");
-                browser.Link(userNameConstraint).Click();
-                
-                Assert.IsTrue(browser.Url.Contains("User/Create"));
-            }
-        }
-        
-        [Test]
-        public void shouldShowLoggedOnUserAfterLogon() {
-            const string userName = CreateUserTest.UserName;
-            const string password = CreateUserTest.Password;
+namespace CarbonFitnessTest.Integration {
+	[TestFixture]
+	public class AccountLogOnTest : IntegrationBaseTest {
+		public AccountLogOnTest() {}
 
-            var createUserTest = new CreateUserTest();
-            createUserTest.createUser();
+		public AccountLogOnTest(Browser browser) :base(browser){}
 
-            using (var browser = new IE(url)) {
-                browser.TextField(Find.ByName(AccountConstant.UsernameElement)).TypeText(userName);
-                browser.TextField(Find.ByName(AccountConstant.PasswordElement)).TypeText(password);
-                browser.Button(Find.ByValue(AccountConstant.SubmitElement)).Click();
+		public override string Url { get { return baseUrl + "/Account/LogOn"; } }
 
-                var usernameExsistsOnPage = browser.Text.Contains(userName);
+		[Test]
+		public void shouldGotoUserCreateWhenClickingRegister() {
+			AttributeConstraint userNameConstraint = Find.ByText("Register");
+			browser.Link(userNameConstraint).Click();
 
-                Assert.That(usernameExsistsOnPage);
-            }   
-        }
-    }
+			Assert.IsTrue(browser.Url.Contains("User/Create"));
+		}
+
+		[Test]
+		public void shouldShowLoggedOnUserAfterLogon() {
+			var createUserTest = new CreateUserTest(browser);
+			createUserTest.createUser();
+
+			LogOn(CreateUserTest.UserName, CreateUserTest.Password);
+
+			bool usernameExsistsOnPage = browser.Text.Contains(CreateUserTest.UserName);
+
+			Assert.That(usernameExsistsOnPage);
+		}
+
+		public void LogOn(string userName, string password) {
+			 browser.GoTo(Url);
+			 browser.TextField(Find.ByName(AccountConstant.UsernameElement)).TypeText(userName);
+			 browser.TextField(Find.ByName(AccountConstant.PasswordElement)).TypeText(password);
+			 browser.Button(Find.ByValue(AccountConstant.SubmitElement)).Click();
+		}
+	}
 }

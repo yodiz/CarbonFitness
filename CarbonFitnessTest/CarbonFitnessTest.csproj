@@ -109,12 +109,16 @@
   <ItemGroup>
     <Compile Include="Integration\AccountLogOnTest.cs" />
     <Compile Include="Integration\CreateUserTest.cs" />
+    <Compile Include="Integration\InputFoodTest.cs" />
+    <Compile Include="Integration\IntegrationBaseTest.cs" />
+    <Compile Include="Integration\SiteMasterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\AccountController\LogOnTest.cs" />
+    <Compile Include="Test\Controller\AccountController\LogOnTest.cs" />
     <Compile Include="Test\CarbonFitnessMembershipProviderTest.cs" />
-    <Compile Include="Test\UserCotroller\DetailsTest.cs" />
-    <Compile Include="Test\UserCotroller\CreateTest.cs" />
-    <Compile Include="Test\UserCotroller\RepositoryMock.cs" />
+    <Compile Include="Test\Controller\FoodController\InputTest.cs" />
+    <Compile Include="Test\Controller\UserController\DetailsTest.cs" />
+    <Compile Include="Test\Controller\UserController\CreateTest.cs" />
+    <Compile Include="Test\Controller\UserController\RepositoryMock.cs" />
     <Compile Include="Test\Repository\UserRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>

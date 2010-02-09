@@ -14,58 +14,68 @@
   </NAntValidationSettings>
   <RecentFiles>
     <RecentFiles>
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="0" scrollPosition="0|63" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:HomeController.cs" caret="275" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="447" scrollPosition="0|3" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Create.aspx" caret="414" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Details.aspx" caret="399" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="497" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="764" scrollPosition="0|13" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="668" scrollPosition="0|2" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2413" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="345" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="162" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Global.asax" caret="105" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="343" scrollPosition="0|9" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="646" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:RepositoryMock.cs" caret="162" scrollPosition="0|0" />
       <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="197" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="835" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:IUserRepository.cs" caret="220" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="709" scrollPosition="0|7" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="204" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/f:Web.config" caret="0" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="4494" scrollPosition="0|39" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Register.aspx" caret="0" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="420" scrollPosition="0|0" />
       <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:Hibernate.cfg.xml" caret="658" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:NHibernate.config" caret="703" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="420" scrollPosition="0|3" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="734" scrollPosition="0|9" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:LogOn.aspx" caret="971" scrollPosition="0|14" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:ViewConstants/f:UserConstant.cs" caret="181" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="781" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:__RESHARPER__DummyWebPages_/f:Create.aspx" caret="578" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:CreateTest.cs" caret="465" scrollPosition="0|6" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="461" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:UserCotroller/f:DetailsTest.cs" caret="368" scrollPosition="0|3" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="220" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:IUserRepository.cs" caret="222" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="490" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMembershipService.cs" caret="219" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:AccountController/f:LogOnTest.cs" caret="0" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:CarbonFitnessMembershipProviderTest.cs" caret="852" scrollPosition="0|7" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:CreateUserTest.cs" caret="626" scrollPosition="0|5" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:ViewConstants/f:AccountConstant.cs" caret="232" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Models/f:AccountModels.cs" caret="307" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="291" scrollPosition="0|7" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="253" scrollPosition="0|1" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="699" scrollPosition="0|6" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Integration/f:AccountLogOnTest.cs" caret="301" scrollPosition="0|0" />
     </RecentFiles>
     <RecentEdits>
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="325" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="0" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="325" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="56" scrollPosition="0|0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="414" scrollPosition="0|6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="414" scrollPosition="0|6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2395" scrollPosition="0|6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="2399" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="320" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="604" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/f:App.config" caret="320" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:UserMap.cs" caret="254" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="624" scrollPosition="0|7" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="1762" scrollPosition="0|25" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="2125" scrollPosition="0|31" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="343" scrollPosition="0|1" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|8" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="274" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="162" scrollPosition="0|0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="2125" scrollPosition="0|37" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="1561" scrollPosition="0|31" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|3" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|6" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="429" scrollPosition="0|6" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="734" scrollPosition="0|9" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="301" scrollPosition="0|0" />
-      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/d:Repository/f:UserRepositoryTest.cs" caret="1074" scrollPosition="0|15" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:NHibernate.config" caret="1122" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:IUserRepository.cs" caret="222" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="157" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="341" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Repository/f:UserRepository.cs" caret="490" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="396" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="396" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="396" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/d:Model/f:User.cs" caret="291" scrollPosition="0|0" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:CarbonFitnessMembershipProviderTest.cs" caret="1818" scrollPosition="0|10" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="944" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="944" scrollPosition="0|0" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="944" scrollPosition="0|9" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="937" scrollPosition="0|9" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="798" scrollPosition="0|15" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMembershipService.cs" caret="219" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="3423" scrollPosition="0|137" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="3423" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="87" scrollPosition="0|75" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:CarbonFitnessMembershipProviderTest.cs" caret="1818" scrollPosition="0|21" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:CarbonFitnessMembershipProviderTest.cs" caret="1818" scrollPosition="0|27" />
+      <File id="7D3285E6-8A26-4C0F-8C11-E116CCDD4C30/d:Test/f:CarbonFitnessMembershipProviderTest.cs" caret="1700" scrollPosition="0|27" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="587" scrollPosition="0|7" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Models/f:AccountModels.cs" caret="653" scrollPosition="0|18" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MembershipService.cs" caret="291" scrollPosition="0|7" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="1086" scrollPosition="0|12" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="632" scrollPosition="0|0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="657" scrollPosition="0|4" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="611" scrollPosition="0|4" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="284" scrollPosition="0|4" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="619" scrollPosition="0|6" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
@@ -78,33 +88,33 @@
   </UnitTestRunner>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="TestFixture" priority="1" />
+      <Item value="TestFixture" priority="2" />
       <Item value="ActionResult" priority="4" />
       <Item value="View" priority="1" />
       <Item value="FireFox" priority="0" />
-      <Item value="using" priority="1" />
-      <Item value="var" priority="4" />
+      <Item value="using" priority="3" />
+      <Item value="var" priority="11" />
       <Item value="Html" priority="1" />
-      <Item value="Test" priority="2" />
-      <Item value="public" priority="9" />
-      <Item value="void" priority="3" />
-      <Item value="new" priority="13" />
+      <Item value="Test" priority="6" />
+      <Item value="public" priority="17" />
+      <Item value="void" priority="9" />
+      <Item value="new" priority="23" />
       <Item value="UserController" priority="2" />
       <Item value="userController" priority="0" />
       <Item value="UserControllerTest" priority="2" />
-      <Item value="string" priority="3" />
-      <Item value="Assert" priority="8" />
+      <Item value="string" priority="9" />
+      <Item value="Assert" priority="13" />
       <Item value="result" priority="3" />
       <Item value="Moq" priority="2" />
       <Item value="mock" priority="13" />
       <Item value="Mock" priority="3" />
-      <Item value="c" priority="2" />
+      <Item value="c" priority="4" />
       <Item value="System" priority="0" />
-      <Item value="Linq" priority="0" />
+      <Item value="Linq" priority="1" />
       <Item value="r" priority="0" />
       <Item value="HttpPost" priority="0" />
-      <Item value="return" priority="3" />
-      <Item value="this" priority="12" />
+      <Item value="return" priority="7" />
+      <Item value="this" priority="14" />
       <Item value="RedirectToAction" priority="0" />
       <Item value="ViewContext" priority="0" />
       <Item value="controller" priority="2" />
@@ -116,14 +126,14 @@
       <Item value="GetType" priority="0" />
       <Item value="typeof" priority="1" />
       <Item value="int" priority="3" />
-      <Item value="user" priority="4" />
-      <Item value="User" priority="14" />
+      <Item value="user" priority="9" />
+      <Item value="User" priority="15" />
       <Item value="Nullable" priority="0" />
-      <Item value="null" priority="0" />
-      <Item value="UserRepository" priority="4" />
-      <Item value="userRepository" priority="2" />
-      <Item value="userName" priority="5" />
-      <Item value="IUserRepository" priority="6" />
+      <Item value="null" priority="1" />
+      <Item value="UserRepository" priority="7" />
+      <Item value="userRepository" priority="3" />
+      <Item value="userName" priority="6" />
+      <Item value="IUserRepository" priority="7" />
       <Item value="List" priority="0" />
       <Item value="List&lt;User&gt;" priority="0" />
       <Item value="_users" priority="2" />
@@ -134,21 +144,21 @@
       <Item value="decimal" priority="0" />
       <Item value="Username" priority="3" />
       <Item value="RepositoryMock" priority="0" />
-      <Item value="is" priority="0" />
+      <Item value="is" priority="1" />
       <Item value="equals" priority="0" />
       <Item value="Constraint" priority="0" />
       <Item value="ConstraintBuilder" priority="1" />
       <Item value="Controller" priority="0" />
-      <Item value="It" priority="1" />
-      <Item value="MockFactory" priority="3" />
-      <Item value="MockBehavior" priority="1" />
+      <Item value="It" priority="2" />
+      <Item value="MockFactory" priority="4" />
+      <Item value="MockBehavior" priority="3" />
       <Item value="factory" priority="1" />
       <Item value="idRouteValue" priority="1" />
       <Item value="object" priority="0" />
       <Item value="userId" priority="0" />
-      <Item value="SharpArch" priority="0" />
+      <Item value="SharpArch" priority="1" />
       <Item value="Data" priority="0" />
-      <Item value="NHibernate" priority="0" />
+      <Item value="NHibernate" priority="2" />
       <Item value="INHibernateRepositoryWithTypedId" priority="1" />
       <Item value="Id" priority="1" />
       <Item value="Iesi" priority="0" />
@@ -159,8 +169,60 @@
       <Item value="Maps" priority="0" />
       <Item value="AutoPersistenceModelGenerator" priority="0" />
       <Item value="am" priority="0" />
-      <Item value="NHibernateSession" priority="0" />
+      <Item value="NHibernateSession" priority="2" />
       <Item value="base" priority="0" />
+      <Item value="true" priority="5" />
+      <Item value="_cfg" priority="2" />
+      <Item value="Configuration" priority="0" />
+      <Item value="Console" priority="3" />
+      <Item value="FluentNHibernate" priority="0" />
+      <Item value="Cfg" priority="0" />
+      <Item value="Fluently" priority="0" />
+      <Item value="x" priority="0" />
+      <Item value="fcfg" priority="0" />
+      <Item value="fcfg2" priority="0" />
+      <Item value="autoPersistenceModelGenerator" priority="1" />
+      <Item value="Is" priority="2" />
+      <Item value="Password" priority="1" />
+      <Item value="password" priority="4" />
+      <Item value="browser" priority="1" />
+      <Item value="static" priority="2" />
+      <Item value="const" priority="1" />
+      <Item value="CarbonFitnessWeb" priority="1" />
+      <Item value="ViewConstants" priority="0" />
+      <Item value="UserConstant" priority="5" />
+      <Item value="CreateUserTest" priority="3" />
+      <Item value="createUserTest" priority="1" />
+      <Item value="IdHinter" priority="0" />
+      <Item value="CarbonFitnessMembershipProvider" priority="0" />
+      <Item value="AccountController" priority="1" />
+      <Item value="accountController" priority="0" />
+      <Item value="Controllers" priority="0" />
+      <Item value="LogOnModel" priority="0" />
+      <Item value="UserName" priority="0" />
+      <Item value="actionResult" priority="1" />
+      <Item value="Testing.NUnit" priority="0" />
+      <Item value="NUnit" priority="0" />
+      <Item value="MvcContrib.TestHelper" priority="0" />
+      <Item value="mockFactory" priority="0" />
+      <Item value="IMembershipService" priority="1" />
+      <Item value="IFormsAuthenticationService" priority="0" />
+      <Item value="formsAuthenticationService" priority="0" />
+      <Item value="returnUrl" priority="0" />
+      <Item value="Mockfactory" priority="0" />
+      <Item value="username" priority="2" />
+      <Item value="loginFailed" priority="0" />
+      <Item value="Session" priority="0" />
+      <Item value="where" priority="0" />
+      <Item value="s" priority="1" />
+      <Item value="select" priority="0" />
+      <Item value="q" priority="0" />
+      <Item value="protected" priority="0" />
+      <Item value="if" priority="1" />
+      <Item value="builder" priority="2" />
+      <Item value="ComponentBuilder" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="_current" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper`1">
       <Item value="BeginForm" priority="0" />
@@ -181,9 +243,9 @@
       <Item value="Get" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Mock`1">
-      <Item value="Setup" priority="5" />
+      <Item value="Setup" priority="8" />
       <Item value="SetupGet" priority="0" />
-      <Item value="Object" priority="4" />
+      <Item value="Object" priority="6" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.ControllerContext">
       <Item value="HttpContext" priority="1" />
@@ -199,19 +261,23 @@
       <Item value="RedirectLocation" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
-      <Item value="Contains" priority="0" />
-      <Item value="Equals" priority="0" />
+      <Item value="Contains" priority="3" />
+      <Item value="Equals" priority="1" />
+      <Item value="LastIndexOf" priority="0" />
+      <Item value="Substring" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.ISetupGetter`2">
       <Item value="Returns" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
       <Item value="AreEqual" priority="1" />
-      <Item value="That" priority="5" />
+      <Item value="That" priority="10" />
       <Item value="IsInstanceOfType" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.RedirectToRouteResult">
       <Item value="RouteValues" priority="1" />
+      <Item value="ToController" priority="0" />
+      <Item value="ToAction" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
       <Item value="Key" priority="0" />
@@ -229,11 +295,12 @@
       <Item value="Empty" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Model.User">
-      <Item value="Username" priority="3" />
+      <Item value="Username" priority="5" />
       <Item value="Id" priority="5" />
+      <Item value="Password" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Repository.UserRepository">
-      <Item value="Get" priority="1" />
+      <Item value="Get" priority="2" />
       <Item value="SaveOrUpdate" priority="1" />
       <Item value="FindOne" priority="0" />
     </ItemStatistics>
@@ -250,13 +317,13 @@
       <Item value="Create" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Repository.IUserRepository">
-      <Item value="Get" priority="2" />
+      <Item value="Get" priority="4" />
       <Item value="Create" priority="1" />
       <Item value="SaveOrUpdate" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.ISetup`2">
       <Item value="Callback" priority="0" />
-      <Item value="Returns" priority="5" />
+      <Item value="Returns" priority="6" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.IReturnsResult`1">
       <Item value="Raises" priority="0" />
@@ -270,17 +337,25 @@
       <Item value="Equals" priority="0" />
       <Item value="InstanceOfType" priority="0" />
       <Item value="Not" priority="0" />
-      <Item value="Null" priority="0" />
+      <Item value="Null" priority="1" />
+      <Item value="Empty" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@WatiN.Core.Find">
       <Item value="ById" priority="0" />
-      <Item value="ByText" priority="0" />
+      <Item value="ByText" priority="2" />
       <Item value="BySrc" priority="0" />
       <Item value="ByLabelText" priority="0" />
+      <Item value="Any" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:WatiN.Core.IE">
       <Item value="Body" priority="0" />
       <Item value="Element" priority="0" />
+      <Item value="ContainsText" priority="0" />
+      <Item value="Control" priority="0" />
+      <Item value="Link" priority="0" />
+      <Item value="Url" priority="1" />
+      <Item value="FindText" priority="0" />
+      <Item value="Text" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:WatiN.Core.Body">
       <Item value="Controls" priority="0" />
@@ -292,27 +367,116 @@
       <Item value="ViewData" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Moq.It">
-      <Item value="Is" priority="2" />
+      <Item value="Is" priority="3" />
       <Item value="IsAny" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Moq.MockBehavior">
-      <Item value="Strict" priority="1" />
+      <Item value="Strict" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.MockFactory">
-      <Item value="Create" priority="1" />
+      <Item value="Create" priority="3" />
       <Item value="VerifyAll" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Int32">
       <Item value="ToString" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Maps.AutoPersistenceModelGenerator">
-      <Item value="Generate" priority="0" />
+      <Item value="Generate" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@SharpArch.Data.NHibernate.NHibernateSession">
-      <Item value="Current" priority="0" />
+      <Item value="Current" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase">
       <Item value="SetUp" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.Tool.hbm2ddl.SchemaExport">
+      <Item value="Execute" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.Cfg.Configuration">
+      <Item value="Configure" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ISession">
+      <Item value="Connection" priority="0" />
+      <Item value="Linq" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Cfg.Fluently">
+      <Item value="Configure" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.FluentConfiguration">
+      <Item value="Mappings" priority="0" />
+      <Item value="ExposeConfiguration" priority="0" />
+      <Item value="BuildSessionFactory" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.MappingConfiguration">
+      <Item value="FluentMappings" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.FluentMappingsContainer">
+      <Item value="AddFromAssemblyOf" priority="0" />
+      <Item value="AddFromAssembly" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.AutoMap.AutoPersistenceModel">
+      <Item value="Configure" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.ViewDataDictionary">
+      <Item value="Model" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:WatiN.Core.Link">
+      <Item value="Click" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.SyntaxHelpers.Is">
+      <Item value="EqualTo" priority="0" />
+      <Item value="Not" priority="2" />
+      <Item value="False" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="Parse" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@CarbonFitnessWeb.ViewConstants.UserConstant">
+      <Item value="UsernameElement" priority="3" />
+      <Item value="PasswordElement" priority="0" />
+      <Item value="SaveElement" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitnessTest.Integration.CreateUserTest">
+      <Item value="shouldCreateUser" priority="0" />
+      <Item value="createUser" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@CarbonFitnessTest.Integration.CreateUserTest">
+      <Item value="UserName" priority="0" />
+      <Item value="Password" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Security.MembershipProvider">
+      <Item value="ValidateUser" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitnessWeb.Controllers.AccountController">
+      <Item value="LogOn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitnessWeb.Models.IMembershipService">
+      <Item value="ValidateUser" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitnessWeb.Models.IFormsAuthenticationService">
+      <Item value="SignIn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.RedirectResult">
+      <Item value="Url" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IQueryable`1">
+      <Item value="FirstOrDefault" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Autofac.Builder.ContainerBuilder">
+      <Item value="Build" priority="1" />
+      <Item value="Register" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Autofac.Container">
+      <Item value="Resolve" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Autofac.Registrars.IReflectiveRegistrar">
+      <Item value="As" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@CarbonFitnessWeb.ComponentBuilder">
+      <Item value="Current" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
