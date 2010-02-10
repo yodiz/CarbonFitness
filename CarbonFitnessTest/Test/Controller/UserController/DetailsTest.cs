@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
-using CarbonFitness.Model;
-using CarbonFitness.Repository;
+using CarbonFitness.BusinessLogic;
+using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.Controllers;
 using Moq;
 using NUnit.Framework;
 
-namespace CarbonFitnessTest.Test.UserCotroller {
+namespace CarbonFitnessTest.Test.Controller.UserController {
     [TestFixture]
     public class DetailsTest {
         [Test]
         public void detailsShouldReturnUser() {
-            IUserRepository userRepository;
             var factory = new MockFactory(MockBehavior.Strict);
-            var mock = factory.Create<IUserRepository>();
+            var mock = factory.Create<IUserBusinessLogic>();
             mock.Setup(x => x.Get(1)).Returns(new User { Username = "kalle" });
-            userRepository = mock.Object;
+            IUserBusinessLogic userBusinessLogic = mock.Object;
 
-            var controller = new UserController(userRepository);
+            var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogic);
             var viewResult = (ViewResult) controller.Details(1);
 
             var user = (User) viewResult.ViewData.Model;

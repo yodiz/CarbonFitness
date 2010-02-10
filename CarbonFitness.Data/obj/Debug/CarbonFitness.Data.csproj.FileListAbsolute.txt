@@ -1,0 +1,10 @@
+D:\Development\CarbonFitness\CarbonFitness.Data\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.dll
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.pdb
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.dll
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.dll
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.pdb
+D:\Development\CarbonFitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.xml
+D:\Development\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.dll
+D:\Development\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.pdb

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness", "CarbonFitness\CarbonFitness.csproj", "{D93A9DD8-A93F-4276-8F62-C87507063892}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.BusinessLogic", "CarbonFitness\CarbonFitness.BusinessLogic.csproj", "{D93A9DD8-A93F-4276-8F62-C87507063892}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest", "CarbonFitnessTest\CarbonFitnessTest.csproj", "{7D3285E6-8A26-4C0F-8C11-E116CCDD4C30}"
 EndProject
@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessWeb", "CarbonFitnessWeb\CarbonFitnessWeb.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Data", "CarbonFitness.Data\CarbonFitness.Data.csproj", "{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.DataLayer", "CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj", "{5054CADA-7829-45AD-A842-098A2EB80FD4}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -33,6 +37,14 @@ Global
 		{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5054CADA-7829-45AD-A842-098A2EB80FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5054CADA-7829-45AD-A842-098A2EB80FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5054CADA-7829-45AD-A842-098A2EB80FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5054CADA-7829-45AD-A842-098A2EB80FD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

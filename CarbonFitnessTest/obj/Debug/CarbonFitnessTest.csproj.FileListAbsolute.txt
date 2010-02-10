@@ -12,7 +12,6 @@ D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Hibernate.cfg.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll.config
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.pdb
-D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessWeb.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Castle.Core.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Castle.Windsor.dll
@@ -34,7 +33,6 @@ D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Castle.DynamicProxy2.dl
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Castle.MicroKernel.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Interop.SHDocVw.dll
-D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Web.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\log4net.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Testing.NUnit.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\nunit.framework.xml
@@ -46,12 +44,10 @@ D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Core.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Data.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\NHibernate.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessWeb.pdb
-D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Moq.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Moq.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Castle.Core.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Iesi.Collections.xml
-D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Web.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\ResolveAssemblyReference.cache
 D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\obj\Debug\CarbonFitnessTest.pdb
@@ -67,3 +63,11 @@ D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Rhino.Mocks.xml
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.dll
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.pdb
 D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\Autofac.xml
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.BusinessLogic.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.Data.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.DataLayer.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.BusinessLogic.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.DataLayer.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitness.Data.pdb
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Web.dll
+D:\Development\CarbonFitness\CarbonFitnessTest\bin\Debug\SharpArch.Web.pdb

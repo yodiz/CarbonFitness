@@ -29,5 +29,9 @@ namespace CarbonFitnessTest.Integration {
 		
 		//[Test]
 		//public void shouldNotBeAbleToAddFoodIfNotLoggedIn() {}
+		
+		//public void shouldBeAbleToAddIngredient()
+		
+		//public void shouldBeAbleToLinkIngredientToUser() 
 	}
 }

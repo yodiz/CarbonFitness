@@ -132,9 +132,13 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarbonFitness\CarbonFitness.csproj">
+    <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">
+      <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
+      <Name>CarbonFitness.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarbonFitness\CarbonFitness.BusinessLogic.csproj">
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
-      <Name>CarbonFitness</Name>
+      <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

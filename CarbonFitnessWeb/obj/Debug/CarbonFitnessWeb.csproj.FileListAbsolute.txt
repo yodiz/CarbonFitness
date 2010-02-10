@@ -1,6 +1,5 @@
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.pdb
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\FluentNHibernate.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.dll
@@ -22,7 +21,6 @@ D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Data.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.xml
-D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Iesi.Collections.xml
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Web.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
@@ -31,3 +29,9 @@ D:\Development\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.dll
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.pdb
 D:\Development\CarbonFitness\CarbonFitnessWeb\bin\Autofac.xml
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.BusinessLogic.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.Data.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.DataLayer.dll
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.BusinessLogic.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.DataLayer.pdb
+D:\Development\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.Data.pdb

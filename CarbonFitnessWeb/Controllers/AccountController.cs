@@ -6,7 +6,6 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Builder;
 using CarbonFitness;
-using CarbonFitness.Repository;
 using CarbonFitnessWeb.Models;
 
 namespace CarbonFitnessWeb.Controllers {
@@ -18,19 +17,19 @@ namespace CarbonFitnessWeb.Controllers {
 			: this(null, null) {
 
 			var c = ComponentBuilder.Current;
-			MembershipService = c.Resolve<IMembershipService>();
+			MembershipBusinessLogic = c.Resolve<IMembershipBusinessLogic>();
 		}
 
 		// This constructor is not used by the MVC framework but is instead provided for ease
 		// of unit testing this type. See the comments in AccountModels.cs for more information.
-		public AccountController(IFormsAuthenticationService formsService, IMembershipService membershipService) {
+		public AccountController(IFormsAuthenticationService formsService, IMembershipBusinessLogic membershipBusinessLogic) {
 			FormsService = formsService ?? new FormsAuthenticationService();
-			MembershipService = membershipService;
+			MembershipBusinessLogic = membershipBusinessLogic;
 		}
 
 		public IFormsAuthenticationService FormsService { get; private set; }
 
-		public IMembershipService MembershipService { get; private set; }
+		public IMembershipBusinessLogic MembershipBusinessLogic { get; private set; }
 
 		protected override void Initialize(RequestContext requestContext) {
 			if (requestContext.HttpContext.User.Identity is WindowsIdentity) {
@@ -41,7 +40,7 @@ namespace CarbonFitnessWeb.Controllers {
 		}
 
 		protected override void OnActionExecuting(ActionExecutingContext filterContext) {
-			ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+			ViewData["PasswordLength"] = MembershipBusinessLogic.MinPasswordLength;
 
 			base.OnActionExecuting(filterContext);
 		}
@@ -55,7 +54,7 @@ namespace CarbonFitnessWeb.Controllers {
 		[HttpPost]
 		public ActionResult ChangePassword(ChangePasswordModel model) {
 			if (ModelState.IsValid) {
-				if (MembershipService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword)) {
+				if (MembershipBusinessLogic.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword)) {
 					return RedirectToAction("ChangePasswordSuccess");
 				} else {
 					ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
@@ -85,7 +84,7 @@ namespace CarbonFitnessWeb.Controllers {
 			Justification = "Needs to take same parameter type as Controller.Redirect()")]
 		public ActionResult LogOn(LogOnModel model, string returnUrl) {
 			if (ModelState.IsValid) {
-				if (MembershipService.ValidateUser(model.UserName, model.Password)) {
+				if (MembershipBusinessLogic.ValidateUser(model.UserName, model.Password)) {
 					FormsService.SignIn(model.UserName, model.RememberMe);
 					if (!String.IsNullOrEmpty(returnUrl)) {
 						return Redirect(returnUrl);

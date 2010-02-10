@@ -47,6 +47,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\SharpArchitecture\bin\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Tools\Moq.3.1.416.3-bin\Moq.dll</HintPath>
@@ -113,6 +114,7 @@
     <Compile Include="Integration\IntegrationBaseTest.cs" />
     <Compile Include="Integration\SiteMasterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\BusinessLogic\UserBusinessLogicTest.cs" />
     <Compile Include="Test\Controller\AccountController\LogOnTest.cs" />
     <Compile Include="Test\CarbonFitnessMembershipProviderTest.cs" />
     <Compile Include="Test\Controller\FoodController\InputTest.cs" />
@@ -127,13 +129,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">
+      <Project>{5054CADA-7829-45AD-A842-098A2EB80FD4}</Project>
+      <Name>CarbonFitness.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">
+      <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
+      <Name>CarbonFitness.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarbonFitnessWeb\CarbonFitnessWeb.csproj">
       <Project>{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}</Project>
       <Name>CarbonFitnessWeb</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarbonFitness\CarbonFitness.csproj">
+    <ProjectReference Include="..\CarbonFitness\CarbonFitness.BusinessLogic.csproj">
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
-      <Name>CarbonFitness</Name>
+      <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using CarbonFitness.Maps;
+﻿using CarbonFitness.DataLayer.Maps;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
 using SharpArch.Testing.NUnit.NHibernate;

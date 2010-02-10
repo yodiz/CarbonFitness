@@ -1,6 +1,6 @@
 ﻿using CarbonFitness;
-using CarbonFitness.Model;
-using CarbonFitness.Repository;
+using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
@@ -18,7 +18,7 @@ namespace CarbonFitnessTest.Test {
 			Mock<IUserRepository> userRepositoryMock = factory.Create<IUserRepository>();
 
 			userRepositoryMock.Setup(x => x.Get(username)).Returns(new User(username, userPassword));
-			var membershipProvider = new MembershipService(userRepositoryMock.Object);
+			var membershipProvider = new MembershipBusinessLogic(userRepositoryMock.Object);
 			bool loginResult = membershipProvider.ValidateUser(username, providedPassword);
 
 			Assert.That(loginResult, Is.False);
@@ -37,7 +37,7 @@ namespace CarbonFitnessTest.Test {
 			userRepositoryMock.Setup(x => x.Get(existingUsername)).Returns(new User(existingUsername, existingPassword));
 			userRepositoryMock.Setup(x => x.Get(wrongUsername)).Returns((User) null);
 
-			var membershipProvider = new MembershipService(userRepositoryMock.Object);
+			var membershipProvider = new MembershipBusinessLogic(userRepositoryMock.Object);
 			bool loginSuccessfull = membershipProvider.ValidateUser(existingUsername, existingPassword);
 
 			bool loginFailed = membershipProvider.ValidateUser(wrongUsername, wrongPassword);
@@ -48,7 +48,7 @@ namespace CarbonFitnessTest.Test {
 
 		[Test]
 		public void shouldCheckThatPasswordLenghtIsGreaterThanThreeCharacters() {
-	 		var membershipProvider = new MembershipService(new Mock<IUserRepository>().Object);
+	 		var membershipProvider = new MembershipBusinessLogic(new Mock<IUserRepository>().Object);
 	 		
 			var minimumLength = membershipProvider.MinPasswordLength;
 			Assert.That(minimumLength, Is.GreaterThan(3));

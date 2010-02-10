@@ -21,7 +21,7 @@ namespace CarbonFitnessTest.Test.AccountController
             string returnUrl = "~/Home/Index";
 
             MockFactory mockFactory = new MockFactory(MockBehavior.Strict);
-            var membershipService = mockFactory.Create<IMembershipService>();
+            var membershipService = mockFactory.Create<IMembershipBusinessLogic>();
             var formsAuthenticationService = mockFactory.Create<IFormsAuthenticationService>();
 
             membershipService.Setup(x => x.ValidateUser("username", "password")).Returns(true);

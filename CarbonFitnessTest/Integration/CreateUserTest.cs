@@ -1,6 +1,6 @@
 ﻿using System;
-using CarbonFitness.Model;
-using CarbonFitness.Repository;
+using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.ViewConstants;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;

@@ -1,10 +1,11 @@
 ﻿using System.Web.Mvc;
-using CarbonFitness.Model;
-using CarbonFitness.Repository;
+using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.Controllers;
 using Moq;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
+using CarbonFitness.BusinessLogic;
 
 namespace CarbonFitnessTest.Test.UserCotroller {
     [TestFixture]
@@ -12,12 +13,12 @@ namespace CarbonFitnessTest.Test.UserCotroller {
 
         [Test]
         public void shouldRedirectToView() {
-            var userRepositoryMock = new Mock<IUserRepository>();
+            var userBusinessLogicMock = new Mock<IUserBusinessLogic>();
             var theUsersName = "kalle";
             var thePassword = "myPass";
-            userRepositoryMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User { Username = theUsersName });
+            userBusinessLogicMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User { Username = theUsersName });
 
-            var controller = new UserController(userRepositoryMock.Object);
+            var controller = new UserController(userBusinessLogicMock.Object);
             
             var viewResult = (RedirectToRouteResult)controller.Create(theUsersName, thePassword);
 
@@ -30,7 +31,7 @@ namespace CarbonFitnessTest.Test.UserCotroller {
             const string userName = "test";
             var password = "password";
             var factory = new MockFactory(MockBehavior.Strict);
-            var mock = factory.Create<IUserRepository>();
+            var mock = factory.Create<IUserBusinessLogic>();
             
             mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(new User());
 
@@ -45,7 +46,7 @@ namespace CarbonFitnessTest.Test.UserCotroller {
             var password = "password";
 
             var factory = new MockFactory(MockBehavior.Strict);
-            var mock = factory.Create<IUserRepository>();
+            var mock = factory.Create<IUserBusinessLogic>();
             var createdUser = new User { Username = userName };
             mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(createdUser);
 

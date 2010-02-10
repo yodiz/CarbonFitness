@@ -1,8 +1,6 @@
 ﻿
-using CarbonFitness.Maps;
-using CarbonFitness.Repository;
-using CarbonFitness.Model;
-using Castle.Windsor;
+using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
 using SharpArch.Core.CommonValidator;
 using SharpArch.Core.PersistenceSupport;

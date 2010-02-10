@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CarbonFitness.Maps;
+using CarbonFitness.BusinessLogic;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using SharpArch.Data.NHibernate;
@@ -46,34 +46,25 @@ namespace CarbonFitnessWeb {
                 lock (lockObject) {
                     if (!wasNHibernateInitialized) {
                         string nHibernateConfig = Server.MapPath("~/NHibernate.config");
-                        string carbonFitnessDll = Server.MapPath("~/bin/CarbonFitness.dll");
+                        //string mappingAssembly = Server.MapPath("~/bin/CarbonFitness.Data.dll");
 
-                        initNhibernateSession(carbonFitnessDll, nHibernateConfig);
+                        var initBusinessLogic = new Bootstrapper();
 
-                        exportDatabaseSchema(nHibernateConfig);
+                        initBusinessLogic.InitDatalayer(new WebSessionStorage(this), nHibernateConfig);
 
+                        //initBusinessLogic.InitNhibernateSession(this, mappingAssembly, nHibernateConfig);
+
+                        //initNhibernateSession(carbonFitnessDll, nHibernateConfig);
+                        
+                        //exportDatabaseSchema(nHibernateConfig);
+                        
                         wasNHibernateInitialized = true;
                     }
                 }
             }
         }
 
-        private void initNhibernateSession(string carbonFitnessDll, string nHibernateConfig) {
-            NHibernateSession.Init(new WebSessionStorage(this),
-                                   new[] {carbonFitnessDll},
-                                   new AutoPersistenceModelGenerator().Generate(),
-                                   nHibernateConfig);
-        }
 
-        private static void exportDatabaseSchema(string nHibernateConfig) {
-            var _cfg = new Configuration();
-            _cfg.Configure(nHibernateConfig);
-            new AutoPersistenceModelGenerator().Generate().Configure(_cfg);
-
-            var export = new SchemaExport(_cfg);
-            TextWriter output = new StringWriter(new StringBuilder());
-            export.Execute(true, true, false, true, NHibernateSession.Current.Connection, output);
-        }
 
 
         protected void Application_Start() {

@@ -1,8 +1,7 @@
-﻿using CarbonFitness.Model;
-using CarbonFitness.Repository;
+﻿
 using Moq;
 
-namespace CarbonFitnessTest.Test.UserCotroller {
+namespace CarbonFitnessTest.Test.Controller.UserController {
     internal class RepositoryMock {
 
     }
