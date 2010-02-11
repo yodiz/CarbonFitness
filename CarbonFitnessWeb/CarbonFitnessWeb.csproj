@@ -31,29 +31,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=1.4.5.676, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+    <Reference Include="Autofac, Version=2.1.9.747, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\Autofac-1.4.5.676\Library\Autofac.dll</HintPath>
+      <HintPath>..\Dependencies\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="FluentNHibernate, Version=0.1.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+    <Reference Include="Autofac.Configuration, Version=2.1.9.747, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\SharpArchitecture\bin\FluentNHibernate.dll</HintPath>
+      <HintPath>..\Dependencies\Autofac.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+    <Reference Include="Autofac.Integration.Web, Version=2.1.9.747, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\SharpArchitecture\bin\NHibernate.dll</HintPath>
+      <HintPath>..\Dependencies\Autofac.Integration.Web.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Core.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Core.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Data.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Data.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Tools\SharpArchitecture\bin\SharpArch.Web.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,7 +85,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComponentBuilder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -94,7 +93,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\InputFoodModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserContext.cs" />
     <Compile Include="ViewConstants\AccountConstant.cs" />
     <Compile Include="ViewConstants\FoodConstant.cs" />
     <Compile Include="ViewConstants\SiteMasterConstant.cs" />
@@ -132,18 +133,18 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NHibernate.config" />
+    <Content Include="Views\Food\Input.aspx" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">
       <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
       <Name>CarbonFitness.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarbonFitness\CarbonFitness.BusinessLogic.csproj">
+    <ProjectReference Include="..\CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj">
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
       <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="NHibernate.config" />
-    <Content Include="Views\Food\Input.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

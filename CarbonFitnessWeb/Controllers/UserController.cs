@@ -5,10 +5,6 @@ using CarbonFitness.Data.Model;
 
 namespace CarbonFitnessWeb.Controllers {
     public class UserController : Controller {
-        public UserController() {
-            UserBusinessLogic = ComponentBuilder.Current.Resolve<IUserBusinessLogic>();
-        }
-
         public UserController(IUserBusinessLogic ur) {
             UserBusinessLogic = ur;
         }

@@ -1,19 +1,24 @@
-﻿using System.IO;
-using System.Text;
+﻿using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Web;
+using CarbonFitness;
 using CarbonFitness.BusinessLogic;
-using NHibernate.Cfg;
-using NHibernate.Tool.hbm2ddl;
-using SharpArch.Data.NHibernate;
+using CarbonFitnessWeb.Controllers;
+using CarbonFitnessWeb.Models;
 using SharpArch.Web.NHibernate;
+using System.Reflection;
+using Autofac.Integration.Web.Mvc;
 
 namespace CarbonFitnessWeb {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : HttpApplication {
+	public class MvcApplication : HttpApplication, IContainerProviderAccessor {
+			private static IContainerProvider _containerProvider;
+
         /// <summary>
         /// Private, static object used only for synchronization
         /// </summary>
@@ -48,8 +53,8 @@ namespace CarbonFitnessWeb {
                         string nHibernateConfig = Server.MapPath("~/NHibernate.config");
                         //string mappingAssembly = Server.MapPath("~/bin/CarbonFitness.Data.dll");
 
-                        var initBusinessLogic = new Bootstrapper();
-
+								var initBusinessLogic = new Bootstrapper();
+                       
                         initBusinessLogic.InitDatalayer(new WebSessionStorage(this), nHibernateConfig);
 
                         //initBusinessLogic.InitNhibernateSession(this, mappingAssembly, nHibernateConfig);
@@ -64,13 +69,32 @@ namespace CarbonFitnessWeb {
             }
         }
 
-
-
-
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
-            RegisterRoutes(RouteTable.Routes);
+				AutofacRegisterComponentes();
         }
-    }
+
+		  private void AutofacRegisterComponentes() {
+			  var builder = new ContainerBuilder();
+
+			  builder.RegisterControllers(Assembly.GetExecutingAssembly());
+			  builder.RegisterModule(new BusinessLoginUsageModule());
+			  builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
+			  builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
+			  builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
+			  builder.RegisterType<MealBusinessLogic>().As<IMealBusinessLogic>();
+			  
+			  _containerProvider = new ContainerProvider(builder.Build());
+
+			  ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(ContainerProvider));
+
+			  RegisterRoutes(RouteTable.Routes);
+		  }
+
+		public IContainerProvider ContainerProvider
+		{
+			get { return _containerProvider; }
+		}
+	}
 }

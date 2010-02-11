@@ -11,15 +11,6 @@ using CarbonFitnessWeb.Models;
 namespace CarbonFitnessWeb.Controllers {
 	[HandleError]
 	public class AccountController : Controller {
-		// This constructor is used by the MVC framework to instantiate the controller using
-		// the default forms authentication and membership providers.
-		public AccountController()
-			: this(null, null) {
-
-			var c = ComponentBuilder.Current;
-			MembershipBusinessLogic = c.Resolve<IMembershipBusinessLogic>();
-		}
-
 		// This constructor is not used by the MVC framework but is instead provided for ease
 		// of unit testing this type. See the comments in AccountModels.cs for more information.
 		public AccountController(IFormsAuthenticationService formsService, IMembershipBusinessLogic membershipBusinessLogic) {
