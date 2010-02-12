@@ -1,4 +1,5 @@
-﻿using CarbonFitness.Data.Model;
+﻿using System;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
 using SharpArch.Testing.NUnit.NHibernate;

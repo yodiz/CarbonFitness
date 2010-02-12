@@ -94,12 +94,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Repository\IIngredientRepository.cs" />
     <Compile Include="Maps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="Maps\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IMealIngredientRepository.cs" />
+    <Compile Include="Repository\IngredientRepository.cs" />
+    <Compile Include="Repository\IUserIngredientRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Repository\MealIngredientRepository.cs" />
+    <Compile Include="Repository\UserIngredientRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

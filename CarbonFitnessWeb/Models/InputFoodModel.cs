@@ -3,11 +3,9 @@ using CarbonFitness.Data.Model;
 
 namespace CarbonFitnessWeb.Models
 {
-	public class InputFoodModel
-	{
+	public class InputFoodModel {
 		public int Measure;
 		public string Ingredient;
-		public IEnumerable<MealIngredient> MealIngredients;
-		
+		public IEnumerable<UserIngredient> UserIngredients;
 	}
 }

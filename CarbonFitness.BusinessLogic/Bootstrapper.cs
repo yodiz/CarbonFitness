@@ -27,7 +27,8 @@ namespace CarbonFitness.BusinessLogic
 		protected override void Load(ContainerBuilder builder)
 		{
 			builder.RegisterType<UserRepository>().As<IUserRepository>();
-			builder.RegisterType<MealIngredientRepository>().As<IMealIngredientRepository>();
+			builder.RegisterType<IngredientRepository>().As<IIngredientRepository>();
+			builder.RegisterType<UserIngredientRepository>().As<IUserIngredientRepository>();
 			
 		}
 	}

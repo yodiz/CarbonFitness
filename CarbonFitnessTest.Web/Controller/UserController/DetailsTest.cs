@@ -15,7 +15,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController
 			mock.Setup(x => x.Get(1)).Returns(new User { Username = "kalle" });
 			IUserBusinessLogic userBusinessLogic = mock.Object;
 
-			var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogic);
+			var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogic, null);
 			var viewResult = (ViewResult) controller.Details(1);
 
 			var user = (User) viewResult.ViewData.Model;

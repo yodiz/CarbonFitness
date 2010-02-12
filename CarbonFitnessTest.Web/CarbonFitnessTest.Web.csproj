@@ -85,10 +85,6 @@
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
       <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">
-      <Project>{5054CADA-7829-45AD-A842-098A2EB80FD4}</Project>
-      <Name>CarbonFitness.DataLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">
       <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
       <Name>CarbonFitness.Data</Name>

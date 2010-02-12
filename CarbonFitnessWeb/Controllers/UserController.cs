@@ -2,33 +2,42 @@
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 
+namespace CarbonFitnessWeb.Controllers
+{
+	public class UserController : Controller
+	{
+		private readonly IUserBusinessLogic userBusinessLogic;
+		private readonly IUserContext userContext;
 
-namespace CarbonFitnessWeb.Controllers {
-    public class UserController : Controller {
-        public UserController(IUserBusinessLogic ur) {
-            UserBusinessLogic = ur;
-        }
+		public UserController(IUserBusinessLogic userBusinessLogic, IUserContext userContext)
+		{
+			this.userBusinessLogic = userBusinessLogic;
+			this.userContext = userContext;
+		}
 
-        public IUserBusinessLogic UserBusinessLogic { get; private set; }
+		public ActionResult Index()
+		{
+			return View();
+		}
 
-        public ActionResult Index() {
-            return View();
-        }
+		public ActionResult Create()
+		{
+			return View();
+		}
 
-        public ActionResult Create() {
-            return View();
-        }
+		[HttpPost]
+		public ActionResult Create(string userName, string password)
+		{
+			User user = userBusinessLogic.SaveOrUpdate(new User {Username = userName, Password = password});
+			userContext.LogIn(user, false);
 
-        [HttpPost]
-        public ActionResult Create(string userName, string password) {
-            //Save...
-            var user = UserBusinessLogic.SaveOrUpdate(new User { Username= userName, Password=password });
-            return RedirectToAction("Details", new { id = user.Id });
-        }
+			return RedirectToAction("Details", new {id = user.Id});
+		}
 
-        public ActionResult Details(int Id) {
-            var user = UserBusinessLogic.Get(Id);
-            return View(user);
-        }
-    }
+		public ActionResult Details(int Id)
+		{
+			User user = userBusinessLogic.Get(Id);
+			return View(user);
+		}
+	}
 }

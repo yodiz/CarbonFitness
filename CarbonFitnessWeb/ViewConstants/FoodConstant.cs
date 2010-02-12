@@ -1,6 +1,9 @@
 ﻿namespace CarbonFitnessWeb.ViewConstants {
-	public class FoodConstant {
-		public const string FoodMessaureElement = "FoodElement";
+	public class FoodConstant
+	{
+		public static string FoodTitle = "Kost";
+		public static string FoodInputTitle = "Lägg till ingrediens";
+		public const string FoodMeasureElement = "Measure";
 		public const string FoodNameElement = "FoodName";
 		public const string Submit = "Submit";
 	}

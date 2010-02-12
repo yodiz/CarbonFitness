@@ -9,41 +9,33 @@ namespace CarbonFitnessTest.Integration {
 		public override string Url { get { return baseUrl; } }
 
 		[Test]
-		public void shouldNotShowAddFoodLinkIfNotLoggedIn() {
-			browser.GoTo(baseUrl);
-			
-			Link logOffButton = browser.Link(Find.ByText("Log Off"));
-			if (logOffButton.Exists) {
-				 logOffButton.Click();
-			}
-			
-			Link link = browser.Link(Find.ByText(SiteMasterConstant.AddFoodLinkId));
-
-			Assert.That(link.Exists, Is.False);
-		}
-
-		[Test]
-		public void shouldShowAddFoodLinkAfterLoggedOn() {
-			var createUserTest = new CreateUserTest(browser);
-			createUserTest.createUser();
-			var loggonTest = new AccountLogOnTest(browser);
-			loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
-			Link link = browser.Link(Find.ByText(SiteMasterConstant.AddFoodLinkId));
-
-			Assert.That(link.Exists);
-		}
-
-		[Test]
-		public void shouldGoToAddFoddPageAfterClickingAddFoodLink()
+		public void shouldGoToAddFoodPageAfterClickingAddFoodLinkAfterLoggedOn()
 		{
 			var createUserTest = new CreateUserTest(browser);
 			createUserTest.createUser();
 			var loggonTest = new AccountLogOnTest(browser);
 			loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
-			Link link = browser.Link(Find.ByText(SiteMasterConstant.AddFoodLinkId));
+			Link link = browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
 			link.Click();
 
-			Assert.That(browser.ContainsText("Enter food consumed"));
+			Assert.That(browser.ContainsText(FoodConstant.FoodInputTitle));
+		}
+
+		[Test]
+		public void shouldGoToLogOnPageAfterClickingAddFoodLinkIfNotLoggedOn()
+		{
+			browser.GoTo(baseUrl);
+
+			Link logOffButton = browser.Link(Find.ByText("Log Off"));
+			if (logOffButton.Exists)
+			{
+				logOffButton.Click();
+			}
+
+			Link link = browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
+			link.Click();
+
+			Assert.That(browser.ContainsText(AccountConstant.LoginTitle));
 		}
 	}
 }

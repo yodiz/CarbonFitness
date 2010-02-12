@@ -1,29 +1,39 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using CarbonFitnessWeb.Models;
 
 namespace CarbonFitnessWeb.Controllers {
 	public class FoodController : Controller {
-		private IMealBusinessLogic mealBusinessLogic;
-		public IUserBusinessLogic userBusinessLogic;
-      
-		public FoodController(IMealBusinessLogic mealBusinessLogic, IUserBusinessLogic userBusinessLogic) {
-			this.userBusinessLogic = userBusinessLogic;
-			this.mealBusinessLogic = mealBusinessLogic;
+		private IUserIngredientBusinessLogic userIngredientBusinessLogic;
+		private IUserContext userContext;
+
+		public FoodController(IUserIngredientBusinessLogic userIngredientBusinessLogic, IUserContext userContext)
+		{
+			this.userIngredientBusinessLogic = userIngredientBusinessLogic;
+			this.userContext = userContext;
 		}
 
 		[HttpPost]
 		public ActionResult Input(InputFoodModel model) {
-			mealBusinessLogic.AddIngredient(new UserContext(userBusinessLogic).User, new Ingredient { Name = model.Ingredient }, model.Measure);
+			var userIngredient = userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure);
 
+			var userIngredients = new List<UserIngredient> {userIngredient};
+			model.UserIngredients = userIngredients;
+			
 			return View(model);
 		}
 
-		public ActionResult Input(int mealId)
+		public ActionResult Input()
 		{
-			var mealIngredients = mealBusinessLogic.GetMealIngredients(mealId);
-			return View(new InputFoodModel{MealIngredients = mealIngredients} );
+			return View(new InputFoodModel { UserIngredients = new List<UserIngredient>() });
 		}
+
+		//public ActionResult Input(int mealId)
+		//{
+		//   var mealIngredients = mealBusinessLogic.GetMealIngredients(mealId);
+		//   return View(new InputFoodModel{MealIngredients = mealIngredients} );
+		//}
 	}
 }

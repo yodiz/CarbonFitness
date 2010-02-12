@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<CarbonFitnessWeb.Models.LogOnModel>" %>
 
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log On
+    <%= AccountConstant.LoginTitle %>
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Log On</h2>
+    <h2><%= AccountConstant.LoginTitle %></h2>
     <p>
         Please enter your username and password. <%= Html.ActionLink("Register", "Create", "User")%> if you don't have an account.
     </p>

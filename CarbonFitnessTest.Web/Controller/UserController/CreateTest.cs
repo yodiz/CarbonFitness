@@ -1,9 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Principal;
+using System.Threading;
+using System.Web.Mvc;
 using CarbonFitness.Data.Model;
+using CarbonFitnessWeb;
 using Moq;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using CarbonFitness.BusinessLogic;
+using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web.Controller.UserController
 {
@@ -11,13 +15,31 @@ namespace CarbonFitnessTest.Web.Controller.UserController
 	public class CreateTest {
 
 		[Test]
-		public void shouldRedirectToView() {
+		public void shouldBeLoggedInAfterUserCreation() {
 			var userBusinessLogicMock = new Mock<IUserBusinessLogic>();
 			var theUsersName = "kalle";
 			var thePassword = "myPass";
 			userBusinessLogicMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User { Username = theUsersName });
 
-			var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogicMock.Object);
+			var userContextMock = new Mock<IUserContext>();
+			userContextMock.Setup(x => x.LogIn(It.IsAny<User>(), It.IsAny<bool>()));
+
+			var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogicMock.Object, userContextMock.Object);
+
+			var viewResult = (RedirectToRouteResult)controller.Create(theUsersName, thePassword);
+			userContextMock.VerifyAll();
+		}
+
+		[Test]
+		public void shouldRedirectToView() {
+			var userBusinessLogicMock = new Mock<IUserBusinessLogic>();
+			var userContextMock = new Mock<IUserContext>();
+
+			var theUsersName = "kalle";
+			var thePassword = "myPass";
+			userBusinessLogicMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User { Username = theUsersName });
+
+			var controller = new CarbonFitnessWeb.Controllers.UserController(userBusinessLogicMock.Object, userContextMock.Object);
             
 			var viewResult = (RedirectToRouteResult)controller.Create(theUsersName, thePassword);
 
@@ -31,10 +53,11 @@ namespace CarbonFitnessTest.Web.Controller.UserController
 			var password = "password";
 			var factory = new MockFactory(MockBehavior.Strict);
 			var mock = factory.Create<IUserBusinessLogic>();
+			var userContextMock = new Mock<IUserContext>();
             
 			mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(new User());
 
-			var controller = new CarbonFitnessWeb.Controllers.UserController(mock.Object);
+			var controller = new CarbonFitnessWeb.Controllers.UserController(mock.Object, userContextMock.Object);
 			controller.Create(userName, password);
 			factory.VerifyAll();
 		}
@@ -45,11 +68,12 @@ namespace CarbonFitnessTest.Web.Controller.UserController
 			var password = "password";
 
 			var factory = new MockFactory(MockBehavior.Strict);
+			var userContextMock = new Mock<IUserContext>();
 			var mock = factory.Create<IUserBusinessLogic>();
 			var createdUser = new User { Username = userName };
 			mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(createdUser);
 
-			var controller = new CarbonFitnessWeb.Controllers.UserController(mock.Object);
+			var controller = new CarbonFitnessWeb.Controllers.UserController(mock.Object, userContextMock.Object);
 			var viewResult = (RedirectToRouteResult)controller.Create(userName, password);
 
 			var idRouteValue = viewResult.RouteValues["id"];

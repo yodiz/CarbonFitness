@@ -59,13 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="IMealBusinessLogic.cs" />
     <Compile Include="IUserBusinessLogic.cs" />
-    <Compile Include="MealBusinessLogic.cs" />
+    <Compile Include="IUserIngredientBusinessLogic.cs" />
     <Compile Include="MembershipBusinessLogic.cs" />
     <Compile Include="IMembershipBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBusinessLogic.cs" />
+    <Compile Include="UserIngredientBusinessLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">

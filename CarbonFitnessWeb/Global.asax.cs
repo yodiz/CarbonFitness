@@ -36,6 +36,7 @@ namespace CarbonFitnessWeb {
                 );
         }
 
+
         /// <summary>
         /// Due to issues on IIS7, the NHibernate initialization must occur in Init().
         /// But Init() may be invoked more than once; accordingly, we introduce a thread-safe
@@ -82,8 +83,9 @@ namespace CarbonFitnessWeb {
 			  builder.RegisterModule(new BusinessLoginUsageModule());
 			  builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
 			  builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
+			  builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
 			  builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
-			  builder.RegisterType<MealBusinessLogic>().As<IMealBusinessLogic>();
+			  builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
 			  
 			  _containerProvider = new ContainerProvider(builder.Build());
 

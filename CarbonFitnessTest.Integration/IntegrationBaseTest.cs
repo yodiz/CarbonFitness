@@ -3,6 +3,7 @@ using NUnit.Framework;
 using SharpArch.Data.NHibernate;
 using SharpArch.Testing.NUnit.NHibernate;
 using WatiN.Core;
+using WatiN.Core.Native.Windows;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
@@ -15,6 +16,7 @@ namespace CarbonFitnessTest.Integration {
 
 		protected IntegrationBaseTest(Browser browser) {
 			this.browser = browser;
+			browser.BringToFront();
 			browser.GoTo(Url);
 		}
 		
