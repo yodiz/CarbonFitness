@@ -1,8 +1,10 @@
-﻿using CarbonFitness.BusinessLogic;
+﻿using System.Linq;
+using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
+using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.BusinessLogic
 {
@@ -15,9 +17,11 @@ namespace CarbonFitnessTest.BusinessLogic
 			mealIngredientRepository.Setup(x => x.GetByMealId(1)).Returns(new[] { new MealIngredient(), new MealIngredient() });
 			var mealBusinessLogic = new MealBusinessLogic(mealIngredientRepository.Object);
 			
-			mealBusinessLogic.GetMealIngredients(1);
+			var mealIngredients = mealBusinessLogic.GetMealIngredients(1);
 
-         mealIngredientRepository.Verify();
+			Assert.That(mealIngredients, Is.Not.Null);
+			Assert.That(mealIngredients.Count(), Is.EqualTo(2));
+         mealIngredientRepository.VerifyAll();
 		}
 	}
 }

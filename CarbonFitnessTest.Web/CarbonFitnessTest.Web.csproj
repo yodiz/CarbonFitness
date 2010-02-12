@@ -41,7 +41,7 @@
     </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CarbonFitness\bin\Debug\SharpArch.Core.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Controller\AccountController\LogOnTest.cs" />
     <Compile Include="Controller\FoodController\InputTest.cs" />
+    <Compile Include="Controller\HomeController\IndexTest.cs" />
     <Compile Include="Controller\UserController\CreateTest.cs" />
     <Compile Include="Controller\UserController\DetailsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj">
+      <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
+      <Name>CarbonFitness.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">
       <Project>{5054CADA-7829-45AD-A842-098A2EB80FD4}</Project>
       <Name>CarbonFitness.DataLayer</Name>
@@ -91,10 +96,6 @@
     <ProjectReference Include="..\CarbonFitnessWeb\CarbonFitnessWeb.csproj">
       <Project>{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}</Project>
       <Name>CarbonFitnessWeb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj">
-      <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
-      <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

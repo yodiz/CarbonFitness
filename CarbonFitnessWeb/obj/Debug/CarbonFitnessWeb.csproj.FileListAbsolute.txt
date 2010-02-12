@@ -1,6 +1,8 @@
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnessWeb.pdb
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.Configuration.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.Integration.Web.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.BusinessLogic.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.Data.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.dll
@@ -10,6 +12,7 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.L
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\log4net.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.Validator.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.DynamicProxy2.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Microsoft.Practices.ServiceLocation.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Newtonsoft.Json.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.DataLayer.dll
@@ -22,6 +25,7 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.V
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.DynamicProxy2.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Core.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.xml
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Data.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Newtonsoft.Json.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitness.DataLayer.pdb
@@ -29,10 +33,7 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\CarbonFitnes
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Iesi.Collections.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\NHibernate.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\SharpArch.Web.pdb
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\obj\Debug\CarbonFitnessWeb.pdb
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.dll
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Castle.Core.xml
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.Configuration.dll
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.dll
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Autofac.Integration.Web.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessWeb\bin\Microsoft.Web.Mvc.dll

@@ -32,5 +32,18 @@ namespace CarbonFitnessTest.Integration {
 
 			Assert.That(link.Exists);
 		}
+
+		[Test]
+		public void shouldGoToAddFoddPageAfterClickingAddFoodLink()
+		{
+			var createUserTest = new CreateUserTest(browser);
+			createUserTest.createUser();
+			var loggonTest = new AccountLogOnTest(browser);
+			loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
+			Link link = browser.Link(Find.ByText(SiteMasterConstant.AddFoodLinkId));
+			link.Click();
+
+			Assert.That(browser.ContainsText("Enter food consumed"));
+		}
 	}
 }

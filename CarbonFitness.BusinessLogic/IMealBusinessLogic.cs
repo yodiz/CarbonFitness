@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CarbonFitness.Data.Model;
 
 namespace CarbonFitness.BusinessLogic
@@ -5,6 +6,6 @@ namespace CarbonFitness.BusinessLogic
 	public interface IMealBusinessLogic
 	{
 		void AddIngredient(User user, Ingredient ingredient, int measure);
-		MealIngredient[] GetMealIngredients(int mealId);
+		IEnumerable<MealIngredient> GetMealIngredients(int mealId);
 	}
 }

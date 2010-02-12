@@ -1,4 +1,3 @@
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.dll
@@ -6,5 +5,6 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\Micr
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.pdb

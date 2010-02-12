@@ -14,68 +14,68 @@
   </NAntValidationSettings>
   <RecentFiles>
     <RecentFiles>
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/f:UserContextTest.cs" caret="1636" fromTop="35" />
-      <File id="6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357/d:Model/f:User.cs" caret="0" fromTop="0" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IUserBusinessLogic.cs" caret="194" fromTop="6" />
-      <File id="10018F66-7FD5-443D-98CE-57784B814B14/f:UserBusinessLogicTest.cs" caret="720" fromTop="20" />
-      <File id="10018F66-7FD5-443D-98CE-57784B814B14/f:CarbonFitnessMembershipProviderTest.cs" caret="836" fromTop="21" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMealBusinessLogic.cs" caret="185" fromTop="6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Models/f:InputFoodModel.cs" caret="223" fromTop="9" />
-      <File id="6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357/d:Model/f:MealIngredient.cs" caret="158" fromTop="4" />
-      <File id="6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357/d:Model/f:Ingredient.cs" caret="113" fromTop="3" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="8101" fromTop="19" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:UserContext.cs" caret="420" fromTop="13" />
-      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/f:Bootstrapper.cs" caret="521" fromTop="13" />
-      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:CreateUserTest.cs" caret="1283" fromTop="39" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="477" fromTop="15" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="708" fromTop="13" />
-      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Repository/f:UserRepository.cs" caret="528" fromTop="12" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMembershipBusinessLogic.cs" caret="404" fromTop="11" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:UserBusinessLogic.cs" caret="0" fromTop="0" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:UserController/f:DetailsTest.cs" caret="90" fromTop="2" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="2935" fromTop="19" />
       <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:Bootstrapper.cs" caret="772" fromTop="27" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1374" fromTop="8" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="523" fromTop="14" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:UserController/f:CreateTest.cs" caret="1352" fromTop="16" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="538" fromTop="21" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="826" fromTop="27" />
       <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Maps/f:AutoPersistenceModelGenerator.cs" caret="733" fromTop="13" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Shared/f:Site.Master" caret="1478" fromTop="10" />
-      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:AccountLogOnTest.cs" caret="262" fromTop="6" />
-      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:IntegrationBaseTest.cs" caret="595" fromTop="12" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:UserBusinessLogic.cs" caret="0" fromTop="0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="538" fromTop="21" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:UserContext.cs" caret="331" fromTop="12" />
+      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Repository/f:IMealIngredientRepository.cs" caret="340" fromTop="8" />
+      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Repository/f:MealIngredientRepository.cs" caret="376" fromTop="8" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Models/f:InputFoodModel.cs" caret="214" fromTop="9" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:IntegrationBaseTest.cs" caret="617" fromTop="25" />
+      <File id="10018F66-7FD5-443D-98CE-57784B814B14/f:MealBusinessLogicTest.cs" caret="249" fromTop="8" />
+      <File id="F1713073-D688-4AAE-89FA-62E5B9E59F4E/d:Repository/f:UserRepositoryTest.cs" caret="745" fromTop="22" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:CreateUserTest.cs" caret="1107" fromTop="30" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMealBusinessLogic.cs" caret="292" fromTop="10" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="1016" fromTop="30" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:UserController/f:DetailsTest.cs" caret="0" fromTop="0" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:AccountController/f:LogOnTest.cs" caret="865" fromTop="17" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:UserController/f:CreateTest.cs" caret="0" fromTop="0" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/f:UserContextTest.cs" caret="0" fromTop="0" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:AccountLogOnTest.cs" caret="590" fromTop="14" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:ViewConstants/f:SiteMasterConstant.cs" caret="145" fromTop="6" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:ViewConstants/f:FoodConstant.cs" caret="227" fromTop="4" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Food/f:Input.aspx" caret="304" fromTop="7" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:SiteMasterTest.cs" caret="1501" fromTop="26" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="6991" fromTop="11" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="2152" fromTop="19" />
+      <File id="d:&amp;/f:IndexTest.cs/l:C!?Users?Robert Macfie?Documents?CarbonFitness?CarbonFitnessTest.Web?Controller?HomeController?IndexTest.cs" caret="321" fromTop="15" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="1135" fromTop="18" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="757" fromTop="20" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Shared/f:Site.Master" caret="1492" fromTop="40" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:InputFoodTest.cs" caret="336" fromTop="11" />
     </RecentFiles>
     <RecentEdits>
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1063" fromTop="18" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="2216" fromTop="12" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="789" fromTop="14" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="888" fromTop="16" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="3779" fromTop="16" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="594" fromTop="2" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="8234" fromTop="21" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:UserController.cs" caret="186" fromTop="7" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="380" fromTop="13" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:Bootstrapper.cs" caret="76" fromTop="3" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="0" fromTop="0" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="162" fromTop="6" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:ComponentBuilder.cs" caret="885" fromTop="29" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:Bootstrapper.cs" caret="510" fromTop="13" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:AccountController.cs" caret="341" fromTop="10" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:Bootstrapper.cs" caret="323" fromTop="8" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="2887" fromTop="25" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="3715" fromTop="34" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="0" fromTop="0" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:UserController/f:DetailsTest.cs" caret="90" fromTop="2" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Global.asax.cs" caret="3482" fromTop="28" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="466" fromTop="11" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="578" fromTop="14" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:Bootstrapper.cs" caret="920" fromTop="29" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1314" fromTop="18" />
-      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1878" fromTop="25" />
-      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="319" fromTop="10" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="536" fromTop="15" />
-      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Shared/f:Site.Master" caret="588" fromTop="15" />
-      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:IntegrationBaseTest.cs" caret="921" fromTop="18" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="3534" fromTop="18" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="3534" fromTop="13" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMealBusinessLogic.cs" caret="139" fromTop="4" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="216" fromTop="5" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="3534" fromTop="22" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:InputFoodTest.cs" caret="1037" fromTop="29" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:InputFoodTest.cs" caret="1043" fromTop="25" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:InputFoodTest.cs" caret="302" fromTop="5" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:IMealBusinessLogic.cs" caret="226" fromTop="8" />
+      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Repository/f:IMealIngredientRepository.cs" caret="330" fromTop="6" />
+      <File id="5054CADA-7829-45AD-A842-098A2EB80FD4/d:Repository/f:MealIngredientRepository.cs" caret="376" fromTop="8" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Models/f:InputFoodModel.cs" caret="214" fromTop="9" />
+      <File id="D93A9DD8-A93F-4276-8F62-C87507063892/f:MealBusinessLogic.cs" caret="1011" fromTop="29" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="3534" fromTop="28" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1123" fromTop="0" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="710" fromTop="19" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="1905" fromTop="32" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:SiteMasterTest.cs" caret="1550" fromTop="27" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:ViewConstants/f:SiteMasterConstant.cs" caret="145" fromTop="6" />
+      <File id="041F7C3B-0883-46DD-9C1D-E8F8004BE6F9/f:SiteMasterTest.cs" caret="1496" fromTop="23" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="7411" fromTop="25" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Shared/f:Site.Master" caret="0" fromTop="0" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/f:Web.config" caret="6990" fromTop="11" />
+      <File id="d:&amp;/f:IndexTest.cs/l:C!?Users?Robert Macfie?Documents?CarbonFitness?CarbonFitnessTest.Web?Controller?HomeController?IndexTest.cs" caret="230" fromTop="11" />
+      <File id="74D184FA-BC0B-4B94-8529-850CF68F20AA/d:Controller/d:FoodController/f:InputTest.cs" caret="2152" fromTop="19" />
+      <File id="d:&amp;/f:IndexTest.cs/l:C!?Users?Robert Macfie?Documents?CarbonFitness?CarbonFitnessTest.Web?Controller?HomeController?IndexTest.cs" caret="321" fromTop="15" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="875" fromTop="14" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="792" fromTop="16" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Controllers/f:FoodController.cs" caret="757" fromTop="20" />
+      <File id="80FDDA98-41A8-4D8D-AF90-7280AB9A319F/d:Views/d:Shared/f:Site.Master" caret="1135" fromTop="28" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
@@ -83,32 +83,32 @@
   </UnitTestRunner>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="TestFixture" priority="5" />
+      <Item value="TestFixture" priority="6" />
       <Item value="ActionResult" priority="6" />
       <Item value="View" priority="4" />
       <Item value="FireFox" priority="0" />
       <Item value="using" priority="6" />
-      <Item value="var" priority="22" />
+      <Item value="var" priority="23" />
       <Item value="Html" priority="6" />
-      <Item value="Test" priority="10" />
-      <Item value="public" priority="34" />
-      <Item value="void" priority="21" />
-      <Item value="new" priority="43" />
+      <Item value="Test" priority="13" />
+      <Item value="public" priority="38" />
+      <Item value="void" priority="24" />
+      <Item value="new" priority="47" />
       <Item value="UserController" priority="2" />
       <Item value="userController" priority="0" />
       <Item value="UserControllerTest" priority="2" />
       <Item value="string" priority="14" />
-      <Item value="Assert" priority="20" />
+      <Item value="Assert" priority="22" />
       <Item value="result" priority="3" />
       <Item value="Moq" priority="3" />
       <Item value="mock" priority="13" />
       <Item value="Mock" priority="6" />
-      <Item value="c" priority="4" />
+      <Item value="c" priority="5" />
       <Item value="System" priority="1" />
       <Item value="Linq" priority="2" />
       <Item value="r" priority="0" />
       <Item value="HttpPost" priority="0" />
-      <Item value="return" priority="15" />
+      <Item value="return" priority="16" />
       <Item value="this" priority="20" />
       <Item value="RedirectToAction" priority="0" />
       <Item value="ViewContext" priority="0" />
@@ -120,11 +120,11 @@
       <Item value="pair" priority="0" />
       <Item value="GetType" priority="0" />
       <Item value="typeof" priority="1" />
-      <Item value="int" priority="4" />
+      <Item value="int" priority="6" />
       <Item value="user" priority="9" />
       <Item value="User" priority="21" />
       <Item value="Nullable" priority="0" />
-      <Item value="null" priority="4" />
+      <Item value="null" priority="6" />
       <Item value="UserRepository" priority="7" />
       <Item value="userRepository" priority="4" />
       <Item value="userName" priority="7" />
@@ -144,7 +144,7 @@
       <Item value="Constraint" priority="0" />
       <Item value="ConstraintBuilder" priority="1" />
       <Item value="Controller" priority="0" />
-      <Item value="It" priority="7" />
+      <Item value="It" priority="8" />
       <Item value="MockFactory" priority="8" />
       <Item value="MockBehavior" priority="6" />
       <Item value="factory" priority="1" />
@@ -180,19 +180,19 @@
       <Item value="Is" priority="4" />
       <Item value="Password" priority="2" />
       <Item value="password" priority="4" />
-      <Item value="browser" priority="15" />
+      <Item value="browser" priority="17" />
       <Item value="static" priority="2" />
       <Item value="const" priority="1" />
       <Item value="CarbonFitnessWeb" priority="1" />
       <Item value="ViewConstants" priority="0" />
       <Item value="UserConstant" priority="5" />
-      <Item value="CreateUserTest" priority="5" />
+      <Item value="CreateUserTest" priority="7" />
       <Item value="createUserTest" priority="1" />
       <Item value="IdHinter" priority="0" />
       <Item value="CarbonFitnessMembershipProvider" priority="0" />
       <Item value="AccountController" priority="2" />
       <Item value="accountController" priority="0" />
-      <Item value="Controllers" priority="1" />
+      <Item value="Controllers" priority="2" />
       <Item value="LogOnModel" priority="0" />
       <Item value="UserName" priority="0" />
       <Item value="actionResult" priority="1" />
@@ -230,26 +230,26 @@
       <Item value="Authorize" priority="0" />
       <Item value="FoodController" priority="1" />
       <Item value="IServiceProvider" priority="1" />
-      <Item value="Link" priority="0" />
-      <Item value="Find" priority="0" />
-      <Item value="link" priority="1" />
+      <Item value="Link" priority="1" />
+      <Item value="Find" priority="1" />
+      <Item value="link" priority="2" />
       <Item value="FoodConstant" priority="0" />
       <Item value="ingredient" priority="2" />
       <Item value="UserCotroller" priority="0" />
       <Item value="meal" priority="2" />
-      <Item value="Ingredient" priority="7" />
+      <Item value="Ingredient" priority="11" />
       <Item value="Meal" priority="1" />
       <Item value="currentUser" priority="1" />
-      <Item value="MealIngredient" priority="3" />
+      <Item value="MealIngredient" priority="8" />
       <Item value="throw" priority="0" />
       <Item value="NotImplementedException" priority="0" />
       <Item value="NHibernateRepositoryWithTypedId" priority="0" />
-      <Item value="MealIngredientRepository" priority="2" />
+      <Item value="MealIngredientRepository" priority="3" />
       <Item value="Entity" priority="2" />
       <Item value="get" priority="1" />
       <Item value="virtual" priority="0" />
       <Item value="mealIngredientRepositoryMock" priority="0" />
-      <Item value="mealIngredientRepository" priority="2" />
+      <Item value="mealIngredientRepository" priority="3" />
       <Item value="item" priority="0" />
       <Item value="nHibernateConfig" priority="0" />
       <Item value="IMealBusinessLogic" priority="0" />
@@ -268,7 +268,18 @@
       <Item value="ModelBinderAttribute" priority="0" />
       <Item value="class" priority="0" />
       <Item value="Module" priority="0" />
-      <Item value="MealBusinessLogic" priority="0" />
+      <Item value="MealBusinessLogic" priority="1" />
+      <Item value="mealId" priority="1" />
+      <Item value="Name" priority="0" />
+      <Item value="Measure" priority="0" />
+      <Item value="MealBusinessLogicTest" priority="0" />
+      <Item value="blMealBusinessLogic" priority="0" />
+      <Item value="IEnumerable" priority="0" />
+      <Item value="mealIngredients" priority="0" />
+      <Item value="loggonTest" priority="0" />
+      <Item value="SiteMasterConstant" priority="0" />
+      <Item value="char" priority="0" />
+      <Item value="Models" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper`1">
       <Item value="BeginForm" priority="1" />
@@ -291,10 +302,11 @@
       <Item value="Get" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Mock`1">
-      <Item value="Setup" priority="14" />
+      <Item value="Setup" priority="15" />
       <Item value="SetupGet" priority="0" />
-      <Item value="Object" priority="11" />
-      <Item value="VerifyAll" priority="2" />
+      <Item value="Object" priority="12" />
+      <Item value="VerifyAll" priority="3" />
+      <Item value="Verify" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.ControllerContext">
       <Item value="HttpContext" priority="1" />
@@ -321,7 +333,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
       <Item value="AreEqual" priority="1" />
-      <Item value="That" priority="17" />
+      <Item value="That" priority="20" />
       <Item value="IsInstanceOfType" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Mvc.RedirectToRouteResult">
@@ -388,7 +400,7 @@
       <Item value="Equals" priority="0" />
       <Item value="InstanceOfType" priority="0" />
       <Item value="Not" priority="0" />
-      <Item value="Null" priority="5" />
+      <Item value="Null" priority="6" />
       <Item value="Empty" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@WatiN.Core.Find">
@@ -397,6 +409,7 @@
       <Item value="BySrc" priority="0" />
       <Item value="ByLabelText" priority="0" />
       <Item value="Any" priority="0" />
+      <Item value="ByUrl" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:WatiN.Core.IE">
       <Item value="Body" priority="0" />
@@ -418,8 +431,8 @@
       <Item value="ViewData" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Moq.It">
-      <Item value="Is" priority="3" />
-      <Item value="IsAny" priority="7" />
+      <Item value="Is" priority="4" />
+      <Item value="IsAny" priority="8" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Moq.MockBehavior">
       <Item value="Strict" priority="6" />
@@ -475,12 +488,13 @@
       <Item value="Model" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:WatiN.Core.Link">
-      <Item value="Click" priority="1" />
+      <Item value="Click" priority="2" />
       <Item value="Exists" priority="2" />
+      <Item value="Equals" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@NUnit.Framework.SyntaxHelpers.Is">
-      <Item value="EqualTo" priority="2" />
-      <Item value="Not" priority="6" />
+      <Item value="EqualTo" priority="3" />
+      <Item value="Not" priority="7" />
       <Item value="False" priority="2" />
       <Item value="GreaterThan" priority="1" />
       <Item value="LessThan" priority="0" />
@@ -500,8 +514,8 @@
       <Item value="createUser" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@CarbonFitnessTest.Integration.CreateUserTest">
-      <Item value="UserName" priority="0" />
-      <Item value="Password" priority="0" />
+      <Item value="UserName" priority="1" />
+      <Item value="Password" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Web.Security.MembershipProvider">
       <Item value="ValidateUser" priority="0" />
@@ -545,12 +559,12 @@
       <Item value="Dispose" priority="0" />
       <Item value="GoTo" priority="3" />
       <Item value="FindText" priority="0" />
-      <Item value="Link" priority="1" />
+      <Item value="Link" priority="2" />
       <Item value="Text" priority="0" />
-      <Item value="ContainsText" priority="0" />
+      <Item value="ContainsText" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@CarbonFitnessWeb.ViewConstants.SiteMasterConstant">
-      <Item value="AddFoodLinkId" priority="0" />
+      <Item value="AddFoodLinkId" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:ASP.views_shared_site_master">
       <Item value="Response" priority="0" />
@@ -573,12 +587,14 @@
     <ItemStatistics item="Qualified:CarbonFitness.BusinessLogic.MealBusinessLogic">
       <Item value="MealIngredientRepository" priority="0" />
       <Item value="Meal" priority="0" />
+      <Item value="GetMealIngredients" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.Repository.IMealIngredientRepository">
       <Item value="SaveOrUpdate" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:CarbonFitness.BusinessLogic.IMealBusinessLogic">
       <Item value="AddIngredient" priority="1" />
+      <Item value="GetMealIngredients" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Moq.Language.Flow.ISetup`1">
       <Item value="AtMost" priority="0" />
@@ -615,6 +631,16 @@
       <Item value="Build" priority="0" />
       <Item value="RegisterControllers" priority="0" />
       <Item value="RegisterModule" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitness.DataLayer.Repository.IMealIngredientRepository">
+      <Item value="GetByMealId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CarbonFitnessTest.Integration.AccountLogOnTest">
+      <Item value="LogOn" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Nullable`1">
+      <Item value="Value" priority="0" />
+      <Item value="HasValue" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

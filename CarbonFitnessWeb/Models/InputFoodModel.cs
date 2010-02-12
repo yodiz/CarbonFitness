@@ -7,7 +7,7 @@ namespace CarbonFitnessWeb.Models
 	{
 		public int Measure;
 		public string Ingredient;
-		public IList<MealIngredient> MealIngredients;
+		public IEnumerable<MealIngredient> MealIngredients;
 		
 	}
 }

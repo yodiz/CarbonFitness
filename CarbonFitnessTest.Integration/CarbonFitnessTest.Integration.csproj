@@ -33,11 +33,11 @@
   <ItemGroup>
     <Reference Include="FluentNHibernate, Version=0.1.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CarbonFitness\bin\Debug\FluentNHibernate.dll</HintPath>
+      <HintPath>..\Dependencies\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CarbonFitness\bin\Debug\NHibernate.dll</HintPath>
+      <HintPath>..\Dependencies\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -45,15 +45,11 @@
     </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CarbonFitness\bin\Debug\SharpArch.Core.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Core.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CarbonFitness\bin\Debug\SharpArch.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpArch.Testing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\SharpArch.Testing.dll</HintPath>
+      <HintPath>..\Dependencies\SharpArch.Data.dll</HintPath>
     </Reference>
     <Reference Include="SharpArch.Testing.NUnit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -85,6 +81,14 @@
     <Compile Include="SiteMasterTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">
       <Project>{5054CADA-7829-45AD-A842-098A2EB80FD4}</Project>
       <Name>CarbonFitness.DataLayer</Name>
@@ -97,14 +101,6 @@
       <Project>{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}</Project>
       <Name>CarbonFitnessWeb</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Hibernate.cfg.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

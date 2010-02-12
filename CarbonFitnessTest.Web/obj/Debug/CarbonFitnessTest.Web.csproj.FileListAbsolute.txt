@@ -9,12 +9,15 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\C
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\CarbonFitnessWeb.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Moq.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\nunit.framework.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\SharpArch.Core.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\NHibernate.Linq.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\log4net.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\NHibernate.Validator.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Autofac.Integration.Web.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Castle.DynamicProxy2.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Autofac.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Castle.Core.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\SharpArch.Data.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Iesi.Collections.dll
@@ -29,6 +32,7 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\C
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\SharpArch.Core.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Autofac.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Castle.Core.xml
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\SharpArch.Data.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\CarbonFitness.DataLayer.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\CarbonFitnessWeb.pdb
@@ -40,6 +44,3 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\N
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\SharpArch.Web.pdb
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\obj\Debug\CarbonFitnessTest.Web.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\obj\Debug\CarbonFitnessTest.Web.pdb
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Castle.Core.dll
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Castle.Core.xml
-C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitnessTest.Web\bin\Debug\Autofac.Integration.Web.dll

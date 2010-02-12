@@ -1,7 +1,10 @@
-﻿namespace CarbonFitnessWeb.ViewConstants
+﻿using System;
+
+namespace CarbonFitnessWeb.ViewConstants
 {
 	 public class SiteMasterConstant
 	 {
-		  public const string AddFoodLinkId = "Add Food";
+	 	public static string AddFoodLinkHref = "Food/Input";
+	 	public const string AddFoodLinkId = "Add Food";
 	 }
 }

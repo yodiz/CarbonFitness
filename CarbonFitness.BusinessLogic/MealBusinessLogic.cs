@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CarbonFitness.DataLayer.Repository;
 using CarbonFitness.Data.Model;
 
@@ -24,9 +25,9 @@ namespace CarbonFitness.BusinessLogic
 			MealIngredientRepository.SaveOrUpdate(item);
 		}
 
-		public MealIngredient[] GetMealIngredients(int mealId)
+		public IEnumerable<MealIngredient> GetMealIngredients(int mealId)
 		{
-			throw new NotImplementedException();
+			return MealIngredientRepository.GetByMealId(mealId);
 		}
 	}
 }
