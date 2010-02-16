@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.BusinessLogic", "CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj", "{D93A9DD8-A93F-4276-8F62-C87507063892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Web", "CarbonFitnessWeb\CarbonFitness.Web.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Data", "CarbonFitness.Data\CarbonFitness.Data.csproj", "{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.DataLayer", "CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj", "{5054CADA-7829-45AD-A842-098A2EB80FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.Integration", "CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj", "{041F7C3B-0883-46DD-9C1D-E8F8004BE6F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Web", "CarbonFitnessWeb\CarbonFitness.Web.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.BusinessLogic", "CarbonFitnessTest.BusinessLogic\CarbonFitnessTest.BusinessLogic.csproj", "{10018F66-7FD5-443D-98CE-57784B814B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.Web", "CarbonFitnessTest.Web\CarbonFitnessTest.Web.csproj", "{74D184FA-BC0B-4B94-8529-850CF68F20AA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.DataLayer", "CarbonFitnessTest.DataLayer\CarbonFitnessTest.DataLayer.csproj", "{F1713073-D688-4AAE-89FA-62E5B9E59F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.Integration", "CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj", "{041F7C3B-0883-46DD-9C1D-E8F8004BE6F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.Web", "CarbonFitnessTest.Web\CarbonFitnessTest.Web.csproj", "{74D184FA-BC0B-4B94-8529-850CF68F20AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
