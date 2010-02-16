@@ -38,8 +38,8 @@ namespace CarbonFitnessTest.Integration
 
 			browser.GoTo(Url);
 
-			browser.TextField(Find.ByName(/*Reflect Name "Ingredient" from InputFoodModel*/)).TypeText(pannbiff);
-			browser.TextField(Find.ByName(/*Reflect Name "Measure" from InputFoodModel*/)).TypeText("110");
+			browser.TextField(Find.ByName("Ingredient"/*Reflect Name "Ingredient" from InputFoodModel*/)).TypeText(pannbiff);
+			browser.TextField(Find.ByName("Measure"/*Reflect Name "Measure" from InputFoodModel*/)).TypeText("110");
 			browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
 
 			bool foodNameExsistsOnPage = browser.Text.Contains(pannbiff);
