@@ -98,9 +98,9 @@
       <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
       <Name>CarbonFitness.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarbonFitnessWeb\CarbonFitnessWeb.csproj">
+    <ProjectReference Include="..\CarbonFitnessWeb\CarbonFitness.Web.csproj">
       <Project>{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}</Project>
-      <Name>CarbonFitnessWeb</Name>
+      <Name>CarbonFitness.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

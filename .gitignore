@@ -1,5 +1,6 @@
 bin/
 obj/
 *.suo
+*.sou
 *.user
 _Resharper*/

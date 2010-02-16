@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.BusinessLogic", "CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj", "{D93A9DD8-A93F-4276-8F62-C87507063892}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D207746-212F-4BD7-8984-69F54FD730B6}"
-	ProjectSection(SolutionItems) = preProject
-		carbonfitness.vsmdi = carbonfitness.vsmdi
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessWeb", "CarbonFitnessWeb\CarbonFitnessWeb.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Web", "CarbonFitnessWeb\CarbonFitness.Web.csproj", "{80FDDA98-41A8-4D8D-AF90-7280AB9A319F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.Data", "CarbonFitness.Data\CarbonFitness.Data.csproj", "{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}"
 EndProject
