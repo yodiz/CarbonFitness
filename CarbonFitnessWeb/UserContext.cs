@@ -23,8 +23,7 @@ namespace CarbonFitnessWeb
 			}
 		}
 
-		public void LogIn(User user, bool persitantUser)
-		{
+		public void LogIn(User user, bool persitantUser) {
 			formsAuthenticationService.SignIn(user.Username, persitantUser);
 		}
 	}

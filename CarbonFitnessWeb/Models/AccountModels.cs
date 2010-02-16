@@ -24,7 +24,7 @@ namespace CarbonFitnessWeb.Models
         void SignIn(string userName, bool createPersistentCookie);
         void SignOut();
     }
-
+    
     public class FormsAuthenticationService : IFormsAuthenticationService
     {
         public void SignIn(string userName, bool createPersistentCookie)
@@ -39,7 +39,7 @@ namespace CarbonFitnessWeb.Models
             FormsAuthentication.SignOut();
         }
     }
-
+    
     internal static class ValidationUtil
     {
         private const string _stringRequiredErrorMessage = "Value cannot be null or empty.";

@@ -8,3 +8,13 @@ C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\bin\Debug\Newt
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.dll
 C:\Users\Robert Macfie\Documents\CarbonFitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.pdb
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.dll
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\CarbonFitness.Data.pdb
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.dll
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.dll
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\SharpArch.Core.pdb
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\bin\Debug\Newtonsoft.Json.xml
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.dll
+C:\Documents and Settings\Claes Timaker\Mina dokument\Projects\Carbon Fitness\CarbonFitness.Data\obj\Debug\CarbonFitness.Data.pdb

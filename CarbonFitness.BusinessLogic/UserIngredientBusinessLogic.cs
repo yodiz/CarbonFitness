@@ -1,3 +1,4 @@
+using System;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -22,5 +23,9 @@ namespace CarbonFitness.BusinessLogic
 			userIngredient.Measure = measure;
 			return userIngredientRepository.SaveOrUpdate(userIngredient);
 		}
+
+	    public UserIngredient[] GetUserIngredients(User user) {
+	        return userIngredientRepository.GetUserIngredientsFromUserId(user.Id);
+	    }
 	}
 }

@@ -10,7 +10,7 @@ namespace CarbonFitness.DataLayer.Repository
 	{
 		public Ingredient Get(string ingredientName)
 		{
-			return Session.Linq<Ingredient>().Where(x => x.Name == ingredientName).FirstOrDefault();
+            return Session.Linq<Ingredient>().Where(x => x.Name.Equals(ingredientName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 		}
 	}
 }

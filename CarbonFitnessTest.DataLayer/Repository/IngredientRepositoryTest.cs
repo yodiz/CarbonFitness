@@ -25,5 +25,15 @@ namespace CarbonFitnessTest.DataLayer.Repository
 
 			Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
 		}
+
+        [Test]
+        public void shouldMatchBothUpperAndLowerCaseOnName()
+        {
+            var repository = new IngredientRepository() as IIngredientRepository;
+
+            var ingredient = repository.Get("pannbiff");
+
+            Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
+        }
 	}
 }

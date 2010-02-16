@@ -1,4 +1,5 @@
-﻿using CarbonFitness.Data.Model;
+﻿using System;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.Models;
 using CarbonFitnessWeb.ViewConstants;
@@ -30,26 +31,45 @@ namespace CarbonFitnessTest.Integration
 			Assert.That(addFoodHeaderExists);
 		}
 
-		[Test]
-		public void shouldBeAbleToAddFood()
-		{
-			var pannbiff = "Pannbiff";
-			createIngredient(pannbiff);
+	    [Test]
+        public void shouldShowIngredientsForCurrentUser() {
+            var ingredient1 = "Pannbiff";
+            var ingredient2 = "Lök";
 
-			browser.GoTo(Url);
+            AddUserIngredient(ingredient1,  "150");
+            AddUserIngredient(ingredient2, "210");
 
-			browser.TextField(Find.ByName(/*Reflect Name "Ingredient" from InputFoodModel*/)).TypeText(pannbiff);
-			browser.TextField(Find.ByName(/*Reflect Name "Measure" from InputFoodModel*/)).TypeText("110");
-			browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+            Assert.That(browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page");
+            Assert.That(browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page");
 
-			bool foodNameExsistsOnPage = browser.Text.Contains(pannbiff);
-			bool foodMessaureExsistsOnPage = browser.Text.Contains("110");
+            browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-			Assert.That(foodNameExsistsOnPage, Is.True);
-			Assert.That(foodMessaureExsistsOnPage, Is.True);
-		}
+            Assert.That(browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page after navigating away and back");
+            Assert.That(browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page after navigating away and back");
+        }
 
-		public void createIngredient(string name)
+        [Test]
+        public void shouldShowTodaysDateOnPage() {
+            browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+
+            Assert.That(browser.Text.Contains(DateTime.Today.ToShortDateString()), Is.True, "Todays date doesn't exist on page");
+        }
+        //[Test]
+        //public void shouldShowIngredientsForDateOnPage() {
+
+
+	    private void AddUserIngredient(string ingredientText, string measureText)
+	    {
+            createIngredient(ingredientText);
+
+            string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
+            string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
+            browser.TextField(Find.ByName(ingredient)).TypeText(ingredientText);
+            browser.TextField(Find.ByName(measure)).TypeText(measureText);
+	        browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+	    }
+
+	    public void createIngredient(string name)
 		{
 			new IngredientRepository().SaveOrUpdate(new Ingredient {Name = name});
 		}

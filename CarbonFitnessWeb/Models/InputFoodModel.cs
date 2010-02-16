@@ -4,8 +4,8 @@ using CarbonFitness.Data.Model;
 namespace CarbonFitnessWeb.Models
 {
 	public class InputFoodModel {
-		public int Measure;
-		public string Ingredient;
-		public IEnumerable<UserIngredient> UserIngredients;
+		public int Measure{ get; set;}
+        public string Ingredient { get; set; }
+        public IEnumerable<UserIngredient> UserIngredients { get; set; }
 	}
 }

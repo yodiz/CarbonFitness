@@ -41,10 +41,9 @@ namespace CarbonFitnessTest.Web
 
 			userBusinessLogicMock.VerifyAll();
 		}
-
+        /*
 		[Test]
-		public void shouldSetThreadIdentityOnLogin()
-		{
+		public void shouldSetThreadIdentityOnLogin() {
 			var userName = "myUser";
 			var user = new User(userName);
 			var persistentUser = true;
@@ -56,7 +55,6 @@ namespace CarbonFitnessTest.Web
 
 			Assert.That(Thread.CurrentPrincipal.Identity.Name, Is.EqualTo(userName));
 			formsAuthenticationMock.VerifyAll();
-		}
-
+		}*/
 	}
 }

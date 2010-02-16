@@ -15,8 +15,7 @@ namespace CarbonFitnessTest.Integration {
 			createUserTest.createUser();
 			var loggonTest = new AccountLogOnTest(browser);
 			loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
-			Link link = browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
-			link.Click();
+			browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
 			Assert.That(browser.ContainsText(FoodConstant.FoodInputTitle));
 		}

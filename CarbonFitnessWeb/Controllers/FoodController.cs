@@ -17,23 +17,17 @@ namespace CarbonFitnessWeb.Controllers {
 
 		[HttpPost]
 		public ActionResult Input(InputFoodModel model) {
-			var userIngredient = userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure);
-
-			var userIngredients = new List<UserIngredient> {userIngredient};
-			model.UserIngredients = userIngredients;
+			userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure);
+            model.UserIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User); 
 			
 			return View(model);
 		}
 
-		public ActionResult Input()
-		{
-			return View(new InputFoodModel { UserIngredients = new List<UserIngredient>() });
-		}
+		public ActionResult Input() {
+            var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User);
+            var inputFoodModel = new InputFoodModel { UserIngredients = userIngredients };
 
-		//public ActionResult Input(int mealId)
-		//{
-		//   var mealIngredients = mealBusinessLogic.GetMealIngredients(mealId);
-		//   return View(new InputFoodModel{MealIngredients = mealIngredients} );
-		//}
+		    return View(inputFoodModel);
+		}
 	}
 }
