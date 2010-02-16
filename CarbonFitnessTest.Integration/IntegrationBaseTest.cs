@@ -1,4 +1,7 @@
-﻿using CarbonFitness.DataLayer.Maps;
+﻿using System;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using CarbonFitness.DataLayer.Maps;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
 using SharpArch.Testing.NUnit.NHibernate;
@@ -40,5 +43,14 @@ namespace CarbonFitnessTest.Integration {
 		public void TestFixtureTearDown() {
 			browser.Dispose();
 		}
+
+        public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression)
+        {
+            return ExpressionHelper.GetExpressionText(lambdaExpression);
+        }
+        public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression)
+        {
+            return ExpressionHelper.GetExpressionText(lambdaExpression);
+        }
 	}
 }

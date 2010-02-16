@@ -1,4 +1,7 @@
-﻿using CarbonFitness.Data.Model;
+﻿using System;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.Models;
 using CarbonFitnessWeb.ViewConstants;
@@ -31,15 +34,19 @@ namespace CarbonFitnessTest.Integration
 		}
 
 		[Test]
-		public void shouldBeAbleToAddFood()
-		{
+		public void shouldBeAbleToAddFood(){
+		    
+            //InputFoodModel m = new InputFoodModel();
+            string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
+            string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
 			var pannbiff = "Pannbiff";
 			createIngredient(pannbiff);
 
 			browser.GoTo(Url);
 
-			browser.TextField(Find.ByName("Ingredient"/*Reflect Name "Ingredient" from InputFoodModel*/)).TypeText(pannbiff);
-			browser.TextField(Find.ByName("Measure"/*Reflect Name "Measure" from InputFoodModel*/)).TypeText("110");
+            browser.TextField(Find.ByName(ingredient)).TypeText(pannbiff);
+			browser.TextField(Find.ByName(measure)).TypeText("110");
+
 			browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
 
 			bool foodNameExsistsOnPage = browser.Text.Contains(pannbiff);
@@ -49,7 +56,7 @@ namespace CarbonFitnessTest.Integration
 			Assert.That(foodMessaureExsistsOnPage, Is.True);
 		}
 
-		public void createIngredient(string name)
+	    public void createIngredient(string name)
 		{
 			new IngredientRepository().SaveOrUpdate(new Ingredient {Name = name});
 		}
