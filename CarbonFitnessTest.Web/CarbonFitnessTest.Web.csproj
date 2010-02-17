@@ -67,6 +67,7 @@
     <Compile Include="Controller\AccountController\LogOnTest.cs" />
     <Compile Include="Controller\FoodController\InputTest.cs" />
     <Compile Include="Controller\HomeController\IndexTest.cs" />
+    <Compile Include="Controller\IngredientController\SearchTest.cs" />
     <Compile Include="Controller\UserController\CreateTest.cs" />
     <Compile Include="Controller\UserController\DetailsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

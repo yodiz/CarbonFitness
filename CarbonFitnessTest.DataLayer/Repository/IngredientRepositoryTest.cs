@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Threading;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
@@ -14,6 +16,8 @@ namespace CarbonFitnessTest.DataLayer.Repository
 			var repository = new IngredientRepository();
 
 			repository.SaveOrUpdate(new Ingredient {Name = "Pannbiff"});
+            repository.SaveOrUpdate(new Ingredient { Name = "Abborre" });
+            repository.SaveOrUpdate(new Ingredient { Name = "abborgine" });
 		}
 
 		[Test]
@@ -34,6 +38,15 @@ namespace CarbonFitnessTest.DataLayer.Repository
             var ingredient = repository.Get("pannbiff");
 
             Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
+        }
+
+        [Test]
+        public void shouldReturnmatchingItemsForSearchParamter() {
+            var repository = new IngredientRepository();
+            var ingredients = repository.Search("abb");
+
+            Assert.That(ingredients.Count(), Is.GreaterThan(0));
+            Assert.That(ingredients.ToList().TrueForAll(x => x.Name.StartsWith("Abb",true, Thread.CurrentThread.CurrentCulture)));
         }
 	}
 }

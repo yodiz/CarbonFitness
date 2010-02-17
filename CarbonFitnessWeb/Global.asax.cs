@@ -83,6 +83,7 @@ namespace CarbonFitnessWeb {
 			  builder.RegisterModule(new BusinessLoginUsageModule());
 			  builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
 			  builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
+              builder.RegisterType<IngredientBusinessLogic>().As<IIngredientBusinessLogic>();
 			  builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
 			  builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
 			  builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();

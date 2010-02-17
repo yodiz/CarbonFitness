@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="IIngredientBusinessLogic.cs" />
+    <Compile Include="IngredientBusinessLogic.cs" />
     <Compile Include="IUserBusinessLogic.cs" />
     <Compile Include="IUserIngredientBusinessLogic.cs" />
     <Compile Include="MembershipBusinessLogic.cs" />

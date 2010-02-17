@@ -5,5 +5,6 @@ namespace CarbonFitness.DataLayer.Repository
 	public interface IIngredientRepository
 	{
 		Ingredient Get(string ingredientName);
+	    Ingredient [] Search(string queryText);
 	}
 }

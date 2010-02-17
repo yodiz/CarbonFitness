@@ -25,11 +25,11 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
 		                                                Ingredient = new Ingredient { Name = "Pannbiff" },
 		                                                Measure = 100};
 
-            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>())).Returns(new[] { userIngredient });
-            userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.Is<User>(u => u.Username == "myUser"), It.IsAny<string>(), It.IsAny<int>())).Returns(userIngredient);
-            
+            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Returns(new[] { userIngredient });
+            userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.Is<User>(u => u.Username == "myUser"), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>())).Returns(userIngredient);
 
-            var inputFoodModel = new InputFoodModel { Ingredient = "Pannbiff", Measure = 100 };
+
+            var inputFoodModel = new InputFoodModel { Ingredient = "Pannbiff", Measure = 100, Date = DateTime.Now };
             InputFoodModel model = testController(x => x.Input(inputFoodModel), userIngredientBusinessLogicMock, userContextMock);
 
 		    Assert.That(model, Is.Not.Null);
@@ -46,17 +46,16 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
             var userContextMock = GetSetuppedUserContextMock(mockFactory);
             Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock = GetSetuppedUserIngredientBusinessLogicMock(mockFactory);
 
-	        userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.IsAny<User>(), It.IsAny<string>(),It.IsAny<int>())).Returns(new UserIngredient());
+            userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<int>(), It.Is<DateTime>(y => y.ToShortDateString() == DateTime.Now.ToShortDateString()))).Returns(new UserIngredient());
 
-            var inputFoodModel = new InputFoodModel { Ingredient = "Pannbiff", Measure = 100 };
+            var inputFoodModel = new InputFoodModel { Ingredient = "Pannbiff", Measure = 100, Date = DateTime.Now };
             InputFoodModel model = testController(x => x.Input(inputFoodModel), userIngredientBusinessLogicMock, userContextMock);
 
             AssertUserIngredientsExist(mockFactory, model);
         }
 
-
 	    [Test]
-        public void shouldGetAllUserIngredientsOnLoad() {
+        public void shouldGetTodaysUserIngredientsOnLoad() {
             var mockFactory = new MockFactory(MockBehavior.Strict);
             var userContextMock = GetSetuppedUserContextMock(mockFactory);
 
@@ -70,15 +69,16 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
         private Mock<IUserIngredientBusinessLogic> GetSetuppedUserIngredientBusinessLogicMock(MockFactory mockFactory)
         {
             var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
-            var returnedUserIngredients = new[] { new UserIngredient(), new UserIngredient() };
+            var returnedUserIngredients = new[] { new UserIngredient { Date = DateTime.Now }, new UserIngredient { Date = DateTime.Now } };
 
-            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>())).Returns(returnedUserIngredients);
+            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.Is<DateTime>(y => y.ToShortDateString() == DateTime.Now.ToShortDateString()))).Returns(returnedUserIngredients);
             return userIngredientBusinessLogicMock;
         }
 
         private void AssertUserIngredientsExist(MockFactory mockFactory, InputFoodModel model) {
             Assert.That(model.UserIngredients, Is.Not.Null);
             Assert.That(model.UserIngredients.Count(), Is.EqualTo(2));
+            Assert.That(model.UserIngredients.First().Date.ToShortDateString(), Is.EqualTo(DateTime.Now.ToShortDateString()));
             mockFactory.VerifyAll();
         }
 

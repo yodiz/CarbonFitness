@@ -12,5 +12,10 @@ namespace CarbonFitness.DataLayer.Repository
 		{
             return Session.Linq<Ingredient>().Where(x => x.Name.Equals(ingredientName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 		}
+
+	    public Ingredient[] Search(string queryText)
+	    {
+	        return Session.Linq<Ingredient>().Where(x => x.Name.StartsWith(queryText)).ToArray();
+	    }
 	}
 }

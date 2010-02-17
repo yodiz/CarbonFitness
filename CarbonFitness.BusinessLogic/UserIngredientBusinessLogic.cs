@@ -15,17 +15,18 @@ namespace CarbonFitness.BusinessLogic
 			this.ingredientRepository = ingredientRepository;
 		}
 
-		public UserIngredient AddUserIngredient(User user, string ingredientName, int measure)
+		public UserIngredient AddUserIngredient(User user, string ingredientName, int measure, DateTime dateTime)
 		{
 			var userIngredient = new UserIngredient();
 			userIngredient.User = user;
 			userIngredient.Ingredient = ingredientRepository.Get(ingredientName);
 			userIngredient.Measure = measure;
+		    userIngredient.Date = dateTime;
 			return userIngredientRepository.SaveOrUpdate(userIngredient);
 		}
 
-	    public UserIngredient[] GetUserIngredients(User user) {
-	        return userIngredientRepository.GetUserIngredientsFromUserId(user.Id);
+	    public UserIngredient[] GetUserIngredients(User user, DateTime dateTime) {
+            return userIngredientRepository.GetUserIngredientsFromUserId(user.Id, dateTime);
 	    }
 	}
 }

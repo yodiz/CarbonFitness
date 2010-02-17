@@ -44,12 +44,13 @@ namespace CarbonFitnessTest.Integration {
 			browser.Dispose();
 		}
 
-        public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression)
-        {
+        public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression) {
             return ExpressionHelper.GetExpressionText(lambdaExpression);
         }
-        public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression)
-        {
+        public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression) {
+            return ExpressionHelper.GetExpressionText(lambdaExpression);
+        }
+        public string GetFieldNameOnModel<T>(Expression<Func<T, DateTime>> lambdaExpression){
             return ExpressionHelper.GetExpressionText(lambdaExpression);
         }
 	}

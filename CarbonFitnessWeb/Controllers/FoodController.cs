@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
@@ -17,15 +18,15 @@ namespace CarbonFitnessWeb.Controllers {
 
 		[HttpPost]
 		public ActionResult Input(InputFoodModel model) {
-			userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure);
-            model.UserIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User); 
+            userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
+            model.UserIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date); 
 			
 			return View(model);
 		}
 
 		public ActionResult Input() {
-            var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User);
-            var inputFoodModel = new InputFoodModel { UserIngredients = userIngredients };
+            var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, DateTime.Now);
+            var inputFoodModel = new InputFoodModel { UserIngredients = userIngredients, Date = DateTime.Now };
 
 		    return View(inputFoodModel);
 		}
