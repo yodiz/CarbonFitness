@@ -1,5 +1,8 @@
-bin/
-obj/
+[Bb]in/
+[Oo]bj/
 *.suo
 *.user
+[Dd]ebug*/
+[Rr]elease*/
 _Resharper*/
+Thumbs.db
