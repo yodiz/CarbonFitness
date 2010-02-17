@@ -1,0 +1,6 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Default" />
+  <Config name="Default" binpathtype="Auto">
+    <assembly path="CarbonFitnessTest.DataLayer\bin\Debug\CarbonFitnessTest.DataLayer.dll" />
+  </Config>
+</NUnitProject>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Projects\Avega\CarbonFitness\nUnitProject.nunit" total="6" errors="6" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-02-17" time="23:55:07">
+  <environment nunit-version="2.5.3.9345" clr-version="2.0.50727.4927" os-version="Microsoft Windows NT 6.1.7100.0" platform="Win32NT" cwd="c:\Projects\Avega\CarbonFitness\Tools\nUnit\net-2.0" machine-name="HEMMABIO" user="MikaelK" user-domain="Hemmabio" />
+  <culture-info current-culture="sv-SE" current-uiculture="en-US" />
+  <test-suite name="C:\Projects\Avega\CarbonFitness\nUnitProject.nunit" executed="True" success="False" time="0.075" asserts="0">
+    <results>
+      <test-suite name="C:\Projects\Avega\CarbonFitness\CarbonFitnessTest.DataLayer\bin\Debug\CarbonFitnessTest.DataLayer.dll" executed="True" success="False" time="0.071" asserts="0">
+        <results>
+          <test-suite name="CarbonFitnessTest" executed="True" success="False" time="0.068" asserts="0">
+            <results>
+              <test-suite name="DataLayer" executed="True" success="False" time="0.066" asserts="0">
+                <results>
+                  <test-suite name="Repository" executed="True" success="False" time="0.065" asserts="0">
+                    <results>
+                      <test-suite name="IngredientRepositoryTest" executed="True" success="False" time="0.027" asserts="0">
+                        <results>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.IngredientRepositoryTest.shouldGetIngredientByName" executed="True" success="False" time="0.002" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.IngredientRepositoryTest.shouldMatchBothUpperAndLowerCaseOnName" executed="True" success="False" time="0.002" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.IngredientRepositoryTest.shouldReturnmatchingItemsForSearchParamter" executed="True" success="False" time="0.000" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                      <test-suite name="UserIngredientRepositoryTest" executed="True" success="False" time="0.010" asserts="0">
+                        <results>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.UserIngredientRepositoryTest.shouldGetUserIngredientsFromUserId" executed="True" success="False" time="0.002" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.UserIngredientRepositoryTest.shouldSaveUserIngredient" executed="True" success="False" time="0.001" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                      <test-suite name="UserRepositoryTest" executed="True" success="False" time="0.002" asserts="0">
+                        <results>
+                          <test-case name="CarbonFitnessTest.DataLayer.Repository.UserRepositoryTest.shouldHaveCreateMethod" executed="True" success="False" time="0.001" asserts="0">
+                            <failure>
+                              <message><![CDATA[SharpArch.Core.PreconditionException : Please add an AppSetting to your app.config for 'nhibernate.mapping.assembly.' This setting takes a comma delimited list of assemblies containing NHibernate mapping files. Including '.dll' at the end of each is optional.
+TearDown : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                              <stack-trace><![CDATA[at SharpArch.Core.Check.Require(Boolean assertion, String message) in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Core\DesignByContract.cs:line 62
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.GetMappingAssemblies() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 40
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeNHibernateSession() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 29
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsHelper.InitializeDatabase() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsHelper.cs:line 21
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.SetUp() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 24
+--TearDown
+at SharpArch.Testing.NUnit.NHibernate.RepositoryTestsBase.TearDown() in C:\MyStuff\Dev\Projects\SharpArchitecture\src\SharpArch\SharpArch.Testing.NUnit\NHibernate\RepositoryTestsBase.cs:line 31
+]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
