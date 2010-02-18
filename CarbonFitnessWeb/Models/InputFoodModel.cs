@@ -6,7 +6,7 @@ using CarbonFitness.Data.Model;
 namespace CarbonFitnessWeb.Models
 {
 	public class InputFoodModel {
-        public string Ingredient { get; set; }
+	    public string Ingredient { get; set; }
         public int Measure{ get; set;}
 
         

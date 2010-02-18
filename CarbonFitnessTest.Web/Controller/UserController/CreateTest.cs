@@ -5,9 +5,7 @@ using CarbonFitness.Data.Model;
 using CarbonFitnessWeb;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using CarbonFitness.BusinessLogic;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web.Controller.UserController
 {

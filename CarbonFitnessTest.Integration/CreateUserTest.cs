@@ -3,7 +3,6 @@ using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.ViewConstants;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using WatiN.Core;
 using WatiN.Core.Constraints;
 

@@ -1,19 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.BusinessLogic
 {
 	[TestFixture]
 	public class UserIngredientBusinessLogicTest
 	{
+        [Test]
+        public void shouldNotBeAbleToAddAnIngredientThatDoesNotExistInTheDatabase() {
+            const int measure = 100;
+            const string ingredientName = "aaaabbbbbcccccddddd";
+ 
+            var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>(MockBehavior.Strict);
+            var ingredientRepositoryMock = new Mock<IIngredientRepository>(MockBehavior.Strict);
+            ingredientRepositoryMock.Setup(x => x.Get(ingredientName)).Returns((Ingredient) null);
+            
+            var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object);
+            Assert.Throws<NoIngredientFoundException>(() => userIngredientLogic.AddUserIngredient(new User(),ingredientName, measure,DateTime.Now));
+
+            userIngredientRepositoryMock.VerifyAll();
+            ingredientRepositoryMock.VerifyAll();
+        }
+
 		[Test]
 		public void shouldAddUserIngredient() {
 			var measure = 100;

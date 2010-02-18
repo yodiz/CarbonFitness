@@ -12,40 +12,71 @@
         });
 	</script>
     
-    
-    
     <h1><%=FoodConstant.FoodTitle%></h1>
-    <h2><%=FoodConstant.FoodInputTitle%></h2>
+    
    
-    <%
+    
+    <%=Html.ValidationSummary() %>
+    <% using (var form = Html.BeginForm()) { %>    
+        <div class="input-fields">
+            <div class="date-fields">            
+                <div class="editor-label">
+                    <%= Html.LabelFor(m => m.Date) %>
+                </div>
+                <div class="datepicker">
+                    <%= Html.EditorFor(m => m.Date) %>
+                </div>
+             </div>
+            
+            <div class="food-input">                
+                <h3><%=FoodConstant.FoodInputTitle%></h3>
+                <div class="editor-label">
+                    <%= Html.LabelFor(m => m.Ingredient) %>
+                </div>
+                <div class="editor-field">
+                    <%= Html.EditorFor(m => m.Ingredient) %>
+                </div>
+            
+                <div class="editor-label">
+                    <%= Html.LabelFor(m => m.Measure) %>
+                </div>
+                <div class="editor-field">
+                    <%= Html.EditorFor(m => m.Measure) %>
+                </div>
+                
+                <div class="submit-field">
+                    <input type="submit" value="<%= FoodConstant.Submit %>" />		
+                </div>
+            </div>  
+        </div>       
+        <hr style="clear: both" />
+
+        <%
         if (Model.UserIngredients != null){
-            foreach (var userIngredient in Model.UserIngredients)
-            {%>
-		        <%=userIngredient.Ingredient.Name%>, <%=userIngredient.Measure%><br />
+            %>
+            <table class="">
+                <tr>
+                    <th>Livsmedel</th>
+                    <th>Vikt (g)</th>
+                </tr>
             <%
+            
+            foreach (var userIngredient in Model.UserIngredients)
+            {
+                %>
+                <tr>
+                    <td><%=userIngredient.Ingredient.Name%></td>
+                    <td><%=userIngredient.Measure%></td>
+                </tr>
+                <%
             }
+            
+            %>
+            </table>
+            <%
         }
+        %>   
+    <% 
+    }
     %>
-    
-    
-    <fieldset>
-    <% using (var form = Html.BeginForm()) { %>
-    <div class="datepicker">
-        Date: <%=Html.EditorFor(m => m.Date)%>
-   </div>
-        <div>
-            <%= Html.LabelFor(m => m.Ingredient) %>
-		    <%= Html.EditorFor(m => m.Ingredient) %>
-		    
-		</div>
-		
-		<div>
-		  <%= Html.LabelFor(m => m.Measure)%>
-		  <%= Html.EditorFor(m => m.Measure) %>
-        </div>  		  		  
-        
-        <br />
-        <input type="submit" value="<%= FoodConstant.Submit %>" />
-    <% } %>
-    </fieldset>
 </asp:Content>

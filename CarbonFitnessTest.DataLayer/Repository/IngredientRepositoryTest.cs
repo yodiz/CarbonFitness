@@ -3,7 +3,6 @@ using System.Threading;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using SharpArch.Testing.NUnit.NHibernate;
 
 namespace CarbonFitnessTest.DataLayer.Repository

@@ -1,6 +1,5 @@
 ﻿using CarbonFitnessWeb.ViewConstants;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {

@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using CarbonFitnessWeb;
 using CarbonFitnessWeb.Models;
+using CarbonFitnessWeb.ViewConstants;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web.Controller.FoodController
 {
@@ -64,6 +65,36 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
             InputFoodModel model = testController(x => x.Input(), userIngredientBusinessLogicMock, userContextMock);
 
             AssertUserIngredientsExist(mockFactory, model);
+        }
+
+        [Test]
+        public void shouldPopulateErrorMessageInModelWhenNoIngredientFound()
+        {
+            var mockFactory = new MockFactory(MockBehavior.Strict);
+            var userContextMock = GetSetuppedUserContextMock(mockFactory);
+
+            var ingredientName = "afafafafafafafa";
+
+            var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
+            
+            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Returns(new[] { new UserIngredient() });
+            userIngredientBusinessLogicMock.Setup(
+                x => x.AddUserIngredient(It.IsAny<User>(),It.IsAny<string>(), It.IsAny<int>(),It.IsAny<DateTime>()))
+                .Throws(new NoIngredientFoundException(ingredientName));
+
+            var foodController = new CarbonFitnessWeb.Controllers.FoodController(userIngredientBusinessLogicMock.Object, userContextMock.Object);
+            foodController.Input(new InputFoodModel());
+            
+            //var model = testController(x => x.Input(new InputFoodModel()), userIngredientBusinessLogicMock, userContextMock);
+
+            ModelState modelState;
+            foodController.ModelState.TryGetValue("Ingredient", out modelState);
+            Assert.That(modelState, Is.Not.Null);
+            var errormessage = (string) modelState.Errors[0].ErrorMessage;
+
+            Assert.That(errormessage.Contains(ingredientName));
+            Assert.That(errormessage, Is.EqualTo(FoodConstant.NoIngredientFoundMessage + ingredientName));
+            
         }
 
         private Mock<IUserIngredientBusinessLogic> GetSetuppedUserIngredientBusinessLogicMock(MockFactory mockFactory)

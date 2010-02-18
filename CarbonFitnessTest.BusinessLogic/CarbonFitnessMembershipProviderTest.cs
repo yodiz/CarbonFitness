@@ -3,7 +3,6 @@ using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.BusinessLogic
 {

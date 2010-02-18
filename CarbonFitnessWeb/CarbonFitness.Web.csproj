@@ -140,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Base.css" />
-    <Content Include="Content\Calendar.css" />
     <Content Include="Content\HomePhoto.jpg" />
     <Content Include="Content\jquery-autocomplete\changelog.txt" />
     <Content Include="Content\jquery-autocomplete\demo\bg.gif" />

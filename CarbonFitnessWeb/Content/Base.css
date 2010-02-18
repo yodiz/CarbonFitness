@@ -283,8 +283,8 @@ ul.flat
 	margin: 0;
 	list-style-type: none;
 }
-	ul.flat li
-	{
-		margin: 0;
-		display: inline-block;
-	}
+ul.flat li
+{
+	margin: 0;
+	display: inline-block;
+}

@@ -58,3 +58,47 @@ div#main
     -webkit-border-radius: 12px;
     border-radius: 12px;
 }
+.input-fields 
+{
+    margin:20px 0px 20px 0px;
+}
+
+.date-fields 
+{
+    height:40px;
+    background-color:#e4e4e4;
+    border-top:solid 1px #000;
+    border-bottom:solid 1px #000;
+    margin-bottom: 20px;
+}
+
+.date-fields div.editor-label, div.datepicker input
+{
+    float:left;
+    width:80px;
+    margin: 10px 10px 0px 0px;
+}
+
+.date-fields div.editor-label {
+    width: 30px;
+    margin: 12px 10px 0px 10px;
+}
+
+.food-input div.editor-label, .food-input div.editor-field {
+    padding: 10px 10px 10px 0px;
+    float:left;
+}
+
+.food-input div.editor-label {
+    margin-top:2px;
+}
+
+.food-input div.editor-field input {
+    margin-right:20px;
+    width:200px;
+}
+
+.food-input div.submit-field input{
+    margin-top:9px;
+}
+

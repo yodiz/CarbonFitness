@@ -1,13 +1,10 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Threading;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using CarbonFitnessWeb;
-using CarbonFitnessWeb.Models;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web
 {

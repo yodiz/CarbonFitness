@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using Moq;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web.Controller.IngredientController
 {

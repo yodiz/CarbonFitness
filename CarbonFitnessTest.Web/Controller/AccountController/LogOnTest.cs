@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CarbonFitness;
+﻿using CarbonFitness;
 using CarbonFitnessWeb.Models;
 using Moq;
 using NUnit.Framework;
 using System.Web.Mvc;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace CarbonFitnessTest.Web.Controller.AccountController
 {
