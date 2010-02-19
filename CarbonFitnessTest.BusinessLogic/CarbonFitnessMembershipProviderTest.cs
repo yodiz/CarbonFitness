@@ -1,5 +1,7 @@
 ﻿using CarbonFitness;
+using CarbonFitness.Data;
 using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;

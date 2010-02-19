@@ -1,5 +1,7 @@
 ﻿using System;
+using CarbonFitness.Data;
 using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer;
 using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness {

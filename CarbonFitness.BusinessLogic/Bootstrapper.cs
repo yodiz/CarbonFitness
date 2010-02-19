@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
-
+using CarbonFitness.Data;
+using CarbonFitness.DataLayer;
 using CarbonFitness.DataLayer.Repository;
 using SharpArch.Data.NHibernate;
 

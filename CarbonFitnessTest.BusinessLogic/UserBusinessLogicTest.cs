@@ -1,7 +1,9 @@
 ﻿
 
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.Data;
 using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer;
 using Moq;
 using NUnit.Framework;
 using CarbonFitness.DataLayer.Repository;

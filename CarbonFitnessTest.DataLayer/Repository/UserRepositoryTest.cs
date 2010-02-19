@@ -10,8 +10,9 @@ namespace CarbonFitnessTest.DataLayer.Repository
 	public class UserRepositoryTest : RepositoryTestsBase
 	{
 
-		protected override void LoadTestData() {
-            
+		protected override void LoadTestData()
+		{
+
 		}
 
 		//public void InitServiceLocator()
@@ -23,11 +24,12 @@ namespace CarbonFitnessTest.DataLayer.Repository
 		//}
 
 		[Test]
-		public void shouldHaveCreateMethod() {
+		public void shouldHaveCreateMethod()
+		{
 			var userRepository = new UserRepository();
 			var user = userRepository.SaveOrUpdate(new User("myUser"));
 
-			Assert.AreEqual(1, user.Id); 
+			Assert.AreEqual(1, user.Id);
 		}
 	}
 }

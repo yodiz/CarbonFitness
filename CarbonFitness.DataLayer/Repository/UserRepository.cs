@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CarbonFitness.Data;
 using CarbonFitness.Data.Model;
 using NHibernate.Linq;
 using SharpArch.Data.NHibernate;
