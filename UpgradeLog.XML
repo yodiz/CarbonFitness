@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CarbonFitness">
+</Property><Property Name="Solution File" Value="H:\Projects\CarbonFitness\CarbonFitness.sln">
+</Property><Property Name="Date" Value="den 19 februari 2010">
+</Property><Property Name="Time" Value="16:24">
+</Property></Properties><Event ErrorLevel="0" Project="CarbonFitness.BusinessLogic" Source="CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitness.BusinessLogic" Source="CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.Data" Source="CarbonFitness.Data\CarbonFitness.Data.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitness.Data" Source="CarbonFitness.Data\CarbonFitness.Data.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.DataLayer" Source="CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitness.DataLayer" Source="CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.Web" Source="CarbonFitnessWeb\CarbonFitness.Web.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitness.Web" Source="CarbonFitnessWeb\CarbonFitness.Web.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.BusinessLogic" Source="CarbonFitnessTest.BusinessLogic\CarbonFitnessTest.BusinessLogic.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitnessTest.BusinessLogic" Source="CarbonFitnessTest.BusinessLogic\CarbonFitnessTest.BusinessLogic.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.DataLayer" Source="CarbonFitnessTest.DataLayer\CarbonFitnessTest.DataLayer.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitnessTest.DataLayer" Source="CarbonFitnessTest.DataLayer\CarbonFitnessTest.DataLayer.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.Integration" Source="CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitnessTest.Integration" Source="CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.Web" Source="CarbonFitnessTest.Web\CarbonFitnessTest.Web.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitnessTest.Web" Source="CarbonFitnessTest.Web\CarbonFitnessTest.Web.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.DataLayer.ObjectBased" Source="CarbonFitnessTest.DataLayer.ObjectBased\CarbonFitnessTest.DataLayer.ObjectBased.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitnessTest.DataLayer.ObjectBased" Source="CarbonFitnessTest.DataLayer.ObjectBased\CarbonFitnessTest.DataLayer.ObjectBased.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.DataLayer.ObjectBased" Source="CarbonFitness.DataLayer.ObjectBased\CarbonFitness.DataLayer.ObjectBased.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CarbonFitness.DataLayer.ObjectBased" Source="CarbonFitness.DataLayer.ObjectBased\CarbonFitness.DataLayer.ObjectBased.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CarbonFitness.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CarbonFitness.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.BusinessLogic" Source="CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.Data" Source="CarbonFitness.Data\CarbonFitness.Data.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.DataLayer" Source="CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.Web" Source="CarbonFitnessWeb\CarbonFitness.Web.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.BusinessLogic" Source="CarbonFitnessTest.BusinessLogic\CarbonFitnessTest.BusinessLogic.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.DataLayer" Source="CarbonFitnessTest.DataLayer\CarbonFitnessTest.DataLayer.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.Integration" Source="CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.Web" Source="CarbonFitnessTest.Web\CarbonFitnessTest.Web.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitnessTest.DataLayer.ObjectBased" Source="CarbonFitnessTest.DataLayer.ObjectBased\CarbonFitnessTest.DataLayer.ObjectBased.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="CarbonFitness.DataLayer.ObjectBased" Source="CarbonFitness.DataLayer.ObjectBased\CarbonFitness.DataLayer.ObjectBased.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
