@@ -69,16 +69,37 @@ namespace CarbonFitnessTest.Integration
 
             AddUserIngredient(ingredient1,  "150");
 
-            browser.TextField(GetDatePickerName()).TypeText("2020-01-01"); 
+            browser.TextField(GetDatePickerName()).TypeText("2023-01-01"); 
 
             AddUserIngredient(ingredient2, "150");
 
             browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-            browser.TextField(GetDatePickerName()).TypeText("2020-01-01"); 
+            browser.TextField(GetDatePickerName()).TypeText("2023-01-01");
 
-            Assert.That(browser.Text.Contains(ingredient2), Is.True, "Pannbiff doesn't exist on page after navigating away and back");
-            Assert.That(browser.Text.Contains(ingredient1), Is.False, "Ost should not exist on page after navigating away and back");
+            Assert.That(browser.Text.Contains(ingredient2), Is.True, "Ost doesn't exist on page after navigating away and back");
+            Assert.That(browser.Text.Contains(ingredient1), Is.False, "Pannbiff should not exist on page after navigating away and back");
+        }
+
+        [Test]
+        public void shouldBeAbleToChangeDateWithoutNoIngredientFoundMessageAppears()
+        {
+            browser.TextField(GetDatePickerName()).TypeText("2023-01-01");
+            Assert.That(browser.ContainsText(FoodConstant.NoIngredientFoundMessage), Is.False, "ValidationSummary message was not expected.");
+        }
+
+        [Test]
+        public void shouldEmptyFoodInputAfterSubmit()
+        {
+            browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+
+            AddUserIngredient("Pannbiff", "150");
+
+            string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
+            string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
+
+            Assert.That(browser.TextField(Find.ByName(ingredient)).Text, Is.Null, "Expected that " + ingredient + " was null.");
+            Assert.That(browser.TextField(Find.ByName(measure)).Text, Is.EqualTo("0"), "Expected that " + measure + " was empty.");
         }
 
 	    private string GetDatePickerName() {

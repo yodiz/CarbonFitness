@@ -5,16 +5,19 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <script type="text/javascript">
+    <script type="text/javascript">
         $(function() {
             $("#<%=Html.IdFor(m => m.Date) %>").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#<%=Html.IdFor(m => m.Date) %>").change(function() {
+                $("input[id$='<%=Html.IdFor(m => m.Ingredient) %>']").val("");
+                $("input[id$='<%=Html.IdFor(m => m.Measure) %>']").val("0");
+                this.form.submit();
+            });
             $("#<%=Html.IdFor(m => m.Ingredient)%>").autocomplete("/Ingredient/Search");
         });
 	</script>
     
     <h1><%=FoodConstant.FoodTitle%></h1>
-    
-   
     
     <%=Html.ValidationSummary() %>
     <% using (var form = Html.BeginForm()) { %>    
@@ -40,12 +43,12 @@
                 <div class="editor-label">
                     <%= Html.LabelFor(m => m.Measure) %>
                 </div>
-                <div class="editor-field">
+                <div class="editor-field-number">
                     <%= Html.EditorFor(m => m.Measure) %>
                 </div>
                 
                 <div class="submit-field">
-                    <input type="submit" value="<%= FoodConstant.Submit %>" />		
+                    <input type="image" src="../../Content/save.gif" onclick="javascript: this.form.submit();" />
                 </div>
             </div>  
         </div>       

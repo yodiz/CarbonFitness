@@ -84,7 +84,7 @@ div#main
     margin: 12px 10px 0px 10px;
 }
 
-.food-input div.editor-label, .food-input div.editor-field {
+.food-input div.editor-label, .food-input div.editor-field, div.editor-field-number {
     padding: 10px 10px 10px 0px;
     float:left;
 }
@@ -95,10 +95,14 @@ div#main
 
 .food-input div.editor-field input {
     margin-right:20px;
-    width:200px;
+    width:250px;
+}
+
+.food-input div.editor-field-number input {
+    margin-right:20px;
+    width:60px;
 }
 
 .food-input div.submit-field input{
     margin-top:9px;
 }
-
