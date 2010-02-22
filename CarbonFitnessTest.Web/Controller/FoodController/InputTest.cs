@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
@@ -78,12 +77,11 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
             var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
             
             userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Returns(new[] { new UserIngredient() });
-            userIngredientBusinessLogicMock.Setup(
-                x => x.AddUserIngredient(It.IsAny<User>(),It.IsAny<string>(), It.IsAny<int>(),It.IsAny<DateTime>()))
+            userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.IsAny<User>(),It.IsAny<string>(), It.IsAny<int>(),It.IsAny<DateTime>()))
                 .Throws(new NoIngredientFoundException(ingredientName));
 
             var foodController = new CarbonFitnessWeb.Controllers.FoodController(userIngredientBusinessLogicMock.Object, userContextMock.Object);
-            foodController.Input(new InputFoodModel());
+            foodController.Input(new InputFoodModel{Ingredient = ingredientName, Measure = 10});
             
             //var model = testController(x => x.Input(new InputFoodModel()), userIngredientBusinessLogicMock, userContextMock);
 

@@ -8,6 +8,6 @@ namespace CarbonFitnessWeb.ViewConstants {
 	    public static string NoIngredientFoundMessage = "Ingredient not found in database.";
 	    public const string FoodMeasureElement = "Measure";
 		public const string FoodNameElement = "FoodName";
-		public const string Submit = "Submit";
+		//public const string Submit = "Submit";
 	}
 }

@@ -35,8 +35,8 @@ namespace CarbonFitnessTest.Integration
             var ingredient1 = "Pannbiff";
             var ingredient2 = "Lök";
 
-            AddUserIngredient(ingredient1,  "150");
-            AddUserIngredient(ingredient2, "210");
+            createAndAddUserIngredient(ingredient1,  "150");
+            createAndAddUserIngredient(ingredient2, "210");
 
             Assert.That(browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page");
             Assert.That(browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page");
@@ -67,15 +67,15 @@ namespace CarbonFitnessTest.Integration
             var ingredient1 = "Pannbiff";
             var ingredient2 = "Ost";
 
-            AddUserIngredient(ingredient1,  "150");
+            createAndAddUserIngredient(ingredient1,  "150");
 
-            browser.TextField(GetDatePickerName()).TypeText("2023-01-01"); 
+            browser.TextField(GetDatePickerName()).TypeText("2023-01-02"); 
 
-            AddUserIngredient(ingredient2, "150");
+            createAndAddUserIngredient(ingredient2, "150");
 
             browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-            browser.TextField(GetDatePickerName()).TypeText("2023-01-01");
+            browser.TextField(GetDatePickerName()).TypeText("2023-01-02");
 
             Assert.That(browser.Text.Contains(ingredient2), Is.True, "Ost doesn't exist on page after navigating away and back");
             Assert.That(browser.Text.Contains(ingredient1), Is.False, "Pannbiff should not exist on page after navigating away and back");
@@ -93,7 +93,7 @@ namespace CarbonFitnessTest.Integration
         {
             browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-            AddUserIngredient("Pannbiff", "150");
+            createAndAddUserIngredient("Pannbiff", "150");
 
             string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
             string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
@@ -108,51 +108,46 @@ namespace CarbonFitnessTest.Integration
 
 	    [Test]
         public void shouldHaveImportedIngredientsInDB() {
-            string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
-            string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
+            
             //First row in Livsmedelsdatabasen
-            browser.TextField(Find.ByName(ingredient)).TypeText("Abborre");
-            browser.TextField(Find.ByName(measure)).TypeText("100");
-            browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+            addUserIngredient("Abborre", "100");
 
             //Last row in Livsmedelsdatabasen
-            browser.TextField(Find.ByName(ingredient)).TypeText("Örtte drickf");
-            browser.TextField(Find.ByName(measure)).TypeText("100");
-            browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+            addUserIngredient("Örtte drickf", "100");
 
             Assert.That(browser.Text.Contains("Abborre"), Is.True, "Abborre should exist on page");
             Assert.That(browser.Text.Contains("Örtte drickf"), Is.True, "Abborre should exist on page");
         }
 
-        [Test]
+	    [Test]
         public void shouldAutoCompleteWhenLookingForIngredients() {
             Assert.That(true, "Could not find the list element with watIn. It works though...");
         }
 
         [Test]
         public void shouldShowNiceErrorMsgWhenNoIngredientFound() {
-            var ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
-            var measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
-
-            const string wrongIngredientName = "asdgsdagaasd";
-            browser.TextField(Find.ByName(ingredient)).TypeText(wrongIngredientName);
-            browser.TextField(Find.ByName(measure)).TypeText("100");
-            browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+            const string wrongIngredientName = "asdgsdagaasdsdfdsdfd";
+            addUserIngredient(wrongIngredientName, "100");
 
             var ingredientErrorMessage = browser.Element(Find.ByText(FoodConstant.NoIngredientFoundMessage + wrongIngredientName));
             Assert.That(ingredientErrorMessage, Is.Not.Null, "No error message when entering a wrong ingredient");
             Assert.That(ingredientErrorMessage.Exists, "No error message when entering a wrong ingredient");
         }
 
-	    private void AddUserIngredient(string ingredientText, string measureText)
+	    private void createAndAddUserIngredient(string ingredientText, string measureText)
 	    {
-            createIngredient(ingredientText);
+	        createIngredient(ingredientText);
 
-            string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
-            string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
-            browser.TextField(Find.ByName(ingredient)).TypeText(ingredientText);
-            browser.TextField(Find.ByName(measure)).TypeText(measureText);
-	        browser.Button(Find.ByValue(FoodConstant.Submit)).Click();
+	        addUserIngredient(ingredientText, measureText);
+	    }
+
+	    private void addUserIngredient(string ingredientText, string measureText)
+	    {
+	        string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
+	        string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
+	        browser.TextField(Find.ByName(ingredient)).TypeText(ingredientText);
+	        browser.TextField(Find.ByName(measure)).TypeText(measureText);
+	        browser.Image(Find.BySrc(x => x.Contains("save.gif"))).Click();
 	    }
 
 	    public void createIngredient(string name)
