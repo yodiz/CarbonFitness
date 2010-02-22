@@ -8,13 +8,10 @@ namespace CarbonFitness.DataLayer.Repository
 {
 	public class UserIngredientRepository : NHibernateRepositoryWithTypedId<UserIngredient, int>, IUserIngredientRepository
 	{
-	    public UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime dateTime) {
-            var fromdate = DateTime.Parse(dateTime.ToShortDateString());
-            var todate = DateTime.Parse(dateTime.AddDays(1).Date.ToShortDateString());
-
+	    public UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate) {
 	        var q = from userIngredient in Session.Linq<UserIngredient>()
 	                                       where userId.Equals(userId) && 
-                                           userIngredient.Date >= fromdate && userIngredient.Date < todate
+                                           userIngredient.Date >= fromDate && userIngredient.Date < toDate
 	                                       select userIngredient;
 
 	        return q.ToArray();

@@ -36,7 +36,6 @@ namespace CarbonFitnessWeb {
                 );
         }
 
-
         /// <summary>
         /// Due to issues on IIS7, the NHibernate initialization must occur in Init().
         /// But Init() may be invoked more than once; accordingly, we introduce a thread-safe

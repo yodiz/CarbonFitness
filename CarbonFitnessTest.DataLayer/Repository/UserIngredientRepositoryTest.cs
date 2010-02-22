@@ -37,7 +37,7 @@ namespace CarbonFitnessTest.DataLayer.Repository
         public void shouldGetUserIngredientsFromUserId() {
             var repository = new UserIngredientRepository();
 
-            UserIngredient[] userIngredients = repository.GetUserIngredientsFromUserId(_user.Id, _now);
+            UserIngredient[] userIngredients = repository.GetUserIngredientsFromUserId(_user.Id, _now, _now.AddDays(1));
 
             Assert.That(userIngredients, Is.Not.Null);
             Assert.That(userIngredients.Length, Is.EqualTo(2));

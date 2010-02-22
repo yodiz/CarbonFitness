@@ -59,16 +59,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
     <Compile Include="IngredientBusinessLogic.cs" />
     <Compile Include="IUserBusinessLogic.cs" />
     <Compile Include="IUserIngredientBusinessLogic.cs" />
-    <Compile Include="MembershipBusinessLogic.cs" />
+    <Compile Include="Implementation\MembershipBusinessLogic.cs" />
     <Compile Include="IMembershipBusinessLogic.cs" />
-    <Compile Include="NoIngredientFoundException.cs" />
+    <Compile Include="Exceptions\NoIngredientFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserBusinessLogic.cs" />
-    <Compile Include="UserIngredientBusinessLogic.cs" />
+    <Compile Include="Implementation\UserBusinessLogic.cs" />
+    <Compile Include="Implementation\UserIngredientBusinessLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">

@@ -17,7 +17,16 @@
         });
 	</script>
     
+    
     <h1><%=FoodConstant.FoodTitle%></h1>
+    
+    <div id="menucontainer">
+		<ul class="flat">
+			<li><%= Html.ActionLink<FoodController>(c => c.Input(), SiteMasterConstant.FoodInputLinkText)%></li>
+			<li><%= Html.ActionLink<ResultController>(c => c.Show(), SiteMasterConstant.ResultLinkText)%></li>
+		</ul>
+	</div>
+	<hr style="clear: both" />
     
     <%=Html.ValidationSummary() %>
     <% using (var form = Html.BeginForm()) { %>    

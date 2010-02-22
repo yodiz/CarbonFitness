@@ -2,6 +2,8 @@
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.Exceptions;
+using CarbonFitness.Data.Model;
 using CarbonFitnessWeb.Models;
 using CarbonFitnessWeb.ViewConstants;
 
@@ -19,25 +21,21 @@ namespace CarbonFitnessWeb.Controllers {
 		[HttpPost]
         //When pressing submit, trying to add an ingredient to user
 		public ActionResult Input(InputFoodModel model) {
-
-            if (!string.IsNullOrEmpty(model.Ingredient) && model.Measure > 0)
-            {
+            if (!string.IsNullOrEmpty(model.Ingredient) && model.Measure > 0) {
                 AddUserIngredient(model);        
             }
 
-		    model.UserIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date); 
+		    model.UserIngredients = getUserIngredients(model.Date);
 			
 			return View(model);
 		}
 
 	    private void AddUserIngredient(InputFoodModel model)
 	    {
-	        try
-	        {
+	        try {
 	            userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
 	            RemoveFoodInputValues(model);
-	        }
-	        catch(NoIngredientFoundException e) {
+	        } catch(NoIngredientFoundException e) {
 	            this.AddModelError<InputFoodModel>(x => x.Ingredient, FoodConstant.NoIngredientFoundMessage + e.IngredientName);
 	        }
 	    }
@@ -58,16 +56,33 @@ namespace CarbonFitnessWeb.Controllers {
 
 	    //First time when coming to the "kost" page
 		public ActionResult Input() {
-            var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, DateTime.Now);
-            var inputFoodModel = new InputFoodModel { UserIngredients = userIngredients, Date = DateTime.Now };
+            var inputFoodModel = new InputFoodModel { UserIngredients = getUserIngredients(DateTime.Now), Date = DateTime.Now };
 
 		    return View(inputFoodModel);
 		}
+
+	    private UserIngredient[] getUserIngredients(DateTime date) {
+            try {
+                return userIngredientBusinessLogic.GetUserIngredients(userContext.User, date);
+            } catch(InvalidDateException)  {
+                this.AddModelError<InputFoodModel>(x => x.Date, FoodConstant.InvalidDateErrorMessage);
+	        }
+	        return null;
+	    }
 	}
 
     public static class ControllerExtension {
+        public static void AddModelError<T>(this Controller controller, Expression<Func<T, DateTime>> namedPropertyToGet, string message) {
+            string name = ExpressionHelper.GetExpressionText(namedPropertyToGet);
+            addModelError(controller, name, message);
+        }
+
         public static void AddModelError<T>(this Controller controller, Expression<Func<T, string>> namedPropertyToGet, string message) {
             string name = ExpressionHelper.GetExpressionText(namedPropertyToGet);
+            addModelError(controller, name, message);
+        }
+
+        private static void addModelError(Controller controller, string name, string message) {
             controller.ModelState.AddModelError(name, message);
         }
     }

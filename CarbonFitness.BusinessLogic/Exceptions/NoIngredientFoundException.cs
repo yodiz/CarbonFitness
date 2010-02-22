@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CarbonFitness.BusinessLogic
+namespace CarbonFitness.BusinessLogic.Exceptions
 {
     public class NoIngredientFoundException : Exception {
         private readonly string _ingredientName;

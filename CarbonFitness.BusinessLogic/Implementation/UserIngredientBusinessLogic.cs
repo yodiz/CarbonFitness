@@ -1,5 +1,7 @@
 using System;
+using System.Data.SqlTypes;
 using System.Threading;
+using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -35,7 +37,14 @@ namespace CarbonFitness.BusinessLogic
 	    }
 
 	    public UserIngredient[] GetUserIngredients(User user, DateTime dateTime) {
-            return userIngredientRepository.GetUserIngredientsFromUserId(user.Id, dateTime);
+            if (dateTime< DateTime.Parse(SqlDateTime.MinValue.ToString()) || dateTime > DateTime.Parse(SqlDateTime.MaxValue.ToString())) {
+                throw new InvalidDateException();
+            }
+
+            var fromdate = DateTime.Parse(dateTime.ToShortDateString());
+            var todate = DateTime.Parse(dateTime.AddDays(1).Date.ToShortDateString());
+
+            return userIngredientRepository.GetUserIngredientsFromUserId(user.Id, fromdate, todate);
 	    }
 	}
 }

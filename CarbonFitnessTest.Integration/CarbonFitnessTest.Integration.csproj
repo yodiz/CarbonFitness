@@ -79,6 +79,7 @@
     <Compile Include="InputFoodTest.cs" />
     <Compile Include="IntegrationBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultsTest.cs" />
     <Compile Include="SiteMasterTest.cs" />
   </ItemGroup>
   <ItemGroup>

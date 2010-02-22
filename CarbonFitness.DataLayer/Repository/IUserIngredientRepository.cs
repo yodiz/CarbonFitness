@@ -6,6 +6,6 @@ namespace CarbonFitness.DataLayer.Repository
 	public interface IUserIngredientRepository
 	{
 		UserIngredient SaveOrUpdate(UserIngredient userIngredient);
-	    UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime dateTime);
+	    UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate);
 	}
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
 using CarbonFitnessWeb;
 using CarbonFitnessWeb.Models;
@@ -67,7 +68,23 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
         }
 
         [Test]
-        public void shouldPopulateErrorMessageInModelWhenNoIngredientFound()
+        public void shouldReportErrorWhenInvalidDateEnteredOnPage() {
+            InputFoodModel m = new InputFoodModel {Date = new DateTime(1234)};
+            
+            var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
+            var userContextMock = new Mock<IUserContext>(MockBehavior.Strict);
+            userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Throws(new InvalidDateException());
+            userContextMock.Setup(x => x.User).Returns(new User());
+
+            var foodController = new CarbonFitnessWeb.Controllers.FoodController(userIngredientBusinessLogicMock.Object, userContextMock.Object);
+            foodController.Input(m);
+            
+            string errormessage = getErrormessage(foodController, "Date");
+            Assert.That(errormessage, Is.EqualTo("Invalid date entered. Date should be in format YYYY-MM-DD"));
+        }
+
+	    [Test]
+        public void shouldReportErrorWhenNoIngredientFound()
         {
             var mockFactory = new MockFactory(MockBehavior.Strict);
             var userContextMock = GetSetuppedUserContextMock(mockFactory);
@@ -85,17 +102,21 @@ namespace CarbonFitnessTest.Web.Controller.FoodController
             
             //var model = testController(x => x.Input(new InputFoodModel()), userIngredientBusinessLogicMock, userContextMock);
 
-            ModelState modelState;
-            foodController.ModelState.TryGetValue("Ingredient", out modelState);
-            Assert.That(modelState, Is.Not.Null);
-            var errormessage = (string) modelState.Errors[0].ErrorMessage;
+            string errormessage = getErrormessage(foodController, "Ingredient");
 
-            Assert.That(errormessage.Contains(ingredientName));
+	        Assert.That(errormessage.Contains(ingredientName));
             Assert.That(errormessage, Is.EqualTo(FoodConstant.NoIngredientFoundMessage + ingredientName));
             
         }
 
-        private Mock<IUserIngredientBusinessLogic> GetSetuppedUserIngredientBusinessLogicMock(MockFactory mockFactory)
+	    private string getErrormessage(CarbonFitnessWeb.Controllers.FoodController foodController, string key) {
+	        ModelState modelState;
+            foodController.ModelState.TryGetValue(key, out modelState);
+	        Assert.That(modelState, Is.Not.Null);
+	        return modelState.Errors[0].ErrorMessage;
+	    }
+
+	    private Mock<IUserIngredientBusinessLogic> GetSetuppedUserIngredientBusinessLogicMock(MockFactory mockFactory)
         {
             var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
             var returnedUserIngredients = new[] { new UserIngredient { Date = DateTime.Now }, new UserIngredient { Date = DateTime.Now } };

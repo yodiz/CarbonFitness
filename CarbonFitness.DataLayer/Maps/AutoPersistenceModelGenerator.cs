@@ -26,8 +26,7 @@ namespace CarbonFitness.DataLayer.Maps {
         /// </summary>
         private bool GetAutoMappingFilter(Type t)
         {
-            return t.GetInterfaces().Any(x =>
-                                         x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEntityWithTypedId<>));
+            return t.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEntityWithTypedId<>));
         }
 
         private void GetConventions(Conventions c)
