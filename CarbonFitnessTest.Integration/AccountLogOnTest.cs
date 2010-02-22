@@ -23,7 +23,7 @@ namespace CarbonFitnessTest.Integration {
 		[Test]
 		public void shouldShowLoggedOnUserAfterLogon() {
 			var createUserTest = new CreateUserTest(browser);
-			createUserTest.createUser();
+            createUserTest.createIfNoUserExist();
 
 			LogOn(CreateUserTest.UserName, CreateUserTest.Password);
 

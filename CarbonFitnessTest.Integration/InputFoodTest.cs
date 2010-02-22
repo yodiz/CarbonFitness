@@ -9,6 +9,9 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration {
     [TestFixture]
     public class InputFoodTest : IntegrationBaseTest {
+        public InputFoodTest() {
+        }
+
         public InputFoodTest(Browser browser) : base(browser) {
         }
 
@@ -21,7 +24,9 @@ namespace CarbonFitnessTest.Integration {
             base.TestFixtureSetUp();
 
             var createUserTest = new CreateUserTest(browser);
-            createUserTest.createUser();
+            createUserTest.createIfNoUserExist();
+            var accountLogOnTest = new AccountLogOnTest(browser);
+            accountLogOnTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
         }
 
         public void addUserIngredient(string ingredientText, string measureText) {

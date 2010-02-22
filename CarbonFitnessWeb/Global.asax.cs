@@ -25,7 +25,7 @@ namespace CarbonFitnessWeb {
         private static readonly object lockObject = new object();
 
         private static bool wasNHibernateInitialized;
-
+        
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
@@ -35,7 +35,7 @@ namespace CarbonFitnessWeb {
                 new {controller = "Home", action = "Index", id = ""} // Parameter defaults
                 );
         }
-
+        
         /// <summary>
         /// Due to issues on IIS7, the NHibernate initialization must occur in Init().
         /// But Init() may be invoked more than once; accordingly, we introduce a thread-safe

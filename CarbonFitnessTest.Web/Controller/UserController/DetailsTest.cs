@@ -20,7 +20,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController
 
 			var user = (User) viewResult.ViewData.Model;
 
-			Assert.IsInstanceOfType(typeof(User), user);
+			Assert.That(user, Is.TypeOf(typeof(User)));
 			Assert.AreEqual("kalle", user.Username);
 		}
 	}

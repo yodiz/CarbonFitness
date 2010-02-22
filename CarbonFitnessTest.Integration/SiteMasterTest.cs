@@ -28,7 +28,7 @@ namespace CarbonFitnessTest.Integration {
 
         private void createUserAndLogOn() {
             var createUserTest = new CreateUserTest(browser);
-            createUserTest.createUser();
+            createUserTest.createIfNoUserExist();
             var loggonTest = new AccountLogOnTest(browser);
             loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
         }

@@ -13,6 +13,7 @@ namespace CarbonFitness.DataLayer.Maps {
         {
             AutoPersistenceModel mappings = AutoPersistenceModel
                 .MapEntitiesFromAssemblyOf<User>()
+                .ForTypesThatDeriveFrom<User>(map => map.Map(u => u.Username).SetAttribute("unique-key", "IX_Unique_UserName"))
                 .Where(GetAutoMappingFilter)
                 .WithConvention(GetConventions)
                 .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
