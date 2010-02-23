@@ -31,7 +31,7 @@
     <%=Html.ValidationSummary() %>
     <% using (var form = Html.BeginForm()) { %>    
         <div class="input-fields">
-            <div class="date-fields">            
+            <div class="date-fields">
                 <div class="editor-label">
                     <%= Html.LabelFor(m => m.Date) %>
                 </div>

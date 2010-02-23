@@ -9,6 +9,9 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration {
     [TestFixture]
     public class InputFoodTest : IntegrationBaseTest {
+        public InputFoodTest() {
+        }
+
         public InputFoodTest(Browser browser) : base(browser) {
         }
 
@@ -21,7 +24,9 @@ namespace CarbonFitnessTest.Integration {
             base.TestFixtureSetUp();
 
             var createUserTest = new CreateUserTest(browser);
-            createUserTest.createUser();
+            createUserTest.getUniqueUserId();
+            var accountLogOnTest = new AccountLogOnTest(browser);
+            accountLogOnTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
         }
 
         public void addUserIngredient(string ingredientText, string measureText) {
@@ -32,8 +37,11 @@ namespace CarbonFitnessTest.Integration {
             browser.Image(Find.BySrc(x => x.Contains("save.gif"))).Click();
         }
 
-        public void createIngredient(string name) {
-            new IngredientRepository().SaveOrUpdate(new Ingredient {Name = name});
+        public void createIngredientIfNotExist(string name) {
+            var repository = new IngredientRepository();
+            if(repository.Get(name) == null) {
+                repository.SaveOrUpdate(new Ingredient { Name = name });
+            }
         }
 
         public void changeDate(string date) {
@@ -46,8 +54,8 @@ namespace CarbonFitnessTest.Integration {
         }
 
 
-        private void createAndAddUserIngredient(string ingredientText, string measureText) {
-            createIngredient(ingredientText);
+        private void getUniqueIngredientAndAddUserIngredient(string ingredientText, string measureText) {
+            createIngredientIfNotExist(ingredientText);
 
             addUserIngredient(ingredientText, measureText);
         }
@@ -68,7 +76,7 @@ namespace CarbonFitnessTest.Integration {
         public void shouldEmptyFoodInputAfterSubmit() {
             browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-            createAndAddUserIngredient("Pannbiff", "150");
+            getUniqueIngredientAndAddUserIngredient("Pannbiff", "150");
 
             string ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
             string measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
@@ -107,8 +115,8 @@ namespace CarbonFitnessTest.Integration {
             string ingredient1 = "Pannbiff";
             string ingredient2 = "Lök";
 
-            createAndAddUserIngredient(ingredient1, "150");
-            createAndAddUserIngredient(ingredient2, "210");
+            getUniqueIngredientAndAddUserIngredient(ingredient1, "150");
+            getUniqueIngredientAndAddUserIngredient(ingredient2, "210");
 
             Assert.That(browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page");
             Assert.That(browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page");
@@ -126,11 +134,11 @@ namespace CarbonFitnessTest.Integration {
             string ingredient1 = "Pannbiff";
             string ingredient2 = "Ost";
 
-            createAndAddUserIngredient(ingredient1, "150");
+            getUniqueIngredientAndAddUserIngredient(ingredient1, "150");
 
             changeDate("2023-01-02");
 
-            createAndAddUserIngredient(ingredient2, "150");
+            getUniqueIngredientAndAddUserIngredient(ingredient2, "150");
 
             browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 

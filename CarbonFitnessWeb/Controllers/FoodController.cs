@@ -40,8 +40,7 @@ namespace CarbonFitnessWeb.Controllers {
 	        }
 	    }
 
-	    private void RemoveFoodInputValues(InputFoodModel model)
-	    {
+	    private void RemoveFoodInputValues(InputFoodModel model) {
 	        model.Ingredient = "";
 	        model.Measure = 0;
 

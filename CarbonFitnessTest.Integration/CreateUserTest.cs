@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using CarbonFitnessWeb.ViewConstants;
@@ -20,9 +21,14 @@ namespace CarbonFitnessTest.Integration {
 		public CreateUserTest(Browser browser) : base(browser) {
 		}
 
-		public int createUser() {
+        public int getUniqueUserId() {
+            var u = new UserRepository().Get(UserName);
+            return u ==null ? createUser(UserName) : u.Id;
+        }
+
+	    private int createUser(string userName) {
 			browser.GoTo(Url);
-			browser.TextField(Find.ByName(UserConstant.UsernameElement)).TypeText(UserName);
+            browser.TextField(Find.ByName(UserConstant.UsernameElement)).TypeText(userName);
 			browser.TextField(Find.ByName(UserConstant.PasswordElement)).TypeText(Password);
 			browser.Button(Find.ByValue(UserConstant.SaveElement)).Click();
 
@@ -32,31 +38,33 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldCreateUser() {
-			int id = createUser();
+		    string randomUsername = randomString(10, false);
+            int id = createUser(randomUsername);
 			User user = new UserRepository().Get(id);
 			Assert.That(user, Is.Not.Null);
-			Assert.That(user.Username, Is.EqualTo(UserName));
+            Assert.That(user.Username, Is.EqualTo(randomUsername));
 			Assert.That(user.Password, Is.Not.Empty);
 		}
 
+        private string randomString(int size, bool lowerCase) {
+            var builder = new StringBuilder();
+            var random = new Random();
+            for (var i = 0; i < size; i++) {
+                var ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
+        }
+
 		[Test]
-		public void shouldGotoDetailsWhenSavingUser() {
-			AttributeConstraint a = Find.ByName(UserConstant.UsernameElement);
-			browser.TextField(a).TypeText(UserName);
+		public void shouldGotoDetailsWhenSavingUserAndHaveUserNameOnPage() {
+		    var userName = randomString(10, false);
+		    browser.TextField(Find.ByName(UserConstant.UsernameElement)).TypeText(userName);
 
 			browser.Button(Find.ByValue(UserConstant.SaveElement)).Click();
 
 			Assert.IsTrue(browser.Url.Contains("User/Details"));
-		}
-
-		[Test]
-		public void shouldHaveUserNameOnDetailsPageWhenSavingUser() {
-			AttributeConstraint userNameConstraint = Find.ByName(UserConstant.UsernameElement);
-			browser.TextField(userNameConstraint).TypeText(UserName);
-
-			browser.Button(Find.ByValue(UserConstant.SaveElement)).Click();
-
-			Assert.That(browser.ContainsText(UserName));
+            Assert.That(browser.ContainsText(userName));
 		}
 	}
 }
