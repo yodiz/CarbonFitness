@@ -13,7 +13,7 @@ namespace CarbonFitness.BusinessLogic
             var bootstrapper = new DataLayer.Bootstrapper();
             bootstrapper.InitNhibernateSession(sessionStorage,  nHibernateConfig);
             //bootstrapper.UpdateDatabaseSchema(nHibernateConfig);
-        	//bootstrapper.ExportDatabaseSchema(nHibernateConfig);
+        	bootstrapper.ExportDatabaseSchema(nHibernateConfig);
         }
     }
 

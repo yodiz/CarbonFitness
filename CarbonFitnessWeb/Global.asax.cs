@@ -6,6 +6,7 @@ using Autofac;
 using Autofac.Integration.Web;
 using CarbonFitness;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitnessWeb.Controllers;
 using CarbonFitnessWeb.Models;
 using SharpArch.Web.NHibernate;
@@ -15,8 +16,8 @@ using Autofac.Integration.Web.Mvc;
 namespace CarbonFitnessWeb {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
-
-	public class MvcApplication : HttpApplication, IContainerProviderAccessor {
+    
+    public class MvcApplication : HttpApplication, IContainerProviderAccessor {
 			private static IContainerProvider _containerProvider;
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace CarbonFitnessWeb {
                         //string mappingAssembly = Server.MapPath("~/bin/CarbonFitness.Data.dll");
 
 								var initBusinessLogic = new Bootstrapper();
-                       
+                        
                         initBusinessLogic.InitDatalayer(new WebSessionStorage(this), nHibernateConfig);
                         
                         //initBusinessLogic.InitNhibernateSession(this, mappingAssembly, nHibernateConfig);
