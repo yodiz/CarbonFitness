@@ -6,6 +6,7 @@ using Autofac;
 using Autofac.Integration.Web;
 using CarbonFitness;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitnessWeb.Controllers;
 using CarbonFitnessWeb.Models;
 using SharpArch.Web.NHibernate;

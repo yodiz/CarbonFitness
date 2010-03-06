@@ -28,7 +28,7 @@
         <div class="editor-label">
             <%= Html.LabelFor(m => m.SumOfCalories) %>
         </div>    
-        <div class="editor-label">
+        <div class="editor-label" id="SumOfCalories">
             <%= Html.DisplayTextFor(m => m.SumOfCalories) %>
         </div> 
     <%
