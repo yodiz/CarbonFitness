@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.DataLayer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.Integration", "CarbonFitnessTest.Integration\CarbonFitnessTest.Integration.csproj", "{041F7C3B-0883-46DD-9C1D-E8F8004BE6F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.App.Web", "CarbonFitnessTest.Web\CarbonFitnessTest.App.Web.csproj", "{74D184FA-BC0B-4B94-8529-850CF68F20AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitnessTest.App.Web", "CarbonFitnessTest.App.Web\CarbonFitnessTest.App.Web.csproj", "{74D184FA-BC0B-4B94-8529-850CF68F20AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonFitness.App.Importer", "CarbonFitness.App.Importer\CarbonFitness.App.Importer.csproj", "{3ED91741-5E26-4069-860A-5B4F144F32BC}"
 EndProject
