@@ -562,6 +562,10 @@
     <Content Include="Views\Result\Show.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarbonFitness.AppLogic\CarbonFitness.AppLogic.csproj">
+      <Project>{44A40002-B451-461B-B1DD-0CCEC381C9A3}</Project>
+      <Name>CarbonFitness.AppLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">
       <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
       <Name>CarbonFitness.Data</Name>

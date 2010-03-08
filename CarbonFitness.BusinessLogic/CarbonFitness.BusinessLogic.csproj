@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="FileHelpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\FileHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\SharpArch.Core.dll</HintPath>
@@ -61,7 +65,13 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
+    <Compile Include="IngredientImporter\IIngredientFileReader.cs" />
+    <Compile Include="IngredientImporter\IIngredientImporter.cs" />
     <Compile Include="IngredientBusinessLogic.cs" />
+    <Compile Include="IngredientImporter\Implementation\IngredientImporter.cs" />
+    <Compile Include="IngredientImporter\IIngredientParser.cs" />
+    <Compile Include="IngredientImporter\Implementation\IngredientFileReader.cs" />
+    <Compile Include="IngredientImporter\Implementation\IngredientParser.cs" />
     <Compile Include="IUserBusinessLogic.cs" />
     <Compile Include="IUserIngredientBusinessLogic.cs" />
     <Compile Include="Implementation\MembershipBusinessLogic.cs" />

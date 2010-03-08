@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Web;
 using CarbonFitness;
+using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitnessWeb.Controllers;
@@ -73,21 +74,18 @@ namespace CarbonFitnessWeb {
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
 
-				AutofacRegisterComponentes();
+			AutofacRegisterComponentes();
         }
 
 		  private void AutofacRegisterComponentes() {
 			  var builder = new ContainerBuilder();
 
 			  builder.RegisterControllers(Assembly.GetExecutingAssembly());
-			  builder.RegisterModule(new BusinessLoginUsageModule());
-			  builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
-			  builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
-              builder.RegisterType<IngredientBusinessLogic>().As<IIngredientBusinessLogic>();
-			  builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
-			  builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
-			  builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
-			  
+              builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
+              builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
+
+              new ComponentRegistrator().AutofacRegisterComponentes(builder);
+
 			  _containerProvider = new ContainerProvider(builder.Build());
 
 			  ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(ContainerProvider));

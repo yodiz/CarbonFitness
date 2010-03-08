@@ -101,7 +101,7 @@ namespace CarbonFitnessTest.Integration {
             addUserIngredient("Örtte drickf", "100");
 
             Assert.That(browser.Text.Contains("Abborre"), Is.True, "Abborre should exist on page");
-            Assert.That(browser.Text.Contains("Örtte drickf"), Is.True, "Abborre should exist on page");
+            Assert.That(browser.Text.Contains("Örtte drickf"), Is.True, "Örtte drickf should exist on page");
         }
 
         [Test]
