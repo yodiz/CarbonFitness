@@ -2,7 +2,7 @@
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
-namespace CarbonFitness.BusinessLogic {
+namespace CarbonFitness.BusinessLogic.Implementation {
     public class UserBusinessLogic : IUserBusinessLogic {
         private readonly IUserRepository userRepository;
 
@@ -18,9 +18,9 @@ namespace CarbonFitness.BusinessLogic {
             return userRepository.Get(id);
         }
 
-    	public User Get(string userName)
-    	{
-    		return userRepository.Get(userName);
-    	}
+        public User Get(string userName)
+        {
+            return userRepository.Get(userName);
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace CarbonFitnessTest.Integration {
 		}
 		
 		[SetUp]
-		public void Setup() {
+		public virtual void Setup() {
 			browser.GoTo(Url);
 		}
 

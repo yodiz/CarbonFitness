@@ -1,6 +1,4 @@
-﻿
-
-using CarbonFitness.BusinessLogic;
+﻿using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
 using Moq;
 using NUnit.Framework;

@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="AccountLogOnTest.cs" />
     <Compile Include="CreateUserTest.cs" />
+    <Compile Include="EnergyTest.cs" />
     <Compile Include="InputFoodTest.cs" />
     <Compile Include="IntegrationBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

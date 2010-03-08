@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
