@@ -3,6 +3,6 @@ using CarbonFitness.Data.Model;
 
 namespace CarbonFitness.BusinessLogic.IngredientImporter {
     public interface IIngredientParser {
-        IList<Ingredient> ParseTabSeparatedFileContents(string abc);
+        IList<Ingredient> ParseTabSeparatedFileContents(string fileContents);
     }
 }

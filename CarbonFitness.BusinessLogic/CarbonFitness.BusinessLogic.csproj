@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
     <Compile Include="IngredientImporter\IIngredientFileReader.cs" />

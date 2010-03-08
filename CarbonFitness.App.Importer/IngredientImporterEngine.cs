@@ -1,41 +1,45 @@
-using System;
-using System.Reflection;
 using Autofac;
 using Autofac.Integration.Web;
 using CarbonFitness.AppLogic;
+using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.IngredientImporter;
+using SharpArch.Data.NHibernate;
 
 namespace CarbonFitness.App.Importer {
-    public class IngredientImporterEngine : IContainerProviderAccessor
-    {
-        private readonly IIngredientImporter ingredientImporter;
-        private static IContainerProvider _containerProvider;
+	public class IngredientImporterEngine : IContainerProviderAccessor {
+		private static IContainerProvider containerProvider;
+		private readonly IIngredientImporter ingredientImporter;
 
-        static void Main(string[] args) {
-            new IngredientImporterEngine("SHOULD BE SET");
+		public IngredientImporterEngine(IIngredientImporter ingredientImporter) {
+			this.ingredientImporter = ingredientImporter;
+		}
 
-	
-        }
+		public IngredientImporterEngine(string nhibernateConfiguration) {
+			var builder = new ContainerBuilder();
+			new ComponentRegistrator().AutofacRegisterComponentes(builder);
+			containerProvider = new ContainerProvider(builder.Build());
 
-        public IngredientImporterEngine(IIngredientImporter ingredientImporter) {
-            this.ingredientImporter = ingredientImporter;
-        }
+			InitializeNHibernate(nhibernateConfiguration);
 
-        public IngredientImporterEngine(string nhibernateConfiguration) {
-            var builder = new ContainerBuilder();
+			ingredientImporter = containerProvider.ApplicationContainer.Resolve<IIngredientImporter>();
+		}
 
-            new ComponentRegistrator().AutofacRegisterComponentes(builder);
+		public IContainerProvider ContainerProvider {
+			get { return containerProvider; }
+		}
 
-            _containerProvider = new ContainerProvider(builder.Build());
-            ingredientImporter = _containerProvider.ApplicationContainer.Resolve<IIngredientImporter>();
-        }
 
-        public void Import(string filePath) {
-            ingredientImporter.Import(filePath);
-        }
+		private static void Main(string[] args) {
+			new IngredientImporterEngine("SHOULD BE SET");
+		}
 
-        public IContainerProvider ContainerProvider {
-            get { return _containerProvider; }
-        }
-    }
+		public void Import(string filePath) {
+			ingredientImporter.Import(filePath);
+		}
+
+		private static void InitializeNHibernate(string nhibernateConfiguration) {
+			var initBusinessLogic = new Bootstrapper();
+			initBusinessLogic.InitDatalayer(new SimpleSessionStorage(), nhibernateConfiguration);
+		}
+	}
 }
