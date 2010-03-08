@@ -1,11 +1,9 @@
 using System;
 using CarbonFitness.Data.Model;
 
-namespace CarbonFitness.DataLayer.Repository
-{
-	public interface IUserIngredientRepository
-	{
+namespace CarbonFitness.DataLayer.Repository {
+	public interface IUserIngredientRepository {
 		UserIngredient SaveOrUpdate(UserIngredient userIngredient);
-	    UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate);
+		UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate);
 	}
 }

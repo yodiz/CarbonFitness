@@ -1,26 +1,24 @@
-﻿using System;
-using CarbonFitness.Data.Model;
+﻿using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness.BusinessLogic.Implementation {
-    public class UserBusinessLogic : IUserBusinessLogic {
-        private readonly IUserRepository userRepository;
+	public class UserBusinessLogic : IUserBusinessLogic {
+		private readonly IUserRepository userRepository;
 
-        public UserBusinessLogic(IUserRepository userRepository) {
-            this.userRepository = userRepository;
-        }
+		public UserBusinessLogic(IUserRepository userRepository) {
+			this.userRepository = userRepository;
+		}
 
-        public User SaveOrUpdate(User user) {
-            return userRepository.SaveOrUpdate(user);
-        }
+		public User SaveOrUpdate(User user) {
+			return userRepository.SaveOrUpdate(user);
+		}
 
-        public User Get(int id) {
-            return userRepository.Get(id);
-        }
+		public User Get(int id) {
+			return userRepository.Get(id);
+		}
 
-        public User Get(string userName)
-        {
-            return userRepository.Get(userName);
-        }
-    }
+		public User Get(string userName) {
+			return userRepository.Get(userName);
+		}
+	}
 }

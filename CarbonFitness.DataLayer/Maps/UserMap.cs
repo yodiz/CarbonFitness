@@ -3,10 +3,10 @@ using FluentNHibernate.AutoMap;
 using FluentNHibernate.AutoMap.Alterations;
 
 namespace CarbonFitness.DataLayer.Maps {
-    internal class UserMap : IAutoMappingOverride<User> {
-        public void Override(AutoMap<User> mapping) {
-            mapping.SetAttribute("lazy", "false");
-            mapping.Map(u=> u.Username).SetAttribute("unique-key", "IX_Unique_UserName");
-        }
-    }
+	internal class UserMap : IAutoMappingOverride<User> {
+		public void Override(AutoMap<User> mapping) {
+			mapping.SetAttribute("lazy", "false");
+			mapping.Map(u => u.Username).SetAttribute("unique-key", "IX_Unique_UserName");
+		}
+	}
 }

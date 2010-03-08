@@ -1,18 +1,15 @@
 ﻿using System;
 
-namespace CarbonFitness.BusinessLogic.Exceptions
-{
-    public class NoIngredientFoundException : Exception {
-        private readonly string _ingredientName;
+namespace CarbonFitness.BusinessLogic.Exceptions {
+	public class NoIngredientFoundException : Exception {
+		private readonly string ingredientName;
 
-        public NoIngredientFoundException(string ingredientName)
-        {
-            _ingredientName = ingredientName;
-        }
+		public NoIngredientFoundException(string ingredientName) {
+			this.ingredientName = ingredientName;
+		}
 
-        public string IngredientName
-        {
-            get { return _ingredientName; }
-        }
-    }
+		public string IngredientName {
+			get { return ingredientName; }
+		}
+	}
 }

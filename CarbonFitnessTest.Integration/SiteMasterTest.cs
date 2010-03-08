@@ -1,51 +1,51 @@
-﻿using CarbonFitnessWeb.ViewConstants;
+﻿using CarbonFitness.App.Web.ViewConstants;
 using NUnit.Framework;
 using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
-    [TestFixture]
-    public class SiteMasterTest : IntegrationBaseTest {
-        public override string Url {
-            get { return baseUrl; }
-        }
+	[TestFixture]
+	public class SiteMasterTest : IntegrationBaseTest {
+		public override string Url {
+			get { return BaseUrl; }
+		}
 
-        [Test]
-        public void shouldGoToResultsAfterClickingResultsAfterLoggedOn() {
-            createUserAndLogOn();
+		private void createUserAndLogOn() {
+			var createUserTest = new CreateUserTest(Browser);
+			createUserTest.getUniqueUserId();
+			var loggonTest = new AccountLogOnTest(Browser);
+			loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
+		}
 
-            browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
+		[Test]
+		public void shouldGoToAddFoodPageAfterClickingAddFoodLinkAfterLoggedOn() {
+			createUserAndLogOn();
+			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
 
-            Assert.That(browser.ContainsText(ResultConstant.ResultTitle));
-        }
+			Assert.That(Browser.ContainsText(FoodConstant.FoodInputTitle));
+		}
 
-        [Test]
-        public void shouldGoToAddFoodPageAfterClickingAddFoodLinkAfterLoggedOn() {
-            createUserAndLogOn();
-            browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+		[Test]
+		public void shouldGoToLogOnPageAfterClickingAddFoodLinkIfNotLoggedOn() {
+			Browser.GoTo(BaseUrl);
 
-            Assert.That(browser.ContainsText(FoodConstant.FoodInputTitle));
-        }
+			var logOffButton = Browser.Link(Find.ByText("Log Off"));
+			if (logOffButton.Exists) {
+				logOffButton.Click();
+			}
 
-        private void createUserAndLogOn() {
-            var createUserTest = new CreateUserTest(browser);
-            createUserTest.getUniqueUserId();
-            var loggonTest = new AccountLogOnTest(browser);
-            loggonTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
-        }
+			var link = Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
+			link.Click();
 
-        [Test]
-        public void shouldGoToLogOnPageAfterClickingAddFoodLinkIfNotLoggedOn() {
-            browser.GoTo(baseUrl);
+			Assert.That(Browser.ContainsText(AccountConstant.LoginTitle));
+		}
 
-            var logOffButton = browser.Link(Find.ByText("Log Off"));
-            if (logOffButton.Exists) {
-                logOffButton.Click();
-            }
+		[Test]
+		public void shouldGoToResultsAfterClickingResultsAfterLoggedOn() {
+			createUserAndLogOn();
 
-            var link = browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
-            link.Click();
+			Browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
 
-            Assert.That(browser.ContainsText(AccountConstant.LoginTitle));
-        }
-    }
+			Assert.That(Browser.ContainsText(ResultConstant.ResultTitle));
+		}
+	}
 }

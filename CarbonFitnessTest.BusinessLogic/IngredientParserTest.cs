@@ -100,14 +100,13 @@ Abborrfilé panerad stekt	100	0,3	599	143	3,8	5,7	19,36	0	0,44	21	450	18,7	0,0	0,
 		}
 
 		[Test]
-		public void shouldTreatEmptyColumnValueAsZero()
-		{
-			Assert.That(new IngredientParser().GetDecimalValue(10, new[] { "" }, 0), Is.EqualTo(0M));
+		public void shouldThrowErrorWhenNotUnderstandingDecimalValue() {
+			Assert.Throws<IngredientParserException>(() => new IngredientParser().GetDecimalValue(10, new[] {"a"}, 0));
 		}
 
 		[Test]
-		public void shouldThrowErrorWhenNotUnderstandingDecimalValue() {
-			Assert.Throws<IngredientParserException>(() => new IngredientParser().GetDecimalValue(10, new[] {"a"}, 0));
+		public void shouldTreatEmptyColumnValueAsZero() {
+			Assert.That(new IngredientParser().GetDecimalValue(10, new[] {""}, 0), Is.EqualTo(0M));
 		}
 	}
 }

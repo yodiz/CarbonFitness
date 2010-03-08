@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
@@ -24,6 +21,5 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 				ingredientRepository.SaveOrUpdate(ingredient);
 			}
 		}
-
 	}
 }

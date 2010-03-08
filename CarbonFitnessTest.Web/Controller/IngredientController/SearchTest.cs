@@ -1,35 +1,29 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Mvc;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 using Moq;
 using NUnit.Framework;
 
-namespace CarbonFitnessTest.Web.Controller.IngredientController
-{
-    [TestFixture]
-    public class SearchTest
-    {
-        [Test]
-        public void shouldSearchIngredients()
-        {
-            Ingredient[] ingredients;
-            var ingredientBusinessLogicMock = new Mock<IIngredientBusinessLogic>(MockBehavior.Strict);
-            ingredientBusinessLogicMock.Setup(x => x.Search(It.IsAny<String>())).Returns(new[]
-                                                                                             {
-                                                                                                 new Ingredient(),
-                                                                                                 new Ingredient(),
-                                                                                                 new Ingredient()
-                                                                                             });
+namespace CarbonFitnessTest.Web.Controller.IngredientController {
+	[TestFixture]
+	public class SearchTest {
+		[Test]
+		public void shouldSearchIngredients() {
+			Ingredient[] ingredients;
+			var ingredientBusinessLogicMock = new Mock<IIngredientBusinessLogic>(MockBehavior.Strict);
+			ingredientBusinessLogicMock.Setup(x => x.Search(It.IsAny<String>())).Returns(new[] {
+				new Ingredient(),
+				new Ingredient(),
+				new Ingredient()
+			});
 
-            var ingredientController = new CarbonFitnessWeb.Controllers.IngredientController(ingredientBusinessLogicMock.Object);
+			var ingredientController = new CarbonFitness.App.Web.Controllers.IngredientController(ingredientBusinessLogicMock.Object);
 
-            var actionResult = (ViewResult)ingredientController.Search("abb");
-            ingredients = (Ingredient[])actionResult.ViewData.Model;
+			var actionResult = ingredientController.Search("abb");
+			ingredients = (Ingredient[]) actionResult.ViewData.Model;
 
-            Assert.That(ingredients.Count(), Is.GreaterThan(2));
-        }
-    }
+			Assert.That(ingredients.Count(), Is.GreaterThan(2));
+		}
+	}
 }
-

@@ -77,12 +77,12 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 		public decimal GetDecimalValue(int rowIndex, string[] columns, int columnIndex) {
 			var column = columns[columnIndex];
 			try {
-				if (column.Length == 0){
+				if (column.Length == 0) {
 					return 0;
 				}
 
 				var cleanedColumn = new string(column.Where(c => (c >= 48 && c <= 57) || c == 44).ToArray());
-            return Convert.ToDecimal(cleanedColumn);
+				return Convert.ToDecimal(cleanedColumn);
 			}
 			catch (FormatException e) {
 				throw new IngredientParserException("Error parsing decimal value.", e) {ColumnContent = column, ColumnIndex = columnIndex, RowIndex = rowIndex};

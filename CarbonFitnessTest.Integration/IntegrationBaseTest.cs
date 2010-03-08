@@ -6,52 +6,53 @@ using NUnit.Framework;
 using SharpArch.Data.NHibernate;
 using SharpArch.Testing.NUnit.NHibernate;
 using WatiN.Core;
-using WatiN.Core.Native.Windows;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-		protected Browser browser;
-		protected string baseUrl = "http://localhost:49639";
-		public abstract string Url { get; }
+		protected string BaseUrl = "http://localhost:49639";
+		protected Browser Browser;
 
-		protected IntegrationBaseTest() {
-		}
+		protected IntegrationBaseTest() {}
 
 		protected IntegrationBaseTest(Browser browser) {
-			this.browser = browser;
+			Browser = browser;
 			browser.BringToFront();
 			browser.GoTo(Url);
 		}
-		
+
+		public abstract string Url { get; }
+
 		[SetUp]
 		public virtual void Setup() {
-			browser.GoTo(Url);
+			Browser.GoTo(Url);
 		}
 
 		[TestFixtureSetUp]
 		public virtual void TestFixtureSetUp() {
-			string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+			var mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
 			NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
-			                       new AutoPersistenceModelGenerator().Generate(),
-			                       "../../../CarbonFitnessWeb/NHibernate.config");
-			if (browser == null) {
-				browser = new IE(Url);
+				new AutoPersistenceModelGenerator().Generate(),
+				"../../../CarbonFitnessWeb/NHibernate.config");
+			if (Browser == null) {
+				Browser = new IE(Url);
 			}
 		}
 
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
-			browser.Dispose();
+			Browser.Dispose();
 		}
 
-        public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression) {
-            return ExpressionHelper.GetExpressionText(lambdaExpression);
-        }
-        public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression) {
-            return ExpressionHelper.GetExpressionText(lambdaExpression);
-        }
-        public string GetFieldNameOnModel<T>(Expression<Func<T, DateTime>> lambdaExpression){
-            return ExpressionHelper.GetExpressionText(lambdaExpression);
-        }
+		public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression) {
+			return ExpressionHelper.GetExpressionText(lambdaExpression);
+		}
+
+		public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression) {
+			return ExpressionHelper.GetExpressionText(lambdaExpression);
+		}
+
+		public string GetFieldNameOnModel<T>(Expression<Func<T, DateTime>> lambdaExpression) {
+			return ExpressionHelper.GetExpressionText(lambdaExpression);
+		}
 	}
 }

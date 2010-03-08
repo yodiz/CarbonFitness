@@ -5,23 +5,19 @@ using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
 using SharpArch.Testing.NUnit.NHibernate;
 
-namespace CarbonFitnessTest.DataLayer.Repository
-{
+namespace CarbonFitnessTest.DataLayer.Repository {
 	[TestFixture]
-	public class IngredientRepositoryTest : RepositoryTestsBase
-	{
-		protected override void LoadTestData()
-		{
+	public class IngredientRepositoryTest : RepositoryTestsBase {
+		protected override void LoadTestData() {
 			var repository = new IngredientRepository();
 
 			repository.SaveOrUpdate(new Ingredient {Name = "Pannbiff"});
-            repository.SaveOrUpdate(new Ingredient { Name = "Abborre" });
-            repository.SaveOrUpdate(new Ingredient { Name = "abborgine" });
+			repository.SaveOrUpdate(new Ingredient {Name = "Abborre"});
+			repository.SaveOrUpdate(new Ingredient {Name = "abborgine"});
 		}
 
 		[Test]
-		public void shouldGetIngredientByName()
-		{
+		public void shouldGetIngredientByName() {
 			var repository = new IngredientRepository() as IIngredientRepository;
 
 			var ingredient = repository.Get("Pannbiff");
@@ -29,23 +25,22 @@ namespace CarbonFitnessTest.DataLayer.Repository
 			Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
 		}
 
-        [Test]
-        public void shouldMatchBothUpperAndLowerCaseOnName()
-        {
-            var repository = new IngredientRepository() as IIngredientRepository;
+		[Test]
+		public void shouldMatchBothUpperAndLowerCaseOnName() {
+			var repository = new IngredientRepository() as IIngredientRepository;
 
-            var ingredient = repository.Get("pannbiff");
+			var ingredient = repository.Get("pannbiff");
 
-            Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
-        }
+			Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
+		}
 
-        [Test]
-        public void shouldReturnmatchingItemsForSearchParamter() {
-            var repository = new IngredientRepository();
-            var ingredients = repository.Search("abb");
+		[Test]
+		public void shouldReturnmatchingItemsForSearchParamter() {
+			var repository = new IngredientRepository();
+			var ingredients = repository.Search("abb");
 
-            Assert.That(ingredients.Count(), Is.GreaterThan(0));
-            Assert.That(ingredients.ToList().TrueForAll(x => x.Name.StartsWith("Abb",true, Thread.CurrentThread.CurrentCulture)));
-        }
+			Assert.That(ingredients.Count(), Is.GreaterThan(0));
+			Assert.That(ingredients.ToList().TrueForAll(x => x.Name.StartsWith("Abb", true, Thread.CurrentThread.CurrentCulture)));
+		}
 	}
 }

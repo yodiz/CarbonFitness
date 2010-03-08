@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace CarbonFitnessTest.Web.Controller.HomeController
-{
+namespace CarbonFitnessTest.Web.Controller.HomeController {
 	[TestFixture]
-	public class IndexTest
-	{
+	public class IndexTest {
 		[Test]
-		public void shouldShowFoodLinkAfterLogin()
-		{
-
+		public void shouldShowFoodLinkAfterLogin() {
 			//Assert(foodLink, )
 		}
 	}

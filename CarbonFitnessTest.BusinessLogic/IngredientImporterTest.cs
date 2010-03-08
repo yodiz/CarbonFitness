@@ -9,11 +9,9 @@ using NUnit.Framework;
 
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
-	public class IngredientImporterTest
-	{
+	public class IngredientImporterTest {
 		[Test]
-		public void shouldImportIngredients()
-		{
+		public void shouldImportIngredients() {
 			var factory = new MockFactory(MockBehavior.Strict);
 			var ingredientParserMock = factory.Create<IIngredientParser>();
 			var ingredientFileReaderMock = factory.Create<IIngredientFileReader>();
@@ -23,7 +21,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			const string fileName = "fileName";
 			ingredientFileReaderMock.Setup(x => x.ReadIngredientFile(fileName)).Returns(abc);
 			const string abborre = "Abborre";
-			ingredientParserMock.Setup(x => x.ParseTabSeparatedFileContents(abc)).Returns(new List<Ingredient> { new Ingredient { Name = abborre } });
+			ingredientParserMock.Setup(x => x.ParseTabSeparatedFileContents(abc)).Returns(new List<Ingredient> {new Ingredient {Name = abborre}});
 			ingredientRepositoryMock
 				.Setup(x => x.SaveOrUpdate(It.Is<Ingredient>(y => y.Name == abborre)))
 				.Returns(null as Ingredient);
@@ -36,12 +34,11 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 		[Test]
 		public void shouldThrowIngredientInsertionExceptionWhenInsertingFails() {
-
 			var factory = new MockFactory(MockBehavior.Strict);
 			var ingredientRepositoryMock = factory.Create<IIngredientRepository>();
 			ingredientRepositoryMock.Setup(x => x.SaveOrUpdate(It.IsAny<Ingredient>())).Throws(new Exception());
-			
-			Assert.Throws<IngredientInsertionException>(()=> new IngredientImporter(null, null, ingredientRepositoryMock.Object).SaveIngredient(new Ingredient()));
+
+			Assert.Throws<IngredientInsertionException>(() => new IngredientImporter(null, null, ingredientRepositoryMock.Object).SaveIngredient(new Ingredient()));
 		}
 	}
 }

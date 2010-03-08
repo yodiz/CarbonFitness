@@ -9,12 +9,8 @@ namespace CarbonFitness.BusinessLogic.Exceptions {
 
 		public int RowIndex { get; set; }
 
-		public override string Message
-		{
-			get
-			{
-				return base.Message + " Column index: " + ColumnIndex + ", Row index: " + RowIndex + ", Column content: " + ColumnContent + ".";
-			}
+		public override string Message {
+			get { return base.Message + " Column index: " + ColumnIndex + ", Row index: " + RowIndex + ", Column content: " + ColumnContent + "."; }
 		}
 	}
 }

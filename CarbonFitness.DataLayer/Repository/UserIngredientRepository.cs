@@ -4,17 +4,15 @@ using CarbonFitness.Data.Model;
 using NHibernate.Linq;
 using SharpArch.Data.NHibernate;
 
-namespace CarbonFitness.DataLayer.Repository
-{
-	public class UserIngredientRepository : NHibernateRepositoryWithTypedId<UserIngredient, int>, IUserIngredientRepository
-	{
-	    public UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate) {
-	        var q = from userIngredient in Session.Linq<UserIngredient>()
-	                                       where userId.Equals(userId) && 
-                                           userIngredient.Date >= fromDate && userIngredient.Date < toDate
-	                                       select userIngredient;
+namespace CarbonFitness.DataLayer.Repository {
+	public class UserIngredientRepository : NHibernateRepositoryWithTypedId<UserIngredient, int>, IUserIngredientRepository {
+		public UserIngredient[] GetUserIngredientsFromUserId(int userId, DateTime fromDate, DateTime toDate) {
+			var q = from userIngredient in Session.Linq<UserIngredient>()
+			where userId.Equals(userId) &&
+				userIngredient.Date >= fromDate && userIngredient.Date < toDate
+			select userIngredient;
 
-	        return q.ToArray();
-	    }
+			return q.ToArray();
+		}
 	}
 }

@@ -1,5 +1,5 @@
 namespace CarbonFitness.BusinessLogic.IngredientImporter {
-    public interface IIngredientFileReader {
-        string ReadIngredientFile(string s);
-    }
+	public interface IIngredientFileReader {
+		string ReadIngredientFile(string s);
+	}
 }

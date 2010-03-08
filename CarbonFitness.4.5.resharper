@@ -305,6 +305,7 @@ II.2.12 <HandlesEvent />
       <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="EnumMember" />
       <PredefinedRule Inspect="True" Prefix="" Suffix="" Style="AaBb" ElementKind="Other" />
       <Abbreviation Text="KJ" />
+      <Abbreviation Text="DB" />
     </Naming2>
   </CodeStyleSettings>
 </Configuration>

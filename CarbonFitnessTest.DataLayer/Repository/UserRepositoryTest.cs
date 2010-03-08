@@ -1,18 +1,12 @@
-﻿using System;
-using CarbonFitness.Data.Model;
+﻿using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
 using SharpArch.Testing.NUnit.NHibernate;
 
-namespace CarbonFitnessTest.DataLayer.Repository
-{
+namespace CarbonFitnessTest.DataLayer.Repository {
 	[TestFixture]
-	public class UserRepositoryTest : RepositoryTestsBase
-	{
-
-		protected override void LoadTestData() {
-            
-		}
+	public class UserRepositoryTest : RepositoryTestsBase {
+		protected override void LoadTestData() {}
 
 		//public void InitServiceLocator()
 		//{
@@ -27,7 +21,7 @@ namespace CarbonFitnessTest.DataLayer.Repository
 			var userRepository = new UserRepository();
 			var user = userRepository.SaveOrUpdate(new User("myUser"));
 
-			Assert.AreEqual(1, user.Id); 
+			Assert.AreEqual(1, user.Id);
 		}
 	}
 }
