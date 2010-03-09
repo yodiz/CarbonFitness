@@ -14,8 +14,8 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		public void shouldShowSumOfCaloriesForADate() {
 			var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
 			var userContextMock = new Mock<IUserContext>();
-			var userIngredient = new UserIngredient {Ingredient = new Ingredient {Calories = 2}};
-			var userIngredient2 = new UserIngredient {Ingredient = new Ingredient {Calories = 3}};
+			var userIngredient = new UserIngredient {Ingredient = new Ingredient {EnergyInKcal = 2}};
+			var userIngredient2 = new UserIngredient {Ingredient = new Ingredient {EnergyInKcal = 3}};
 			var userIngredients = new[] {userIngredient, userIngredient2};
 			userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Returns(userIngredients);
 

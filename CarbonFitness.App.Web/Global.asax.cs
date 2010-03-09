@@ -50,17 +50,7 @@ namespace CarbonFitness.App.Web {
 				lock (lockObject) {
 					if (!wasNHibernateInitialized) {
 						var nHibernateConfig = Server.MapPath("~/NHibernate.config");
-						//string mappingAssembly = Server.MapPath("~/bin/CarbonFitness.Data.dll");
-
-						var initBusinessLogic = new Bootstrapper();
-
-						initBusinessLogic.InitDatalayer(new WebSessionStorage(this), nHibernateConfig);
-
-						//initBusinessLogic.InitNhibernateSession(this, mappingAssembly, nHibernateConfig);
-
-						//initNhibernateSession(carbonFitnessDll, nHibernateConfig);
-
-						//exportDatabaseSchema(nHibernateConfig);
+						new Bootstrapper(nHibernateConfig).InitDatalayer(new WebSessionStorage(this));
 
 						wasNHibernateInitialized = true;
 					}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.IngredientImporter;
 using CarbonFitness.BusinessLogic.IngredientImporter.Implementation;
 using CarbonFitness.Data.Model;

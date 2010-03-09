@@ -1,3 +1,6 @@
+using System;
+using CarbonFitness.BusinessLogic.Exceptions;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
@@ -18,7 +21,15 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 			var ingredients = ingredientParser.ParseTabSeparatedFileContents(fileContents);
 
 			foreach (var ingredient in ingredients) {
-				ingredientRepository.SaveOrUpdate(ingredient);
+				SaveIngredient(ingredient);
+			}
+		}
+
+		public void SaveIngredient(Ingredient ingredient) {
+			try {
+				ingredientRepository.SaveOrUpdate(ingredient);	
+			} catch(Exception e) {
+				throw new IngredientInsertionException("Error inserting ingredient.", e) {Ingredient = ingredient}; 
 			}
 		}
 	}

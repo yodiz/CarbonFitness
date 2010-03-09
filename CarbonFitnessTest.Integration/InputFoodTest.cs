@@ -38,7 +38,7 @@ namespace CarbonFitnessTest.Integration {
 		public void createIngredientIfNotExist(string name) {
 			var repository = new IngredientRepository();
 			if (repository.Get(name) == null) {
-				repository.SaveOrUpdate(new Ingredient {Name = name, Calories = 100});
+				repository.SaveOrUpdate(new Ingredient { Name = name, EnergyInKcal = 100 });
 			}
 		}
 

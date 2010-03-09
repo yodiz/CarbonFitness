@@ -4,10 +4,23 @@ using SharpArch.Data.NHibernate;
 
 namespace CarbonFitness.BusinessLogic {
 	public class Bootstrapper {
-		public void InitDatalayer(ISessionStorage sessionStorage, string nHibernateConfig) {
-			var bootstrapper = new DataLayer.Bootstrapper();
+		private readonly DataLayer.Bootstrapper bootstrapper;
+		private readonly string nHibernateConfig;
+
+		public Bootstrapper(string nHibernateConfig) {
+			this.nHibernateConfig = nHibernateConfig;
+			bootstrapper = new DataLayer.Bootstrapper();
+		}
+
+		public void InitDatalayer() {
+			InitDatalayer(new SimpleSessionStorage());
+		}
+
+		public void InitDatalayer(ISessionStorage sessionStorage) {
 			bootstrapper.InitNhibernateSession(sessionStorage, nHibernateConfig);
-			//bootstrapper.UpdateDatabaseSchema(nHibernateConfig);
+		}
+
+		public void ExportDataBaseSchema() {
 			bootstrapper.ExportDatabaseSchema(nHibernateConfig);
 		}
 	}

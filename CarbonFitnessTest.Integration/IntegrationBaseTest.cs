@@ -29,10 +29,10 @@ namespace CarbonFitnessTest.Integration {
 
 		[TestFixtureSetUp]
 		public virtual void TestFixtureSetUp() {
-			var mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+			string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
 			NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
 				new AutoPersistenceModelGenerator().Generate(),
-				"../../../CarbonFitnessWeb/NHibernate.config");
+				"../../../CarbonFitness.App.Web/NHibernate.config");
 			if (Browser == null) {
 				Browser = new IE(Url);
 			}

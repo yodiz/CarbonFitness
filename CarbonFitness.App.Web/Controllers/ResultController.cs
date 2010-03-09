@@ -20,7 +20,7 @@ namespace CarbonFitness.App.Web.Controllers {
 		[HttpPost]
 		public ActionResult Show(ResultModel model) {
 			var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date);
-			model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.Calories).ToString();
+			model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.EnergyInKcal).ToString();
 			return View(model);
 		}
 	}

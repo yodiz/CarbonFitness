@@ -7,8 +7,7 @@ using NUnit.Framework;
 namespace CarbonFitnessTest.Integration {
 	[TestFixture]
 	public class ResultsTest : IntegrationBaseTest {
-		#region Setup/Teardown
-
+		
 		[SetUp]
 		public override void Setup() {
 			userId = new CreateUserTest(Browser).getUniqueUserId();
@@ -21,8 +20,6 @@ namespace CarbonFitnessTest.Integration {
 			inputFoodTest.addUserIngredient("Pannbiff", "100");
 			Browser.GoTo(Url);
 		}
-
-		#endregion
 
 		private int userId;
 		private const string testDate = "2008-02-22";
@@ -42,11 +39,11 @@ namespace CarbonFitnessTest.Integration {
 			var d = DateTime.Parse(testDate);
 
 			var userIngredients = new UserIngredientRepository().GetUserIngredientsFromUserId(userId, d, d.AddDays(1));
-			var sum = userIngredients.Sum(u => u.Ingredient.Calories);
+			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal);
 
 			Assert.That(result, Is.Not.Empty);
-			Assert.That(int.Parse(result), Is.GreaterThan(0));
-			Assert.That(int.Parse(result), Is.EqualTo(sum));
+			Assert.That(decimal.Parse(result), Is.GreaterThan(0));
+			Assert.That(decimal.Parse(result), Is.EqualTo(sum));
 		}
 	}
 }

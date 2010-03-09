@@ -25,6 +25,15 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 		[Test]
+		public void shouldGoToEnergyPageAfterClickingAddEnergyLinkAfterLoggedOn()
+		{
+			createUserAndLogOn();
+			Browser.Link(Find.ByText(SiteMasterConstant.EnergyInputLinkText)).Click();
+
+			Assert.That(Browser.ContainsText(EnergyConstant.EnergyInputTitle));
+		}
+
+		[Test]
 		public void shouldGoToLogOnPageAfterClickingAddFoodLinkIfNotLoggedOn() {
 			Browser.GoTo(BaseUrl);
 

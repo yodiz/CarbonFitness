@@ -5,14 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3ED91741-5E26-4069-860A-5B4F144F32BC}</ProjectGuid>
+    <ProjectGuid>{7633CFD9-554F-4903-BBFE-DA03A82ABFAE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarbonFitness.App.Importer</RootNamespace>
-    <AssemblyName>CarbonFitness.App.Importer</AssemblyName>
+    <RootNamespace>CarbonFitness.App.SchemaExport</RootNamespace>
+    <AssemblyName>CarbonFitness.App.SchemaExport</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>CarbonFitness.App.Importer.IngredientImporterEngine</StartupObject>
+    <StartupObject>CarbonFitness.App.SchemaExport.SchemaExportEngine</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IngredientImporterEngine.cs" />
+    <Compile Include="SchemaExportEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
