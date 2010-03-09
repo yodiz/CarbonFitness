@@ -67,6 +67,7 @@
     <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
+    <Compile Include="Implementation\UserWeightBusinessLogic.cs" />
     <Compile Include="IngredientImporter\IIngredientFileReader.cs" />
     <Compile Include="IngredientImporter\IIngredientImporter.cs" />
     <Compile Include="IngredientBusinessLogic.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Implementation\MembershipBusinessLogic.cs" />
     <Compile Include="IMembershipBusinessLogic.cs" />
     <Compile Include="Exceptions\NoIngredientFoundException.cs" />
+    <Compile Include="IUserWeightBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implementation\UserBusinessLogic.cs" />
     <Compile Include="Implementation\UserIngredientBusinessLogic.cs" />

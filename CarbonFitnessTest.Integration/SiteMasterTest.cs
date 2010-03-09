@@ -56,5 +56,15 @@ namespace CarbonFitnessTest.Integration {
 
 			Assert.That(Browser.ContainsText(ResultConstant.ResultTitle));
 		}
+
+		[Test]
+		public void shouldGoToWeightPageAfterClickingWeightAfterLoggedOn()
+		{
+			createUserAndLogOn();
+
+			Browser.Link(Find.ByText(SiteMasterConstant.WeightLinkText)).Click();
+
+			Assert.That(Browser.ContainsText(WeightConstant.WeightTitle));
+		}
 	}
 }

@@ -13,6 +13,8 @@ namespace CarbonFitness.AppLogic {
 			builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
 			builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
 
+			builder.RegisterType<UserWeightBusinessLogic>().As<IUserWeightBusinessLogic>();
+
 			builder.RegisterType<IngredientFileReader>().As<IIngredientFileReader>();
 			builder.RegisterType<IngredientImporter>().As<IIngredientImporter>();
 			builder.RegisterType<IngredientParser>().As<IIngredientParser>();

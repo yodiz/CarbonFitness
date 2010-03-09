@@ -32,7 +32,8 @@ namespace CarbonFitnessTest.Integration {
 			var measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
 			Browser.TextField(Find.ByName(ingredient)).TypeText(ingredientText);
 			Browser.TextField(Find.ByName(measure)).TypeText(measureText);
-			Browser.Image(Find.BySrc(x => x.Contains("save.gif"))).Click();
+			//Browser.Image(Find.BySrc(x => x.Contains("save.gif"))).Click();
+			Browser.Button(Find.ByValue("Spara")).Click();//Spara
 		}
 
 		public void createIngredientIfNotExist(string name) {

@@ -6,5 +6,6 @@ namespace CarbonFitness.App.Web.ViewConstants {
 		public static string AddFoodLinkHref = "Food/Input";
 		public static string ResultLinkText = "Resultat";
 		public static string EnergyInputLinkText = "Energy";
+		public static string WeightLinkText = "Vikt";
 	}
 }

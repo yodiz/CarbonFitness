@@ -248,6 +248,11 @@ input[type=text], input[type=password], input.text, input.title, textarea, selec
 	font-size: 1em;
 	font-family: arial, helvetica, sans-serif;
 }
+input[type=submit], input[type=button]
+{
+	font-size: 1em;
+	font-family: arial, helvetica, sans-serif;
+}
 input[type=text]:focus, input[type=password]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus
 {
 	border-color: #666;

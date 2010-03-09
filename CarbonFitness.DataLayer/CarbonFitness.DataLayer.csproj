@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Repository\IUserWeightRepository.cs" />
     <Compile Include="Repository\IIngredientRepository.cs" />
     <Compile Include="Maps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="Maps\UserMap.cs" />
