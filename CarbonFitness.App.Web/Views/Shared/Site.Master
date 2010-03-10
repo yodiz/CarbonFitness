@@ -17,15 +17,19 @@
 	<%= Html.Script("jquery.autocomplete.js")%>
 </head>
 <body>
-<div class="page">
-	<div id="header">
-		<div id="title">
-			<img src="../../Content/Logo.png" />
+<div id="page">
+	
+	<div id="page-header">
+		
+		<div class="title">
+			<img src="../../Content/Logo.png" alt="" />
 		</div>
-		<div id="logindisplay">
+		
+		<div class="login-menu">
 			<% Html.RenderPartial("LogOnUserControl"); %>
 		</div>
-		<div id="menucontainer">
+		
+		<div class="page-menu">
 			<ul class="flat">
 				<li><%= Html.ActionLink<EnergyController>(c => c.Input(), SiteMasterConstant.EnergyInputLinkText)%></li>
 				<li><%= Html.ActionLink<WeightController>(c => c.Input(), SiteMasterConstant.WeightLinkText)%></li>
@@ -36,12 +40,16 @@
 				<li><%= Html.ActionLink("Produkter", "Index", "Products")%></li>
 			</ul>
 		</div>
+		
 	</div>
-	<div id="main">
+	
+	<div id="page-main">
 		<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 	</div>
-	<div id="footer">
+	
+	<div id="page-footer">
 	</div>
+
 </div>
 </body>
 </html>

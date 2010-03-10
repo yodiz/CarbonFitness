@@ -29,6 +29,8 @@ namespace CarbonFitness.App.SchemaExport {
 		private static void Main(string[] args) {
 			new SchemaExportEngine("NHibernate.config").Export();
 
+			Console.WriteLine("");
+			Console.WriteLine("Schema export finished. Press any key to continue...");
 			Console.ReadLine();
 		}
 	}

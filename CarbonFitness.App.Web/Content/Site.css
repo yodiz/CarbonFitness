@@ -1,4 +1,4 @@
-﻿body
+﻿body, html
 {
 	background-color: #eaeaea;
 }
@@ -17,13 +17,13 @@ input[type=submit], input[type=button]
 	color: #fff;
 }
 
-div.page
+div#page
 {
 	width: 960px;
 	margin: 10px auto;
 }
 
-div#header 
+div#page-header 
 {
 	position: relative;
 	padding: 15px 30px;
@@ -33,24 +33,24 @@ div#header
 	-webkit-border-radius: 12px;
 	border-radius: 12px;
 }
-div#header div#logindisplay
+div#page-header div.login-menu
 {
 	position: absolute;
 	top: 20px;
 	right: 30px;
 }
-div#header div#title
+div#page-header div.title
 {
 	margin-top: 10px;
 	line-height: 0;
 }
-div#header div#menucontainer
+div#page-header div.page-menu
 {
 	position: absolute;
 	bottom: 20px;
 	right: 30px;
 }
-div#header div#menucontainer li a
+div#page-header div.page-menu li a
 {
 	display: block;
 	margin: 0 0 0 4px;
@@ -62,7 +62,7 @@ div#header div#menucontainer li a
 }
 
 
-div#main
+div#page-main
 {
 	margin-top: 10px;
 	padding: 30px;
@@ -125,3 +125,18 @@ div#main
 .food-input div.submit-field input
 {
 }
+
+div.splash-photo
+{
+	overflow: hidden;
+	margin: -30px -30px 20px -30px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+}
+	div.splash-photo img
+	{
+		-moz-border-radius: 12px;
+		-webkit-border-radius: 12px;
+		border-radius: 12px;
+	}
