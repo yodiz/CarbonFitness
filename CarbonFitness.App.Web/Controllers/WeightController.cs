@@ -14,11 +14,12 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
 		public ActionResult Input() {
-			return View(new InputWeightModel {Date = DateTime.Now});
+			var userWeight = userWeightBusinessLogic.GetWeight(userContext.User, DateTime.Now.Date);
+			return View(new InputWeightModel { Date = userWeight.Date, Weight = userWeight.Weight});
 		}
 
-		public ActionResult Input(InputWeightModel inputWeightModel)
-		{
+		[HttpPost]
+		public ActionResult Input(InputWeightModel inputWeightModel) {
 			userWeightBusinessLogic.SaveWeight(userContext.User, inputWeightModel.Weight, inputWeightModel.Date);
 			return View(inputWeightModel);
 		}

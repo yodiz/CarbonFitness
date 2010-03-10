@@ -1,28 +1,61 @@
 ﻿using System;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
+using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
 
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
 	public class UserWeightBusinessLogicTest {
+		private Mock<UserWeight> expectedUserWeightMock;
+		private Mock<IUserWeightRepository> userWeightRepositoryMock;
+		private UserWeight expectedUserWeight;
+
+		[SetUp]
+		public void Setup() {
+			
+			expectedUserWeightMock = new Mock<UserWeight>();
+			expectedUserWeightMock.Setup(x => x.User).Returns(new User("arne"));
+			expectedUserWeightMock.Setup(x => x.Weight).Returns(80.5M);
+			expectedUserWeightMock.Setup(x => x.Date).Returns(DateTime.Now.Date);
+			expectedUserWeight = expectedUserWeightMock.Object;
+			
+			userWeightRepositoryMock = new Mock<IUserWeightRepository>();
+		}
+
 		[Test]
 		public void shouldSaveUserWeight() {
-			var userWeight = new UserWeight {
-				User = new User("arne"),
-				Weight = 80.5M,
-				Date = DateTime.Now.Date
-			};
+			userWeightRepositoryMock.Setup(z => z.SaveOrUpdate(It.Is<UserWeight>(x => x.Date == expectedUserWeight.Date && x.User.Username == expectedUserWeight.User.Username && x.Weight == expectedUserWeight.Weight))).Returns(expectedUserWeight);
 
-			var userWeightRepositoryMock = new Mock<IUserWeightRepository>();
-			userWeightRepositoryMock.Setup(z => z.SaveOrUpdate(It.Is<UserWeight>(x => x.Date == userWeight.Date && x.User.Username == userWeight.User.Username && x.Weight == userWeight.Weight))).Returns(userWeight);
+			var createdUserWeight = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).SaveWeight(expectedUserWeight.User, expectedUserWeight.Weight, expectedUserWeight.Date);
 
-			var userWeightBusinessLogic = new UserWeightBusinessLogic(userWeightRepositoryMock.Object);
-			var createdUserWeight = userWeightBusinessLogic.SaveWeight(userWeight.User, userWeight.Weight, userWeight.Date);
-
-			Assert.That(ReferenceEquals(createdUserWeight, userWeight));
+			Assert.That(ReferenceEquals(createdUserWeight, expectedUserWeight));
 			userWeightRepositoryMock.VerifyAll();
+		}
+
+		[Test] 
+		public void shouldGetWeight() {
+			userWeightRepositoryMock.Setup(x => x.FindUserWeightByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
+
+			var fetchedUserWeight = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).GetWeight(expectedUserWeight.User, expectedUserWeight.Date);
+
+			Assert.That(ReferenceEquals(fetchedUserWeight, expectedUserWeight));	
+			userWeightRepositoryMock.VerifyAll();
+		}
+
+		
+		[Test]
+		public void shouldOverwriteUserWeight() {
+			var userWeightId = 62;
+			expectedUserWeightMock.Setup(x => x.Id).Returns(userWeightId);
+
+			userWeightRepositoryMock.Setup(x => x.FindUserWeightByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
+
+			var newWeight = 75M;
+			userWeightRepositoryMock.Setup(z => z.SaveOrUpdate(It.Is<UserWeight>(x => x.Weight == newWeight && expectedUserWeight.Id == userWeightId))).Returns(expectedUserWeight);
+
+         userWeightRepositoryMock.VerifyAll();
 		}
 	}
 }

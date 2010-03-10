@@ -5,12 +5,15 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h1><%=EnergyConstant.EnergyInputTitle%></h1>
+    <h1><%=WeightConstant.WeightTitle%></h1>
+	 <% using (Html.BeginForm()) { %>
     
-    <%= Html.EditorFor(m => m.Weight) %>
-    
-    <%= Html.EditorFor(m => m.Date) %>
-    
-    <%= Html.SubmitButton("submit","Spara") %>
+		 <%= Html.EditorFor(m => m.Weight)%>
+	    
+		 <%= Html.EditorFor(m => m.Date)%>
+	    
+		 <%= Html.SubmitButton("saveButton", "Spara")%>
+		 
+    <% } %>
 
 </asp:Content>

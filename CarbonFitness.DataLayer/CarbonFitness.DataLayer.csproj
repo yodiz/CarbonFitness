@@ -104,6 +104,7 @@
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UserIngredientRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\UserWeightRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.Data\CarbonFitness.Data.csproj">

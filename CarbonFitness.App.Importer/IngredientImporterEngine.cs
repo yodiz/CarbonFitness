@@ -41,14 +41,20 @@ namespace CarbonFitness.App.Importer {
 			var filePath = "";
 
 			if (args.Length < 1) {
-				Console.WriteLine("No filePath argument specified! Enter filePath:");
+				Console.WriteLine("No filePath argument specified! Enter filePath: Or use default by pressing [Enter]");
 				filePath = Console.ReadLine();
+				if (filePath == "") {
+					filePath = @"Ingredients\Ingredients.csv";
+				}
 			}
 			else {
 				filePath = args[0];
 			}
 
 			filePath = VerifyFilePath(filePath);
+
+			Console.WriteLine("Starting import. Please wait...");
+
 			new IngredientImporterEngine("NHibernate.config").Import(filePath);
 
 			Console.WriteLine("Done importing!");

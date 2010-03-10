@@ -1,6 +1,6 @@
 using System;
 using CarbonFitness.Data.Model;
-using CarbonFitnessTest.BusinessLogic;
+using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness.BusinessLogic.Implementation {
 	public class UserWeightBusinessLogic : IUserWeightBusinessLogic {
@@ -12,6 +12,10 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
 		public UserWeight SaveWeight(User user, decimal weight, DateTime date) {
 			return userWeightRepository.SaveOrUpdate(new UserWeight {Date = date, User = user, Weight = weight});
+		}
+
+		public UserWeight GetWeight(User user, DateTime date) {
+			return userWeightRepository.FindUserWeightByDate(user, date);
 		}
 	}
 }

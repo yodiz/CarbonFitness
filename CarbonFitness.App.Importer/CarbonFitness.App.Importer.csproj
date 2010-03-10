@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Ingredients\Ingredients.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="NHibernate.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

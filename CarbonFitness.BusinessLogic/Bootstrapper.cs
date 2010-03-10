@@ -30,6 +30,7 @@ namespace CarbonFitness.BusinessLogic {
 			builder.RegisterType<UserRepository>().As<IUserRepository>();
 			builder.RegisterType<IngredientRepository>().As<IIngredientRepository>();
 			builder.RegisterType<UserIngredientRepository>().As<IUserIngredientRepository>();
+			builder.RegisterType<UserWeightRepository>().As<IUserWeightRepository>();
 		}
 	}
 }

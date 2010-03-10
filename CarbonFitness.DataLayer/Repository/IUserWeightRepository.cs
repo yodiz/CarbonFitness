@@ -1,7 +1,9 @@
+using System;
 using CarbonFitness.Data.Model;
+using SharpArch.Core.PersistenceSupport.NHibernate;
 
-namespace CarbonFitnessTest.BusinessLogic {
-	public interface IUserWeightRepository {
-		UserWeight SaveOrUpdate(UserWeight userWeight);
+namespace CarbonFitness.DataLayer.Repository {
+	public interface IUserWeightRepository : INHibernateRepositoryWithTypedId<UserWeight,int> {
+		UserWeight FindUserWeightByDate(User user, DateTime date);
 	}
 }

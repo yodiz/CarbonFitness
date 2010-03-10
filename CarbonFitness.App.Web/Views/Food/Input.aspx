@@ -9,15 +9,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 	 <script type="text/javascript">
-		  $(function() {
-				$("#<%=Html.IdFor(m => m.Date) %>").datepicker({ dateFormat: 'yy-mm-dd' });
-				$("#<%=Html.IdFor(m => m.Date) %>").change(function() {
-					 $("input[id$='<%=Html.IdFor(m => m.Ingredient) %>']").val("");
-					 $("input[id$='<%=Html.IdFor(m => m.Measure) %>']").val("0");
-					 this.form.submit();
-				});
-				$("#<%=Html.IdFor(m => m.Ingredient)%>").autocomplete("/Ingredient/Search");
-		  });
+	 	$(document).ready(function() {
+	 		$("#<%=Html.IdFor(m => m.Date) %>").datepicker({ dateFormat: 'yy-mm-dd' });
+	 		$("#<%=Html.IdFor(m => m.Date) %>").change(function() {
+	 			$("#<%=Html.IdFor(m => m.Ingredient) %>").val("");
+	 			$("#<%=Html.IdFor(m => m.Measure) %>").val("0");
+	 			$("form").submit();
+	 		});
+	 		$("#<%=Html.IdFor(m => m.Ingredient)%>").autocomplete("/Ingredient/Search");
+	 	});
 	</script>
 	 
 	 
@@ -32,7 +32,7 @@
 	<hr style="clear: both" />
 	 
 	 <%=Html.ValidationSummary() %>
-	 <% using (var form = Html.BeginForm()) { %>    
+	 <% using (var form = Html.BeginForm()) { %>
 		  <div class="input-fields">
 				<div class="date-fields">
 					 <div class="editor-label">
@@ -60,14 +60,14 @@
 					 </div>
 					 
 					 <div class="submit-field">
-						<%= Html.SubmitButton("submit", "Spara") %>
+						<%= Html.SubmitButton("save", "Spara") %>
 					 </div>
 				</div>  
 		  </div>       
 		  <hr style="clear: both" />
 
 		  <%
-		  if (Model.UserIngredients != null){
+		  if (Model.UserIngredients != null) {
 				%>
 				<table class="">
 					 <tr>
@@ -76,8 +76,7 @@
 					 </tr>
 				<%
 				
-				foreach (var userIngredient in Model.UserIngredients)
-				{
+				foreach (var userIngredient in Model.UserIngredients) {
 					 %>
 					 <tr>
 						  <td><%=userIngredient.Ingredient.Name%></td>

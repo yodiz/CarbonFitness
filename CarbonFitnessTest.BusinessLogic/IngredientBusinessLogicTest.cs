@@ -21,5 +21,6 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 			ingredientsRepositoryMock.Verify();
 		}
+
 	}
 }
