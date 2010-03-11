@@ -12,13 +12,7 @@ using NUnit.Framework;
 
 namespace CarbonFitnessTest.Web.Controller.FoodController {
 	[TestFixture]
-	public class InputTest {
-		private string getErrormessage(CarbonFitness.App.Web.Controllers.FoodController foodController, string key) {
-			ModelState modelState;
-			foodController.ModelState.TryGetValue(key, out modelState);
-			Assert.That(modelState, Is.Not.Null);
-			return modelState.Errors[0].ErrorMessage;
-		}
+	public class InputTest : BaseTestController {
 
 		private Mock<IUserIngredientBusinessLogic> GetSetuppedUserIngredientBusinessLogicMock(MockFactory mockFactory) {
 			var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();

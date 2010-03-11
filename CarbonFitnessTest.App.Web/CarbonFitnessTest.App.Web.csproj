@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AccountController\LogOnTest.cs" />
+    <Compile Include="Controller\BaseTestController.cs" />
     <Compile Include="Controller\FoodController\InputTest.cs" />
     <Compile Include="Controller\HomeController\IndexTest.cs" />
     <Compile Include="Controller\IngredientController\SearchTest.cs" />

@@ -66,6 +66,7 @@
     <Compile Include="Exceptions\IngredientInsertionException.cs" />
     <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
+    <Compile Include="Exceptions\InvalidWeightException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
     <Compile Include="Implementation\UserWeightBusinessLogic.cs" />
     <Compile Include="IngredientImporter\IIngredientFileReader.cs" />

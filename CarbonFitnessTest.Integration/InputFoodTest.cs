@@ -9,9 +9,11 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration {
 	[TestFixture]
 	public class InputFoodTest : IntegrationBaseTest {
-		public InputFoodTest() {}
+		public InputFoodTest() {
+		}
 
-		public InputFoodTest(Browser browser) : base(browser) {}
+		public InputFoodTest(Browser browser) : base(browser) {
+		}
 
 		public override string Url {
 			get { return BaseUrl + "/Food/Input"; }
@@ -27,13 +29,26 @@ namespace CarbonFitnessTest.Integration {
 			accountLogOnTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
 		}
 
+		private string MeasureFieldName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Measure); } }
+		private TextField MeasureTextField { get { return Browser.TextField(Find.ByName(MeasureFieldName)); } }
+
+		private string IngredientFieldName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient); } }
+      private TextField IngredientTextField {
+			get { return Browser.TextField(Find.ByName(IngredientFieldName)); }
+		}
+
+		private string DatePickerName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Date); } }
+		private TextField DatePicker { get { return Browser.TextField(DatePickerName); } }
+
+		private Button SaveButton { get { return Browser.Button(Find.ByValue("Spara")); } }
+
+		private void reloadPage() { Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click(); }
+
+
 		public void addUserIngredient(string ingredientText, string measureText) {
-			var ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
-			var measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
-			Browser.TextField(Find.ByName(ingredient)).TypeText(ingredientText);
-			Browser.TextField(Find.ByName(measure)).TypeText(measureText);
-			//Browser.Image(Find.BySrc(x => x.Contains("save.gif"))).Click();
-			Browser.Button(Find.ByValue("Spara")).Click();//Spara
+			IngredientTextField.TypeText(ingredientText);
+			MeasureTextField.TypeText(measureText);
+			SaveButton.Click();
 		}
 
 		public void createIngredientIfNotExist(string name) {
@@ -44,14 +59,8 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 		public void changeDate(string date) {
-			Browser.TextField(GetDatePickerName()).TypeText(date);
+			DatePicker.TypeText(date);
 		}
-
-
-		private string GetDatePickerName() {
-			return GetFieldNameOnModel<InputFoodModel>(m => m.Date);
-		}
-
 
 		private void getUniqueIngredientAndAddUserIngredient(string ingredientText, string measureText) {
 			createIngredientIfNotExist(ingredientText);
@@ -69,21 +78,17 @@ namespace CarbonFitnessTest.Integration {
 			changeDate("2023-01-01");
 			Assert.That(Browser.ContainsText(FoodConstant.NoIngredientFoundMessage), Is.False, "ValidationSummary message was not expected.");
 		}
-
-
+      
 		[Test]
 		public void shouldEmptyFoodInputAfterSubmit() {
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+			reloadPage();
 
 			getUniqueIngredientAndAddUserIngredient("Pannbiff", "150");
-
-			var ingredient = GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient);
-			var measure = GetFieldNameOnModel<InputFoodModel>(m => m.Measure);
-
-			Assert.That(Browser.TextField(Find.ByName(ingredient)).Text, Is.Null, "Expected that " + ingredient + " was null.");
-			Assert.That(Browser.TextField(Find.ByName(measure)).Text, Is.EqualTo("0"), "Expected that " + measure + " was empty.");
+         
+			Assert.That(IngredientTextField.Text, Is.Null, "Expected that " + IngredientFieldName + " was null.");
+			Assert.That(MeasureTextField.Text, Is.EqualTo("0"), "Expected that " + MeasureFieldName + " was empty.");
 		}
-
+      
 		[Test]
 		public void shouldGoToResultsAfterClickingResults() {
 			Browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
@@ -105,8 +110,7 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldShowDateSelectorOnPage() {
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
-			Assert.That(Browser.TextField(GetDatePickerName()).Exists, "No Textfield with name:" + GetDatePickerName() + " exist on page");
+			Assert.That(DatePicker.Exists, "No Textfield with name:" + DatePickerName + " exist on page");
 		}
 
 		[Test]
@@ -120,7 +124,7 @@ namespace CarbonFitnessTest.Integration {
 			Assert.That(Browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page");
 			Assert.That(Browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page");
 
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+			reloadPage();
 
 			Assert.That(Browser.Text.Contains(ingredient1), Is.True, "Pannbiff doesn't exist on page after navigating away and back");
 			Assert.That(Browser.Text.Contains(ingredient2), Is.True, "Lök doesn't exist on page after navigating away and back");
@@ -128,8 +132,6 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldShowIngredientsForDateOnPage() {
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
-
 			var ingredient1 = "Pannbiff";
 			var ingredient2 = "Ost";
 
@@ -138,8 +140,8 @@ namespace CarbonFitnessTest.Integration {
 			changeDate("2023-01-02");
 
 			getUniqueIngredientAndAddUserIngredient(ingredient2, "150");
-
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+			
+			reloadPage();
 
 			changeDate("2023-01-02");
 
@@ -166,14 +168,11 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldShowTodaysDateInDateSelector() {
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
-
-			Assert.That(Browser.TextField(GetDatePickerName()).Text, Is.EqualTo(DateTime.Today.ToShortDateString()), "Todays date doesn't exist on page");
+			Assert.That(DatePicker.Text, Is.EqualTo(DateTime.Today.ToShortDateString()), "Todays date doesn't exist on page");
 		}
 
 		[Test]
 		public void shouldShowViewAfterNewFoodInput() {
-			Browser.GoTo(Url);
 			var addFoodHeaderExists = Browser.ContainsText(FoodConstant.FoodInputTitle);
 			Assert.That(addFoodHeaderExists);
 		}

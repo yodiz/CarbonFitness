@@ -43,7 +43,7 @@
 					 </div>
 				 </div>
 				
-				<div class="food-input">                
+				<div class="food-input">
 					 <h3><%=FoodConstant.FoodInputTitle%></h3>
 					 <div class="editor-label">
 						  <%= Html.LabelFor(m => m.Ingredient) %>
@@ -62,7 +62,7 @@
 					 <div class="submit-field">
 						<%= Html.SubmitButton("save", "Spara") %>
 					 </div>
-				</div>  
+				</div>
 		  </div>       
 		  <hr style="clear: both" />
 
