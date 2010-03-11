@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<InputWeightModel>" %>
+<%@ Import Namespace="CarbonFitness.App.Web.FusionCharts"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -35,6 +36,15 @@
 				<div class="submit-field">
 					<%= Html.SubmitButton("saveButton", "Spara")%>
 				</div>
+			</div>
+			
+			<div>
+				<%=Html.FusionCharts().Line2D(new[] {1, 2, 3, 4, 5}, 300, 300, d => d)
+					.Caption("Numbers")
+					.SubCaption("(subcaption)")
+					.Label(d => "Label " + d)
+					.Hover(d => "Hover " + d)
+					.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);")%>				
 			</div>
 		 
     <% } %>

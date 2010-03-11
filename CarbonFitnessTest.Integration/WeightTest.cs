@@ -62,6 +62,7 @@ namespace CarbonFitnessTest.Integration {
 			Assert.That(weightInputField.Exists, "No Textfield with name:" + weightInputFieldName + " exist on page");
 		}
 
+		
 		[Test]
 		public void shouldSaveWeight() {
 			var submittedWeight = 80M;
@@ -73,6 +74,7 @@ namespace CarbonFitnessTest.Integration {
 
 			Assert.That(Convert.ToDecimal(weightInputField.Text), Is.EqualTo(submittedWeight));
 		}
+
 
 		[Test]
 		public void shouldShowErrorWhenTryingToSaveZeroAsWeight() {
@@ -104,6 +106,31 @@ namespace CarbonFitnessTest.Integration {
 
 			dateInputField.TypeText(newDate);
 			Assert.That(Convert.ToDecimal(weightInputField.Text), Is.EqualTo(newWeight), "Should be " + newWeight + "kg at: "+ newDate + " date");
+		}
+
+
+		[Test]
+		public void shouldHaveWeightHistory()
+		{
+			const decimal originalWeight = 80M;
+			const string newDate = "2023-10-10";
+			const decimal newWeight = 75M;
+
+			weightInputField.TypeText(originalWeight.ToString());
+			submitButton.Click();
+
+			reloadPage();
+
+			dateInputField.TypeText(newDate);
+			weightInputField.TypeText(newWeight.ToString());
+			submitButton.Click();
+
+			reloadPage();
+
+			var fusionChartOriginalWeightValue = "<set value='" + originalWeight;
+			var fusionChartFutureWeightValue = "<set value='" + newWeight;
+			Assert.That(Browser.Element(Find.ByText(fusionChartOriginalWeightValue)).Exists,"No original weight found in graph");
+			Assert.That(Browser.Element(Find.ByText(fusionChartFutureWeightValue)).Exists, "No new weight found in graph");
 		}
 	}
 }

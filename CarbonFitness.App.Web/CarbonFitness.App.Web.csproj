@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Autofac.Integration.Web.dll</HintPath>
     </Reference>
+    <Reference Include="FusionCharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\FusionCharts.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Microsoft.Web.Mvc.dll</HintPath>
@@ -98,6 +102,11 @@
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeightController.cs" />
+    <Compile Include="FusionCharts\FusionChartLine2DBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartColumn2DBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartPie2DChartBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartsHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -559,6 +568,72 @@
     <Content Include="Content\jquery-ui-1.7.2.custom\index.html" />
     <Content Include="Content\jquery-ui-1.7.2.custom\js\jquery-1.3.2.min.js" />
     <Content Include="Content\save.gif" />
+    <Content Include="FusionCharts\FCF_Area2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Bar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Candlestick.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Column2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Column3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Doughnut2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Funnel.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Gantt.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Line.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSArea2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSBar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSColumn2DLineDY.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSColumn3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSColumn3DLineDY.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_MSLine.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Pie2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_Pie3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_StackedArea2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_StackedBar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_StackedColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCF_StackedColumn3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Content\Logo.png" />
     <Content Include="NHibernate.config" />
