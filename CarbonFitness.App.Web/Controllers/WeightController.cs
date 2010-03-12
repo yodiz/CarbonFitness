@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
+using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web.Controllers {
 	public class WeightController : Controller {
@@ -21,11 +23,14 @@ namespace CarbonFitness.App.Web.Controllers {
 				id = DateTime.Now.Date;
 			}
 
-			var userWeight = userWeightBusinessLogic.GetWeight(userContext.User, id.Value);
-			return View(new InputWeightModel(userWeight));
-		}
+			var userWeight = userWeightBusinessLogic.GetUserWeight(userContext.User, id.Value);
+         var userWeightHistory = userWeightBusinessLogic.GetHistoryList(userContext.User);
 
+			return View(initializeInputWeightModel(id.Value, userWeight, userWeightHistory));
+		}
+      
 		[HttpPost]
+		[Transaction]
 		public ActionResult Input(InputWeightModel inputWeightModel) {
 			UserWeight userWeight = null;
 			try {
@@ -33,8 +38,19 @@ namespace CarbonFitness.App.Web.Controllers {
 			} catch(InvalidWeightException e) {
 				ModelState.AddModelError("Weight", WeightConstant.ZeroWeightErrorMessage);
 			}
+			var userWeightHistory = userWeightBusinessLogic.GetHistoryList(userContext.User);
 
-			return View(new InputWeightModel(userWeight));
+			return View(initializeInputWeightModel(inputWeightModel.Date, userWeight, userWeightHistory));
+		}
+
+		private InputWeightModel initializeInputWeightModel(DateTime date, UserWeight userWeight, IEnumerable<UserWeight> userWeightHistoryList) {
+			var model = new InputWeightModel();
+			if (userWeight != null) {
+				model.Weight = userWeight.Weight;
+			}
+			model.Date = date;
+			model.UserWeightHistoryList = userWeightHistoryList;
+			return model;
 		}
 	}
 }

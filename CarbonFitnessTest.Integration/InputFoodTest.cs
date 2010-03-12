@@ -9,15 +9,11 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration {
 	[TestFixture]
 	public class InputFoodTest : IntegrationBaseTest {
-		public InputFoodTest() {
-		}
+		public InputFoodTest() {}
 
-		public InputFoodTest(Browser browser) : base(browser) {
-		}
+		public InputFoodTest(Browser browser) : base(browser) {}
 
-		public override string Url {
-			get { return BaseUrl + "/Food/Input"; }
-		}
+		public override string Url { get { return BaseUrl + "/Food/Input"; } }
 
 		[TestFixtureSetUp]
 		public override void TestFixtureSetUp() {
@@ -30,19 +26,22 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 		private string MeasureFieldName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Measure); } }
+
 		private TextField MeasureTextField { get { return Browser.TextField(Find.ByName(MeasureFieldName)); } }
 
 		private string IngredientFieldName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Ingredient); } }
-      private TextField IngredientTextField {
-			get { return Browser.TextField(Find.ByName(IngredientFieldName)); }
-		}
+
+		private TextField IngredientTextField { get { return Browser.TextField(Find.ByName(IngredientFieldName)); } }
 
 		private string DatePickerName { get { return GetFieldNameOnModel<InputFoodModel>(m => m.Date); } }
+
 		private TextField DatePicker { get { return Browser.TextField(DatePickerName); } }
 
 		private Button SaveButton { get { return Browser.Button(Find.ByValue("Spara")); } }
 
-		private void reloadPage() { Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click(); }
+		private void reloadPage() {
+			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+		}
 
 
 		public void addUserIngredient(string ingredientText, string measureText) {
@@ -54,7 +53,7 @@ namespace CarbonFitnessTest.Integration {
 		public void createIngredientIfNotExist(string name) {
 			var repository = new IngredientRepository();
 			if (repository.Get(name) == null) {
-				repository.SaveOrUpdate(new Ingredient { Name = name, EnergyInKcal = 100 });
+				repository.SaveOrUpdate(new Ingredient {Name = name, EnergyInKcal = 100});
 			}
 		}
 
@@ -78,17 +77,17 @@ namespace CarbonFitnessTest.Integration {
 			changeDate("2023-01-01");
 			Assert.That(Browser.ContainsText(FoodConstant.NoIngredientFoundMessage), Is.False, "ValidationSummary message was not expected.");
 		}
-      
+
 		[Test]
 		public void shouldEmptyFoodInputAfterSubmit() {
 			reloadPage();
 
 			getUniqueIngredientAndAddUserIngredient("Pannbiff", "150");
-         
+
 			Assert.That(IngredientTextField.Text, Is.Null, "Expected that " + IngredientFieldName + " was null.");
 			Assert.That(MeasureTextField.Text, Is.EqualTo("0"), "Expected that " + MeasureFieldName + " was empty.");
 		}
-      
+
 		[Test]
 		public void shouldGoToResultsAfterClickingResults() {
 			Browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
@@ -140,7 +139,7 @@ namespace CarbonFitnessTest.Integration {
 			changeDate("2023-01-02");
 
 			getUniqueIngredientAndAddUserIngredient(ingredient2, "150");
-			
+
 			reloadPage();
 
 			changeDate("2023-01-02");

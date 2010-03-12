@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
@@ -38,9 +39,9 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 		[Test] 
 		public void shouldGetWeight() {
-			userWeightRepositoryMock.Setup(x => x.FindUserWeightByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
+			userWeightRepositoryMock.Setup(x => x.FindByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
 
-			var fetchedUserWeight = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).GetWeight(expectedUserWeight.User, expectedUserWeight.Date);
+			var fetchedUserWeight = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).GetUserWeight(expectedUserWeight.User, expectedUserWeight.Date);
 
 			Assert.That(ReferenceEquals(fetchedUserWeight, expectedUserWeight));	
 			userWeightRepositoryMock.VerifyAll();
@@ -52,7 +53,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var userWeightId = 62;
 			expectedUserWeightMock.Setup(x => x.Id).Returns(userWeightId);
 
-			userWeightRepositoryMock.Setup(x => x.FindUserWeightByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
+			userWeightRepositoryMock.Setup(x => x.FindByDate(expectedUserWeight.User, expectedUserWeight.Date)).Returns(expectedUserWeight);
 
 			var newWeight = 75M;
 			userWeightRepositoryMock.Setup(z => z.SaveOrUpdate(It.Is<UserWeight>(x => x.Weight == newWeight && x.Id == userWeightId))).Returns(expectedUserWeight);
@@ -66,6 +67,17 @@ namespace CarbonFitnessTest.BusinessLogic {
 		[Test]
 		public void shouldThrowErrorIfTryingToSaveZeroInWeight() {
 			Assert.Throws<InvalidWeightException>(() => new UserWeightBusinessLogic(userWeightRepositoryMock.Object).SaveWeight(expectedUserWeight.User, 0, expectedUserWeight.Date));
+		}
+
+		[Test]
+		public void shouldGetUserWeightHistoryForUser() {
+			var originalUserWeightHistory = new List<UserWeight> {new UserWeight(), new UserWeight()};
+			userWeightRepositoryMock.Setup(x => x.GetHistoryList(It.Is<User>(y => y.Username == expectedUserWeightMock.Object.User.Username))).Returns(originalUserWeightHistory);
+
+			var returnedUserWeightHistory = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).GetHistoryList(expectedUserWeightMock.Object.User);
+
+			Assert.That(ReferenceEquals(returnedUserWeightHistory, originalUserWeightHistory));
+			userWeightRepositoryMock.VerifyAll();
 		}
 
 	}

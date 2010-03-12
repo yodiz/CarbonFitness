@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<InputWeightModel>" %>
+<%@ Import Namespace="CarbonFitness.Data.Model"%>
 <%@ Import Namespace="CarbonFitness.App.Web.FusionCharts"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -39,11 +40,13 @@
 			</div>
 			
 			<div>
-				<%=Html.FusionCharts().Line2D(new[] {1, 2, 3, 4, 5}, 300, 300, d => d)
-					.Caption("Numbers")
-					.SubCaption("(subcaption)")
-					.Label(d => "Label " + d)
-					.Hover(d => "Hover " + d)
+				<%=Html.FusionCharts()
+					.Line2D(Model.UserWeightHistoryList, 900, 300, d => Convert.ToDouble(d.Weight))
+					.Caption("Vikt historik")
+					.SubCaption("(kg)")
+					.Label(d => d.Date.ToShortDateString())
+					.DecimalPrecision(1)				
+					//.Hover(d => d.Weight + " kg")
 					.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);")%>				
 			</div>
 		 

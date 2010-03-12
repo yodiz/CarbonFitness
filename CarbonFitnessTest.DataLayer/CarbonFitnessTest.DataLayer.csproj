@@ -100,6 +100,10 @@
       <Project>{6F4E5A58-7F62-4EAC-9C4C-7CF9CEE5F357}</Project>
       <Name>CarbonFitness.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarbonFitnessTest.Util\CarbonFitnessTest.Util.csproj">
+      <Project>{E2991850-8B99-4364-9A8D-76A672B8EEF3}</Project>
+      <Name>CarbonFitnessTest.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

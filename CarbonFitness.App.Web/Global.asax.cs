@@ -16,7 +16,7 @@ namespace CarbonFitness.App.Web {
 		/// Private, static object used only for synchronization
 		/// </summary>
 		private static readonly object lockObject = new object();
-
+      
 		private static IContainerProvider containerProvider;
 
 		private static bool wasNHibernateInitialized;
