@@ -68,7 +68,7 @@ div#page-header
 	div#page-header div.login-menu
 	{
 		position: absolute;
-		top: 30px;
+		top: 50px;
 		right: 40px;
 	}
 	div#page-header div.title
@@ -88,9 +88,14 @@ div#page-header
 		margin: 0 0 0 4px;
 		padding: 4px 10px;
 		background-color: #293a7c;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;
 		color: #fff;
 		font-weight: bold;
-		font-size: 1.2em;
+		font-size: 1em;
+		text-transform: uppercase;
+		text-decoration: none;
 	}
 
 
