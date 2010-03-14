@@ -19,7 +19,8 @@
 <body>
 <div id="page">
 	
-	<div id="page-header">
+	<div id="page-header" class="main-container">
+		<div class="main-container-top"></div>
 		
 		<div class="title">
 			<img src="../../Content/Logo.png" alt="" />
@@ -41,10 +42,15 @@
 			</ul>
 		</div>
 		
+		<div class="main-container-bottom"></div>
 	</div>
 	
-	<div id="page-main">
+	<div id="page-main" class="main-container">
+		<div class="main-container-top"></div>
+		
 		<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+		
+		<div class="main-container-bottom"></div>
 	</div>
 	
 	<div id="page-footer">
