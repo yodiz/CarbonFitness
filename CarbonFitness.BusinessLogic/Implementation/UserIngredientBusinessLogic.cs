@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.SqlTypes;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
@@ -31,7 +32,28 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			var fromdate = DateTime.Parse(dateTime.ToShortDateString());
 			var todate = DateTime.Parse(dateTime.AddDays(1).Date.ToShortDateString());
 
-			return userIngredientRepository.GetUserIngredientsFromUserId(user.Id, fromdate, todate);
+			return userIngredientRepository.GetUserIngredientsByUser(user.Id, fromdate, todate);
+		}
+
+		public IDictionary<DateTime, double> GetCalorieHistory(User user) {
+			var date = DateTime.Now.Date;
+			var userIngredients = userIngredientRepository.GetUserIngredientsByUser(user.Id, date.AddMonths(-3), date.AddDays(1));
+
+			var history = new Dictionary<DateTime, double>();
+
+			foreach (var ingredient in userIngredients) {
+				var ingredientDate = ingredient.Date.Date;
+				var ingredientCalories = (double) ingredient.Ingredient.EnergyInKcal;
+
+				if (history.ContainsKey(ingredientDate)) {
+					history[ingredientDate] += ingredientCalories;
+				}
+				else {
+					history.Add(ingredientDate, ingredientCalories);
+				}
+			}
+
+			return history;
 		}
 
 		private Ingredient GetExistingIngredient(string ingredientName) {

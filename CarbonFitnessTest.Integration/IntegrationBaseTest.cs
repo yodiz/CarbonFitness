@@ -32,7 +32,7 @@ namespace CarbonFitnessTest.Integration {
 			string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
 			NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
 				new AutoPersistenceModelGenerator().Generate(),
-				"../../../CarbonFitness.App.Web/NHibernate.config");
+				"../../../CarbonFitness.App.Web/bin/NHibernate.config");
 			if (Browser == null) {
 				Browser = new IE(Url);
 			}

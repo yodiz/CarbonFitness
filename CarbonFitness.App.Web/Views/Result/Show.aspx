@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ResultModel>" %>
+<%@ Import Namespace="CarbonFitness.App.Web.FusionCharts"%>
 <%@ Import Namespace="CarbonFitness.App.Web.ViewConstants"%>
 <%@ Import Namespace="CarbonFitness.App.Web.Models"%>
 
@@ -33,8 +34,16 @@
         <div class="editor-label" id="SumOfCalories">
             <%= Html.DisplayTextFor(m => m.SumOfCalories) %>
         </div> 
-    <%
-    }
-    %>  
+    <% } %> 
+    
+    <div>
+		<%=Html.FusionCharts()
+			.Line2D(Model.CalorieHistoryList, 860, 300, d => Convert.ToDouble(d.Value))
+			.Caption("Kalori historik")
+			.SubCaption("(kcal)")
+			.Label(d => d.Key.ToShortDateString())
+			.DecimalPrecision(0)
+			.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);")%>				
+	</div>
 
 </asp:Content>

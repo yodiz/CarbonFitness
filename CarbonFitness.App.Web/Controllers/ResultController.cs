@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 
@@ -14,14 +13,17 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
 		public ActionResult Show() {
-			return View();
-		}
-
-		[HttpPost]
-		public ActionResult Show(ResultModel model) {
-			var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date);
-			model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.EnergyInKcal).ToString();
+			var model = new ResultModel();
+			model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 			return View(model);
 		}
+
+		//[HttpPost]
+		//public ActionResult Show(ResultModel model) {
+		//   //var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date);
+		//   //model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.EnergyInKcal).ToString();
+		//   model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+		//   return View(model);
+		//}
 	}
 }

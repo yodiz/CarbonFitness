@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using CarbonFitness.App.Web.Models;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
+using CarbonFitnessTest.Util;
 using NUnit.Framework;
+using SharpArch.Data.NHibernate;
 using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
@@ -13,45 +17,64 @@ namespace CarbonFitnessTest.Integration {
 			base.TestFixtureSetUp();
 			userId = new CreateUserTest(Browser).getUniqueUserId();
 			new AccountLogOnTest(Browser).LogOn(CreateUserTest.UserName, CreateUserTest.Password);
+
+			clearUserIngredients();
+			setupUserIngredients(now.ToString());
 		}
 
-		private void setupUserIngredients() {
+		private void setupUserIngredients(string date) {
 			var inputFoodTest = new InputFoodTest(Browser);
 
-			inputFoodTest.changeDate(testDate);
-			inputFoodTest.createIngredientIfNotExist("Pannbiff");
-			inputFoodTest.addUserIngredient("Pannbiff", "100");
-
-			Browser.GoTo(Url);
+			inputFoodTest.changeDate(date);
+			inputFoodTest.createIngredientIfNotExist("Arne anka");
+			inputFoodTest.addUserIngredient("Arne anka", "100");
 		}
 
 		private int userId;
 		private TextField dateField { get { return Browser.TextField(GetFieldNameOnModel<ResultModel>(m => m.Date)); } }
-		private const string testDate = "2008-02-22";
+		private DateTime testDate = ValueGenerator.getRandomDate();
 
 		public override string Url { get { return BaseUrl + "/Result/Show"; } }
+		DateTime now = DateTime.Now.Date;
+		private Element caloriHistoryFusionGraphElement { get { return Browser.Element(Find.By("classid", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000")); } }
 
 		[Test]
-		public void shouldShowSumOfCaloriesForADay() {
-			setupUserIngredients();
-			dateField.TypeText(testDate);
+		public void shouldHaveCalorieHistory() {
+			reloadPage();
 
-			var sumOfCalories = GetFieldNameOnModel<ResultModel>(m => m.SumOfCalories);
-			var result = Browser.Div(sumOfCalories).Text.Trim();
-
-			var d = DateTime.Parse(testDate);
-
-			var userIngredients = new UserIngredientRepository().GetUserIngredientsFromUserId(userId, d, d.AddDays(1));
+			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now.AddDays(1));
 			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal);
+			
+			var fusionChartSumOfCalorieValue = "<set value='" + ((int)sum);
 
-			Assert.That(result, Is.Not.Empty);
-			Assert.That(decimal.Parse(result), Is.GreaterThan(0));
-			Assert.That(decimal.Parse(result), Is.EqualTo(sum));
+			Assert.That(caloriHistoryFusionGraphElement.InnerHtml.Contains(fusionChartSumOfCalorieValue), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
+		}
+
+		private void reloadPage() {
+			Browser.GoTo(Url + "?e=" + Guid.NewGuid());
 		}
 
 		[Test]
-		public void shouldShowTodaysDateInDateField() {
-			Assert.That(dateField.Text, Is.EqualTo(DateTime.Now.ToShortDateString()));
+		public void shouldHaveCalorieHistoryInDataPoints() {
+			setupUserIngredients(now.AddDays(-2).ToString());
+			reloadPage();
+			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now.AddDays(1));
+			
+			var fusionChartSumOfCalorieValue = "<set value='";
+
+			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new [] {fusionChartSumOfCalorieValue}, StringSplitOptions.None);
+			Assert.That(matches.Length, Is.EqualTo(3 + 1), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
+
+		}
+
+		private void clearUserIngredients() {
+			var repository = new UserIngredientRepository();
+			var userIngredients = new UserIngredientRepository().GetAll();
+			foreach (UserIngredient userIngredient in userIngredients) {
+				repository.Delete(userIngredient);
+				
+			}
+			NHibernateSession.Current.Flush();
 		}
 	}
 }

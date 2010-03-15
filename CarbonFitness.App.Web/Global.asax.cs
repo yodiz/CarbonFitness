@@ -17,7 +17,7 @@ namespace CarbonFitness.App.Web {
 		/// </summary>
 		private static readonly object lockObject = new object();
 
-		private static IContainerProvider containerProvider;
+      private static IContainerProvider containerProvider;
 
 		private static bool wasNHibernateInitialized;
 
@@ -33,7 +33,7 @@ namespace CarbonFitness.App.Web {
 				);
 		}
 
-		/// <summary>
+      /// <summary>
 		/// Due to issues on IIS7, the NHibernate initialization must occur in Init().
 		/// But Init() may be invoked more than once; accordingly, we introduce a thread-safe
 		/// mechanism to ensure it's only initialized once.

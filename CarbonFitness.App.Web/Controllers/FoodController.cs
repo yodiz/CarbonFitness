@@ -6,6 +6,7 @@ using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
+using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web.Controllers {
 	public class FoodController : Controller {
@@ -18,6 +19,7 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
 		[HttpPost]
+		[Transaction]
 		//When pressing submit, trying to add an ingredient to user
 		public ActionResult Input(InputFoodModel model) {
 			if (!string.IsNullOrEmpty(model.Ingredient) && model.Measure > 0) {
@@ -52,6 +54,7 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
 		//First time when coming to the "kost" page
+		[Transaction]
 		public ActionResult Input() {
 			var inputFoodModel = new InputFoodModel {UserIngredients = getUserIngredients(DateTime.Now), Date = DateTime.Now};
 
