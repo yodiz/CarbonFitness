@@ -41,7 +41,7 @@
 			
 			<div>
 				<%=Html.FusionCharts()
-					.Line2D(Model.UserWeightHistoryList, 900, 300, d => Convert.ToDouble(d.Weight))
+					.Line2D(Model.UserWeightHistoryList, 860, 300, d => Convert.ToDouble(d.Weight))
 					.Caption("Vikt historik")
 					.SubCaption("(kg)")
 					.Label(d => d.Date.ToShortDateString())

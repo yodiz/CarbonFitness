@@ -16,14 +16,12 @@ namespace CarbonFitness.App.Web {
 		/// Private, static object used only for synchronization
 		/// </summary>
 		private static readonly object lockObject = new object();
-      
+
 		private static IContainerProvider containerProvider;
 
 		private static bool wasNHibernateInitialized;
 
-		public IContainerProvider ContainerProvider {
-			get { return containerProvider; }
-		}
+		public IContainerProvider ContainerProvider { get { return containerProvider; } }
 
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -49,8 +47,8 @@ namespace CarbonFitness.App.Web {
 			if (!wasNHibernateInitialized) {
 				lock (lockObject) {
 					if (!wasNHibernateInitialized) {
-						var nHibernateConfig = Server.MapPath("~/NHibernate.config");
-						new Bootstrapper(nHibernateConfig).InitDatalayer(new WebSessionStorage(this));
+						var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
+						new Bootstrapper(nhibernateConfig).InitDatalayer(new WebSessionStorage(this));
 
 						wasNHibernateInitialized = true;
 					}
