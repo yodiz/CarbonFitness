@@ -316,7 +316,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 
 			foreach (T item in Data)
 			{
-				xml.AppendFormat("<set value='{0}' color='{1}'", mValueExtractor(item), GetNextColor());
+				xml.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "<set value='{0}' color='{1}'", mValueExtractor(item), GetNextColor());
 
 				if (mLabeler != null)
 				{
