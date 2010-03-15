@@ -51,6 +51,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\SharpArch.Core.dll</HintPath>
@@ -95,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EnergyController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
@@ -112,7 +116,7 @@
     </Compile>
     <Compile Include="IUserContext.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\EnergyModel.cs" />
+    <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\InputFoodModel.cs" />
     <Compile Include="Models\InputWeightModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
@@ -639,7 +643,7 @@
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Content\Logo.png" />
     <Content Include="Scripts\jquery.autocomplete.js" />
-    <Content Include="Views\Energy\Input.aspx" />
+    <Content Include="Views\Profile\Input.aspx" />
     <Content Include="Views\Food\Input.aspx" />
     <Content Include="Views\Ingredient\Search.aspx" />
     <Content Include="Views\Result\Show.aspx" />

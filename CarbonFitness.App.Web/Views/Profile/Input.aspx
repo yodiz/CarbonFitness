@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EnergyModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ProfileModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server"></asp:Content>
 
@@ -15,6 +15,18 @@
 	    </div>
 	    <div class="editor-field">
 		    <%= Html.EditorFor(m => m.Length)%>
+        </div>
+        
+        
+        <div class="editor-label">
+		  <%= Html.LabelFor(m => m.IdealWeight)%>
+	    </div>
+	    <div class="editor-field">
+		    <%= Html.EditorFor(m => m.IdealWeight)%>
+        </div>
+        
+        <div>
+            <input type="submit" value="Spara" />
         </div>
 	</div>
 
