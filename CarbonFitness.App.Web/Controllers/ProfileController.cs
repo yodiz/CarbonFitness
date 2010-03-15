@@ -17,7 +17,7 @@ namespace CarbonFitness.App.Web.Controllers {
         [Authorize]
 		public ActionResult Input(){
             var profileModel = new Models.ProfileModel();
-            profileModel.IdealWeight = UserContext.User.Profile.IdealWeight;
+            profileModel.IdealWeight = UserContext.User.IdealWeight;
 
             return View(profileModel);
 		}
@@ -27,7 +27,7 @@ namespace CarbonFitness.App.Web.Controllers {
         [HttpPost]
         public ActionResult Input(Models.ProfileModel profileModel)
         {
-            UserContext.User.Profile.IdealWeight = profileModel.IdealWeight;
+            UserContext.User.IdealWeight = profileModel.IdealWeight;
 
             UserBusinessLogic.SaveOrUpdate(UserContext.User);
 

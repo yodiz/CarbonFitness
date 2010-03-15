@@ -3,7 +3,7 @@
 namespace CarbonFitness.Data.Model {
 	public class User : Entity {
 		public User() {
-			Profile = new UserProfile();
+		    
 		}
 
 		public User(string username) {
@@ -17,11 +17,8 @@ namespace CarbonFitness.Data.Model {
 		public virtual string Password { get; set; }
 
 		public virtual string Username { get; set; }
-
-		public virtual UserProfile Profile { get; set; }
+        public virtual decimal IdealWeight { get; set; }
 	}
 
-	public class UserProfile {
-		public decimal IdealWeight { get; set; }
-	}
+
 }
