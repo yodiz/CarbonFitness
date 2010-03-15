@@ -6,6 +6,18 @@
 
     <h1><%=EnergyConstant.EnergyInputTitle%></h1>
     
-    <%= Html.EditorFor(m => m.Length) %>
+    
+	<div class="energy-input">
+	    <h3><%=EnergyConstant.EnergyInputTitle%></h3>
+	    
+	    <div class="editor-label">
+		  <%= Html.LabelFor(m => m.Length)%>
+	    </div>
+	    <div class="editor-field">
+		    <%= Html.EditorFor(m => m.Length)%>
+        </div>
+	</div>
+
+
 
 </asp:Content>
