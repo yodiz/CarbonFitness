@@ -32,7 +32,7 @@
 		
 		<div class="page-menu">
 			<ul class="flat">
-				<li><%= Html.ActionLink<EnergyController>(c => c.Input(), SiteMasterConstant.EnergyInputLinkText)%></li>
+				<li><%= Html.ActionLink<ProfileController>(c => c.Input(), SiteMasterConstant.EnergyInputLinkText)%></li>
 				<li><%= Html.ActionLink<WeightController>(c => c.Input(null as DateTime?), SiteMasterConstant.WeightLinkText)%></li>
 				<li><%= Html.ActionLink<FoodController>(c => c.Input(), SiteMasterConstant.FoodInputLinkText)%></li>
 				<li><%= Html.ActionLink("Träning", "Index", "Exercise")%></li>
