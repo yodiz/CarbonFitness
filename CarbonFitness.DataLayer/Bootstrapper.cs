@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using CarbonFitness.Data.Model;
@@ -13,18 +14,25 @@ namespace CarbonFitness.DataLayer {
 			var assembly = Assembly.GetAssembly(typeof(User));
 			var mappingAssembly = assembly.CodeBase.ToLower();
 
-			NHibernateSession.Init(sessionStorage,
-				new[] {mappingAssembly},
-				new AutoPersistenceModelGenerator().Generate(),
-				nHibernateConfig);
+
+			try {
+				NHibernateSession.Init(sessionStorage,
+					new[] {mappingAssembly},
+					new AutoPersistenceModelGenerator().Generate(),
+					nHibernateConfig);
+			} catch (Exception ex) {
+				Console.WriteLine(ex.ToString());
+				throw;
+			}
 		}
 
 		public void ExportDatabaseSchema(string nHibernateConfig) {
 			var cfg = generateConfiguration(nHibernateConfig);
 
 			var export = new SchemaExport(cfg);
-			TextWriter output = new StringWriter(new StringBuilder());
-			export.Execute(true, true, false, true, NHibernateSession.Current.Connection, output);
+			//TextWriter output = new StringWriter(new StringBuilder());
+			export.Execute(true, true, false);
+			//export.Execute(true, true, false, true, NHibernateSession.Current.Connection, output);
 		}
 
 		//public void UpdateDatabaseSchema(string nHibernateConfig) {

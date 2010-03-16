@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Autofac.Integration.Web, Version=2.1.9.747, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Autofac.Integration.Web.dll</HintPath>
+      <HintPath>..\Dependencies\Autofac\Autofac.Integration.Web.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

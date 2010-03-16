@@ -23,7 +23,7 @@
 		<div class="main-container-top"></div>
 		
 		<div class="title">
-			<img src="../../Content/Logo.png" alt="" />
+			<%= Html.Image("~/Content/Logo.png")%>
 		</div>
 		
 		<div class="login-menu">

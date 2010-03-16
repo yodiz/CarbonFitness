@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -33,6 +34,7 @@ namespace CarbonFitness.App.Web {
 				);
 		}
 
+		private WebSessionStorage webSessionStorage;
       /// <summary>
 		/// Due to issues on IIS7, the NHibernate initialization must occur in Init().
 		/// But Init() may be invoked more than once; accordingly, we introduce a thread-safe
@@ -43,17 +45,30 @@ namespace CarbonFitness.App.Web {
 		public override void Init() {
 			base.Init();
 
-			// Only allow the NHibernate session to be initialized once
-			if (!wasNHibernateInitialized) {
-				lock (lockObject) {
-					if (!wasNHibernateInitialized) {
-						var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
-						new Bootstrapper(nhibernateConfig).InitDatalayer(new WebSessionStorage(this));
+			webSessionStorage = new WebSessionStorage(this);
 
-						wasNHibernateInitialized = true;
-					}
-				}
-			}
+
+			//// Only allow the NHibernate session to be initialized once			
+			//if (!wasNHibernateInitialized) {
+			//   lock (lockObject) {
+			//      if (!wasNHibernateInitialized) {
+
+
+			//         wasNHibernateInitialized = true;
+			//      }
+			//   }
+			//}
+		}
+
+
+		protected void Application_BeginRequest(object sender, EventArgs e)
+		{
+			SharpArch.Data.NHibernate.NHibernateInitializer.Instance().InitializeNHibernateOnce(() =>
+			{
+				var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
+				new Bootstrapper(nhibernateConfig).InitDatalayer(webSessionStorage);
+			});
+
 		}
 
 		protected void Application_Start() {

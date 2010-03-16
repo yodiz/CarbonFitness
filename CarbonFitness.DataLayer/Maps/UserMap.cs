@@ -1,11 +1,15 @@
-﻿using CarbonFitness.Data.Model;
-using FluentNHibernate.AutoMap;
-using FluentNHibernate.AutoMap.Alterations;
+﻿using System;
+using CarbonFitness.Data.Model;
+using FluentNHibernate.Automapping;
+using FluentNHibernate.Automapping.Alterations;
 
-namespace CarbonFitness.DataLayer.Maps {
-	internal class UserMap : IAutoMappingOverride<User> {
-		public void Override(AutoMap<User> mapping) {
-			mapping.SetAttribute("lazy", "false");
+namespace CarbonFitness.DataLayer.Maps
+{
+	public class UserMap : IAutoMappingOverride<User>
+	{
+		public void Override(AutoMapping<User> map)
+		{
+			map.Map(u => u.Username).UniqueKey("IX_Unique_UserName");
 		}
 	}
 }

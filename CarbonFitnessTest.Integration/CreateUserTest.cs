@@ -21,7 +21,7 @@ namespace CarbonFitnessTest.Integration {
 
 		public int getUniqueUserId() {
 			var u = new UserRepository().Get(UserName);
-			return u == null ? createUser(UserName) : u.Id;
+			return u == null ? createUser(UserName) : u.Id ;
 		}
 
 		private int createUser(string userName) {

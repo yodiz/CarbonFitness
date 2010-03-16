@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Web.Mvc;
+using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Maps;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
@@ -29,8 +31,12 @@ namespace CarbonFitnessTest.Integration {
 
 		[TestFixtureSetUp]
 		public virtual void TestFixtureSetUp() {
-			string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
-			NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
+			
+			//string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+			var assembly = Assembly.GetAssembly(typeof(User));
+			var mappingAssembly = assembly.CodeBase.ToLower();
+
+			NHibernateSession.Init(new SimpleSessionStorage(), new [] { mappingAssembly },
 				new AutoPersistenceModelGenerator().Generate(),
 				"../../../CarbonFitness.App.Web/bin/NHibernate.config");
 			if (Browser == null) {

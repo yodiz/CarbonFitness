@@ -1,9 +1,9 @@
-﻿using SharpArch.Core.DomainModel;
+﻿
+using SharpArch.Core.DomainModel;
 
 namespace CarbonFitness.Data.Model {
 	public class User : Entity {
 		public User() {
-		    
 		}
 
 		public User(string username) {
