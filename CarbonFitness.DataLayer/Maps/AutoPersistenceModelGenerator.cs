@@ -18,6 +18,7 @@ namespace CarbonFitness.DataLayer.Maps {
 				.AddEntityAssembly(Assembly.GetAssembly(typeof(User)))
 				.Where(GetAutoMappingFilter)
 				.Conventions.Add(
+					
 					//PrimaryKey.Name.Is(x=> PrimaryKey.Name+"Id")
 				)
 				.UseOverridesFromAssemblyOf<UserMap>();

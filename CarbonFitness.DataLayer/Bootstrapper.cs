@@ -13,8 +13,6 @@ namespace CarbonFitness.DataLayer {
 		public void InitNhibernateSession(ISessionStorage sessionStorage, string nHibernateConfig) {
 			var assembly = Assembly.GetAssembly(typeof(User));
 			var mappingAssembly = assembly.CodeBase.ToLower();
-
-
 			try {
 				NHibernateSession.Init(sessionStorage,
 					new[] {mappingAssembly},
@@ -30,9 +28,9 @@ namespace CarbonFitness.DataLayer {
 			var cfg = generateConfiguration(nHibernateConfig);
 
 			var export = new SchemaExport(cfg);
-			//TextWriter output = new StringWriter(new StringBuilder());
-			export.Execute(true, true, false);
-			//export.Execute(true, true, false, true, NHibernateSession.Current.Connection, output);
+			TextWriter output = new StringWriter(new StringBuilder());
+			//export.Execute(true, true, false);
+			export.Execute(true, true, false, NHibernateSession.Current.Connection, output);
 		}
 
 		//public void UpdateDatabaseSchema(string nHibernateConfig) {

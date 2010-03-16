@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<InputWeightModel>" %>
 <%@ Import Namespace="CarbonFitness.Data.Model"%>
 <%@ Import Namespace="CarbonFitness.App.Web.FusionCharts"%>
+<%@ Import Namespace="MvcContrib"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -11,7 +12,7 @@
 			$("#<%=Html.IdFor(m => m.Date) %>").datepicker({ dateFormat: 'yy-mm-dd' });
 			$("#<%=Html.IdFor(m => m.Date) %>").change(function() {
 				var date = $("#<%=Html.IdFor(m => m.Date) %>").attr("value");
-				window.location = '/Weight/Input/' + date;
+				window.location = '<%=Url.Action<WeightController>(c => c.Input(null as DateTime?))%>' + '/' + date;
 			});
 		});
 	</script>

@@ -31,6 +31,7 @@ namespace CarbonFitnessTest.DataLayer.Repository {
 
 			var ingredient = repository.Get("pannbiff");
 
+			Assert.That(ingredient, Is.Not.Null);
 			Assert.That(ingredient.Name, Is.EqualTo("Pannbiff"));
 		}
 

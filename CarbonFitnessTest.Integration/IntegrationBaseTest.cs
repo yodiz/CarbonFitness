@@ -11,7 +11,7 @@ using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-		protected string BaseUrl = "http://localhost:49639";
+		protected string BaseUrl = "http://localhost/Carbonfitness";
 		protected Browser Browser;
 
 		protected IntegrationBaseTest() {}
@@ -32,13 +32,19 @@ namespace CarbonFitnessTest.Integration {
 		[TestFixtureSetUp]
 		public virtual void TestFixtureSetUp() {
 			
-			//string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+			//NHibernateInitializer.Instance().InitializeNHibernateOnce(() => {
+
+			//});
+
 			var assembly = Assembly.GetAssembly(typeof(User));
 			var mappingAssembly = assembly.CodeBase.ToLower();
 
-			NHibernateSession.Init(new SimpleSessionStorage(), new [] { mappingAssembly },
+			NHibernateSession.Init(new SimpleSessionStorage(), new[] { mappingAssembly },
 				new AutoPersistenceModelGenerator().Generate(),
-				"../../../CarbonFitness.App.Web/bin/NHibernate.config");
+				"../../../CarbonFitness.App.Web/bin/NHibernate.config");			
+
+			//string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+
 			if (Browser == null) {
 				Browser = new IE(Url);
 			}
@@ -46,6 +52,8 @@ namespace CarbonFitnessTest.Integration {
 
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
+
+			NHibernateSession.Reset();
 			Browser.Dispose();
 		}
 
