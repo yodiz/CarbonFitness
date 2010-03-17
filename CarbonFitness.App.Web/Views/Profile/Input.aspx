@@ -10,6 +10,9 @@
 	<div class="energy-input">
 	    <h3><%=EnergyConstant.EnergyInputTitle%></h3>
 	    
+	    <% using (var form = Html.BeginForm())
+        { %>
+	    
 	    <div class="editor-label">
 		  <%= Html.LabelFor(m => m.Length)%>
 	    </div>
@@ -28,6 +31,8 @@
         <div>
             <input type="submit" value="Spara" />
         </div>
+        
+        <% } %>
 	</div>
 
 

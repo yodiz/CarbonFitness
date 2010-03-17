@@ -6,12 +6,11 @@ using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Maps;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
-using SharpArch.Testing.NUnit.NHibernate;
 using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-		protected string BaseUrl = "http://localhost/Carbonfitness";
+		protected string BaseUrl = "http://localhost/carbonfitness";
 		protected Browser Browser;
 
 		protected IntegrationBaseTest() {}
@@ -31,7 +30,6 @@ namespace CarbonFitnessTest.Integration {
 
 		[TestFixtureSetUp]
 		public virtual void TestFixtureSetUp() {
-			
 			//NHibernateInitializer.Instance().InitializeNHibernateOnce(() => {
 
 			//});
@@ -39,9 +37,9 @@ namespace CarbonFitnessTest.Integration {
 			var assembly = Assembly.GetAssembly(typeof(User));
 			var mappingAssembly = assembly.CodeBase.ToLower();
 
-			NHibernateSession.Init(new SimpleSessionStorage(), new[] { mappingAssembly },
+			NHibernateSession.Init(new SimpleSessionStorage(), new[] {mappingAssembly},
 				new AutoPersistenceModelGenerator().Generate(),
-				"../../../CarbonFitness.App.Web/bin/NHibernate.config");			
+				"../../../CarbonFitness.App.Web/bin/NHibernate.config");
 
 			//string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
 
@@ -52,7 +50,6 @@ namespace CarbonFitnessTest.Integration {
 
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
-
 			NHibernateSession.Reset();
 			Browser.Dispose();
 		}
@@ -61,18 +58,15 @@ namespace CarbonFitnessTest.Integration {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}
 
-		public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression)
-		{
+		public string GetFieldNameOnModel<T>(Expression<Func<T, int>> lambdaExpression) {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}
 
-		public string GetFieldNameOnModel<T>(Expression<Func<T, DateTime>> lambdaExpression)
-		{
+		public string GetFieldNameOnModel<T>(Expression<Func<T, DateTime>> lambdaExpression) {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}
 
-		public string GetFieldNameOnModel<T>(Expression<Func<T, decimal>> lambdaExpression)
-		{
+		public string GetFieldNameOnModel<T>(Expression<Func<T, decimal>> lambdaExpression) {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}
 	}

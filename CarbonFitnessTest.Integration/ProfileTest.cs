@@ -31,10 +31,12 @@ namespace CarbonFitnessTest.Integration {
 
         [Test]
         public void shouldSaveIdealWeightSetting() {
-            IdealWeightInputField.TypeText("75");
+            decimal weight = 75;
+
+            IdealWeightInputField.TypeText(weight.ToString());
             SaveButton.Click();
             reloadPage();
-            Assert.That(IdealWeightInputField.Text, Is.EqualTo("75"));
+            Assert.That(decimal.Parse(IdealWeightInputField.Text), Is.EqualTo(weight));
         }
 
 	    private void reloadPage() {

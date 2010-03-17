@@ -71,5 +71,19 @@ namespace CarbonFitnessTest.Integration {
 			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {fusionChartSumOfCalorieValue}, StringSplitOptions.None);
 			Assert.That(matches.Length, Is.EqualTo(3 + 1), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
 		}
+
+
+        [Test]
+        public void shouldShowLoggedInUsersIdealWeight()
+        {
+            var userProfileRepository = new UserProfileRepository();
+
+            var userProfile = userProfileRepository.GetByUserId(userId);
+            var userIdealWeight = userProfile.IdealWeight;
+
+            var idealWeightString = userIdealWeight.ToString("N2") + "kg";
+            Assert.That(this.Browser.ContainsText(idealWeightString), "Page did not contain: " + idealWeightString);
+
+        }
 	}
 }

@@ -7,5 +7,7 @@ namespace CarbonFitness.App.Web.Models {
 		public string SumOfCalories { get; set; }
 		public DateTime Date { get; set; }
 		public IHistoryValues CalorieHistoryList { get; set; }
+
+        public Decimal IdealWeight { get; set; }
 	}
 }
