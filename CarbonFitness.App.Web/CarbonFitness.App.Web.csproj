@@ -140,7 +140,7 @@
     <Compile Include="UserContext.cs" />
     <Compile Include="ViewConstants\AccountConstant.cs" />
     <Compile Include="ViewConstants\WeightConstant.cs" />
-    <Compile Include="ViewConstants\EnergyConstant.cs" />
+    <Compile Include="ViewConstants\ProfileConstant.cs" />
     <Compile Include="ViewConstants\FoodConstant.cs" />
     <Compile Include="ViewConstants\ResultConstant.cs" />
     <Compile Include="ViewConstants\SiteMasterConstant.cs" />

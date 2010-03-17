@@ -4,11 +4,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h1><%=EnergyConstant.EnergyInputTitle%></h1>
+    <h1><%=ProfileConstant.ProfileInputTitle%></h1>
     
     
-	<div class="energy-input">
-	    <h3><%=EnergyConstant.EnergyInputTitle%></h3>
+	<div class="profile-input">
+	    <h3><%=ProfileConstant.ProfileInputTitle%></h3>
 	    
 	    <% using (var form = Html.BeginForm())
         { %>

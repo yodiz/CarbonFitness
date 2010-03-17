@@ -25,12 +25,12 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 		[Test]
-		public void shouldGoToEnergyPageAfterClickingAddEnergyLinkAfterLoggedOn()
+		public void shouldGoToEnergyPageAfterClickingAddProfileLinkAfterLoggedOn()
 		{
 			createUserAndLogOn();
-			Browser.Link(Find.ByText(SiteMasterConstant.EnergyInputLinkText)).Click();
+			Browser.Link(Find.ByText(SiteMasterConstant.ProfileInputLinkText)).Click();
 
-			Assert.That(Browser.ContainsText(EnergyConstant.EnergyInputTitle));
+			Assert.That(Browser.ContainsText(ProfileConstant.ProfileInputTitle));
 		}
 
 		[Test]

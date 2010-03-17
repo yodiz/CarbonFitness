@@ -40,7 +40,7 @@ namespace CarbonFitnessTest.Integration {
         }
 
 	    private void reloadPage() {
-	        Browser.Link(Find.ByText(SiteMasterConstant.EnergyInputLinkText)).Click();
+	        Browser.Link(Find.ByText(SiteMasterConstant.ProfileInputLinkText)).Click();
 	    }
 
 	    public override string Url {
