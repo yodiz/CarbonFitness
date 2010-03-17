@@ -15,13 +15,15 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		public void SetUp() {
 			userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>();
 			userContextMock = new Mock<IUserContext>();
+		    userProfileBusinessLogic = new Mock<IUserProfileBusinessLogic>();
 		}
 
 		private Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock;
 		private Mock<IUserContext> userContextMock;
+        private Mock<IUserProfileBusinessLogic> userProfileBusinessLogic;
 
 		private ResultModel RunMethodUnderTest() {
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userIngredientBusinessLogicMock.Object, userContextMock.Object);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
 			var actionResult = (ViewResult) resultController.Show();
 			return (ResultModel) actionResult.ViewData.Model;
 		}
@@ -29,13 +31,20 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		[Test]
 		public void shouldShowCalorieHistory() {
 			IDictionary<DateTime, double> expectedCalorieHistory = new Dictionary<DateTime, double> { { DateTime.Now.Date.AddDays(-1), 2000 }, { DateTime.Now.Date, 2150 } };
-
-			userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(expectedCalorieHistory);
+            userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(expectedCalorieHistory);
 
 			var model = RunMethodUnderTest();
 
 			userIngredientBusinessLogicMock.VerifyAll();
 			Assert.That(model.CalorieHistoryList, Is.SameAs(expectedCalorieHistory));
 		}
+
+        [Test]
+        public void shouldShowIdealWeight() {
+            decimal userIdealWeight = 65;
+            userProfileBusinessLogic.Setup(x => x.GetIdealWeight(It.IsAny<User>())).Returns(userIdealWeight);
+            var model = RunMethodUnderTest();
+            Assert.That(model.IdealWeight, Is.EqualTo(userIdealWeight));
+        }
 	}
 }

@@ -33,7 +33,13 @@
         </div>    
         <div class="editor-label" id="SumOfCalories">
             <%= Html.DisplayTextFor(m => m.SumOfCalories) %>
-        </div> 
+        </div>
+               
+        <div class="editor-label">
+            <strong>Your ideal weight is</strong>
+            <%= this.Model.IdealWeight.ToString("N2") %>kg (click to change)
+        </div>
+         
     <% } %> 
     
     <div>

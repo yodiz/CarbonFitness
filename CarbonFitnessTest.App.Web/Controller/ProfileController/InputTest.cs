@@ -11,32 +11,46 @@ using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace CarbonFitnessTest.Web.Controller.ProfileController
 {
     [TestFixture]
     public class InputTest
     {
-
-
         private Mock<IUserContext> getSetuppedUserContextMock()
         {
             var userContextMock = new Mock<IUserContext>();
             userContextMock.Setup(x => x.User).Returns(new User { Username = "myUser" });
-            return userContextMock;
+           return userContextMock;
         }
-
 
         [Test]
         public void shouldSaveIdealWeightValue() {
-            var userRepositoryMock = new Mock<IUserBusinessLogic>(MockBehavior.Strict);
-            userRepositoryMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User());
+            int idealWeight = 75;
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
+            userProfileBusinessLogicMock.Setup(x => x.SaveIdealWeight(It.IsAny<User>(),idealWeight));
 
             var userContextMock = getSetuppedUserContextMock();
-            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userRepositoryMock.Object, userContextMock.Object);
-            var actionResult = (ViewResult)profileController.Input(new ProfileModel() {IdealWeight = 75, Length = DateTime.Now});
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, userContextMock.Object);
 
-            Assert.That(((ProfileModel) actionResult.ViewData.Model).IdealWeight, Is.EqualTo(75));
+            var actionResult = (ViewResult)profileController.Input(new ProfileModel {IdealWeight = idealWeight, Length = DateTime.Now});
+
+            Assert.That(((ProfileModel) actionResult.ViewData.Model).IdealWeight, Is.EqualTo(idealWeight));
+        }
+
+        [Test]
+        public void shouldShowStoredIdealWeightValueForLoggedinUser() {
+            decimal expectedIdealWeight = 65;
+
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
+            userProfileBusinessLogicMock.Setup(x => x.GetIdealWeight(It.IsAny<User>())).Returns(expectedIdealWeight);
+            var userContextMock = getSetuppedUserContextMock();
+
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, userContextMock.Object);
+            var actionResult = (ViewResult)profileController.Input();
+
+            Assert.That(((ProfileModel)actionResult.ViewData.Model).IdealWeight, Is.EqualTo(expectedIdealWeight));
         }
     }
 }

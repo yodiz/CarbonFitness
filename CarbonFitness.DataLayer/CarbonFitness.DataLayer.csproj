@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Maps\IngredientMap.cs" />
+    <Compile Include="Repository\IUserProfileRepository.cs" />
     <Compile Include="Repository\IUserWeightRepository.cs" />
     <Compile Include="Repository\IIngredientRepository.cs" />
     <Compile Include="Maps\AutoPersistenceModelGenerator.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Repository\IUserIngredientRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Repository\UserIngredientRepository.cs" />
+    <Compile Include="Repository\UserProfileRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\UserWeightRepository.cs" />
   </ItemGroup>

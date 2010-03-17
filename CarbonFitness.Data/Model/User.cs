@@ -17,7 +17,6 @@ namespace CarbonFitness.Data.Model {
 		public virtual string Password { get; set; }
 
 		public virtual string Username { get; set; }
-        public virtual decimal IdealWeight { get; set; }
 	}
 
 

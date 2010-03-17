@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarbonFitnessMembershipProviderTest.cs" />
+    <Compile Include="UserProfileBusinessLogicTest.cs" />
     <Compile Include="UserWeightBusinessLogicTest.cs" />
     <Compile Include="IngredientBusinessLogicTest.cs" />
     <Compile Include="IngredientImporterTest.cs" />

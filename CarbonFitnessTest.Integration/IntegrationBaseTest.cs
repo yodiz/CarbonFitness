@@ -11,7 +11,7 @@ using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-		protected string BaseUrl = "http://localhost/Carbonfitness";
+	    protected string BaseUrl = "http://localhost:49639";
 		protected Browser Browser;
 
 		protected IntegrationBaseTest() {}
