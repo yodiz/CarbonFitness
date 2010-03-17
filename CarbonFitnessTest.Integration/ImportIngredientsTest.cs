@@ -17,8 +17,7 @@ namespace CarbonFitnessTest.Integration {
 			Assert.That(ingredients.Last().Name, Is.EqualTo("Örtte drickf"));
 		}
 
-
-		[TearDown]
+      [TearDown]
 		public void TearDown() {
 			NHibernateSession.Reset();
 		}

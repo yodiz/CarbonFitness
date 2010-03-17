@@ -16,7 +16,7 @@ namespace CarbonFitness.DataLayer.Repository {
 			return Session.Linq<UserIngredient>()
 				.Where(x => x.User.Id == userId)
 				.Where(x => x.Date >= fromDate)
-				.Where(x => x.Date < toDate)
+				.Where(x => x.Date <= toDate)
 				.ToArray();
 		}
 	}

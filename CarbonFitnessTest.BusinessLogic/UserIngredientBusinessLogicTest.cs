@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
@@ -17,8 +18,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 			userIngredients[0] = new UserIngredient {Ingredient = new Ingredient {Name = "Pannbiff", EnergyInKcal = 28}, Measure = 100, Date = date};
 			userIngredients[1] = new UserIngredient {Ingredient = new Ingredient {Name = "Lök", EnergyInKcal = 25}, Measure = 150, Date = date};
 
-			userIngredients[2] = new UserIngredient { Ingredient = new Ingredient { Name = "Lök", EnergyInKcal = 25 }, Measure = 150, Date = date.AddDays(1) };
-			userIngredients[3] = new UserIngredient { Ingredient = new Ingredient { Name = "Lök", EnergyInKcal = 27 }, Measure = 150, Date = date.AddDays(1) };
+			userIngredients[2] = new UserIngredient { Ingredient = new Ingredient { Name = "Lök", EnergyInKcal = 25 }, Measure = 150, Date = date.AddDays(-100) };
+			userIngredients[3] = new UserIngredient { Ingredient = new Ingredient { Name = "Lök", EnergyInKcal = 27 }, Measure = 150, Date = date.AddDays(-100) };
 			return userIngredients;
 		}
 
@@ -48,18 +49,18 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var expectedUserIngredients = GetExpectedUserIngredients(todaysDate);
 			var repositoryMock = new Mock<IUserIngredientRepository>();
 
-			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), todaysDate.AddMonths(-3).Date, todaysDate.Date.AddDays(1))).Returns(expectedUserIngredients);
-			var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
+			var firstDate = todaysDate.AddDays(-100).Date;
+			var lastDate = todaysDate;
+			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), firstDate, lastDate.AddDays(1))).Returns(expectedUserIngredients);
+			IHistoryValues returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
 
 			repositoryMock.VerifyAll();
-			Assert.That(returnedValues.Count, Is.EqualTo(2));
-			Assert.That(returnedValues.ElementAt(0).Key, Is.EqualTo(todaysDate));
 
 			var todaysUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate select ui);
-			var tomorrowsUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(1) select ui);
+			var oldUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(-100) select ui);
 
-			Assert.That(returnedValues.ElementAt(0).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.Ingredient.EnergyInKcal)));
-			Assert.That(returnedValues.ElementAt(1).Value, Is.EqualTo(tomorrowsUserIngredients.Sum(x => x.Ingredient.EnergyInKcal)));
+			Assert.That(returnedValues.GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.Ingredient.EnergyInKcal)));
+			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.Ingredient.EnergyInKcal)));
 		}
 
 		[Test]

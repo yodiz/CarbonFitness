@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CarbonFitness.BusinessLogic;
 
 namespace CarbonFitness.App.Web.Models {
 	public class ResultModel {
 		public string SumOfCalories { get; set; }
 		public DateTime Date { get; set; }
-		public IDictionary<DateTime, double> CalorieHistoryList { get; set; }
+		public IHistoryValues CalorieHistoryList { get; set; }
 	}
 }

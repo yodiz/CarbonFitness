@@ -38,10 +38,10 @@
     
     <div>
 		<%=Html.FusionCharts()
-			.Line2D(Model.CalorieHistoryList, 860, 300, d => Convert.ToDouble(d.Value))
+			.Line2D(Model.CalorieHistoryList, 860, 300, d => d.Value)
 			.Caption("Kalori historik")
 			.SubCaption("(kcal)")
-			.Label(d => d.Key.ToShortDateString())
+			.Label(d => d.Date.ToShortDateString())
 			.DecimalPrecision(0)
 			.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);")%>				
 	</div>

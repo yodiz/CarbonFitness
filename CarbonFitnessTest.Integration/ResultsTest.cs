@@ -17,10 +17,10 @@ namespace CarbonFitnessTest.Integration {
 			new AccountLogOnTest(Browser).LogOn(CreateUserTest.UserName, CreateUserTest.Password);
 
 			clearUserIngredients();
-			setupUserIngredients(now.ToString());
+			addOneUserIngredient(now.ToString());
 		}
 
-		private void setupUserIngredients(string date) {
+		private void addOneUserIngredient(string date) {
 			var inputFoodTest = new InputFoodTest(Browser);
 
 			inputFoodTest.changeDate(date);
@@ -53,7 +53,7 @@ namespace CarbonFitnessTest.Integration {
 		public void shouldHaveCalorieHistory() {
 			reloadPage();
 
-			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now.AddDays(1));
+			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now);
 			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal);
 
 			var fusionChartSumOfCalorieValue = "<set value='" + ((int) sum);
@@ -63,9 +63,8 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldHaveCalorieHistoryInDailyDataPoints() {
-			setupUserIngredients(now.AddDays(-2).ToString());
+			addOneUserIngredient(now.AddDays(-2).ToString()); // adds the second user ingredient
 			reloadPage();
-			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now.AddDays(1));
 
 			var fusionChartSumOfCalorieValue = "<set value='";
 
