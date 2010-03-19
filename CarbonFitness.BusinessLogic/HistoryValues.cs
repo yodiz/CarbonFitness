@@ -5,25 +5,32 @@ using System.Linq;
 
 namespace CarbonFitness.BusinessLogic {
 	public class HistoryValue {
-		public double Value { get; set; }
+		public decimal Value { get; set; }
 		public DateTime Date { get; set; }
 	}
 
 	public interface IHistoryValues : IEnumerable<HistoryValue> {
 		HistoryValue GetValue(DateTime date);
+		string Title { get; }
 	}
 
 	public class HistoryValues : IHistoryValues {
 		private readonly List<HistoryValue> historyValues = new List<HistoryValue>();
 		private HistoryValuesEnumerator historyValuesEnumerator;
 
-		public HistoryValues(Dictionary<DateTime, double> values) {
+		public HistoryValues(Dictionary<DateTime, decimal> values) {
 			foreach (var kv in values) {
-				historyValues.Add(new HistoryValue {Date = kv.Key, Value = kv.Value});
+				historyValues.Add(new HistoryValue { Date = kv.Key, Value = kv.Value });
 			}
 		}
 
+		public HistoryValues(Dictionary<DateTime, decimal> values, string title) : this (values){
+			Title = title;
+		}
+
 		public HistoryValues() {}
+
+		public string Title { get; protected set; }
 
 		public IEnumerator<HistoryValue> GetEnumerator() {
 			if (historyValuesEnumerator == null) {
@@ -38,7 +45,7 @@ namespace CarbonFitness.BusinessLogic {
 
 		public HistoryValue GetValue(DateTime date) {
 			if (date < GetFirstDate() || date > GetLastDate()) {
-				throw new IndexOutOfRangeException("Date was:" + date + "First date is:" + GetFirstDate() + " Last date is:" + GetLastDate());
+				throw new IndexOutOfRangeException("Date was:" + date + " First date is:" + GetFirstDate() + " Last date is:" + GetLastDate());
 			}
 			var historyValue = getActualHistoryValue(date);
 
@@ -74,7 +81,7 @@ namespace CarbonFitness.BusinessLogic {
 			return (int) second.Subtract(first).TotalDays;
 		}
 
-		public double GetAverageDifferencePerDayBetweenActualValues(DateTime date) {
+		public decimal GetAverageDifferencePerDayBetweenActualValues(DateTime date) {
 			var previousValue = GetPreviousHistoryValue(date);
 			var nextValue = GetNextHistoryValue(date);
 			var numberOfDays = GetNumberOfDaysBetweenDates(previousValue.Date, nextValue.Date);
@@ -100,11 +107,13 @@ namespace CarbonFitness.BusinessLogic {
 			this.historyValues = historyValues;
 		}
 
-		public void Dispose() {}
+		public void Dispose() {
+			Reset();
+		}
 
 		public bool MoveNext() {
 			if (currentDate == DateTime.MinValue) {
-				Reset();
+				currentDate = historyValues.GetFirstDate();
 				return true;
 			}
 
@@ -116,7 +125,7 @@ namespace CarbonFitness.BusinessLogic {
 		}
 
 		public void Reset() {
-			currentDate = historyValues.GetFirstDate();
+			currentDate = DateTime.MinValue;
 		}
 
 		public HistoryValue Current { get { return historyValues.GetValue(currentDate); } }

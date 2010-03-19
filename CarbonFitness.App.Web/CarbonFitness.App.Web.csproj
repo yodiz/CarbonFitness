@@ -123,6 +123,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeightController.cs" />
     <Compile Include="FusionCharts\FusionChartLine2DBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartMSLineBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartColumn2DBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartPie2DChartBuilder.cs" />

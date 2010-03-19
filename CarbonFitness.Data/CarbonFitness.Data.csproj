@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserIngredientExtensions.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Model\UserWeight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

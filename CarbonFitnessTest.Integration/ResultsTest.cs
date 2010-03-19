@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using CarbonFitness.App.Web.Models;
 using CarbonFitness.DataLayer.Repository;
-using CarbonFitnessTest.Util;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
 using WatiN.Core;
@@ -17,20 +15,18 @@ namespace CarbonFitnessTest.Integration {
 			new AccountLogOnTest(Browser).LogOn(CreateUserTest.UserName, CreateUserTest.Password);
 
 			clearUserIngredients();
-			addOneUserIngredient(now.ToString());
+			addOneUserIngredient(now.ToString(), 200);
 		}
 
-		private void addOneUserIngredient(string date) {
+		private void addOneUserIngredient(string date, int weightMeasure) {
 			var inputFoodTest = new InputFoodTest(Browser);
 
 			inputFoodTest.changeDate(date);
 			inputFoodTest.createIngredientIfNotExist("Arne anka");
-			inputFoodTest.addUserIngredient("Arne anka", "100");
+			inputFoodTest.addUserIngredient("Arne anka", weightMeasure.ToString());
 		}
 
 		private int userId;
-		private TextField dateField { get { return Browser.TextField(GetFieldNameOnModel<ResultModel>(m => m.Date)); } }
-		private DateTime testDate = ValueGenerator.getRandomDate();
 
 		public override string Url { get { return BaseUrl + "/Result/Show"; } }
 		private DateTime now = DateTime.Now.Date;
@@ -54,7 +50,7 @@ namespace CarbonFitnessTest.Integration {
 			reloadPage();
 
 			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now);
-			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal);
+			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal * (u.Measure / u.Ingredient.WeightInG));//u.GetMeasureMultiplier()
 
 			var fusionChartSumOfCalorieValue = "<set value='" + ((int) sum);
 
@@ -63,7 +59,7 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldHaveCalorieHistoryInDailyDataPoints() {
-			addOneUserIngredient(now.AddDays(-2).ToString()); // adds the second user ingredient
+			addOneUserIngredient(now.AddDays(-2).ToString(), 200); // adds the second user ingredient
 			reloadPage();
 
 			var fusionChartSumOfCalorieValue = "<set value='";
@@ -73,17 +69,24 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 
-        [Test]
-        public void shouldShowLoggedInUsersIdealWeight()
-        {
-            var userProfileRepository = new UserProfileRepository();
+		[Test]
+		public void shouldShowLoggedInUsersIdealWeight() {
+			var userProfileRepository = new UserProfileRepository();
 
-            var userProfile = userProfileRepository.GetByUserId(userId);
-            var userIdealWeight = userProfile.IdealWeight;
+			var userProfile = userProfileRepository.GetByUserId(userId);
+			var userIdealWeight = userProfile.IdealWeight;
 
-            var idealWeightString = userIdealWeight.ToString("N2") + "kg";
-            Assert.That(this.Browser.ContainsText(idealWeightString), "Page did not contain: " + idealWeightString);
+			var idealWeightString = userIdealWeight.ToString("N1") + "kg";
+			Assert.That(Browser.ContainsText(idealWeightString), "Page did not contain: " + idealWeightString);
+		}
 
-        }
+		[Test]
+		public void shouldHaveMultipleSeries() {
+			const string seriesname = "seriesName";
+			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] { seriesname }, StringSplitOptions.None);
+
+			Assert.That(matches.Length, Is.EqualTo(3 ), "Should be more than one series on page");
+		}
+
 	}
 }

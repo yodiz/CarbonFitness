@@ -39,22 +39,22 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			var date = DateTime.Now.Date;
 			var userIngredients = userIngredientRepository.GetUserIngredientsByUser(user.Id, date.AddDays(-100), date.AddDays(1));
 
-			var history = GetCalorieSumPerDateFromUserIngredients(userIngredients);
+			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.EnergyInKcal);
 
-			return new HistoryValues(history);
+			return new HistoryValues(valueSumPerDateFromUserIngredients);
 		}
 
-		private Dictionary<DateTime, double> GetCalorieSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients) {
-			var history = new Dictionary<DateTime, double>();
+		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {
+			var history = new Dictionary<DateTime, decimal>();
 
-			foreach (var ingredient in userIngredients) {
-				var ingredientDate = ingredient.Date.Date;
-				var ingredientCalories = (double) ingredient.Ingredient.EnergyInKcal;
+			foreach (var userIngredient in userIngredients) {
+				var ingredientDate = userIngredient.Date.Date;
+				var ingredientAmount = userIngredient.GetActualCalorieCount(valueToSum);
 
 				if (history.ContainsKey(ingredientDate)) {
-					history[ingredientDate] += ingredientCalories;
+					history[ingredientDate] += ingredientAmount;
 				} else {
-					history.Add(ingredientDate, ingredientCalories);
+					history.Add(ingredientDate, ingredientAmount);
 				}
 			}
 			return history;

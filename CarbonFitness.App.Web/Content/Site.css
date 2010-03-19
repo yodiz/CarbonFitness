@@ -162,3 +162,8 @@ div.splash-photo
 {
 	margin: -30px -30px 20px -30px;
 }
+
+.validation-summary-errors
+{
+	color: Red;	
+}

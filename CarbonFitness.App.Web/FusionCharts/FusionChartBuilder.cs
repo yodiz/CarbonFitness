@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -13,8 +14,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 	/// </summary>
 	/// <author>MBH</author>
 	/// <dateAuthored>11/10/09</dateAuthored>
-	public abstract class FusionChartBuilder<T>
-	{
+	public abstract class FusionChartBuilder<T> {
 		#region Private Fields
 
 		/// <summary>
@@ -23,24 +23,32 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		private readonly string mChartUrl;
 
 		/// <summary>
-		/// An enumerable array of colors to use for coloring items in a chart.
+		/// The HtmlHelper.
 		/// </summary>
-		private readonly IEnumerator<string> mColors = ((IEnumerable<string>)(new[] { "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E" })).GetEnumerator();
+		private readonly HtmlHelper mHelper;
 
 		/// <summary>
 		/// Delegate used to get chart values for items.
 		/// </summary>
 		private readonly Func<T, double> mValueExtractor;
 
+		private int labelIndex;
+
+
 		/// <summary>
-		/// The HtmlHelper.
+		/// The chart caption.
 		/// </summary>
-		private readonly HtmlHelper mHelper;
+		private string mCaption;
 
 		/// <summary>
 		/// The ID given to the chart in the DOM.
 		/// </summary>
 		private string mChartId;
+
+		/// <summary>
+		/// An enumerable array of colors to use for coloring items in a chart.
+		/// </summary>
+		private IEnumerator<string> mColors;
 
 		/// <summary>
 		/// Flag to control debug mode in Fusion Charts.
@@ -53,20 +61,9 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		private int mDecimalPrecision = int.MinValue;
 
 		/// <summary>
-		/// Corresponds to ChartFusion FormatNumberScale setting, controls
-		/// the placement of dynamic 'M' and 'K' suffixes. 
+		/// Builds the label that will be shown when the user hovers over a chart element.
 		/// </summary>
-		private bool mUseDynamicSuffixes;
-
-		/// <summary>
-		/// The number prefix.
-		/// </summary>
-		private string mPrefix;
-
-		/// <summary>
-		/// The number suffix.
-		/// </summary>
-		private string mSuffix;
+		private Func<T, string> mHoverLabelBuilder;
 
 		/// <summary>
 		/// Delegate used to get labels for chart items.
@@ -79,19 +76,25 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		private Func<T, string> mLinkBuilder;
 
 		/// <summary>
-		/// Builds the label that will be shown when the user hovers over a chart element.
+		/// The number prefix.
 		/// </summary>
-		private Func<T, string> mHoverLabelBuilder;
-
-		/// <summary>
-		/// The chart caption.
-		/// </summary>
-		private string mCaption;
+		private string mPrefix;
 
 		/// <summary>
 		/// The sub-caption.
 		/// </summary>
 		private string mSubCaption;
+
+		/// <summary>
+		/// The number suffix.
+		/// </summary>
+		private string mSuffix;
+
+		/// <summary>
+		/// Corresponds to ChartFusion FormatNumberScale setting, controls
+		/// the placement of dynamic 'M' and 'K' suffixes. 
+		/// </summary>
+		private bool mUseDynamicSuffixes;
 
 		#endregion
 
@@ -125,8 +128,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// <param name="chartUrl">The URL to the chart.</param>
 		/// <param name="width">Chart width.</param>
 		/// <param name="height">Chart height.</param>
-		public FusionChartBuilder(HtmlHelper helper, string chartUrl, IEnumerable<T> data, Func<T,double> valueExtractor, int width, int height)
-		{
+		public FusionChartBuilder(HtmlHelper helper, string chartUrl, IEnumerable<T> data, Func<T, double> valueExtractor, int width, int height) {
 			mHelper = helper;
 			Data = data;
 			mChartUrl = chartUrl;
@@ -137,6 +139,8 @@ namespace CarbonFitness.App.Web.FusionCharts {
 			//Defaults.
 			mChartId = Guid.NewGuid().ToString().TrimStart('{').TrimEnd('}');
 			mDebugEnabled = false;
+
+			Colors("AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E");
 		}
 
 		#endregion
@@ -147,10 +151,8 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// Gets the next available color.
 		/// </summary>
 		/// <returns></returns>
-		private string GetNextColor()
-		{
-			if (!mColors.MoveNext())
-			{
+		protected string GetNextColor() {
+			if (!mColors.MoveNext()) {
 				mColors.Reset();
 				mColors.MoveNext();
 			}
@@ -181,8 +183,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="actionLink"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> Action(Func<T, string> actionLink)
-		{
+		public FusionChartBuilder<T> Action(Func<T, string> actionLink) {
 			mLinkBuilder = actionLink;
 
 			return this;
@@ -193,10 +194,14 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> Id(string id)
-		{
+		public FusionChartBuilder<T> Id(string id) {
 			mChartId = id;
 
+			return this;
+		}
+
+		public FusionChartBuilder<T> Colors(params string[] hexColors) {
+			mColors = ((IEnumerable<string>) (hexColors)).GetEnumerator();
 			return this;
 		}
 
@@ -204,11 +209,17 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// Specify a callback that extracts a friendly label for each item.
 		/// </summary>
 		/// <param name="getLabel"></param>
+		/// <param name="eachTimes"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> Label(Func<T, string> getLabel)
-		{
-			mLabeler = getLabel;
-
+		public FusionChartBuilder<T> Label(Func<T, string> getLabel, int eachTimes) {
+			mLabeler = x => {
+				var retVal = getLabel(x);
+				if (eachTimes > 1 && labelIndex % eachTimes != 0) {
+					retVal = "";
+				}
+				labelIndex++;
+				return retVal;
+			};
 			return this;
 		}
 
@@ -216,8 +227,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// Enables debug mode.
 		/// </summary>
 		/// <returns></returns>
-		public FusionChartBuilder<T> EnableDebugMode()
-		{
+		public FusionChartBuilder<T> EnableDebugMode() {
 			mDebugEnabled = true;
 
 			return this;
@@ -228,8 +238,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="precision"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> DecimalPrecision(int precision)
-		{
+		public FusionChartBuilder<T> DecimalPrecision(int precision) {
 			mDecimalPrecision = precision;
 
 			return this;
@@ -245,8 +254,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// Setting this to true corresponds to setting FormatNumberScale='1' on the
 		/// graph XML element in FusionCharts.
 		/// </remarks>
-		public FusionChartBuilder<T> UseDynamicSuffixes(bool enabled)
-		{
+		public FusionChartBuilder<T> UseDynamicSuffixes(bool enabled) {
 			mUseDynamicSuffixes = enabled;
 
 			return this;
@@ -257,8 +265,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="prefix"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> NumberPrefix(string prefix)
-		{
+		public FusionChartBuilder<T> NumberPrefix(string prefix) {
 			mPrefix = prefix;
 
 			return this;
@@ -269,8 +276,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="suffix"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> NumberSuffix(string suffix)
-		{
+		public FusionChartBuilder<T> NumberSuffix(string suffix) {
 			mSuffix = suffix;
 
 			return this;
@@ -281,85 +287,110 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="hoverLabelBuilder"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<T> Hover(Func<T, string> hoverLabelBuilder)
-		{
+		public FusionChartBuilder<T> Hover(Func<T, string> hoverLabelBuilder) {
 			mHoverLabelBuilder = hoverLabelBuilder;
 
 			return this;
+		}
+
+		protected virtual double getValue(T item) {
+			return mValueExtractor(item);
+		}
+
+		protected virtual string getLabel(T item) {
+			return mLabeler(item);
 		}
 
 		/// <summary>
 		/// Renders the chart.
 		/// </summary>
 		/// <returns></returns>
-		public override string ToString()
-		{
-			StringBuilder xml = new StringBuilder();
+		public override string ToString() {
+			var xml = new StringBuilder();
 
-			xml.Append("<graph");
+			writeGraphHeader(xml);
 
-			WriteGraphProperties(xml);
+			writeGraphContentData(xml);
 
-			if (mDecimalPrecision >= 0) xml.AppendFormat(" decimalPrecision='{0}'", mDecimalPrecision);
+			writeGraphEnd(xml);
 
-			if (mUseDynamicSuffixes) xml.AppendFormat(" formatNumberScale='1'");
+			return GetMarkupFromXml(xml);
+		}
 
-			if (mPrefix != null) xml.AppendFormat(" numberPrefix='{0}'", mPrefix);
+		protected virtual void writeGraphContentData(StringBuilder xml) {
+			foreach (var item in Data) {
+				xml.AppendFormat(CultureInfo.InvariantCulture, "<set value='{0}' color='{1}'", getValue(item), GetNextColor());
 
-			if (mSuffix != null) xml.AppendFormat(" numberSuffix='{0}'", mSuffix);
-
-			if (mCaption != null) xml.AppendFormat(" caption='{0}'", mCaption);
-
-			if (mSubCaption != null) xml.AppendFormat(" subCaption='{0}'", mSubCaption);
-
-			//xml.AppendFormat(" showAnchors='0'");
-
-			xml.AppendLine(">");
-
-			foreach (T item in Data)
-			{
-				xml.AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "<set value='{0}' color='{1}'", mValueExtractor(item), GetNextColor());
-
-				if (mLabeler != null)
-				{
-					xml.AppendFormat(" name='{0}'", HttpUtility.UrlEncode(mLabeler(item)));
+				if (mLabeler != null) {
+					xml.AppendFormat(" name='{0}'", HttpUtility.UrlEncode(getLabel(item)));
 				}
 
-				if (mLinkBuilder != null)
-				{
+				if (mLinkBuilder != null) {
 					xml.AppendFormat(" link='{0}'", HttpUtility.UrlEncode(mLinkBuilder(item)));
 				}
 
-				if (mHoverLabelBuilder != null)
-				{
+				if (mHoverLabelBuilder != null) {
 					xml.AppendFormat(" hoverText='{0}'", HttpUtility.UrlEncode(mHoverLabelBuilder(item)));
 				}
 
-				//xml.AppendFormat(" showName='0' ");
-				//xml.AppendFormat(" alpha='0' ");
-				
 				xml.AppendLine("/>");
 			}
+		}
 
-			xml.AppendLine("</graph>");
-
-			string markup = InfoSoftGlobal.FusionCharts.RenderChartHTML(mChartUrl, "", xml.ToString(), mChartId, 
+		private string GetMarkupFromXml(StringBuilder xml) {
+			var markup = InfoSoftGlobal.FusionCharts.RenderChartHTML(mChartUrl, "", xml.ToString(), mChartId,
 				Width.ToString(), Height.ToString(), mDebugEnabled);
 
 			//We have to add another param to make sure the flash object doesn't shine through jQuery UI.
 			markup = markup.Replace("<param name=\"quality\" value=\"high\" />",
 				"<param name=\"quality\" value=\"high\" /><param value=\"opaque\" name=\"wmode\" />")
 				.Replace("<embed", "<embed wmode=\"opaque\"");
-
 			return markup;
+		}
+
+		private void writeGraphEnd(StringBuilder xml) {
+			xml.AppendLine("</graph>");
+		}
+
+		private void writeGraphHeader(StringBuilder xml) {
+			xml.Append("<graph");
+
+			WriteGraphProperties(xml);
+
+			if (mDecimalPrecision >= 0) {
+				xml.AppendFormat(" decimalPrecision='{0}'", mDecimalPrecision);
+			}
+
+			if (mUseDynamicSuffixes) {
+				xml.AppendFormat(" formatNumberScale='1'");
+			}
+
+			if (mPrefix != null) {
+				xml.AppendFormat(" numberPrefix='{0}'", mPrefix);
+			}
+
+			if (mSuffix != null) {
+				xml.AppendFormat(" numberSuffix='{0}'", mSuffix);
+			}
+
+			if (mCaption != null) {
+				xml.AppendFormat(" caption='{0}'", mCaption);
+			}
+
+			if (mSubCaption != null) {
+				xml.AppendFormat(" subCaption='{0}'", mSubCaption);
+			}
+
+			xml.AppendFormat(" showAnchors='0' rotateNames='1' ");
+
+			xml.AppendLine(">");
 		}
 
 		/// <summary>
 		/// Sets the chart caption.
 		/// </summary>
 		/// <param name="caption"></param>
-		public FusionChartBuilder<T> Caption(string caption)
-		{
+		public FusionChartBuilder<T> Caption(string caption) {
 			mCaption = caption;
 
 			return this;
@@ -369,8 +400,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// Sets the chart's subcaption.
 		/// </summary>
 		/// <param name="subCaption"></param>
-		public FusionChartBuilder<T> SubCaption(string subCaption)
-		{
+		public FusionChartBuilder<T> SubCaption(string subCaption) {
 			mSubCaption = subCaption;
 
 			return this;

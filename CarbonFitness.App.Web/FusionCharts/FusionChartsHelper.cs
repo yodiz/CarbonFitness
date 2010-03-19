@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using CarbonFitness.BusinessLogic;
 
 namespace CarbonFitness.App.Web.FusionCharts {
 	/// <summary>
@@ -69,9 +70,14 @@ namespace CarbonFitness.App.Web.FusionCharts {
 			return new FusionChartColumn2DBuilder<T>(mHtmlHelper, mChartsFolderBase, data, getValue, width, height);
 		}
 
-		public FusionChartLine2DBuilder<T> Line2D<T>(IEnumerable<T> data,int width,int height,Func<T, double> getValue)
+		public FusionChartLine2DBuilder<T> Line2D<T>(IEnumerable<T> data, int width, int height, Func<T, double> getValue)
 		{
 			return new FusionChartLine2DBuilder<T>(mHtmlHelper, mChartsFolderBase, data, getValue, width, height);
+		}
+
+		public FusionChartMSLineBuilder MSLine(IEnumerable<IHistoryValues> data,int width,int height)
+		{
+			return new FusionChartMSLineBuilder(mHtmlHelper, mChartsFolderBase, data, x => (double)x.GetEnumerator().Current.Value, width, height);
 		}
 
 		/// <summary>

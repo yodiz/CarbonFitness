@@ -20,13 +20,5 @@ namespace CarbonFitness.App.Web.Controllers {
 		    model.IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User);
 			return View(model);
 		}
-
-		//[HttpPost]
-		//public ActionResult Show(ResultModel model) {
-		//   //var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date);
-		//   //model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.EnergyInKcal).ToString();
-		//   model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
-		//   return View(model);
-		//}
 	}
 }
