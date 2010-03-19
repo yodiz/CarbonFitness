@@ -312,6 +312,8 @@ namespace CarbonFitness.App.Web.FusionCharts {
 
 			if (mSubCaption != null) xml.AppendFormat(" subCaption='{0}'", mSubCaption);
 
+			//xml.AppendFormat(" showAnchors='0'");
+
 			xml.AppendLine(">");
 
 			foreach (T item in Data)
@@ -333,6 +335,9 @@ namespace CarbonFitness.App.Web.FusionCharts {
 					xml.AppendFormat(" hoverText='{0}'", HttpUtility.UrlEncode(mHoverLabelBuilder(item)));
 				}
 
+				//xml.AppendFormat(" showName='0' ");
+				//xml.AppendFormat(" alpha='0' ");
+				
 				xml.AppendLine("/>");
 			}
 
