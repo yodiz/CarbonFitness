@@ -32,13 +32,13 @@
 		
 		<div class="page-menu">
 			<ul class="flat">
-				<li><%= Html.ActionLink<ProfileController>(c => c.Input(), SiteMasterConstant.ProfileInputLinkText)%></li>
-				<li><%= Html.ActionLink<WeightController>(c => c.Input(null as DateTime?), SiteMasterConstant.WeightLinkText)%></li>
-				<li><%= Html.ActionLink<FoodController>(c => c.Input(), SiteMasterConstant.FoodInputLinkText)%></li>
-				<li><%= Html.ActionLink("Träning", "Index", "Exercise")%></li>
-				<li><%= Html.ActionLink<ResultController>(c => c.Show(), SiteMasterConstant.ResultLinkText)%></li>
-				<li><%= Html.ActionLink("Hälsa", "Index", "Health")%></li>
-				<li><%= Html.ActionLink("Produkter", "Index", "Products")%></li>
+				<li><a href="<%=Url.Action<ProfileController>(c => c.Input())%>"><%=Html.Image("~/Content/profil.png", SiteMasterConstant.ProfileInputLinkText)%><span><%=SiteMasterConstant.ProfileInputLinkText%></span></a></li>				
+				<li><a href="<%=Url.Action<WeightController>(c => c.Input(null as DateTime?))%>"><span><%=SiteMasterConstant.WeightLinkText%></span></a></li>
+				<li><a href="<%=Url.Action<FoodController>(c => c.Input())%>"><%=Html.Image("~/Content/kost.png", SiteMasterConstant.FoodInputLinkText)%><span><%=SiteMasterConstant.FoodInputLinkText%></span></a></li>
+				<li><a href="Träning"><%=Html.Image("~/Content/traning.png")%><span>Träning</span></a></li>
+				<li><a href="<%=Url.Action<ResultController>(c => c.Show())%>"><%=Html.Image("~/Content/resultat.png", SiteMasterConstant.ResultLinkText)%><span><%=SiteMasterConstant.ResultLinkText%></span></a></li>
+				<li><a href="Hälsa"><%=Html.Image("~/Content/halsa.png")%><span>Hälsa</span></a></li>
+				<li><a href="Produkter"><%=Html.Image("~/Content/produkter.png")%><span>Produkter</span></a></li>
 			</ul>
 		</div>
 		

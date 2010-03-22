@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="IUserContext.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ActionLinkExtension.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\InputFoodModel.cs" />
     <Compile Include="Models\InputWeightModel.cs" />
@@ -179,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Base.css" />
+    <Content Include="Content\halsa.png" />
     <Content Include="Content\HomePhoto.jpg" />
     <Content Include="Content\jquery-autocomplete\changelog.txt" />
     <Content Include="Content\jquery-autocomplete\demo\bg.gif" />
@@ -588,9 +590,14 @@
     <Content Include="Content\jquery-ui-1.7.2.custom\development-bundle\version.txt" />
     <Content Include="Content\jquery-ui-1.7.2.custom\index.html" />
     <Content Include="Content\jquery-ui-1.7.2.custom\js\jquery-1.3.2.min.js" />
+    <Content Include="Content\kost.png" />
     <Content Include="Content\MainContainer-Bottom.png" />
     <Content Include="Content\MainContainer-Middle.png" />
     <Content Include="Content\MainContainer-Top.png" />
+    <Content Include="Content\produkter.png" />
+    <Content Include="Content\profil.png" />
+    <Content Include="Content\resultat.png" />
+    <Content Include="Content\traning.png" />
     <Content Include="FusionCharts\FCF_Area2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

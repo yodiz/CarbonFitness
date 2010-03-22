@@ -5,9 +5,7 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration {
 	[TestFixture]
 	public class SiteMasterTest : IntegrationBaseTest {
-		public override string Url {
-			get { return BaseUrl; }
-		}
+		public override string Url { get { return BaseUrl; } }
 
 		private void createUserAndLogOn() {
 			var createUserTest = new CreateUserTest(Browser);
@@ -19,16 +17,16 @@ namespace CarbonFitnessTest.Integration {
 		[Test]
 		public void shouldGoToAddFoodPageAfterClickingAddFoodLinkAfterLoggedOn() {
 			createUserAndLogOn();
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+
+			ReloadPage(SiteMasterConstant.FoodInputLinkText);
 
 			Assert.That(Browser.ContainsText(FoodConstant.FoodInputTitle));
 		}
 
 		[Test]
-		public void shouldGoToEnergyPageAfterClickingAddProfileLinkAfterLoggedOn()
-		{
+		public void shouldGoToEnergyPageAfterClickingAddProfileLinkAfterLoggedOn() {
 			createUserAndLogOn();
-			Browser.Link(Find.ByText(SiteMasterConstant.ProfileInputLinkText)).Click();
+			ReloadPage(SiteMasterConstant.ProfileInputLinkText);
 
 			Assert.That(Browser.ContainsText(ProfileConstant.ProfileInputTitle));
 		}
@@ -42,8 +40,7 @@ namespace CarbonFitnessTest.Integration {
 				logOffButton.Click();
 			}
 
-			var link = Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText));
-			link.Click();
+			ReloadPage(SiteMasterConstant.FoodInputLinkText);
 
 			Assert.That(Browser.ContainsText(AccountConstant.LoginTitle));
 		}
@@ -52,17 +49,16 @@ namespace CarbonFitnessTest.Integration {
 		public void shouldGoToResultsAfterClickingResultsAfterLoggedOn() {
 			createUserAndLogOn();
 
-			Browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
+			ReloadPage(SiteMasterConstant.ResultLinkText);
 
 			Assert.That(Browser.ContainsText(ResultConstant.ResultTitle));
 		}
 
 		[Test]
-		public void shouldGoToWeightPageAfterClickingWeightAfterLoggedOn()
-		{
+		public void shouldGoToWeightPageAfterClickingWeightAfterLoggedOn() {
 			createUserAndLogOn();
 
-			Browser.Link(Find.ByText(SiteMasterConstant.WeightLinkText)).Click();
+			ReloadPage(SiteMasterConstant.WeightLinkText);
 
 			Assert.That(Browser.ContainsText(WeightConstant.WeightTitle));
 		}

@@ -72,7 +72,7 @@ namespace CarbonFitnessTest.Integration
 
 		private void reloadPage()
 		{
-			Browser.Link(Find.ByText(SiteMasterConstant.ProfileInputLinkText)).Click();
+			ReloadPage(SiteMasterConstant.ProfileInputLinkText);
 		}
 
 		public override string Url

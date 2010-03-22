@@ -69,5 +69,9 @@ namespace CarbonFitnessTest.Integration {
 		public string GetFieldNameOnModel<T>(Expression<Func<T, decimal>> lambdaExpression) {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}
+
+		protected void ReloadPage(string findLinkByText) {
+			Browser.Link(Find.ByText(x => x.Contains(findLinkByText))).Click();
+		}
 	}
 }
