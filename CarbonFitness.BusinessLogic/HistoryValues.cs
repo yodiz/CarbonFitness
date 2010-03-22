@@ -8,6 +8,10 @@ namespace CarbonFitness.BusinessLogic {
 		public decimal Value { get; set; }
 		public DateTime Date { get; set; }
 	}
+	public class HistoryValuesContainer {
+		public IDictionary<int, string>[] labels;
+		public IHistoryValues[] HistoryValueses;
+	}
 
 	public interface IHistoryValues : IEnumerable<HistoryValue> {
 		HistoryValue GetValue(DateTime date);
