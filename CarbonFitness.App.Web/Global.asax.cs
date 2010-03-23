@@ -9,6 +9,7 @@ using Autofac.Integration.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
+using SharpArch.Data.NHibernate;
 using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web {
@@ -18,9 +19,10 @@ namespace CarbonFitness.App.Web {
 		/// </summary>
 		private static readonly object lockObject = new object();
 
-      private static IContainerProvider containerProvider;
+		private static IContainerProvider containerProvider;
 
 		private static bool wasNHibernateInitialized;
+		private WebSessionStorage webSessionStorage;
 
 		public IContainerProvider ContainerProvider { get { return containerProvider; } }
 
@@ -34,8 +36,7 @@ namespace CarbonFitness.App.Web {
 				);
 		}
 
-		private WebSessionStorage webSessionStorage;
-      /// <summary>
+		/// <summary>
 		/// Due to issues on IIS7, the NHibernate initialization must occur in Init().
 		/// But Init() may be invoked more than once; accordingly, we introduce a thread-safe
 		/// mechanism to ensure it's only initialized once.
@@ -47,12 +48,10 @@ namespace CarbonFitness.App.Web {
 
 			webSessionStorage = new WebSessionStorage(this);
 
-
 			//// Only allow the NHibernate session to be initialized once			
 			//if (!wasNHibernateInitialized) {
 			//   lock (lockObject) {
 			//      if (!wasNHibernateInitialized) {
-
 
 			//         wasNHibernateInitialized = true;
 			//      }
@@ -61,20 +60,19 @@ namespace CarbonFitness.App.Web {
 		}
 
 
-		protected void Application_BeginRequest(object sender, EventArgs e)
-		{
-			SharpArch.Data.NHibernate.NHibernateInitializer.Instance().InitializeNHibernateOnce(() =>
-			{
-				var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
+		protected void Application_BeginRequest(object sender, EventArgs e) {
+			NHibernateInitializer.Instance().InitializeNHibernateOnce(() => {
+				string nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
 				new Bootstrapper(nhibernateConfig).InitDatalayer(webSessionStorage);
 			});
-
 		}
 
 		protected void Application_Start() {
 			AreaRegistration.RegisterAllAreas();
 
 			AutofacRegisterComponentes();
+
+			AutoMappingsBootStrapper.MapAll();
 		}
 
 		private void AutofacRegisterComponentes() {

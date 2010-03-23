@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 using MvcContrib.ActionResults;
@@ -19,23 +20,20 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		public ActionResult Show() {
 			var model = new ResultModel();
-			model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+			//model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 		    model.IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User);
 			return View(model);
 		}
 
 		public ActionResult ShowXml()
 		{
-			var model = new ResultModel {
-				CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User),
-				IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User)
-			};
+			var historyValueContainer = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 
-			var historyValueWrappers = new List<HistoryValueWrapper>();
-			foreach (var historyValue in model.CalorieHistoryList) {
-				historyValueWrappers.Add(new HistoryValueWrapper(historyValue.Date, historyValue.Value));
-			}
-			return new XmlResult(historyValueWrappers.ToArray());
+			var amChartData = new AmChartData();
+
+			Mapper.Map(historyValueContainer, amChartData);
+
+			return new XmlResult(amChartData);
 		}
 	}
 

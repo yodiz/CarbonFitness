@@ -9,11 +9,21 @@ namespace CarbonFitness.BusinessLogic {
 		public DateTime Date { get; set; }
 	}
 	public class HistoryValuesContainer {
-		public IDictionary<int, string>[] labels;
+		public strangeObject[] labels;
+
+		public UnnecessaryContainer unnecessaryContainer;
+	}
+	public class UnnecessaryContainer {
 		public IHistoryValues[] HistoryValueses;
 	}
 
+	public class strangeObject {
+		public string value{ get; set;}
+		public string xid { get; set; }
+	}
+
 	public interface IHistoryValues : IEnumerable<HistoryValue> {
+		HistoryValue[] Values { get; }
 		HistoryValue GetValue(DateTime date);
 		string Title { get; }
 	}
@@ -45,6 +55,16 @@ namespace CarbonFitness.BusinessLogic {
 
 		IEnumerator IEnumerable.GetEnumerator() {
 			return GetEnumerator();
+		}
+
+		public HistoryValue[] Values {
+			get {
+				var values = new List<HistoryValue>();
+				foreach (var historyValue in this) {
+					values.Add(historyValue);
+				}
+				return values.ToArray();
+			}
 		}
 
 		public HistoryValue GetValue(DateTime date) {

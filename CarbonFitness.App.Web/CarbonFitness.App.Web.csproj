@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Autofac\Autofac.Integration.Web.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=1.0.0.155, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FusionCharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\FusionCharts.dll</HintPath>
@@ -132,8 +136,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IUserContext.cs" />
+    <Compile Include="AutoMappingsBootStrapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActionLinkExtension.cs" />
+    <Compile Include="Models\AmChartData.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\InputFoodModel.cs" />
     <Compile Include="Models\InputWeightModel.cs" />

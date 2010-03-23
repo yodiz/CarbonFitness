@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pricelist>
+<oilprices>
+  <price year="1991" value="3356" />
+  <price year="1992" value="3486" />
+  <price year="1993" value="1456" />
+  <price year="1994" value="3666" />
+  <price year="1995" value="8056" />
+  <price year="1996" value="2456" />
+  <price year="1997" value="3664" />
+  <price year="1998" value="956" />
+  <price year="1999" value="4456" />
+  <price year="2000" value="6456" />
+  <price year="2001" value="2222" />
+  <price year="2002" value="10010" />
+  <price year="2003" value="9988" />
+  <price year="2004" value="11125" />
+  <price year="2005" value="12885" />
+  <price year="2006" value="14456" />
+  <price year="2007" value="14400" />
+  <price year="2008" value="14874" />
+</oilprices>
+  <fuelprices>
+    <price year="1991" e95="8745" e98="9745" />
+    <price year="1992" e95="7745" e98="8745" />
+    <price year="1993" e95="6745" e98="6745" />
+    <price year="1994" e95="5555" e98="7745" />
+    <price year="1995" e95="6666" e98="10745" />
+    <price year="1996" e95="5745" e98="8745" />
+    <price year="1997" e95="7745" e98="10785" />
+    <price year="1998" e95="9745" e98="13745" />
+    <price year="1999" e95="7745" e98="11745" />
+    <price year="2000" e95="10745" e98="11745" />
+    <price year="2001" e95="9745" e98="10745" />
+    <price year="2002" e95="8745" e98="8745" />
+    <price year="2003" e95="7555" e98="9745" />
+    <price year="2004" e95="8666" e98="12745" />
+    <price year="2005" e95="7745" e98="10745" />
+    <price year="2006" e95="9745" e98="12785" />
+    <price year="2007" e95="11745" e98="15745" />
+    <price year="2008" e95="9745" e98="13745" />
+  </fuelprices>
+</pricelist>

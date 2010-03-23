@@ -35,13 +35,14 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			return userIngredientRepository.GetUserIngredientsByUser(user.Id, fromdate, todate);
 		}
 
-		public IHistoryValues GetCalorieHistory(User user) {
+		public HistoryValuesContainer GetCalorieHistory(User user) {
 			var date = DateTime.Now.Date;
 			var userIngredients = userIngredientRepository.GetUserIngredientsByUser(user.Id, date.AddDays(-100), date.AddDays(1));
 
 			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.EnergyInKcal);
 
-			return new HistoryValues(valueSumPerDateFromUserIngredients);
+			return null;
+			//return new HistoryValues(valueSumPerDateFromUserIngredients);
 		}
 
 		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {

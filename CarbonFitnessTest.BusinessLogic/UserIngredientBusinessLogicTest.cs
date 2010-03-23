@@ -52,7 +52,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var firstDate = todaysDate.AddDays(-100).Date;
 			var lastDate = todaysDate;
 			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), firstDate, lastDate.AddDays(1))).Returns(expectedUserIngredients);
-			IHistoryValues returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
+			IHistoryValues returnedValues = null; // = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
+			Assert.Fail("DO IT!");
 
 			repositoryMock.VerifyAll();
 
