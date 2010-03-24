@@ -62,6 +62,7 @@ namespace CarbonFitness.App.Web {
 
 		protected void Application_BeginRequest(object sender, EventArgs e) {
 			NHibernateInitializer.Instance().InitializeNHibernateOnce(() => {
+
 				string nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
 				new Bootstrapper(nhibernateConfig).InitDatalayer(webSessionStorage);
 			});
