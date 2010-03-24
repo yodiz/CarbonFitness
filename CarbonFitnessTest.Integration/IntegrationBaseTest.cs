@@ -10,7 +10,7 @@ using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-		protected string BaseUrl = "http://localhost/carbonfitness";
+        protected string BaseUrl = "http://localhost:37718";
 		protected Browser Browser;
 
 		protected IntegrationBaseTest() {}
@@ -54,6 +54,10 @@ namespace CarbonFitnessTest.Integration {
 			Browser.Dispose();
 		}
 
+        public string GetFieldNameOnModel<TModel, TReturnType>(Expression<Func<TModel, TReturnType>> lambdaExpression)
+        {
+            return ExpressionHelper.GetExpressionText(lambdaExpression);
+        }
 		public string GetFieldNameOnModel<T>(Expression<Func<T, string>> lambdaExpression) {
 			return ExpressionHelper.GetExpressionText(lambdaExpression);
 		}

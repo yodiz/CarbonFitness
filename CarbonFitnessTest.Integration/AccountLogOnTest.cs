@@ -1,4 +1,5 @@
-﻿using CarbonFitness.App.Web.ViewConstants;
+﻿using CarbonFitness.App.Web.Models;
+using CarbonFitness.App.Web.ViewConstants;
 using NUnit.Framework;
 using WatiN.Core;
 
@@ -17,8 +18,11 @@ namespace CarbonFitnessTest.Integration {
 			Browser.GoTo(Url);
 			Browser.TextField(Find.ByName(AccountConstant.UsernameElement)).TypeText(userName);
 			Browser.TextField(Find.ByName(AccountConstant.PasswordElement)).TypeText(password);
+            Browser.CheckBox(Find.ByName(RememberMeFieldName)).Click();
 			Browser.Button(Find.ByValue(AccountConstant.SubmitElement)).Click();
 		}
+
+        private string RememberMeFieldName { get { return GetFieldNameOnModel<LogOnModel, bool>(m => m.RememberMe); } }
 
 		[Test]
 		public void shouldGotoUserCreateWhenClickingRegister() {
