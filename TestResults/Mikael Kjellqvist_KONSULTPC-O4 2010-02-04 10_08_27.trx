@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="2dc14a51-a36f-47d5-b898-f9f1cdb7b828" name="Mikael Kjellqvist@KONSULTPC-O4 2010-02-04 10:08:27" runUser="AVEGA\Mikael Kjellqvist" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Local Test Run" id="263b826b-195b-4e65-a471-0230468b937e">
+    <Description>This is a default test run configuration for a local test run.</Description>
+    <Deployment runDeploymentRoot="C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\TestResults\Mikael Kjellqvist_KONSULTPC-O4 2010-02-04 10_08_27">
+      <DeploymentItem filename="C:\Users\Mikael Kjellqvist\Desktop\WatiN-2.0.20.1089-net-2.0\Bin\WatiN.Core.dll" />
+      <DeploymentItem filename="C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitness\bin\Debug\CarbonFitness.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="2" executed="2" passed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2010-02-04T10:08:27.3344699+01:00" queuing="2010-02-04T10:08:27.9774056+01:00" start="2010-02-04T10:08:28.1563877+01:00" finish="2010-02-04T10:08:28.5663467+01:00" />
+  <TestDefinitions>
+    <UnitTest name="Create" storage="c:\users\mikael kjellqvist\documents\visual studio 2008\projects\carbonfitness\carbonfitnesstest\bin\debug\carbonfitnesstest.dll" id="3907d053-16e9-39c2-3bcd-dd20a5b26acf">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="d3181ca7-a88a-4d8a-bfb5-0896fde8f8dc" />
+      <TestMethod codeBase="C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CarbonFitnessTest.Test.UserRepositoryTest, CarbonFitnessTest" name="Create" />
+    </UnitTest>
+    <UnitTest name="testCreateUser" storage="c:\users\mikael kjellqvist\documents\visual studio 2008\projects\carbonfitness\carbonfitnesstest\bin\debug\carbonfitnesstest.dll" id="c1831fc4-5849-5d6e-49e7-f6153823c110">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="109cc36e-d2be-4d30-8373-673386369a10" />
+      <TestMethod codeBase="C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\bin\Debug\CarbonFitnessTest.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CarbonFitnessTest.CreateUserTest, CarbonFitnessTest" name="testCreateUser" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3907d053-16e9-39c2-3bcd-dd20a5b26acf" executionId="d3181ca7-a88a-4d8a-bfb5-0896fde8f8dc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c1831fc4-5849-5d6e-49e7-f6153823c110" executionId="109cc36e-d2be-4d30-8373-673386369a10" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d3181ca7-a88a-4d8a-bfb5-0896fde8f8dc" testId="3907d053-16e9-39c2-3bcd-dd20a5b26acf" testName="Create" computerName="KONSULTPC-O4" duration="00:00:00.0220179" startTime="2010-02-04T10:08:28.2603773+01:00" endTime="2010-02-04T10:08:28.4783555+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="109cc36e-d2be-4d30-8373-673386369a10" testId="c1831fc4-5849-5d6e-49e7-f6153823c110" testName="testCreateUser" computerName="KONSULTPC-O4" duration="00:00:00.0107785" startTime="2010-02-04T10:08:28.4793554+01:00" endTime="2010-02-04T10:08:28.4943539+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method CarbonFitnessTest.CreateUserTest.testCreateUser threw exception:  System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at CarbonFitnessTest.CreateUserTest.testCreateUser() in C:\Users\Mikael Kjellqvist\Documents\Visual Studio 2008\Projects\CarbonFitness\CarbonFitnessTest\Integration\CreateUserTest.cs:line 36
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

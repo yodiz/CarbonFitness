@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CarbonFitness.DataLayer.Repository;
 using SharpArch.Data.NHibernate;
+using System.IO;
 
 namespace CarbonFitness.BusinessLogic {
 	public class Bootstrapper {
@@ -17,6 +18,17 @@ namespace CarbonFitness.BusinessLogic {
 		}
 
 		public void InitDatalayer(ISessionStorage sessionStorage) {
+            /*
+             * Ugly hack?
+             *  The thought was that if the file doesnt exist - use template for basic configuration,
+             *  Then ask user to enter location of sql-server, username password etc.
+             */
+		    var templateConfigFile = nHibernateConfig.Replace(".config", ".template.config");
+            if (!File.Exists(nHibernateConfig) && File.Exists(templateConfigFile))
+            {
+                File.Copy(templateConfigFile, nHibernateConfig);    
+            }
+
 			bootstrapper.InitNhibernateSession(sessionStorage, nHibernateConfig);
 		}
 
