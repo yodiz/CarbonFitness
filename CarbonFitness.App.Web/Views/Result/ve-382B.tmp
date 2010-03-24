@@ -43,15 +43,27 @@
     <% } %> 
     
     
-
+    
+    <div>
+		<% /* Html.FusionCharts()
+			.Line2D(Model.CalorieHistoryList, 860, 300, d => d.Value)
+			.Caption("Kalori historik")
+			.SubCaption("(kcal)")
+			.Label(d => d.Date.ToShortDateString())
+			.DecimalPrecision(0)
+			.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);") */ %>				
+	</div>
+	
+	<!-- http://danvk.org/dygraphs/ --> 
+	
+	
 	<%= Html.Script("~/Scripts/Amcharts/Amxy/swfobject.js")%>
 	
-<%
-    StringBuilder pointData = new StringBuilder();
-    foreach (var calorieHistory in this.Model.CalorieHistoryList.OrderBy(x=>x.Date)) {
-        pointData.Append("<point x='" + calorieHistory.Date.ToShortDateString() + "' y='" + calorieHistory.Value.ToString() + "' value='1' />");
-    }
-%>
+	    <%
+      StringBuilder pointData = new StringBuilder();
+        foreach (var calorieHistory in this.Model.CalorieHistoryList.OrderBy(x=>x.Date)) {
+            pointData.Append("<point x='" + calorieHistory.Date.ToShortDateString() + "' y='" + calorieHistory.Value.ToString() + "' value='1' />");
+    } %>
 
     <div id="amcharts_1268916729453">You need to upgrade your Flash Player</div>
     <script type="text/javascript">

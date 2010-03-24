@@ -30,7 +30,12 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 
 		[Test]
 		public void shouldShowCalorieHistory() {
-			var expectedCalorieHistory = new HistoryValues(new Dictionary<DateTime, double> { { DateTime.Now.Date.AddDays(-1), 2000 }, { DateTime.Now.Date, 2150 } });
+		    var expectedCalorieHistory = new List<HistoryValue>();
+            expectedCalorieHistory.Add(new HistoryValue() { Date=new DateTime(2010, 4, 7), Value=12 });
+            expectedCalorieHistory.Add(new HistoryValue() { Date=new DateTime(2010, 4, 12), Value=52 });
+
+
+            //var expectedCalorieHistory = new HistoryValues(new Dictionary<DateTime, double> { { DateTime.Now.Date.AddDays(-1), 2000 }, { DateTime.Now.Date, 2150 } });
             userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(expectedCalorieHistory);
 
 			var model = RunMethodUnderTest();

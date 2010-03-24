@@ -56,9 +56,14 @@ namespace CarbonFitnessTest.Integration {
 			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, now, now);
 			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal);
 
-			var fusionChartSumOfCalorieValue = "<set value='" + ((int) sum);
+            var fusionChartSumOfCalorieValue = "y='" + ((int)sum);
 
-			Assert.That(caloriHistoryFusionGraphElement.InnerHtml.Contains(fusionChartSumOfCalorieValue), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
+		    bool caloriePointFound = false;
+            foreach (var scriptElement in Browser.ElementsWithTag("Script", null, null)) {
+                caloriePointFound = scriptElement.OuterHtml.Contains(fusionChartSumOfCalorieValue) | caloriePointFound;
+            }
+
+            Assert.That(caloriePointFound, "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in page");
 		}
 
 		[Test]
@@ -66,7 +71,13 @@ namespace CarbonFitnessTest.Integration {
 			addOneUserIngredient(now.AddDays(-2).ToString()); // adds the second user ingredient
 			reloadPage();
 
-			var fusionChartSumOfCalorieValue = "<set value='";
+			var fusionChartSumOfCalorieValue = "y='";
+
+		    string scriptContent = string.Empty;
+            foreach (var scriptElement in Browser.ElementsWithTag("Script", null, null))
+            {
+                scriptContent = scriptElement.OuterHtml;
+            }
 
 			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {fusionChartSumOfCalorieValue}, StringSplitOptions.None);
 			Assert.That(matches.Length, Is.EqualTo(3 + 1), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");

@@ -52,5 +52,8 @@ namespace CarbonFitnessTest.Web.Controller.ProfileController
 
             Assert.That(((ProfileModel)actionResult.ViewData.Model).IdealWeight, Is.EqualTo(expectedIdealWeight));
         }
+
+        //[Test]
+        //public void shouldValidateIdealWeightToBeNumberAnd
     }
 }

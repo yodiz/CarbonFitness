@@ -74,5 +74,13 @@ namespace CarbonFitnessTest.BusinessLogic {
 			}
 			Assert.That(count, Is.EqualTo(7));
 		}
+
+        [Test]
+        public void shouldReturnFalseOnFirstMoveNextIfEmpty() {
+            var emptyHistoryValues = new HistoryValues(new Dictionary<DateTime, double>() {});
+
+            var e = new HistoryValuesEnumerator(emptyHistoryValues);
+            Assert.That(e.MoveNext(), Is.Not.True);
+        }
 	}
 }

@@ -90,6 +90,8 @@ namespace CarbonFitness.BusinessLogic {
 		internal DateTime GetLastDate() {
 			return historyValues.Max(x => x.Date);
 		}
+
+        public bool IsEmpty { get { return historyValues.Count == 0; } }
 	}
 
 	public class HistoryValuesEnumerator : IEnumerator<HistoryValue> {
@@ -104,6 +106,7 @@ namespace CarbonFitness.BusinessLogic {
 
 		public bool MoveNext() {
 			if (currentDate == DateTime.MinValue) {
+                if (historyValues.IsEmpty) return false;
 				Reset();
 				return true;
 			}
