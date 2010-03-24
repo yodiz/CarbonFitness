@@ -82,7 +82,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 
         [Test]
         public void shouldReturnFalseOnFirstMoveNextIfEmpty() {
-            var emptyHistoryValues = new HistoryValues(new Dictionary<DateTime, double>() {});
+            var emptyHistoryValues = new HistoryValues(new Dictionary<DateTime, decimal>() {});
 
             var e = new HistoryValuesEnumerator(emptyHistoryValues);
             Assert.That(e.MoveNext(), Is.Not.True);

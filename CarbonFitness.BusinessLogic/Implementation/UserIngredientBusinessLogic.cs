@@ -51,12 +51,12 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			//return new HistoryValues(history);
 		}
 
-		private Dictionary<DateTime, double> GetCalorieSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients) {
-			var history = new Dictionary<DateTime, double>();
+		private Dictionary<DateTime, decimal> GetCalorieSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients) {
+			var history = new Dictionary<DateTime, decimal>();
 
 			foreach (var ingredient in userIngredients) {
 				var ingredientDate = ingredient.Date.Date;
-				var ingredientCalories = (double) ingredient.Ingredient.EnergyInKcal;
+				var ingredientCalories = ingredient.Ingredient.EnergyInKcal;
 
 				if (history.ContainsKey(ingredientDate)) {
 					history[ingredientDate] += ingredientCalories;

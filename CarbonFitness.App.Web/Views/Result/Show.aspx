@@ -19,22 +19,8 @@
 
     <h1><%=ResultConstant.ResultTitle%></h1>
     
+    
     <% using (var form = Html.BeginForm()) { %>
-        <div class="date-fields">
-            <div class="editor-label">
-                <%= Html.LabelFor(m => m.Date) %>
-            </div>
-            <div class="datepicker">
-                <%= Html.EditorFor(m => m.Date) %>
-            </div>
-        </div>
-        
-        <div class="editor-label">
-            <%= Html.LabelFor(m => m.SumOfCalories) %>
-        </div>    
-        <div class="editor-label" id="SumOfCalories">
-            <%= Html.DisplayTextFor(m => m.SumOfCalories) %>
-        </div>
                
         <div class="editor-label">
             <strong>Your ideal weight is</strong>
@@ -49,7 +35,7 @@
 <%
     StringBuilder pointData = new StringBuilder();
     foreach (var calorieHistory in this.Model.CalorieHistoryList.OrderBy(x=>x.Date)) {
-        pointData.Append("<point x='" + calorieHistory.Date.ToShortDateString() + "' y='" + calorieHistory.Value.ToString() + "' value='1' />");
+        pointData.Append("<point x='" + calorieHistory.Date.ToShortDateString() + "' y='" + calorieHistory.Value.ToString(System.Globalization.CultureInfo.InvariantCulture) + "' value='1' />");
     }
 %>
 
@@ -61,10 +47,6 @@
         so.addVariable("chart_data", encodeURIComponent("<chart><graphs><graph gid='0'><%=pointData.ToString() %></graph></graphs></chart>"));
         so.write("amcharts_1268916729453");
     </script>
-
-
-	
-
 
 
 </asp:Content>

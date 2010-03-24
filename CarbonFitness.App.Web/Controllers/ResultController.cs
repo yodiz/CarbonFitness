@@ -20,7 +20,7 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		public ActionResult Show() {
 			var model = new ResultModel();
-			//model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+			model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 		    model.IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User);
 			return View(model);
 		}

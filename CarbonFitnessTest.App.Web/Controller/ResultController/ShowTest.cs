@@ -33,39 +33,42 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 
 		[Test]
 		public void shouldGetAmChartDataXml() {
-			AutoMappingsBootStrapper.MapHistoryValuesContainerToAmChartData();
+		    Assert.Fail("Implement?");
+            //AutoMappingsBootStrapper.MapHistoryValuesContainerToAmChartData();
 
-			var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>();
-			var historyValuesContainer = new HistoryValuesContainer();
-			historyValuesContainer.labels = new[] {new strangeObject {value = "val1", xid = "1"}};
-			historyValuesContainer.unnecessaryContainer = new UnnecessaryContainer {HistoryValueses = new IHistoryValues[] {new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}})}};
-			userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(historyValuesContainer);
+            //var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>();
+            //var historyValuesContainer = new HistoryValuesContainer();
+            //historyValuesContainer.labels = new[] {new strangeObject {value = "val1", xid = "1"}};
+            //historyValuesContainer.unnecessaryContainer = new UnnecessaryContainer {HistoryValueses = new IHistoryValues[] {new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}})}};
+            //userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(historyValuesContainer);
 
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
-			var actionResult = (XmlResult) resultController.ShowXml();
-			var unserialized = (AmChartData) actionResult.ObjectToSerialize;
+            //var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
+            //var actionResult = (XmlResult) resultController.ShowXml();
+            //var unserialized = (AmChartData) actionResult.ObjectToSerialize;
 
-			var serializer = new XmlSerializer(typeof(AmChartData));
-			var stringWriter = new StringWriter();
-			serializer.Serialize(stringWriter, unserialized);
-			var stringReader = new StringReader(stringWriter.ToString());
-			var deserialized = (AmChartData) serializer.Deserialize(stringReader);
+            //var serializer = new XmlSerializer(typeof(AmChartData));
+            //var stringWriter = new StringWriter();
+            //serializer.Serialize(stringWriter, unserialized);
+            //var stringReader = new StringReader(stringWriter.ToString());
+            //var deserialized = (AmChartData) serializer.Deserialize(stringReader);
 
-			userIngredientBusinessLogicMock.VerifyAll();
-			Assert.That(deserialized.DataPoints.Length, Is.EqualTo(unserialized.DataPoints.Length));
-			Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(unserialized.DataPoints[0].Value));
-			Assert.That(deserialized.GraphRoot.Graphs[0].values[0].Value, Is.EqualTo(unserialized.GraphRoot.Graphs[0].values[0].Value));
+            //userIngredientBusinessLogicMock.VerifyAll();
+            //Assert.That(deserialized.DataPoints.Length, Is.EqualTo(unserialized.DataPoints.Length));
+            //Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(unserialized.DataPoints[0].Value));
+            //Assert.That(deserialized.GraphRoot.Graphs[0].values[0].Value, Is.EqualTo(unserialized.GraphRoot.Graphs[0].values[0].Value));
 		}
 
 		[Test]
 		public void shouldShowCalorieHistory() {
-			var expectedCalorieHistory = new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now.Date.AddDays(-1), 2000}, {DateTime.Now.Date, 2150}});
-			userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(null as HistoryValuesContainer); //.Returns(expectedCalorieHistory);
-			Assert.Fail("DO EEET!");
-			ResultModel model = RunMethodUnderTest(x => x.Show());
+            Assert.Fail("Implement?");
 
-			userIngredientBusinessLogicMock.VerifyAll();
-			Assert.That(model.CalorieHistoryList, Is.SameAs(expectedCalorieHistory));
+            //var expectedCalorieHistory = new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now.Date.AddDays(-1), 2000}, {DateTime.Now.Date, 2150}});
+            //userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(null as HistoryValuesContainer); //.Returns(expectedCalorieHistory);
+            //Assert.Fail("DO EEET!");
+            //ResultModel model = RunMethodUnderTest(x => x.Show());
+
+            //userIngredientBusinessLogicMock.VerifyAll();
+            //Assert.That(model.CalorieHistoryList, Is.SameAs(expectedCalorieHistory));
 		}
 
 		[Test]
