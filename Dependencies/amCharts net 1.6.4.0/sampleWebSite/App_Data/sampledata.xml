@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sampledata>
+  <nation name="Lithuanians" percents="83.6" wikipediaUrl="http://en.wikipedia.org/wiki/Lithuanians" />
+  <nation name="Poles" percents="6.3" wikipediaUrl="http://en.wikipedia.org/wiki/Poles" />
+  <nation name="Russians" percents="5.1" wikipediaUrl="http://en.wikipedia.org/wiki/Russians" />
+  <nation name="Belarusians" percents="1.1" wikipediaUrl="http://en.wikipedia.org/wiki/Belarusians" />
+  <nation name="Others" percents="3.9" wikipediaUrl="http://en.wikipedia.org/" />
+</sampledata>

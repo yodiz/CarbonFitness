@@ -40,7 +40,7 @@ namespace CarbonFitnessTest.Integration {
 		private Button SaveButton { get { return Browser.Button(Find.ByValue("Spara")); } }
 
 		private void reloadPage() {
-			Browser.Link(Find.ByText(SiteMasterConstant.FoodInputLinkText)).Click();
+			ReloadPage(SiteMasterConstant.FoodInputLinkText);
 		}
 
 
@@ -53,7 +53,7 @@ namespace CarbonFitnessTest.Integration {
 		public void createIngredientIfNotExist(string name) {
 			var repository = new IngredientRepository();
 			if (repository.Get(name) == null) {
-				repository.SaveOrUpdate(new Ingredient {Name = name, EnergyInKcal = 100});
+				repository.SaveOrUpdate(new Ingredient {Name = name, EnergyInKcal = 100, WeightInG = 100});
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace CarbonFitnessTest.Integration {
 
 		[Test]
 		public void shouldGoToResultsAfterClickingResults() {
-			Browser.Link(Find.ByText(SiteMasterConstant.ResultLinkText)).Click();
+			ReloadPage(SiteMasterConstant.ResultLinkText);
 
 			Assert.That(Browser.ContainsText(ResultConstant.ResultTitle));
 		}

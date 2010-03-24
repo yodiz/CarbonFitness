@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<InputFoodModel>" %>
-<%@ Import Namespace="CarbonFitness.App.Web.ViewConstants"%>
-<%@ Import Namespace="CarbonFitness.App.Web.Models"%>
-<%@ Import Namespace="CarbonFitness.App.Web.Controllers"%>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -16,7 +14,9 @@
 	 			$("#<%=Html.IdFor(m => m.Measure) %>").val("0");
 	 			$("form").submit();
 	 		});
-	 		$("#<%=Html.IdFor(m => m.Ingredient)%>").autocomplete("/Ingredient/Search");
+
+	 		var actionUrl = '<%= Url.Action<IngredientController>(c => c.Search(null)) %>';
+	 		$("#<%=Html.IdFor(m => m.Ingredient)%>").autocomplete(actionUrl);
 	 	});
 	</script>
 	 

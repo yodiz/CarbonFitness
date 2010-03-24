@@ -45,10 +45,8 @@
 					.Line2D(Model.UserWeightHistoryList, 860, 300, d => Convert.ToDouble(d.Weight))
 					.Caption("Vikt historik")
 					.SubCaption("(kg)")
-					.Label(d => d.Date.ToShortDateString())
-					.DecimalPrecision(1)				
-					//.Hover(d => d.Weight + " kg")
-					.Action(d => "javascript:alert(&apos;You clicked on " + d + "&apos;);")%>				
+					.Label(d => d.Date.ToShortDateString(), 1)
+					.DecimalPrecision(1)	%>				
 			</div>
 		 
     <% } %>

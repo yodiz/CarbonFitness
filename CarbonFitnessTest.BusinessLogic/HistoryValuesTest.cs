@@ -6,8 +6,8 @@ using NUnit.Framework;
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
 	public class HistoryValuesTest {
-		private Dictionary<DateTime, double> getTestValues() {
-			return new Dictionary<DateTime, double> {
+		private Dictionary<DateTime, decimal> getTestValues() {
+			return new Dictionary<DateTime, decimal> {
 				{DateTime.Today.AddDays(-6), 500},
 				{DateTime.Today.AddDays(-2), 100},
 				{DateTime.Today, 300}
@@ -21,7 +21,12 @@ namespace CarbonFitnessTest.BusinessLogic {
 			Assert.That(result, Is.EqualTo(100));
 		}
 
-
+		[Test]
+		public void shouldGetTitle() {
+			const string expectedTitle = "titel";
+			var historyValues = new HistoryValues(new Dictionary<DateTime, decimal>(), expectedTitle);
+			Assert.That(historyValues.Title, Is.EqualTo(expectedTitle));
+		}
 
 		[Test]
 		public void ShouldGetAverageHistoryValueForUndefinedDate() {

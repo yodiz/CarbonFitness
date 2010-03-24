@@ -13,6 +13,7 @@ namespace CarbonFitness.DataLayer {
 		public void InitNhibernateSession(ISessionStorage sessionStorage, string nHibernateConfig) {
 			var assembly = Assembly.GetAssembly(typeof(User));
 			var mappingAssembly = assembly.CodeBase.ToLower();
+
 			try {
 				NHibernateSession.Init(sessionStorage,
 					new[] {mappingAssembly},

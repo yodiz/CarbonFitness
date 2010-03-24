@@ -1,0 +1,51 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="site.master.cs" Inherits="site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>ASP.NET Controls for amCharts Sample Web Site</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table style="width: 100%; border: 0px; border-collapse: collapse;">
+        <tr>
+            <td colspan="2" style="background-color: #ddeeff; padding: 5px 10px 5px 10px; border-bottom: solid 3px #ccddff; color: #000088;">
+                <h1>
+                    ASP.NET Controls for amCharts Sample Web Site</h1>
+                <p>
+                    This is a sample web site demonstarting various usage scenarios of ASP.NET Controls
+                    for amCharts. Analyze source code of this pages to get an idea how this works.</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; vertical-align: top;">
+                <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                </asp:contentplaceholder>
+            </td>
+            <td style="width: 200px; padding: 10px; border-left: solid 1px #ccddff; background-color: #e8f8ff; vertical-align: top;">
+                <strong>More samples</strong>:<br />
+                <ul>
+                    <li><a href="Default.aspx">Simple PieChart</a></li>
+                    <li><a href="amPieWithData.aspx">amPie with modified settings and data from data source</a></li>
+                    <li><a href="amPieWithExternalData.aspx">amPie with dynamic data from external data
+                        source</a></li>
+                    <li><a href="amColumn.aspx">amColumn using data from several datasources and hardcoded series</a></li>
+                    <li><a href="amLine.aspx">amLine using data from several datasources, 2 axes and visualization tweaks</a></li>
+                    <li><a href="amXY.aspx">amXY with data generated in the code</a></li>
+                    <li><a href="amRadar.aspx">amRadar</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="margin: top; padding: 10px; border-top: solid 2px #ccddff; color: #000080; font-size: 0.8em;text-align: right;">
+                    Copyright &copy; 2008 by amCharts
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

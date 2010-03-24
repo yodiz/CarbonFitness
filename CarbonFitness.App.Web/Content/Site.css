@@ -84,18 +84,17 @@ div#page-header
 	}
 	div#page-header div.page-menu li a
 	{
-		display: block;
-		margin: 0 0 0 4px;
-		padding: 4px 10px;
-		background-color: #293a7c;
-		-moz-border-radius: 4px;
-		-webkit-border-radius: 4px;
-		border-radius: 4px;
-		color: #fff;
-		font-weight: bold;
-		font-size: 1em;
+		display:block;
+		text-align:center;
+		margin: 0 0 0 10px;		
+		font-size: 0.9em;
 		text-transform: uppercase;
 		text-decoration: none;
+	}
+	div#page-header div.page-menu li span
+	{		
+		display:block;
+		color: #666;
 	}
 
 
@@ -161,4 +160,9 @@ div#page-main
 div.splash-photo
 {
 	margin: -30px -30px 20px -30px;
+}
+
+.validation-summary-errors
+{
+	color: Red;	
 }

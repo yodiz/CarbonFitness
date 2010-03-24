@@ -1,6 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using AutoMapper;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
+using MvcContrib.ActionResults;
 
 namespace CarbonFitness.App.Web.Controllers {
 	public class ResultController : Controller {
@@ -16,17 +20,33 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		public ActionResult Show() {
 			var model = new ResultModel();
-			model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+			//model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 		    model.IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User);
 			return View(model);
 		}
 
-		//[HttpPost]
-		//public ActionResult Show(ResultModel model) {
-		//   //var userIngredients = userIngredientBusinessLogic.GetUserIngredients(userContext.User, model.Date);
-		//   //model.SumOfCalories = userIngredients.Sum(u => u.Ingredient.EnergyInKcal).ToString();
-		//   model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
-		//   return View(model);
-		//}
+		public ActionResult ShowXml()
+		{
+			var historyValueContainer = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+
+			var amChartData = new AmChartData();
+
+			Mapper.Map(historyValueContainer, amChartData);
+
+			return new XmlResult(amChartData);
+		}
+	}
+
+	public class HistoryValueWrapper {
+
+		public HistoryValueWrapper() {}
+
+		public HistoryValueWrapper(DateTime date, decimal value) {
+			Date = date;
+			Value = value;
+		}
+
+		public decimal Value { get; set; }
+		public DateTime Date { get; set; }
 	}
 }

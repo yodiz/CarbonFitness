@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Autofac\Autofac.Integration.Web.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=1.0.0.155, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FusionCharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\FusionCharts.dll</HintPath>
@@ -123,6 +127,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WeightController.cs" />
     <Compile Include="FusionCharts\FusionChartLine2DBuilder.cs" />
+    <Compile Include="FusionCharts\FusionChartMSLineBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartColumn2DBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartPie2DChartBuilder.cs" />
@@ -131,7 +136,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IUserContext.cs" />
+    <Compile Include="AutoMappingsBootStrapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ActionLinkExtension.cs" />
+    <Compile Include="Models\AmChartData.cs" />
     <Compile Include="Models\ProfileModel.cs" />
     <Compile Include="Models\InputFoodModel.cs" />
     <Compile Include="Models\InputWeightModel.cs" />
@@ -182,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Base.css" />
+    <Content Include="Content\halsa.png" />
     <Content Include="Content\HomePhoto.jpg" />
     <Content Include="Content\jquery-autocomplete\changelog.txt" />
     <Content Include="Content\jquery-autocomplete\demo\bg.gif" />
@@ -591,9 +600,14 @@
     <Content Include="Content\jquery-ui-1.7.2.custom\development-bundle\version.txt" />
     <Content Include="Content\jquery-ui-1.7.2.custom\index.html" />
     <Content Include="Content\jquery-ui-1.7.2.custom\js\jquery-1.3.2.min.js" />
+    <Content Include="Content\kost.png" />
     <Content Include="Content\MainContainer-Bottom.png" />
     <Content Include="Content\MainContainer-Middle.png" />
     <Content Include="Content\MainContainer-Top.png" />
+    <Content Include="Content\produkter.png" />
+    <Content Include="Content\profil.png" />
+    <Content Include="Content\resultat.png" />
+    <Content Include="Content\traning.png" />
     <Content Include="FusionCharts\FCF_Area2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -675,6 +689,10 @@
     <Content Include="Scripts\dygraph-combined.js" />
     <Content Include="Scripts\excanvas.compiled.js" />
     <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\amline\amline.swf" />
+    <Content Include="Scripts\amline\amline_data.xml" />
+    <Content Include="Scripts\amline\amline_settings.xml" />
+    <Content Include="Scripts\swfobject.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Content\Logo.png" />
     <Content Include="Scripts\jquery.autocomplete.js" />

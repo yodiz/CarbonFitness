@@ -1,0 +1,138 @@
+2009-11-20 1.6.4.0
+------------------
+- FEATURES ADDED: XyChart: FillColor, FillAlpha and MinMax properties added
+- FEATURE ADDED: ColumnChart: ColumnHoverColor property added.
+- FEATURE ADDED: ColumnChart: ColumnCornerRadiusTop and ColumnCornerRadiusBottom properties added
+- BUGFIX: PreloaderForeColor and PreloaderBackgroundColor where not rendered properly when using know color names (Black, White, etc.)
+- BUGFIX: PieChart: when custom Colors where not set and AppendSettingsToExternal property was set to true, custom colors in external settings file where overridden by defaults
+- BUGFIX: LineChart: YRightGridXxx settings were not applied unless some non-default setting was set on the YLeftGridXxx
+
+2009-05-07 1.6.3.0
+------------------
+- FEATURE ADDED: XY chart: added ZoomDisableAxis property. You can disable vertical or horizontal zoom. Set x to disable horizontal and y to disable vertical zoom.
+- FEATURE ADDED: XY chart: added global BulletMaxSize and BulletMinSize properties.
+- FEATURE ADDED: all charts: added ScientificMax and ScientificMin properties. These properties control limits when chart starts displaying values in scientific notation.
+- FEATURE ADDED: all charts: added JsEnabled property. In case you don't use any flash - JavaScript communication, you should set this setting to false - this will save some CPU and will disable the security warning message which appears when opening the chart from hard drive.
+- FEATURE ADDED: Column chart, Line chart: ValuesDuration (column chart) and YLeftValuesDuration/YRightValuesDuration (line chart) properties added. In case you want your axis to display formatted durations instead of numbers, you have to set the unit of the duration in your data. For example, if your values in data represents seconds, set "ss" here.
+- FEATURED ADDED: Column, Line and XY charts: added PercentileMargins property. When it's set to true margin settings are treated as percentile values.
+- BUGFIX: LineChart: DataLabelFormatString wasn't sent to the flash controls in LineChartGraph
+
+2009-01-23 1.6.1.2
+------------------
+- FEATURE ADDED: ColumnChart, LineChart: Added logarithmic settings for axes
+- FEATURE ADDED: ColumnChart: added ColumnDataLabelsAlwaysOn property to ColumnChart
+- FEATURE ADDED: ColumnChart, PieChart: Pattern and PatternColor settings added to ColumnChartGraph, ColumnChartValuesDataItem and PieChartDataItem
+- FEATURE ADDED: added FlashParams collection to set parameters on Flash object. Use Value for parameter name, Text for value.
+- BUGFIX/FEATURE ADDED: PieChart: LabelRadius was missing from PieChartDataItem
+- BUGFIX/FEATURE ADDED: PieChart: PieStartAngle property was missing in PieChart
+- BUGFIX: XyChart: Value settings for Y axis were rendered as settings for X axis
+
+2008-10-30 1.6.0
+----------------
+- FEATURE ADDED: Support for Radar charts
+- FEATURE ADDED: XyChart: Colors setting for default graph colors
+- FEATURE ADDED: XyChart: new bullet types
+- FEATURE ADDED: XyChart: added settings for bullets
+- FEATURE ADDED: XyChart: additional settings for balloon
+- FEATURE ADDED: XyChart: added settings for help button and balloon
+- FEATURE ADDED: XyChart: settings for scroller
+- FEATURE ADDED: XyChart: settings to control zoom
+- FEATURE ADDED: PieChart: added additional balloon settings
+- FEATURE ADDED: PieChart: SliceGradient and SliceGradientRatio properties to control gradients
+- FEATURE ADDED: PieChart: SliceHoverBrightness property to change slice brightness on hover
+- FEATURE ADDED: PieChart: DataLabelAvoidOverlapping property to prevent data labels from overlapping
+- FEATURE ADDED: LineChart: Colors setting for default graph colors
+- FEATURE ADDED: LineChart: added balloon settings
+- FEATURE ADDED: LineChart: YLeftAxisChartType and YRightAxisChartType properties for independent chart types for different axes
+- FEATURE ADDED: LineChart: SquareOutline and RoundOutline bullet types
+- FEATURE ADDED: LineChart: RescaleOnHide setting to control if chart should be rescaled when you hide/show graphs (defaults to true)
+- FEATURE ADDED: ColumnChart: SquareOutline and RoundOutline bullet types
+FEATURE ADDED: ColumnChart: Colors collection for default graph colors
+- FEATURE ADDED: ColumnChart: new balloon properties BalloonMaxWidth, BalloonCornerRadius, BalloonBorderWidth, BalloonBorderAlpha, - BalloonBorderColor
+- FEATURE ADDED: ColumnChart: using ColumnHoverBrightness property you can make your columns lighter or 
+darker when the user roll-overs them. 
+- FEATURE ADDED: ColumnChart: ColumnSequencedGrow property so that columns grow one after another
+- FEATURE ADDED: added Column3D ColumnChartTypes enumeration value for 3d column chart
+- CHANGE: all charts: Zoom context menu is hidden by default
+
+2008-08-26 1.5.2.0
+------------------
+- FEATURE ADDED: striped plot area: YLeftGridFillColor, YLeftGridFillAlpha, YRightGridFillColor, YRightGridFillAlpha in LineChart; ValueGridFillColor, ValueGridFillAlpha in ColumnChart; XGridFillColor, XGridFillAlpha, YGridFillColor, YGridFillAlpha in XyChart
+- FEATURE ADDED: added output of chart_id javascript setting (equals chart.ClientID) needed for further custom javascript manipulations
+- BUGFIX: unicode characters could now be used with inline data output method (replaced calls to escape javascript function with calls to encodeURIComponent for better support for international characters)
+- BUGFIX: LegendTextColorHover property was missing in LineChart
+
+2008-05-08 1.5.0.1
+------------------
+- FEATURE ADDED: added BackgroundTransparent property to enable transparent background for the whole flash control
+
+2008-04-18 1.5.0
+----------------
+- FEATURE ADDED: Legend entries can be aligned to left/center/right (LegendAlign property)
+- FEATURE ADDED: you can add custom menu items to Flash's context menu and control default items.
+- FEATURE ADDED: Guides. Guides are straight lines drawn through all plot area at a given value. Can also be filled with color
+- FEATURE ADDED: you can set series from which category values will be displayed
+- FEATURE ADDED: LegendReverseOrder to reverse order of legend items
+- FEATURE ADDED: Gradient Colors. All charts: BackgroundGradientColors, PlotAreaBackgroundGradientColors (except pie), LegendGradientColors, ErrorMessagesBackgroundGradientColors; Line&Column: guides FillGradientColors; Line: graph FillGradientColors, ScrollerGradientColors, ScrollerBackgroundGradientColors
+- FEATURE ADDED: all Top and Left settings could now be set in percents (field type changed to Unit), Width of labels and legend could be set in percents (field type changed to Unit), Top and Left distances could be measured from the opposite sides (right and bottom) set properties named XxxLeftMeasuredFromRight and XxxTopMeasuredFromBottom to activate this mode
+- FEATURE ADDED: PieChart: all radii can be set in percents
+- CHANGE: PieChart: new defaults: PieLeft=50%, PieTop=45%, PieRadius=25%, StartAnimationRadius=500%, PullOutRadius=20%
+
+2008-04-09 1.0.2
+----------------
+- FEATURE ADDED: added property LabelsInData which when set to true makes controls render labels in along with data rather than settings.
+- BUGFIX: & symbol in data caused charts to choke in some cases
+- API CHANGE: PieChart: Added GetDataXml() method to unify API with other chart types
+
+2008-03-21 1.0.1
+----------------
+- BUGFIX: ColumnChart: Value axis settings were incorrectly rendered as category axis settings
+- BUGFIX: ColumnChart: "url" field in data items was incorrectly rendered as "start"
+- BUGFIX: postbacks were multiplying colors in ColorCollection fields (like GradientFillColors, etc.)
+- BUGFIX: wrong type converter attribute (WebColorConverter) was set for BalloonTextSize property in ColumnChart and XyChart
+
+2008-03-18 1.0.0
+----------------
+- BUGFIX: DecimalSeparator setting wasn't working (misspelled in the output xml)
+- BUGFIX: added AllowPartiallyTrustedCallers attribute to allow use from non-FullTrust callers
+- COSMETIC CHANGE: changed default control SmartTags to custom which make more sense in charts context
+- DOCUMENTATION: added missing XML comments to the files
+
+
+2008-03-13 1.0.0 Release Candidate
+----------------------------------
+- FEATURE ADDED: support for ASP.NET AJAX added (use UseAjaxIfAvailable property 
+  to enable AJAX support)
+- CHANGE: reworked value fields so that they accept more flexible range of data 
+  types (NOTE: data type of Value fields of XxxChartDataItem classes changed 
+  from decimal to object)
+
+2008-03-06 1.0.0 Beta 4
+-----------------------
+- added support for scatter/bubble charts
+- BUGFIX: font sizes were not properly converted to pixels from FontUnit and having no effect on the output
+- BUGFIX: ColumnChart, LineChart: plot area margins weren't working (were rendered in the wrong place in xml)
+- BUGFIX: default decimal separator is "," not "."
+- BUGFIX: LineChart: URL data field wasn't properly rendered to XML
+
+2008-02-11 1.0.0 Beta 3
+-----------------------
+- added suport for line/area charts
+- FEATURE ADDED: no flash player message is now customizable
+- BUGFIX: export as image script url wasn't properly resolved
+- BUGFIX: ColumnChart: chart type wasn't rendered to XML settings and it wasn't 
+  possible to display bar charts
+
+2008-02-03 1.0.0 Beta 2
+-----------------------
+- added support for column/bar charts
+- PieChart: CHANGE: secondary fields (all except title and value) could 
+  missing in data source record even when appropriate DataXxxField for 
+  them is specified
+- PieChart: COSMETIC FIX: Added [TypeConverter(typeof(DataFieldConverter))]
+  attribute to DataXxxField properties so the list of available data source 
+  fields is presented in drop down list in properties pane
+
+2008-01-22 1.0.0 Beta
+---------------------
+Initial public release

@@ -1,20 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ResultModel>" %>
-<%@ Import Namespace="CarbonFitness.App.Web.FusionCharts"%>
-<%@ Import Namespace="CarbonFitness.App.Web.ViewConstants"%>
-<%@ Import Namespace="CarbonFitness.App.Web.Models"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript">
-        $(function() {
-            $("#<%=Html.IdFor(m => m.Date) %>").datepicker({ dateFormat: 'yy-mm-dd' });
-            $("#<%=Html.IdFor(m => m.Date) %>").change(function() {
-                this.form.submit();
-            });
-        });
-    </script>
+	<h1>
+		<%=ResultConstant.ResultTitle%></h1>
+	<% using (Html.BeginForm())
+	 { %>
+	<div class="editor-label">
+		<strong>Your ideal weight is</strong>
+		<%= Model.IdealWeight.ToString("N1") %>kg
+	</div>
+	<% } %>
+	
+	<div id="flashcontent">
+		You may have to upgrade your flash player.
+	</div>
 
     <h1><%=ResultConstant.ResultTitle%></h1>
     
@@ -43,7 +44,6 @@
     <% } %> 
     
     
-
 	<%= Html.Script("~/Scripts/Amcharts/Amxy/swfobject.js")%>
 	
 <%
