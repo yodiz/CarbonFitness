@@ -75,7 +75,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 			return new FusionChartLine2DBuilder<T>(mHtmlHelper, mChartsFolderBase, data, getValue, width, height);
 		}
 
-		public FusionChartMSLineBuilder MSLine(IEnumerable<IHistoryValuePoints> data,int width,int height)
+		public FusionChartMSLineBuilder MSLine(IEnumerable<ILine> data,int width,int height)
 		{
 			return new FusionChartMSLineBuilder(mHtmlHelper, mChartsFolderBase, data, x => (double)x.GetEnumerator().Current.Value, width, height);
 		}

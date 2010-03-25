@@ -15,7 +15,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 	/// <typeparam name="T"></typeparam>
 	/// <author>MBH</author>
 	/// <dateAuthored>12/1/09</dateAuthored>
-	public class FusionChartMSLineBuilder : FusionChartBuilder<IHistoryValuePoints>
+	public class FusionChartMSLineBuilder : FusionChartBuilder<ILine>
 	{
 		/// <summary>
 		/// The filename of the chart.
@@ -41,7 +41,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// <param name="valueExtractor"></param>
 		/// <param name="width"></param>
 		/// <param name="height"></param>
-		public FusionChartMSLineBuilder(HtmlHelper helper, string baseUrl, IEnumerable<IHistoryValuePoints> multiHistoryValues, Func<IHistoryValuePoints, double> valueExtractor, int width, int height) :
+		public FusionChartMSLineBuilder(HtmlHelper helper, string baseUrl, IEnumerable<ILine> multiHistoryValues, Func<ILine, double> valueExtractor, int width, int height) :
 			base(helper, baseUrl + CHART_NAME, multiHistoryValues, valueExtractor, width, height)
 		{
 		}
@@ -72,7 +72,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="xAxisLabel"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<IHistoryValuePoints> XAxisLabel(string xAxisLabel) {
+		public FusionChartBuilder<ILine> XAxisLabel(string xAxisLabel) {
 			mXAxisLabel = xAxisLabel;
 
 			return this;
@@ -109,7 +109,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="yAxisLabel"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<IHistoryValuePoints> YAxisLabel(string yAxisLabel)
+		public FusionChartBuilder<ILine> YAxisLabel(string yAxisLabel)
 		{
 			mYAxisLabel = yAxisLabel;
 

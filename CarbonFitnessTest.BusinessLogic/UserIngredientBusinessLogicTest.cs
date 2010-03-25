@@ -59,8 +59,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var todaysUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate select ui);
 			var oldUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(-100) select ui);
 
-			Assert.That(returnedValues.unnecessaryContainer.HistoryValuesCollection[0].GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
-			Assert.That(returnedValues.unnecessaryContainer.HistoryValuesCollection[0].GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
+			Assert.That(returnedValues.Lines.lines[0].GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
+			Assert.That(returnedValues.Lines.lines[0].GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
 		}
 
 		[Test]

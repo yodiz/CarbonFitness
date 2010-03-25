@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace CarbonFitness.BusinessLogic.UnitHistory {
-	public class HistoryValuePointsEnumerator : IEnumerator<ValuePoint> {
+	public class LineEnumerator : IEnumerator<ValuePoint> {
 		private DateTime currentDate;
-		private HistoryValuePoints historyValuePoints;
+		private Line line;
 
-		internal HistoryValuePointsEnumerator(HistoryValuePoints historyValuePoints) {
-			this.historyValuePoints = historyValuePoints;
+		internal LineEnumerator(Line line) {
+			this.line = line;
 		}
 
 		public void Dispose() {
@@ -17,11 +17,11 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 
 		public bool MoveNext() {
 			if (currentDate == DateTime.MinValue) {
-				currentDate = historyValuePoints.GetFirstDate();
+				currentDate = line.GetFirstDate();
 				return true;
 			}
 
-			if (currentDate.Date >= historyValuePoints.GetLastDate().Date) {
+			if (currentDate.Date >= line.GetLastDate().Date) {
 				return false;
 			}
 			currentDate = currentDate.AddDays(1);
@@ -32,7 +32,7 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			currentDate = DateTime.MinValue;
 		}
 
-		public ValuePoint Current { get { return historyValuePoints.GetValue(currentDate); } }
+		public ValuePoint Current { get { return line.GetValue(currentDate); } }
 
 		object IEnumerator.Current { get { return Current; } }
 	}

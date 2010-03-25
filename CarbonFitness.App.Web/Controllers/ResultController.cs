@@ -46,11 +46,11 @@ namespace CarbonFitness.App.Web.Controllers {
         }
 
         private AmChartData GetAmChartData() {
-            HistoryValuesContainer historyValueContainer = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+            Graph lineContainer = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
 
             var amChartData = new AmChartData();
 
-            Mapper.Map(historyValueContainer, amChartData);
+            Mapper.Map(lineContainer, amChartData);
             return amChartData;
         }
 
