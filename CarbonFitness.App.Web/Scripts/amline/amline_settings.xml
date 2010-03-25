@@ -22,7 +22,7 @@
 			<title>Inflation adjusted</title>
 			<color>999999</color>
 			<selected>0</selected>
-			<balloon_text>${value}</balloon_text>
+			<balloon_text>{value} kg</balloon_text>
 		</graph>
 	</graphs>
 	<labels>
