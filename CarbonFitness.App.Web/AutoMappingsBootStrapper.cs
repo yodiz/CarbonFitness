@@ -8,7 +8,8 @@ namespace CarbonFitness.App.Web {
 			MapHistoryValuesContainerToAmChartData();
 		}
 
-		public static void MapHistoryValuesContainerToAmChartData() {
+		public static void MapHistoryValuesContainerToAmChartData()
+		{
 			Mapper.CreateMap<strangeObject, value>()
 				.ForMember(x => x.Value, y => y.MapFrom(z => z.value));
 
@@ -27,5 +28,9 @@ namespace CarbonFitness.App.Web {
 				.ForMember(x => x.GraphRoot, y => y.MapFrom(z => z.unnecessaryContainer))
 				.ForMember(x => x.DataPoints, y => y.MapFrom(z => z.labels));
 		}
+
+
+
+
 	}
 }

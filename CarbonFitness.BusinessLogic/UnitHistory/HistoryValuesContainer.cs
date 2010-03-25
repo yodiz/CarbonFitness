@@ -5,6 +5,7 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 	public class HistoryValuesContainer {
 		public strangeObject[] labels;
 
+		//public IHistoryValues[] HistoryValueses;
 		public UnnecessaryContainer unnecessaryContainer;
 		public HistoryValuesContainer() {}
 
@@ -15,6 +16,7 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			}
 			labels = strangeObjects.ToArray();
 
+			//HistoryValueses = new[] {historyValues};
 			unnecessaryContainer = new UnnecessaryContainer { HistoryValueses = new[] { historyValues } };
 		}
 	}
