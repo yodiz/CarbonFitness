@@ -17,7 +17,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 		[Test]
 		public void ShouldGetAverageDifferencePerDay() {
-			var historyValues = new HistoryValues(getTestValues());
+			var historyValues = new HistoryValuePoints(getTestValues());
 			var result = historyValues.GetAverageDifferencePerDayBetweenActualValues(DateTime.Today.AddDays(-4));
 			Assert.That(result, Is.EqualTo(100));
 		}
@@ -25,13 +25,13 @@ namespace CarbonFitnessTest.BusinessLogic {
 		[Test]
 		public void shouldGetTitle() {
 			const string expectedTitle = "titel";
-			var historyValues = new HistoryValues(new Dictionary<DateTime, decimal>(), expectedTitle);
+			var historyValues = new HistoryValuePoints(new Dictionary<DateTime, decimal>(), expectedTitle);
 			Assert.That(historyValues.Title, Is.EqualTo(expectedTitle));
 		}
 
 		[Test]
 		public void ShouldGetAverageHistoryValueForUndefinedDate() {
-			var historyValues = new HistoryValues(getTestValues());
+			var historyValues = new HistoryValuePoints(getTestValues());
 
 			Assert.That(historyValues.GetValue(DateTime.Today.AddDays(-6)).Value, Is.EqualTo(500D));
 			Assert.That(historyValues.GetValue(DateTime.Today.AddDays(-5)).Value, Is.EqualTo(400D));
@@ -47,32 +47,32 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 		[Test]
 		public void ShouldGetNextKeyValue() {
-			var historyValues = new HistoryValues(getTestValues());
+			var historyValues = new HistoryValuePoints(getTestValues());
 			var h = historyValues.GetNextHistoryValue(DateTime.Today.AddDays(-4));
 			Assert.That(h.Date, Is.EqualTo(DateTime.Today.AddDays(-2)));
 		}
 
 		[Test]
 		public void ShouldGetNumberOfDaysBetweenDates() {
-			var historyValues = new HistoryValues();
+			var historyValues = new HistoryValuePoints();
 			var numberOfDaysBetweenValues = historyValues.GetNumberOfDaysBetweenDates(DateTime.Today.AddDays(-9), DateTime.Today);
 			Assert.That(numberOfDaysBetweenValues, Is.EqualTo(9));
 		}
 
 		[Test]
 		public void ShouldGetPreviousKeyValue() {
-			var historyValues = new HistoryValues(getTestValues());
+			var historyValues = new HistoryValuePoints(getTestValues());
 			var h = historyValues.GetPreviousHistoryValue(DateTime.Today.AddDays(-1));
 			Assert.That(h.Date, Is.EqualTo(DateTime.Today.AddDays(-2)));
 		}
 
 		[Test]
 		public void shouldLoopSortedItems() {
-			var historyValues = new HistoryValues(getTestValues());
+			var historyValues = new HistoryValuePoints(getTestValues());
 			DateTime first = DateTime.Today.AddDays(-6);
 			int count = 0;
 
-			foreach (HistoryValue historyValue in historyValues) {
+			foreach (ValuePoint historyValue in historyValues) {
 				Assert.That(historyValue.Value, Is.GreaterThan(99));
 				Assert.That(historyValue.Date, Is.EqualTo(first));
 				first = first.AddDays(1);
@@ -88,7 +88,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			historyValuesDictonary.Add(DateTime.Now.AddDays(-0), 123);
 			historyValuesDictonary.Add(DateTime.Now.AddDays(1), 1234);
 
-			var historyValues = new HistoryValues(historyValuesDictonary);
+			var historyValues = new HistoryValuePoints(historyValuesDictonary);
 			Assert.That(historyValues.Count(), Is.EqualTo(3));
 			int count = 0;
 			foreach(var item in historyValues) {

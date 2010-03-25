@@ -13,15 +13,15 @@ namespace CarbonFitnessTest.BusinessLogic
 
 		[Test]
 		public void shouldInitializeLabelsAndAddHistoryValuesWhenAddingFirstHisoryValue() {
-			HistoryValues historyValues = new HistoryValues(new Dictionary<DateTime, decimal> {{ DateTime.Now, 123  }} );
-			HistoryValuesContainer historyValuesContainer = new HistoryValuesContainer(historyValues);
+			HistoryValuePoints historyValuePoints = new HistoryValuePoints(new Dictionary<DateTime, decimal> {{ DateTime.Now, 123  }} );
+			HistoryValuesContainer historyValuesContainer = new HistoryValuesContainer(historyValuePoints);
 		
 
 			Assert.That(historyValuesContainer.labels, Is.Not.Null);
-			Assert.That(historyValuesContainer.labels.Length, Is.EqualTo(historyValues.Count()));
+			Assert.That(historyValuesContainer.labels.Length, Is.EqualTo(historyValuePoints.Count()));
 
-			Assert.That(historyValuesContainer.unnecessaryContainer.HistoryValueses.Count(), Is.EqualTo(1));
-			Assert.That(historyValuesContainer.unnecessaryContainer.HistoryValueses[0].Count(), Is.EqualTo(historyValues.Count()));
+			Assert.That(historyValuesContainer.unnecessaryContainer.HistoryValuesCollection.Count(), Is.EqualTo(1));
+			Assert.That(historyValuesContainer.unnecessaryContainer.HistoryValuesCollection[0].Count(), Is.EqualTo(historyValuePoints.Count()));
 		}
 
 	}

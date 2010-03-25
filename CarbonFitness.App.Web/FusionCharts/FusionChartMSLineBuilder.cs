@@ -15,7 +15,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 	/// <typeparam name="T"></typeparam>
 	/// <author>MBH</author>
 	/// <dateAuthored>12/1/09</dateAuthored>
-	public class FusionChartMSLineBuilder : FusionChartBuilder<IHistoryValues>
+	public class FusionChartMSLineBuilder : FusionChartBuilder<IHistoryValuePoints>
 	{
 		/// <summary>
 		/// The filename of the chart.
@@ -41,18 +41,18 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// <param name="valueExtractor"></param>
 		/// <param name="width"></param>
 		/// <param name="height"></param>
-		public FusionChartMSLineBuilder(HtmlHelper helper, string baseUrl, IEnumerable<IHistoryValues> multiHistoryValues, Func<IHistoryValues, double> valueExtractor, int width, int height) :
+		public FusionChartMSLineBuilder(HtmlHelper helper, string baseUrl, IEnumerable<IHistoryValuePoints> multiHistoryValues, Func<IHistoryValuePoints, double> valueExtractor, int width, int height) :
 			base(helper, baseUrl + CHART_NAME, multiHistoryValues, valueExtractor, width, height)
 		{
 		}
 
 
-		protected string getValue(HistoryValue item)
+		protected string getValue(ValuePoint item)
 		{
 			return item.Value.ToString(CultureInfo.InvariantCulture);
 		}
 
-		protected string getLabel(HistoryValue item)
+		protected string getLabel(ValuePoint item)
 		{
 			return item.Date.ToShortDateString();
 		}
@@ -72,7 +72,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="xAxisLabel"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<IHistoryValues> XAxisLabel(string xAxisLabel) {
+		public FusionChartBuilder<IHistoryValuePoints> XAxisLabel(string xAxisLabel) {
 			mXAxisLabel = xAxisLabel;
 
 			return this;
@@ -109,7 +109,7 @@ namespace CarbonFitness.App.Web.FusionCharts {
 		/// </summary>
 		/// <param name="yAxisLabel"></param>
 		/// <returns></returns>
-		public FusionChartBuilder<IHistoryValues> YAxisLabel(string yAxisLabel)
+		public FusionChartBuilder<IHistoryValuePoints> YAxisLabel(string yAxisLabel)
 		{
 			mYAxisLabel = yAxisLabel;
 

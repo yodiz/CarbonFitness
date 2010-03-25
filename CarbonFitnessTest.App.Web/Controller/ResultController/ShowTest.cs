@@ -36,8 +36,8 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			AutoMappingsBootStrapper.MapHistoryValuesContainerToAmChartData();
 
 			var historyValuesContainer = new HistoryValuesContainer();
-			historyValuesContainer.labels = new[] {new strangeObject {value = "val1", xid = "1"}};
-			historyValuesContainer.unnecessaryContainer = new UnnecessaryContainer {HistoryValueses = new IHistoryValues[] {new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}})}};
+			historyValuesContainer.labels = new[] {new Label {Value = "val1", Xid = "1"}};
+			historyValuesContainer.unnecessaryContainer = new UnnecessaryContainer {HistoryValuesCollection = new IHistoryValuePoints[] {new HistoryValuePoints(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}})}};
 			userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(historyValuesContainer);
 
 			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
@@ -49,8 +49,8 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 
 			userIngredientBusinessLogicMock.VerifyAll();
 			Assert.That(deserialized.DataPoints.Length, Is.EqualTo(historyValuesContainer.labels.Length));
-			Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(historyValuesContainer.labels[0].value));
-			Assert.That(decimal.Parse(deserialized.GraphRoot.Graphs[0].values[0].Value), Is.EqualTo(historyValuesContainer.unnecessaryContainer.HistoryValueses[0].Values[0].Value));
+			Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(historyValuesContainer.labels[0].Value));
+			Assert.That(decimal.Parse(deserialized.GraphRoot.Graphs[0].values[0].Value), Is.EqualTo(historyValuesContainer.unnecessaryContainer.HistoryValuesCollection[0].ValuesPoint[0].Value));
 		}
 
 		//[Test]

@@ -42,7 +42,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
 			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.EnergyInKcal);
 
-			return new HistoryValuesContainer(new HistoryValues(valueSumPerDateFromUserIngredients));
+			return new HistoryValuesContainer(new HistoryValuePoints(valueSumPerDateFromUserIngredients));
 		}
 
 		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {

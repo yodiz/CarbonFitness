@@ -4,38 +4,38 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace CarbonFitness.BusinessLogic.UnitHistory {
-	public class HistoryValues : IHistoryValues {
-		private readonly List<HistoryValue> historyValues = new List<HistoryValue>();
-		private HistoryValuesEnumerator historyValuesEnumerator;
+	public class HistoryValuePoints : IHistoryValuePoints {
+		private readonly List<ValuePoint> valuePoints = new List<ValuePoint>();
+		private HistoryValuePointsEnumerator historyValuePointsEnumerator;
 
-		public HistoryValues(Dictionary<DateTime, decimal> values) {
+		public HistoryValuePoints(Dictionary<DateTime, decimal> values) {
 			foreach (var kv in values) {
-				historyValues.Add(new HistoryValue { Date = kv.Key, Value = kv.Value });
+				valuePoints.Add(new ValuePoint { Date = kv.Key, Value = kv.Value });
 			}
 		}
 
-		public HistoryValues(Dictionary<DateTime, decimal> values, string title) : this (values){
+		public HistoryValuePoints(Dictionary<DateTime, decimal> values, string title) : this (values){
 			Title = title;
 		}
 
-		public HistoryValues() {}
+		public HistoryValuePoints() {}
 
 		public string Title { get; protected set; }
 
-		public IEnumerator<HistoryValue> GetEnumerator() {
-			if (historyValuesEnumerator == null) {
-				historyValuesEnumerator = new HistoryValuesEnumerator(this);
+		public IEnumerator<ValuePoint> GetEnumerator() {
+			if (historyValuePointsEnumerator == null) {
+				historyValuePointsEnumerator = new HistoryValuePointsEnumerator(this);
 			}
-			return historyValuesEnumerator;
+			return historyValuePointsEnumerator;
 		}
 
 		IEnumerator IEnumerable.GetEnumerator() {
 			return GetEnumerator();
 		}
 
-		public HistoryValue[] Values {
+		public ValuePoint[] ValuesPoint {
 			get {
-				var values = new List<HistoryValue>();
+				var values = new List<ValuePoint>();
 				foreach (var historyValue in this) {
 					values.Add(historyValue);
 				}
@@ -43,7 +43,7 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			}
 		}
 
-		public HistoryValue GetValue(DateTime date) {
+		public ValuePoint GetValue(DateTime date) {
 			if (date < GetFirstDate() || date > GetLastDate()) {
 				throw new IndexOutOfRangeException("Date was:" + date + " First date is:" + GetFirstDate() + " Last date is:" + GetLastDate());
 			}
@@ -56,37 +56,37 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			return getHistoryValueWithIndex(date, historyValue);
 		}
 
-		private HistoryValue getActualHistoryValue(DateTime date) {
-			return historyValues.Where(x => x.Date == date).FirstOrDefault();
+		private ValuePoint getActualHistoryValue(DateTime date) {
+			return valuePoints.Where(x => x.Date == date).FirstOrDefault();
 		}
 
-		private HistoryValue getHistoryValueWithIndex(DateTime date, HistoryValue historyValue) {
-			historyValue.Index = getIndexForHistoryValue(date);
-			return historyValue;
+		private ValuePoint getHistoryValueWithIndex(DateTime date, ValuePoint valuePoint) {
+			valuePoint.Index = getIndexForHistoryValue(date);
+			return valuePoint;
 		}
 
 		private int getIndexForHistoryValue(DateTime date) {
 			return (int)date.Subtract(GetFirstDate()).TotalDays;
 		}
 
-		private HistoryValue GetCalculatedHistoryValue(DateTime date) {
+		private ValuePoint GetCalculatedHistoryValue(DateTime date) {
 			var numberOfDaysFromPreviousValue = GetNumberOfDaysFromPreviousValue(date);
-			return new HistoryValue { Date = date, Value = GetPreviousHistoryValue(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
+			return new ValuePoint { Date = date, Value = GetPreviousHistoryValue(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
 		}
 
 		private int GetNumberOfDaysFromPreviousValue(DateTime date) {
 			return (int) date.Subtract(GetPreviousHistoryValue(date).Date).TotalDays;
 		}
 
-		public HistoryValue GetPreviousHistoryValue(DateTime date) {
+		public ValuePoint GetPreviousHistoryValue(DateTime date) {
 			if (date <= GetFirstDate()) {
 				return null;
 			}
-			return historyValues.Where(x => x.Date < date).OrderByDescending(x => x.Date).First();
+			return valuePoints.Where(x => x.Date < date).OrderByDescending(x => x.Date).First();
 		}
 
-		public HistoryValue GetNextHistoryValue(DateTime date) {
-			return historyValues.Where(x => x.Date > date).OrderBy(x => x.Date).First();
+		public ValuePoint GetNextHistoryValue(DateTime date) {
+			return valuePoints.Where(x => x.Date > date).OrderBy(x => x.Date).First();
 		}
 
 		public int GetNumberOfDaysBetweenDates(DateTime first, DateTime second) {
@@ -103,11 +103,11 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 		}
 
 		internal DateTime GetFirstDate() {
-			return historyValues.Min(x => x.Date);
+			return valuePoints.Min(x => x.Date);
 		}
 
 		internal DateTime GetLastDate() {
-			return historyValues.Max(x => x.Date);
+			return valuePoints.Max(x => x.Date);
 		}
 	}
 }

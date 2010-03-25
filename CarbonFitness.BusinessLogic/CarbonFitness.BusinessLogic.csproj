@@ -65,8 +65,8 @@
     <Compile Include="Exceptions\InvalidWeightException.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
     <Compile Include="Implementation\UserProfileBusinessLogic.cs" />
-    <Compile Include="UnitHistory\HistoryValue.cs" />
-    <Compile Include="UnitHistory\HistoryValues.cs" />
+    <Compile Include="UnitHistory\ValuePoint.cs" />
+    <Compile Include="UnitHistory\HistoryValuePoints.cs" />
     <Compile Include="Implementation\UserWeightBusinessLogic.cs" />
     <Compile Include="IngredientImporter\IIngredientFileReader.cs" />
     <Compile Include="IngredientImporter\IIngredientImporter.cs" />
@@ -86,9 +86,9 @@
     <Compile Include="Implementation\UserBusinessLogic.cs" />
     <Compile Include="Implementation\UserIngredientBusinessLogic.cs" />
     <Compile Include="UnitHistory\HistoryValuesContainer.cs" />
-    <Compile Include="UnitHistory\HistoryValuesEnumerator.cs" />
-    <Compile Include="UnitHistory\IHistoryValues.cs" />
-    <Compile Include="UnitHistory\strangeObject.cs" />
+    <Compile Include="UnitHistory\HistoryValuePointsEnumerator.cs" />
+    <Compile Include="UnitHistory\IHistoryValuePoints.cs" />
+    <Compile Include="UnitHistory\Label.cs" />
     <Compile Include="UnitHistory\UnnecessaryContainer.cs" />
   </ItemGroup>
   <ItemGroup>
