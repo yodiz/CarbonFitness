@@ -8,9 +8,7 @@
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%= AccountConstant.LoginTitle %></h2>
-    
-    usernameform = <%= Request.Form["Username"] %>
-    
+       
     <p>
         Please enter your username and password. <%= Html.ActionLink("Register", "Create", "User")%> if you don't have an account.
     </p>

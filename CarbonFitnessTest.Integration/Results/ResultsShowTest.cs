@@ -14,37 +14,37 @@ namespace CarbonFitnessTest.Integration.Results {
 			Browser.GoTo(Url + "?e=" + Guid.NewGuid());
 		}
 
-		[Test]
-		public void shouldHaveCalorieHistory() {
-			reloadPage();
+		//[Test]
+		//public void shouldHaveCalorieHistory() {
+		//   reloadPage();
 
-			var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
-			var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal * (u.Measure / u.Ingredient.WeightInG)); //u.GetMeasureMultiplier()
+		//   var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
+		//   var sum = userIngredients.Sum(u => u.Ingredient.EnergyInKcal * (u.Measure / u.Ingredient.WeightInG)); //u.GetMeasureMultiplier()
 
-			var fusionChartSumOfCalorieValue = "<set value='" + ((int) sum);
+		//   var fusionChartSumOfCalorieValue = "<set value='" + ((int) sum);
 
-			Assert.That(caloriHistoryFusionGraphElement.InnerHtml.Contains(fusionChartSumOfCalorieValue), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
-		}
+		//   Assert.That(caloriHistoryFusionGraphElement.InnerHtml.Contains(fusionChartSumOfCalorieValue), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
+		//}
 
-		[Test]
-		public void shouldHaveCalorieHistoryInDailyDataPoints() {
-			addOneUserIngredient(Now.AddDays(-2).ToString(), 200); // adds the second user ingredient
-			reloadPage();
+		//[Test]
+		//public void shouldHaveCalorieHistoryInDailyDataPoints() {
+		//   addOneUserIngredient(Now.AddDays(-2).ToString(), 200); // adds the second user ingredient
+		//   reloadPage();
 
-			var fusionChartSumOfCalorieValue = "<set value='";
+		//   var fusionChartSumOfCalorieValue = "<set value='";
 
-			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {fusionChartSumOfCalorieValue}, StringSplitOptions.None);
-			Assert.That(matches.Length, Is.EqualTo(3 + 1), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
-		}
+		//   var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {fusionChartSumOfCalorieValue}, StringSplitOptions.None);
+		//   Assert.That(matches.Length, Is.EqualTo(3 + 1), "No calorieValueWith (" + fusionChartSumOfCalorieValue + ") found in graph");
+		//}
 
 
-		[Test]
-		public void shouldHaveMultipleSeries() {
-			const string seriesname = "seriesName";
-			var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {seriesname}, StringSplitOptions.None);
+		//[Test]
+		//public void shouldHaveMultipleSeries() {
+		//   const string seriesname = "seriesName";
+		//   var matches = caloriHistoryFusionGraphElement.InnerHtml.Split(new[] {seriesname}, StringSplitOptions.None);
 
-			Assert.That(matches.Length, Is.EqualTo(3), "Should be more than one series on page");
-		}
+		//   Assert.That(matches.Length, Is.EqualTo(3), "Should be more than one series on page");
+		//}
 
 		[Test]
 		public void shouldShowLoggedInUsersIdealWeight() {

@@ -52,16 +52,15 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var firstDate = todaysDate.AddDays(-100).Date;
 			var lastDate = todaysDate;
 			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), firstDate, lastDate.AddDays(1))).Returns(expectedUserIngredients);
-			IHistoryValues returnedValues = null; // = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
-			Assert.Fail("DO IT!");
+			var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
 
 			repositoryMock.VerifyAll();
 
 			var todaysUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate select ui);
 			var oldUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(-100) select ui);
 
-			Assert.That(returnedValues.GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
-			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
+			Assert.That(returnedValues.unnecessaryContainer.HistoryValueses[0].GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
+			Assert.That(returnedValues.unnecessaryContainer.HistoryValueses[0].GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
 		}
 
 		[Test]

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using NUnit.Framework;
+using System.Linq;
 
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
@@ -78,6 +79,22 @@ namespace CarbonFitnessTest.BusinessLogic {
 				count++;
 			}
 			Assert.That(count, Is.EqualTo(7));
+		}
+
+		[Test]
+		public void shouldHaveIndex() {
+			var historyValuesDictonary = new Dictionary<DateTime, decimal>();
+			historyValuesDictonary.Add(DateTime.Now.AddDays(-1), 123);
+			historyValuesDictonary.Add(DateTime.Now.AddDays(-0), 123);
+			historyValuesDictonary.Add(DateTime.Now.AddDays(1), 1234);
+
+			var historyValues = new HistoryValues(historyValuesDictonary);
+			Assert.That(historyValues.Count(), Is.EqualTo(3));
+			int count = 0;
+			foreach(var item in historyValues) {
+				Assert.That(item.Index, Is.EqualTo(count));
+				count++;
+			}
 		}
 	}
 }

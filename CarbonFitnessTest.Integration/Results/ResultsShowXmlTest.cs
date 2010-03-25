@@ -15,7 +15,10 @@ namespace CarbonFitnessTest.Integration.Results {
 		public void shouldHaveCalorieHistory() {
 			Browser.GoTo(Url);
 
-			Assert.That(Browser.Html, Contains.Substring("<set value="));
+			Assert.That(Browser.Html, Contains.Substring(Now.ToShortDateString() + "</VALUE>"));
+			Assert.That(Browser.Html, !Contains.Substring(","));
+
+			//Assert.That(Browser.Html, Contains.Substring("<VALUE>" + Now.ToShortDateString() + "</VALUE>"));
 		}
 	}
 }

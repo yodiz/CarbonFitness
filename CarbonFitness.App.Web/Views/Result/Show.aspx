@@ -16,27 +16,16 @@
 	</div>
 	<% } %>
 	
-	<div id="flashcontent">
+	<div id="amChartContent">
 		You may have to upgrade your flash player.
 	</div>
-
 	<script type="text/javascript">
 		// <![CDATA[		
 		var so = new SWFObject('<%=Url.Content("~/scripts/amline/amline.swf") %>', 'amline', '860', '300', '8', '#FFFFFF');
 		//so.addVariable("path", "../../amline/");
 		so.addVariable("settings_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_settings.xml") %>'));
-		so.addVariable('data_file', encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_data.xml") %>'));
-		//so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>'));
-		so.write("flashcontent");
+		so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>/?a=<%= DateTime.Now.Ticks %>'));
+		so.write("amChartContent");
 		// ]]>
 	</script>
-
-	<div>
-		<%=Html.FusionCharts()
-			.MSLine(new[] {Model.CalorieHistoryList}, 860, 300)
-			.Caption("Kalori historik")
-			.SubCaption("(kcal)")
-			.DecimalPrecision(0)
-			.Colors("00cc33")	%>
-	</div>
 </asp:Content>

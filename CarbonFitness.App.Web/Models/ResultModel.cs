@@ -1,5 +1,5 @@
 ﻿using System;
-using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 
 namespace CarbonFitness.App.Web.Models {
 	public class ResultModel {

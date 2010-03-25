@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using AutoMapper;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 
 namespace CarbonFitness.App.Web.Controllers {
     public class ResultController : Controller {
@@ -35,6 +36,7 @@ namespace CarbonFitness.App.Web.Controllers {
             };
         }
 
+		 [OutputCache(NoStore=true, Duration=0, VaryByParam="*")]
         public ActionResult ShowXml()
         {
             return new ContentResult {

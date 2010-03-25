@@ -672,6 +672,7 @@
     </Content>
     <Content Include="Scripts\amline\amline.swf" />
     <Content Include="Scripts\amline\amline_data.xml" />
+    <Content Include="Scripts\amline\amline_data2.xml" />
     <Content Include="Scripts\amline\amline_settings.xml" />
     <Content Include="Scripts\swfobject.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />

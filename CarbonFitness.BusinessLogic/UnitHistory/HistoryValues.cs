@@ -3,31 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarbonFitness.BusinessLogic {
-	public class HistoryValue {
-		public decimal Value { get; set; }
-		public DateTime Date { get; set; }
-	}
-	public class HistoryValuesContainer {
-		public strangeObject[] labels;
-
-		public UnnecessaryContainer unnecessaryContainer;
-	}
-	public class UnnecessaryContainer {
-		public IHistoryValues[] HistoryValueses;
-	}
-
-	public class strangeObject {
-		public string value{ get; set;}
-		public string xid { get; set; }
-	}
-
-	public interface IHistoryValues : IEnumerable<HistoryValue> {
-		HistoryValue[] Values { get; }
-		HistoryValue GetValue(DateTime date);
-		string Title { get; }
-	}
-
+namespace CarbonFitness.BusinessLogic.UnitHistory {
 	public class HistoryValues : IHistoryValues {
 		private readonly List<HistoryValue> historyValues = new List<HistoryValue>();
 		private HistoryValuesEnumerator historyValuesEnumerator;
@@ -77,16 +53,25 @@ namespace CarbonFitness.BusinessLogic {
 				historyValue = GetCalculatedHistoryValue(date);
 			}
 
-			return historyValue;
+			return getHistoryValueWithIndex(date, historyValue);
 		}
 
 		private HistoryValue getActualHistoryValue(DateTime date) {
 			return historyValues.Where(x => x.Date == date).FirstOrDefault();
 		}
 
+		private HistoryValue getHistoryValueWithIndex(DateTime date, HistoryValue historyValue) {
+			historyValue.Index = getIndexForHistoryValue(date);
+			return historyValue;
+		}
+
+		private int getIndexForHistoryValue(DateTime date) {
+			return (int)date.Subtract(GetFirstDate()).TotalDays;
+		}
+
 		private HistoryValue GetCalculatedHistoryValue(DateTime date) {
 			var numberOfDaysFromPreviousValue = GetNumberOfDaysFromPreviousValue(date);
-			return new HistoryValue {Date = date, Value = GetPreviousHistoryValue(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
+			return new HistoryValue { Date = date, Value = GetPreviousHistoryValue(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
 		}
 
 		private int GetNumberOfDaysFromPreviousValue(DateTime date) {
@@ -94,6 +79,9 @@ namespace CarbonFitness.BusinessLogic {
 		}
 
 		public HistoryValue GetPreviousHistoryValue(DateTime date) {
+			if (date <= GetFirstDate()) {
+				return null;
+			}
 			return historyValues.Where(x => x.Date < date).OrderByDescending(x => x.Date).First();
 		}
 
@@ -121,39 +109,5 @@ namespace CarbonFitness.BusinessLogic {
 		internal DateTime GetLastDate() {
 			return historyValues.Max(x => x.Date);
 		}
-	}
-
-	public class HistoryValuesEnumerator : IEnumerator<HistoryValue> {
-		private DateTime currentDate;
-		private HistoryValues historyValues;
-
-		internal HistoryValuesEnumerator(HistoryValues historyValues) {
-			this.historyValues = historyValues;
-		}
-
-		public void Dispose() {
-			Reset();
-		}
-
-		public bool MoveNext() {
-			if (currentDate == DateTime.MinValue) {
-				currentDate = historyValues.GetFirstDate();
-				return true;
-			}
-
-			if (currentDate >= historyValues.GetLastDate()) {
-				return false;
-			}
-			currentDate = currentDate.AddDays(1);
-			return true;
-		}
-
-		public void Reset() {
-			currentDate = DateTime.MinValue;
-		}
-
-		public HistoryValue Current { get { return historyValues.GetValue(currentDate); } }
-
-		object IEnumerator.Current { get { return Current; } }
 	}
 }

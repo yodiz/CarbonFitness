@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Web.Mvc;
-using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 
 namespace CarbonFitness.App.Web.FusionCharts {
 	/// <summary>

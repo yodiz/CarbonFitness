@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using CarbonFitness.BusinessLogic.Exceptions;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -41,8 +42,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
 			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.EnergyInKcal);
 
-			return null;
-			//return new HistoryValues(valueSumPerDateFromUserIngredients);
+			return new HistoryValuesContainer(new HistoryValues(valueSumPerDateFromUserIngredients));
 		}
 
 		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {

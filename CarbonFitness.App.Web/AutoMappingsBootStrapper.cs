@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CarbonFitness.App.Web.Models;
-using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 
 namespace CarbonFitness.App.Web {
 	public static class AutoMappingsBootStrapper {
@@ -13,8 +13,8 @@ namespace CarbonFitness.App.Web {
 				.ForMember(x => x.Value, y => y.MapFrom(z => z.value));
 
 			Mapper.CreateMap<HistoryValue, value>()
-				.ForMember(x => x.Value, y => y.MapFrom(z => z.Value))
-				.ForMember(x => x.xid, y => y.MapFrom(z => z.Date));
+				.ForMember(x => x.Value, y => y.MapFrom(z => z.Value.ToString(System.Globalization.CultureInfo.InvariantCulture)))
+				.ForMember(x => x.xid, y => y.MapFrom(z => z.Index));
 
 			Mapper.CreateMap<IHistoryValues, chartGraphsGraph>()
 				.ForMember(x => x.values, y => y.MapFrom(z => z.Values))

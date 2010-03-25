@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.UnitHistory;
 
 namespace CarbonFitness.App.Web.FusionCharts {
 	/// <summary>

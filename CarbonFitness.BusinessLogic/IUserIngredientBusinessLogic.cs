@@ -1,4 +1,5 @@
 using System;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
 
 namespace CarbonFitness.BusinessLogic {
