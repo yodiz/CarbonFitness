@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace CarbonFitness.BusinessLogic.UnitHistory {
 	public class Graph {
-		public Label[] labels;
+		public Label[] Labels;
 
 		//public IHistoryValues[] HistoryValueses;
-		public Lines Lines;
+		public LinesContainer LinesContainer;
 		public Graph() {}
 
 		public Graph(ILine line) {
@@ -14,9 +14,9 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			foreach (var valuePoint in line) {
 				result.Add(new Label {Value = valuePoint.Date.ToShortDateString(), Index=result.Count.ToString() });
 			}
-			labels = result.ToArray();
+			Labels = result.ToArray();
 
-			Lines = new Lines { lines = new[] { line } };
+			LinesContainer = new LinesContainer { Lines = new[] { line } };
 		}
 	}
 }

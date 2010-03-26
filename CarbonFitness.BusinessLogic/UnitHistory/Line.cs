@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CarbonFitness.BusinessLogic.Exceptions;
 
 namespace CarbonFitness.BusinessLogic.UnitHistory {
 	public class Line : ILine {
@@ -10,11 +11,11 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 
 		public Line(Dictionary<DateTime, decimal> values) {
 			foreach (var kv in values) {
-				valuePoints.Add(new ValuePoint { Date = kv.Key, Value = kv.Value });
+				valuePoints.Add(new ValuePoint {Date = kv.Key, Value = kv.Value});
 			}
 		}
 
-		public Line(Dictionary<DateTime, decimal> values, string title) : this (values){
+		public Line(Dictionary<DateTime, decimal> values, string title) : this(values) {
 			Title = title;
 		}
 
@@ -33,17 +34,24 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			return GetEnumerator();
 		}
 
-		public ValuePoint[] ValuesPoint {
-			get {
-				var values = new List<ValuePoint>();
-				foreach (var valuePoint in this) {
-					values.Add(valuePoint);
-				}
-				return values.ToArray();
+		public ValuePoint[] GetValuePoints() {
+			if (IsEmpty) {
+				throw new NoValuesOnLineException();
 			}
+			var values = new List<ValuePoint>();
+			foreach (var valuePoint in this) {
+				values.Add(valuePoint);
+			}
+			return values.ToArray();
 		}
 
+		public bool IsEmpty { get { return valuePoints.Count == 0; } }
+
 		public ValuePoint GetValue(DateTime date) {
+			if (IsEmpty) {
+				throw new NoValuesOnLineException();
+			}
+
 			if (date < GetFirstDate() || date > GetLastDate()) {
 				throw new IndexOutOfRangeException("Date was:" + date + " First date is:" + GetFirstDate() + " Last date is:" + GetLastDate());
 			}
@@ -56,6 +64,20 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			return getValuePointWithIndex(date, valuePoint);
 		}
 
+		public DateTime GetFirstDate() {
+			if (IsEmpty) {
+				throw new NoValuesOnLineException();
+			}
+			return valuePoints.Min(x => x.Date);
+		}
+
+		public DateTime GetLastDate() {
+			if (IsEmpty) {
+				throw new NoValuesOnLineException();
+			}
+			return valuePoints.Max(x => x.Date);
+		}
+
 		private ValuePoint getActualValuePoint(DateTime date) {
 			return valuePoints.Where(x => x.Date == date).FirstOrDefault();
 		}
@@ -66,12 +88,12 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 		}
 
 		private int getIndexForValuePoint(DateTime date) {
-			return (int)date.Subtract(GetFirstDate()).TotalDays;
+			return (int) date.Subtract(GetFirstDate()).TotalDays;
 		}
 
 		private ValuePoint GetCalculatedValuePoint(DateTime date) {
 			var numberOfDaysFromPreviousValue = GetNumberOfDaysFromPreviousValue(date);
-			return new ValuePoint { Date = date, Value = GetPreviousValuePoint(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
+			return new ValuePoint {Date = date, Value = GetPreviousValuePoint(date).Value - GetAverageDifferencePerDayBetweenActualValues(date) * numberOfDaysFromPreviousValue};
 		}
 
 		private int GetNumberOfDaysFromPreviousValue(DateTime date) {
@@ -100,14 +122,6 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 			var totalDifference = previousValue.Value - nextValue.Value;
 
 			return totalDifference / numberOfDays;
-		}
-
-		internal DateTime GetFirstDate() {
-			return valuePoints.Min(x => x.Date);
-		}
-
-		internal DateTime GetLastDate() {
-			return valuePoints.Max(x => x.Date);
 		}
 	}
 }

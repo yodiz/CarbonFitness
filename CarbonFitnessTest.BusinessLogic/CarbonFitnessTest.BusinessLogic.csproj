@@ -62,10 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarbonFitnessMembershipProviderTest.cs" />
+    <Compile Include="GraphBuilderTest.cs" />
     <Compile Include="HistoryValuesContainerTest.cs" />
     <Compile Include="UserIngredientExtensionsTest.cs" />
     <Compile Include="UserProfileBusinessLogicTest.cs" />
-    <Compile Include="HistoryValuesTest.cs" />
+    <Compile Include="LineTest.cs" />
     <Compile Include="UserWeightBusinessLogicTest.cs" />
     <Compile Include="IngredientBusinessLogicTest.cs" />
     <Compile Include="IngredientImporterTest.cs" />

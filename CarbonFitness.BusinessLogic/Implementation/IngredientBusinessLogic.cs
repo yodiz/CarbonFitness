@@ -1,16 +1,16 @@
 ﻿using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
-namespace CarbonFitness.BusinessLogic {
+namespace CarbonFitness.BusinessLogic.Implementation {
 	public class IngredientBusinessLogic : IIngredientBusinessLogic {
-		private readonly IIngredientRepository _ingredientRepository;
+		private readonly IIngredientRepository ingredientRepository;
 
 		public IngredientBusinessLogic(IIngredientRepository ingredientRepository) {
-			_ingredientRepository = ingredientRepository;
+			this.ingredientRepository = ingredientRepository;
 		}
 
 		public Ingredient[] Search(string searchQuery) {
-			return _ingredientRepository.Search(searchQuery);
+			return ingredientRepository.Search(searchQuery);
 		}
 	}
 }

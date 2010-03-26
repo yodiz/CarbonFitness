@@ -6,6 +6,6 @@ namespace CarbonFitness.BusinessLogic {
 	public interface IUserIngredientBusinessLogic {
 		UserIngredient AddUserIngredient(User user, string ingredientName, int measure, DateTime dateTime);
 		UserIngredient[] GetUserIngredients(User user, DateTime dateTime);
-		Graph GetCalorieHistory(User user);
+		ILine GetCalorieHistory(User user);
 	}
 }

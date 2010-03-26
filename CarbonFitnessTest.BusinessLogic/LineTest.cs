@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.UnitHistory;
 using NUnit.Framework;
-using System.Linq;
 
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
-	public class HistoryValuesTest {
+	public class LineTest {
 		private Dictionary<DateTime, decimal> getTestValues() {
 			return new Dictionary<DateTime, decimal> {
 				{DateTime.Today.AddDays(-6), 500},
@@ -20,13 +21,6 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var historyValues = new Line(getTestValues());
 			var result = historyValues.GetAverageDifferencePerDayBetweenActualValues(DateTime.Today.AddDays(-4));
 			Assert.That(result, Is.EqualTo(100));
-		}
-
-		[Test]
-		public void shouldGetTitle() {
-			const string expectedTitle = "titel";
-			var historyValues = new Line(new Dictionary<DateTime, decimal>(), expectedTitle);
-			Assert.That(historyValues.Title, Is.EqualTo(expectedTitle));
 		}
 
 		[Test]
@@ -67,18 +61,10 @@ namespace CarbonFitnessTest.BusinessLogic {
 		}
 
 		[Test]
-		public void shouldLoopSortedItems() {
-			var historyValues = new Line(getTestValues());
-			DateTime first = DateTime.Today.AddDays(-6);
-			int count = 0;
-
-			foreach (ValuePoint historyValue in historyValues) {
-				Assert.That(historyValue.Value, Is.GreaterThan(99));
-				Assert.That(historyValue.Date, Is.EqualTo(first));
-				first = first.AddDays(1);
-				count++;
-			}
-			Assert.That(count, Is.EqualTo(7));
+		public void shouldGetTitle() {
+			const string expectedTitle = "titel";
+			var historyValues = new Line(new Dictionary<DateTime, decimal>(), expectedTitle);
+			Assert.That(historyValues.Title, Is.EqualTo(expectedTitle));
 		}
 
 		[Test]
@@ -90,11 +76,45 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 			var historyValues = new Line(historyValuesDictonary);
 			Assert.That(historyValues.Count(), Is.EqualTo(3));
-			int count = 0;
-			foreach(var item in historyValues) {
+			var count = 0;
+			foreach (var item in historyValues) {
 				Assert.That(item.Index, Is.EqualTo(count));
 				count++;
 			}
+		}
+
+		[Test]
+		public void shouldLoopSortedItems() {
+			var historyValues = new Line(getTestValues());
+			var first = DateTime.Today.AddDays(-6);
+			var count = 0;
+
+			foreach (var historyValue in historyValues) {
+				Assert.That(historyValue.Value, Is.GreaterThan(99));
+				Assert.That(historyValue.Date, Is.EqualTo(first));
+				first = first.AddDays(1);
+				count++;
+			}
+			Assert.That(count, Is.EqualTo(7));
+		}
+
+		[Test]
+		public void shouldTellIfLineIsEmpty() {
+			var emptyline = new Line();
+			var lineWithElements = new Line(new Dictionary<DateTime, decimal> {{DateTime.Now, 123}});
+
+			Assert.That(emptyline.IsEmpty, Is.True);
+			Assert.That(lineWithElements.IsEmpty, Is.False);
+		}
+
+		[Test]
+		public void shouldThrowWhenThereAreNoValuePoints() {
+			ILine emptyline = new Line();
+
+			Assert.Throws<NoValuesOnLineException>(() => emptyline.GetValuePoints());
+			Assert.Throws<NoValuesOnLineException>(() => emptyline.GetValue(DateTime.Now));
+			Assert.Throws<NoValuesOnLineException>(() => emptyline.GetFirstDate());
+			Assert.Throws<NoValuesOnLineException>(() => emptyline.GetLastDate());
 		}
 	}
 }

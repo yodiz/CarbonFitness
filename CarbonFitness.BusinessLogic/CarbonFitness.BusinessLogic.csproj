@@ -63,6 +63,9 @@
     <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="Exceptions\InvalidWeightException.cs" />
+    <Compile Include="Exceptions\NoValuesOnLineException.cs" />
+    <Compile Include="UnitHistory\GraphBuilder.cs" />
+    <Compile Include="IGraphBuilder.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />
     <Compile Include="Implementation\UserProfileBusinessLogic.cs" />
     <Compile Include="UnitHistory\ValuePoint.cs" />
@@ -70,7 +73,7 @@
     <Compile Include="Implementation\UserWeightBusinessLogic.cs" />
     <Compile Include="IngredientImporter\IIngredientFileReader.cs" />
     <Compile Include="IngredientImporter\IIngredientImporter.cs" />
-    <Compile Include="IngredientBusinessLogic.cs" />
+    <Compile Include="Implementation\IngredientBusinessLogic.cs" />
     <Compile Include="IngredientImporter\Implementation\IngredientImporter.cs" />
     <Compile Include="IngredientImporter\IIngredientParser.cs" />
     <Compile Include="IngredientImporter\Implementation\IngredientFileReader.cs" />
@@ -89,7 +92,7 @@
     <Compile Include="UnitHistory\LineEnumerator.cs" />
     <Compile Include="UnitHistory\ILine.cs" />
     <Compile Include="UnitHistory\Label.cs" />
-    <Compile Include="UnitHistory\Lines.cs" />
+    <Compile Include="UnitHistory\LinesContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">

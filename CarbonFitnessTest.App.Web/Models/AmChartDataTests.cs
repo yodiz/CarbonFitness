@@ -12,7 +12,7 @@ namespace CarbonFitnessTest.Web.Models {
 
 		[Test]
 		public void shouldBeAbleToMapHistoryValuesToAmChartData() {
-			AutoMappingsBootStrapper.MapHistoryValuesContainerToAmChartData();
+			AutoMappingsBootStrapper.MapHistoryGraphToAmChartData();
 
 			Mapper.AssertConfigurationIsValid();
 		}

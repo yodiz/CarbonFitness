@@ -17,11 +17,11 @@ namespace CarbonFitnessTest.BusinessLogic
 			Graph graph = new Graph(line);
 		
 
-			Assert.That(graph.labels, Is.Not.Null);
-			Assert.That(graph.labels.Length, Is.EqualTo(line.Count()));
+			Assert.That(graph.Labels, Is.Not.Null);
+			Assert.That(graph.Labels.Length, Is.EqualTo(line.Count()));
 
-			Assert.That(graph.Lines.lines.Count(), Is.EqualTo(1));
-			Assert.That(graph.Lines.lines[0].Count(), Is.EqualTo(line.Count()));
+			Assert.That(graph.LinesContainer.Lines.Count(), Is.EqualTo(1));
+			Assert.That(graph.LinesContainer.Lines[0].Count(), Is.EqualTo(line.Count()));
 		}
 
 	}

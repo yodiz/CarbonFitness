@@ -24,9 +24,9 @@
 		// <![CDATA[		
 		var so = new SWFObject('<%=Url.Content("~/scripts/amline/amline.swf") %>', 'amline', '860', '300', '8', '#FFFFFF');
 		//so.addVariable("path", "../../amline/");
-		so.addVariable("settings_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_settings.xml") %>'));
-		//so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>/?a=<%= DateTime.Now.Ticks %>'));
-		so.addVariable("data_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_data2.xml") %>?<%= DateTime.Now.Ticks %>'));
+		so.addVariable("settings_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_settings.xml") %>?RID=<%= DateTime.Now.Ticks %>'));
+		so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>?RID=<%= DateTime.Now.Ticks %>'));
+		//so.addVariable("data_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_data2.xml") %>?<%= DateTime.Now.Ticks %>'));
 		so.write("amChartContent");
 		// ]]>
 	</script>

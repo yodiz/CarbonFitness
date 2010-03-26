@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.DataLayer.Repository;
 using SharpArch.Data.NHibernate;
 using System.IO;
@@ -43,8 +44,8 @@ namespace CarbonFitness.BusinessLogic {
 			builder.RegisterType<IngredientRepository>().As<IIngredientRepository>();
 			builder.RegisterType<UserIngredientRepository>().As<IUserIngredientRepository>();
 			builder.RegisterType<UserWeightRepository>().As<IUserWeightRepository>();
-
-            builder.RegisterType<UserProfileRepository>().As<IUserProfileRepository>();
+         builder.RegisterType<UserProfileRepository>().As<IUserProfileRepository>();
+			builder.RegisterType<GraphBuilder>().As<IGraphBuilder>();
 		}
 	}
 }

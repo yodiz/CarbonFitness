@@ -19,58 +19,52 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>();
 			userContextMock = new Mock<IUserContext>();
 			userProfileBusinessLogic = new Mock<IUserProfileBusinessLogic>();
+			graphBuilderMock = new Mock<IGraphBuilder>();
 		}
 
 		private Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock;
 		private Mock<IUserContext> userContextMock;
 		private Mock<IUserProfileBusinessLogic> userProfileBusinessLogic;
+		private Mock<IGraphBuilder> graphBuilderMock;
 
-		private ResultModel RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
-			var actionResult = (ViewResult) methodUnderTest(resultController);
-			return (ResultModel) actionResult.ViewData.Model;
+		private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
+			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object);
+			return methodUnderTest(resultController);
+		}
+
+		private ResultModel GetModelFromActionResult(ActionResult result) {
+			return (ResultModel) ((ViewResult) result).ViewData.Model;
 		}
 
 		[Test]
-		public void shouldGetAmChartDataXml() {
-			AutoMappingsBootStrapper.MapHistoryValuesContainerToAmChartData();
+		public void shouldGetCalorieHistoryAsAmChartDataXml() {
+			AutoMappingsBootStrapper.MapHistoryGraphToAmChartData();
 
-			var historyValuesContainer = new Graph();
-			historyValuesContainer.labels = new[] {new Label {Value = "val1", Index = "1"}};
-			historyValuesContainer.Lines = new Lines {lines = new ILine[] {new Line(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}})}};
-			//userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(historyValuesContainer);
-			graphMock.Setup(x => x.GetGraph(It.IsAny<User>(), It.IsAny<Delegate>())).Returns(historyValuesContainer);
+			ILine line = new Line(new Dictionary<DateTime, decimal> {{DateTime.Now, 35M}});
+			var graph = new Graph {Labels = new[] {new Label {Value = "val1", Index = "1"}}, LinesContainer = new LinesContainer {Lines = new[] {line}}};
+			userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(line);
+			graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
 
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object);
-			var actionResult = (ContentResult) resultController.ShowXml();
+			var actionResult = (ContentResult) RunMethodUnderTest(x => x.ShowXml());
 
 			var serializer = new XmlSerializer(typeof(AmChartData));
 			var stringReader = new StringReader(actionResult.Content);
 			var deserialized = (AmChartData) serializer.Deserialize(stringReader);
 
+			graphBuilderMock.VerifyAll();
 			userIngredientBusinessLogicMock.VerifyAll();
-			Assert.That(deserialized.DataPoints.Length, Is.EqualTo(historyValuesContainer.labels.Length));
-			Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(historyValuesContainer.labels[0].Value));
-			Assert.That(decimal.Parse(deserialized.GraphRoot.Graphs[0].values[0].Value), Is.EqualTo(historyValuesContainer.Lines.lines[0].ValuesPoint[0].Value));
+			Assert.That(deserialized.DataPoints.Length, Is.EqualTo(1));
+			Assert.That(deserialized.DataPoints.Length, Is.EqualTo(graph.Labels.Length));
+			Assert.That(deserialized.DataPoints[0].Value, Is.EqualTo(graph.Labels[0].Value));
+			Assert.That(decimal.Parse(deserialized.GraphRoot.Graphs[0].values[0].Value), Is.EqualTo(graph.LinesContainer.Lines[0].GetValuePoints()[0].Value));
 		}
-
-		//[Test]
-		//public void shouldShowCalorieHistory() {
-		//   var 
-		//   var expectedCalorieHistory = new HistoryValues(new Dictionary<DateTime, decimal> {{DateTime.Now.Date.AddDays(-1), 2000}, {DateTime.Now.Date, 2150}});
-		//   userIngredientBusinessLogicMock.Setup(x => x.GetCalorieHistory(It.IsAny<User>())).Returns(expectedCalorieHistory);
-		//   Assert.Fail("DO EEET!");
-		//   var model = RunMethodUnderTest(x => x.Show());
-
-		//   userIngredientBusinessLogicMock.VerifyAll();
-		//   Assert.That(model.CalorieHistoryList, Is.SameAs(expectedCalorieHistory));
-		//}
-
+      
 		[Test]
 		public void shouldShowIdealWeight() {
 			const decimal userIdealWeight = 65;
 			userProfileBusinessLogic.Setup(x => x.GetIdealWeight(It.IsAny<User>())).Returns(userIdealWeight);
-			var model = RunMethodUnderTest(x => x.Show());
+			var result = RunMethodUnderTest(x => x.Show());
+			var model = GetModelFromActionResult(result);
 			Assert.That(model.IdealWeight, Is.EqualTo(userIdealWeight));
 		}
 	}

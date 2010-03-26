@@ -7,22 +7,23 @@
 			<enabled>1</enabled>
 			<width>44</width>
 			<align>left</align>
-			<text>: ${value}</text>
+			<text>{value}</text>
 		</values>
 	</legend>
 	<graphs>
 		<graph gid="1">
-			<title>Nominal</title>
+			<title>Kalorier</title>
 			<color>009933</color>
 			<line_width>2</line_width>
-			<balloon_text>${value}</balloon_text>
+			<balloon_text>{value}</balloon_text>
 			<bullet>round_outline</bullet>
 		</graph>
 		<graph gid="2">
-			<title>Inflation adjusted</title>
+			<title>????</title>
 			<color>999999</color>
 			<selected>0</selected>
-			<balloon_text>{value} kg</balloon_text>
+			<balloon_text>{value}</balloon_text>
+			<bullet>round_outline</bullet>
 		</graph>
 	</graphs>
 	<labels>
