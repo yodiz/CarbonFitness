@@ -1,0 +1,10 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Default" />
+  <Config name="Default" binpathtype="Auto">
+    <assembly path="CarbonFitnessTest.Integration\bin\Debug\CarbonFitnessTest.Integration.dll" />
+    <assembly path="CarbonFitnessTest.App.Importer\bin\Debug\CarbonFitnessTest.App.Importer.dll" />
+    <assembly path="CarbonFitnessTest.App.Web\bin\Debug\CarbonFitnessTest.App.Web.dll" />
+    <assembly path="CarbonFitnessTest.BusinessLogic\bin\Debug\CarbonFitnessTest.BusinessLogic.dll" />
+    <assembly path="CarbonFitnessTest.DataLayer\bin\Debug\CarbonFitnessTest.DataLayer.dll" />
+  </Config>
+</NUnitProject>

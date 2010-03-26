@@ -1,6 +1,7 @@
 ﻿using CarbonFitness.Data.Model;
 using NUnit.Framework;
 
+
 namespace CarbonFitnessTest.BusinessLogic {
 	[TestFixture]
 	public class UserIngredientExtensionsTest {
