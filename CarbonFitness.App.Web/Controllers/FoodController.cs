@@ -20,6 +20,7 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		[HttpPost]
 		[Transaction]
+		[Authorize]
 		//When pressing submit, trying to add an ingredient to user
 		public ActionResult Input(InputFoodModel model) {
 			if (!string.IsNullOrEmpty(model.Ingredient) && model.Measure > 0) {
@@ -55,6 +56,7 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		//First time when coming to the "kost" page
 		[Transaction]
+		[Authorize]
 		public ActionResult Input() {
 			var inputFoodModel = new InputFoodModel {UserIngredients = getUserIngredients(DateTime.Now), Date = DateTime.Now};
 
@@ -69,22 +71,6 @@ namespace CarbonFitness.App.Web.Controllers {
 				this.AddModelError<InputFoodModel>(x => x.Date, FoodConstant.InvalidDateErrorMessage);
 			}
 			return null;
-		}
-	}
-
-	public static class ControllerExtension {
-		public static void AddModelError<T>(this Controller controller, Expression<Func<T, DateTime>> namedPropertyToGet, string message) {
-			var name = ExpressionHelper.GetExpressionText(namedPropertyToGet);
-			addModelError(controller, name, message);
-		}
-
-		public static void AddModelError<T>(this Controller controller, Expression<Func<T, string>> namedPropertyToGet, string message) {
-			var name = ExpressionHelper.GetExpressionText(namedPropertyToGet);
-			addModelError(controller, name, message);
-		}
-
-		private static void addModelError(Controller controller, string name, string message) {
-			controller.ModelState.AddModelError(name, message);
 		}
 	}
 }

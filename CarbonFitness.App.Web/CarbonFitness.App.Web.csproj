@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="ControllerExtension.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperExtensions.cs" />
     <Compile Include="IUserContext.cs" />
     <Compile Include="AutoMappingsBootStrapper.cs" />
     <Compile Include="Models\AccountModels.cs" />

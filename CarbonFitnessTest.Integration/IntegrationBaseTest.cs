@@ -10,7 +10,8 @@ using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration {
 	public abstract class IntegrationBaseTest {
-        protected string BaseUrl = "http://localhost:4307";
+        protected string BaseUrl = "http://localhost/carbonfitness";
+
 		protected Browser Browser;
 
 		protected IntegrationBaseTest() {}

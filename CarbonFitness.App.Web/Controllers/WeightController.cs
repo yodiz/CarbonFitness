@@ -18,6 +18,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			this.userContext = userContext;
 		}
 
+		[Authorize]
 		public ActionResult Input(DateTime? id) {
 			if(!id.HasValue) {
 				id = DateTime.Now.Date;
@@ -31,6 +32,7 @@ namespace CarbonFitness.App.Web.Controllers {
       
 		[HttpPost]
 		[Transaction]
+		[Authorize]
 		public ActionResult Input(InputWeightModel inputWeightModel) {
 			UserWeight userWeight = null;
 			try {

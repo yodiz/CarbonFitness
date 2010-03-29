@@ -53,10 +53,12 @@ namespace CarbonFitness.App.Web.Controllers {
 			return View(model);
 		}
 
+		[Authorize]
 		public ActionResult ChangePasswordSuccess() {
 			return View();
 		}
 
+		[Authorize]
 		public ActionResult LogOff() {
 			FormsService.SignOut();
 

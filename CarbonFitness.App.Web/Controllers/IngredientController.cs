@@ -9,6 +9,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			this.ingredientBusinessLogic = ingredientBusinessLogic;
 		}
 
+		[Authorize]
 		public ViewResult Search(string q) {
 			return View(ingredientBusinessLogic.Search(q));
 		}

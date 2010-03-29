@@ -34,6 +34,10 @@ namespace CarbonFitnessTest.Web.Controller.ResultController
             var graphBuilderMock = new Mock<IGraphBuilder>(MockBehavior.Strict);
             var graphBuilder = graphBuilderMock.Object;
 
+            var weightPrognosis = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
+            //userIngredientBusinessLogicMock.Setup(x=> x.GetCalorieHistory())
+            var userIngredientBusinessLogic = userIngredientBusinessLogicMock.Object;
+
 
             var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic, userIngredientBusinessLogic, userContext, graphBuilder);
 

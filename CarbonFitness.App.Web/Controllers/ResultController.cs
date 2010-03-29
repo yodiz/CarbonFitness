@@ -22,6 +22,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			this.userProfileBusinessLogic = userProfileBusinessLogic;
 		}
 
+		[Authorize]
 		public ActionResult Show() {
 			var model = new ResultModel();
 			//model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
@@ -30,6 +31,7 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
 		//For watIN testing purposes the result needs to go inside an html result.
+		[Authorize]
 		public ActionResult ShowXmlInsideHtml() {
 			return new ContentResult {
 				Content = "<html><head></head><body>" + getAmChartAsXml() + "</body></html>",
@@ -38,6 +40,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			};
 		}
 
+		[Authorize]
 		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
 		public ActionResult ShowXml() {
 			return new ContentResult {
