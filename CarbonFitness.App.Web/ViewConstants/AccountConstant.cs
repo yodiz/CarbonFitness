@@ -3,6 +3,6 @@
 		public const string PasswordElement = "Password";
 		public const string SubmitElement = "Log On";
 		public const string UsernameElement = "UserName";
-		public static string LoginTitle = "Log In";
+		public static string LoginTitle = "Logga In";
 	}
 }

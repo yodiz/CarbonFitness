@@ -12,6 +12,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			this.userContext = userContext;
 		}
 
+		[Authorize]
 		public ActionResult Index() {
 			return View();
 		}
@@ -28,6 +29,7 @@ namespace CarbonFitness.App.Web.Controllers {
 			return RedirectToAction("Details", new {id = user.Id});
 		}
 
+		[Authorize]
 		public ActionResult Details(int id) {
 			var user = userBusinessLogic.Get(id);
 			return View(user);

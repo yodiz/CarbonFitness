@@ -10,14 +10,14 @@
     <h2><%= AccountConstant.LoginTitle %></h2>
        
     <p>
-        Please enter your username and password. <%= Html.ActionLink("Register", "Create", "User")%> if you don't have an account.
+        Var vänlig skriv in ditt namn och lösen. <%= Html.ActionLink<UserController>(x => x.Create(), "Register")%> om du inte har ett konto.
     </p>
     <%= Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
 
     <% using (Html.BeginForm()) { %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
+                <legend>Konto information</legend>
                 
                 <div class="editor-label">
                     <%= Html.LabelFor(m => m.UserName) %>
