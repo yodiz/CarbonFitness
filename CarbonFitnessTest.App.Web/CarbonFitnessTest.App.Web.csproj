@@ -83,6 +83,7 @@
     <Compile Include="Controller\IngredientController\SearchTest.cs" />
     <Compile Include="Controller\ProfileController\InputTest.cs" />
     <Compile Include="Controller\ResultController\ShowTest.cs" />
+    <Compile Include="Controller\ResultController\ShowWeightPrognosisXmlTest.cs" />
     <Compile Include="Controller\UserController\CreateTest.cs" />
     <Compile Include="Controller\UserController\DetailsTest.cs" />
     <Compile Include="Controller\WeightController\InputTest.cs" />

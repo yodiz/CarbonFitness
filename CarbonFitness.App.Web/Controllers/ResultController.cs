@@ -5,6 +5,8 @@ using System.Xml.Serialization;
 using AutoMapper;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
+using MvcContrib.ActionResults;
+using System;
 
 namespace CarbonFitness.App.Web.Controllers {
 	public class ResultController : Controller {
@@ -65,5 +67,11 @@ namespace CarbonFitness.App.Web.Controllers {
 			serializer.Serialize(writer, amChartData);
 			return writer.ToString();
 		}
-	}
+
+        public XmlResult ShowWeightPrognosisXml() {
+
+            return new XmlResult(getAmChartData());
+
+        }
+    }
 }

@@ -104,6 +104,7 @@
     <Compile Include="Results\ResultsShowTest.cs" />
     <Compile Include="Results\ResultsShowXmlTest.cs" />
     <Compile Include="Results\ResultsTestBase.cs" />
+    <Compile Include="Results\ShowWeightPrognosisXmlTest.cs" />
     <Compile Include="SiteMasterTest.cs" />
     <Compile Include="WeightTest.cs" />
   </ItemGroup>
