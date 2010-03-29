@@ -1,64 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using CarbonFitness.BusinessLogic;
-using Moq;
-using MvcContrib.ActionResults;
-using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web;
+using CarbonFitness.App.Web.Models;
+using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.Implementation;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
+using Moq;
+using NUnit.Framework;
 
-namespace CarbonFitnessTest.Web.Controller.ResultController
-{
-    [TestFixture]
-    public class ShowWeightPrognosisXmlTest
-    {
+namespace CarbonFitnessTest.Web.Controller.ResultController {
+	[TestFixture]
+	public class ShowWeightPrognosisXmlTest {
+		[Test]
+		public void shouldReturnWeightPrognosisXml() {
+			AutoMappingsBootStrapper.MapHistoryGraphToAmChartData();
 
-        [Test]
-        public void shouldReturnWeightPrognosisXml()
-        {
-            var user = new User("Min user");
-            var userProfileBusinessLogicMock =  new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
-            var userProfileBusinessLogic = userProfileBusinessLogicMock.Object;
+			var user = new User("Min user");
+			var userContextMock = new Mock<IUserContext>(MockBehavior.Strict);
+			userContextMock.Setup(x => x.User).Returns(user);
 
-            var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
-            //userIngredientBusinessLogicMock.Setup(x=> x.GetCalorieHistory())
-            var userIngredientBusinessLogic = userIngredientBusinessLogicMock.Object;
+			var graphBuilderMock = new Mock<IGraphBuilder>(MockBehavior.Strict);
 
-            var userContextMock = new Mock<IUserContext>(MockBehavior.Strict);
-            userContextMock.Setup(X => X.User).Returns(user);
-            var userContext = userContextMock.Object;
+			ILine line = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now.AddDays(1), 35M } }, "MyTitle");
+			var graph = new Graph { Labels = new[] { new Label { Value = "val1", Index = "1" } }, LinesContainer = new LinesContainer { Lines = new[] { line } } };
+			var userWeightBusinessLogicMock = new Mock<IUserWeightBusinessLogic>();
+			userWeightBusinessLogicMock.Setup(x => x.GetProjectionList(It.Is<User>(y => y == user))).Returns(line);
+			graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
 
-            var graphBuilderMock = new Mock<IGraphBuilder>(MockBehavior.Strict);
-            var graphBuilder = graphBuilderMock.Object;
+			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(null, null, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object);
 
-            var weightPrognosis = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
-            //userIngredientBusinessLogicMock.Setup(x=> x.GetCalorieHistory())
-            var userIngredientBusinessLogic = userIngredientBusinessLogicMock.Object;
+			var result = resultController.ShowWeightPrognosisXml();
+			Assert.That(result.ObjectToSerialize, Is.AssignableTo(typeof(AmChartData)));
 
+			var amChartData = (AmChartData) result.ObjectToSerialize;
+			var dataPoints = amChartData.DataPoints;
+			Assert.That(dataPoints, Is.Not.Null);
 
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic, userIngredientBusinessLogic, userContext, graphBuilder);
+			var firstPoint = dataPoints.First();
+			Assert.That(firstPoint.Value, Is.EqualTo("val1"));
 
-            XmlResult result = (XmlResult)resultController.ShowWeightPrognosisXml();
-            Assert.That(result.ObjectToSerialize, Is.AssignableTo(typeof(AmChartData)));
+			Assert.That(amChartData.GraphRoot.Graphs[0].values[0].Value, Is.EqualTo("35"));
+			userWeightBusinessLogicMock.Verify();
+		}
 
-            var amChartData = (AmChartData)result.ObjectToSerialize;
-            var dataPoints = amChartData.DataPoints;
-            Assert.That(dataPoints, Is.Not.Null);
-            var firstPoint = dataPoints.First();
-            var firstPointDate = DateTime.Parse(firstPoint.Value);
+		//[Test]
+		//public void shouldReturnWeightPrognosisForSpecifiedDate()
+		//{
 
-            Assert.That(firstPointDate, Is.GreaterThan(DateTime.Today));
-        }
-
-        //[Test]
-        //public void shouldReturnWeightPrognosisForSpecifiedDate()
-        //{
-
-        //}
-
-
-    }
+		//}
+	}
 }

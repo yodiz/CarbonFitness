@@ -28,7 +28,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		private Mock<IGraphBuilder> graphBuilderMock;
 
 		private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object);
+			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null);
 			return methodUnderTest(resultController);
 		}
 

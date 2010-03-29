@@ -11,14 +11,16 @@ using System;
 namespace CarbonFitness.App.Web.Controllers {
 	public class ResultController : Controller {
 		private readonly IGraphBuilder graphBuilder;
+		private readonly IUserWeightBusinessLogic userWeightBusinessLogic;
 		private readonly IUserContext userContext;
 		private readonly IUserIngredientBusinessLogic userIngredientBusinessLogic;
 		private readonly IUserProfileBusinessLogic userProfileBusinessLogic;
 
-		public ResultController(IUserProfileBusinessLogic userProfileBusinessLogic, IUserIngredientBusinessLogic userIngredientBusinessLogic, IUserContext userContext, IGraphBuilder graphBuilder) {
+		public ResultController(IUserProfileBusinessLogic userProfileBusinessLogic, IUserIngredientBusinessLogic userIngredientBusinessLogic, IUserContext userContext, IGraphBuilder graphBuilder, IUserWeightBusinessLogic userWeightBusinessLogic) {
 			this.userIngredientBusinessLogic = userIngredientBusinessLogic;
 			this.userContext = userContext;
 			this.graphBuilder = graphBuilder;
+			this.userWeightBusinessLogic = userWeightBusinessLogic;
 			this.userProfileBusinessLogic = userProfileBusinessLogic;
 		}
 
@@ -72,9 +74,12 @@ namespace CarbonFitness.App.Web.Controllers {
 		}
 
         public XmlResult ShowWeightPrognosisXml() {
+			  var graph = graphBuilder.GetGraph(userWeightBusinessLogic.GetProjectionList(userContext.User));
+			  var amChartData = new AmChartData();
 
-            return new XmlResult(getAmChartData());
+			  Mapper.Map(graph, amChartData);
 
+			  return new XmlResult(amChartData);
         }
     }
 }

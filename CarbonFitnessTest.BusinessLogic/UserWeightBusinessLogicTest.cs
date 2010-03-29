@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.Implementation;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using Moq;
@@ -80,5 +81,20 @@ namespace CarbonFitnessTest.BusinessLogic {
 			userWeightRepositoryMock.VerifyAll();
 		}
 
+
+		[Test]
+		public void shouldGetWeightProjectionForUser() {
+			var weightProjectorMock = new Mock<IWeightProjector>(MockBehavior.Strict);
+			var userWeightBusinessLogic = new UserWeightBusinessLogic(null, weightProjectorMock.Object);
+			var user = new User("myUser");
+			ILine expectedLine = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now, 35M } });
+
+			weightProjectorMock.Setup(x => x.ComputePrognosis(It.Is<User>(y => y == user))).Returns(expectedLine);
+
+			var result = userWeightBusinessLogic.GetProjectionList(user);
+
+			Assert.That(result, Is.SameAs(expectedLine));
+			weightProjectorMock.VerifyAll();
+		}
 	}
 }

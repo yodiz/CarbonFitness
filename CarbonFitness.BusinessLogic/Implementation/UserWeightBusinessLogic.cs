@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CarbonFitness.BusinessLogic.Exceptions;
+using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -35,6 +36,13 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
 		public IEnumerable<UserWeight> GetHistoryList(User user) {
 			return userWeightRepository.GetHistoryList(user);
+		}
+
+
+
+		public ILine GetProjectionList(User user)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
