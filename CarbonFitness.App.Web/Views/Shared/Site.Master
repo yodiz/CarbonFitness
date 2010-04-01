@@ -33,13 +33,13 @@
 		
 		<div class="page-menu">
 			<ul class="flat">
-				<li><a href="<%=Url.Action<ProfileController>(c => c.Input())%>"><%=Html.Image("~/Content/profil.png", SiteMasterConstant.ProfileInputLinkText)%><span><%=SiteMasterConstant.ProfileInputLinkText%></span></a></li>				
-				<li><a href="<%=Url.Action<WeightController>(c => c.Input(null as DateTime?))%>"><span><%=SiteMasterConstant.WeightLinkText%></span></a></li>
-				<li><a href="<%=Url.Action<FoodController>(c => c.Input())%>"><%=Html.Image("~/Content/kost.png", SiteMasterConstant.FoodInputLinkText)%><span><%=SiteMasterConstant.FoodInputLinkText%></span></a></li>
-				<li><a><%=Html.Image("~/Content/traning.png")%><span>Träning</span></a></li>
-				<li><a href="<%=Url.Action<ResultController>(c => c.Show())%>"><%=Html.Image("~/Content/resultat.png", SiteMasterConstant.ResultLinkText)%><span><%=SiteMasterConstant.ResultLinkText%></span></a></li>
-				<li><a><%=Html.Image("~/Content/halsa.png")%><span>Hälsa</span></a></li>
-				<li><a><%=Html.Image("~/Content/produkter.png")%><span>Produkter</span></a></li>
+				<li><a href="<%=Url.Action<ProfileController>(c => c.Input())%>"><%=Html.Image("~/Content/ico-profil.gif", SiteMasterConstant.ProfileInputLinkText)%><span><%=SiteMasterConstant.ProfileInputLinkText%></span></a></li>				
+				<li><a href="<%=Url.Action<WeightController>(c => c.Input(null as DateTime?))%>"><%=Html.Image("~/Content/ico-vikt.gif", SiteMasterConstant.WeightLinkText)%><span><%=SiteMasterConstant.WeightLinkText%></span></a></li>
+				<li><a href="<%=Url.Action<FoodController>(c => c.Input())%>"><%=Html.Image("~/Content/ico-kost.gif", SiteMasterConstant.FoodInputLinkText)%><span><%=SiteMasterConstant.FoodInputLinkText%></span></a></li>
+				<li><a><%=Html.Image("~/Content/ico-traning-g.gif")%><span>Träning</span></a></li>
+				<li><a href="<%=Url.Action<ResultController>(c => c.Show())%>"><%=Html.Image("~/Content/ico-resultat.gif", SiteMasterConstant.ResultLinkText)%><span><%=SiteMasterConstant.ResultLinkText%></span></a></li>
+				<li><a><%=Html.Image("~/Content/ico-halsa-g.gif")%><span>Hälsa</span></a></li>
+				<li><a><%=Html.Image("~/Content/ico-produkter-g.gif")%><span>Produkter</span></a></li>
 			</ul>
 		</div>
 		

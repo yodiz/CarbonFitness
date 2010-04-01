@@ -13,6 +13,7 @@ namespace CarbonFitnessTest.Integration {
         protected string BaseUrl = "http://localhost/carbonfitness";
 
 		protected Browser Browser;
+		protected const string MVCFileExtension = ".aspx";
 
 		protected IntegrationBaseTest() {}
 
@@ -23,6 +24,9 @@ namespace CarbonFitnessTest.Integration {
 		}
 
 		public abstract string Url { get; }
+		protected string getUrl(string controller, string action ) {
+			return BaseUrl + "/" + controller + MVCFileExtension + "/" + action;
+		}
 
 		[SetUp]
 		public virtual void Setup() {

@@ -2,6 +2,8 @@
 using CarbonFitness.BusinessLogic;
 
 namespace CarbonFitness.App.Web.Controllers {
+
+	[HandleError]
 	public class IngredientController : Controller {
 		private readonly IIngredientBusinessLogic ingredientBusinessLogic;
 

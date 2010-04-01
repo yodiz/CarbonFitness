@@ -8,7 +8,9 @@ using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.Data.Model;
 using SharpArch.Web.NHibernate;
 
-namespace CarbonFitness.App.Web.Controllers {
+namespace CarbonFitness.App.Web.Controllers
+{
+	[HandleError]
 	public class FoodController : Controller {
 		private readonly IUserContext userContext;
 		private readonly IUserIngredientBusinessLogic userIngredientBusinessLogic;

@@ -21,7 +21,7 @@ namespace CarbonFitnessTest.Web {
 			return method.GetCustomAttributes(typeof(AuthorizeAttribute), true).Length > 0;
 		}
 
-		private static bool IsExemptFromAuthorizeRule(MethodInfo method) {
+		private static bool IsExcludedFromAuthorizeRule(MethodInfo method) {
 			string action = method.DeclaringType.Name + "." + method.Name;
 			switch (action) {
 				case "UserController.Create":
@@ -42,7 +42,7 @@ namespace CarbonFitnessTest.Web {
 			var actionMethods = getActionMethods(controllerTypes);
 
 			foreach (var action in actionMethods) {
-				if (IsExemptFromAuthorizeRule(action)) continue;
+				if (IsExcludedFromAuthorizeRule(action)) continue;
 				Assert.That(
 					HasAuthorizeAttribute(action),
 					"Action method " + action.DeclaringType.Name + "/" + action.Name + " doesn't have required AuthorizeAttribute"

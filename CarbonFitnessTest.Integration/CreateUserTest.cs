@@ -12,7 +12,7 @@ namespace CarbonFitnessTest.Integration {
 		public const string Password = "mittlösenord";
 
 		public override string Url {
-			get { return BaseUrl + "/User/Create"; }
+			get { return getUrl("User", "Create"); }
 		}
 
 		public CreateUserTest() {}
@@ -61,7 +61,7 @@ namespace CarbonFitnessTest.Integration {
 
 			Browser.Button(Find.ByValue(UserConstant.SaveElement)).Click();
 
-			Assert.IsTrue(Browser.Url.Contains("User/Details"));
+			Assert.IsTrue(Browser.Url.Contains(getUrl("User", "Details")));
 			Assert.That(Browser.ContainsText(userName));
 		}
 	}

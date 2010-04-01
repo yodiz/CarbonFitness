@@ -90,11 +90,13 @@ div#page-header
 		font-size: 0.9em;
 		text-transform: uppercase;
 		text-decoration: none;
+		width: 48px;
 	}
 	div#page-header div.page-menu li span
 	{		
 		display:block;
 		color: #666;
+		width: 48px;
 	}
 
 

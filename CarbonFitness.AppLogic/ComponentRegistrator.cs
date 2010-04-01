@@ -6,14 +6,22 @@ using CarbonFitness.BusinessLogic.IngredientImporter.Implementation;
 
 namespace CarbonFitness.AppLogic {
 	public class ComponentRegistrator {
-		public void AutofacRegisterComponentes(ContainerBuilder builder) {
+
+		public IBootStrapper Bootstrapper { get; set; }
+
+		public void AutofacRegisterComponentes(ContainerBuilder builder, IBootStrapper bootStrapper) {
 			builder.RegisterModule(new BusinessLoginUsageModule());
 			builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
 			builder.RegisterType<IngredientBusinessLogic>().As<IIngredientBusinessLogic>();
 			builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
 			builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
-            builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
-            
+         builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
+
+
+			builder.RegisterType<SchemaExportEngine>().As<ISchemaExportEngine>();
+			builder.RegisterType<IngredientImporterEngine>().As<IIngredientImporterEngine>();
+
+			builder.RegisterInstance(bootStrapper);
 
 			builder.RegisterType<UserWeightBusinessLogic>().As<IUserWeightBusinessLogic>();
 

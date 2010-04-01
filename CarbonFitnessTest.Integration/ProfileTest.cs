@@ -77,7 +77,7 @@ namespace CarbonFitnessTest.Integration
 
 		public override string Url
 		{
-			get { return BaseUrl + "/Profile/Input"; }
+			get { return getUrl("Profile", "Input"); }
 		}
 	}
 }

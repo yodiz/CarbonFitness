@@ -64,6 +64,7 @@
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="Exceptions\InvalidWeightException.cs" />
     <Compile Include="Exceptions\NoValuesOnLineException.cs" />
+    <Compile Include="IBootStrapper.cs" />
     <Compile Include="UnitHistory\GraphBuilder.cs" />
     <Compile Include="IGraphBuilder.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />

@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountLogOnTest.cs" />
+    <Compile Include="AdminTest.cs" />
     <Compile Include="CreateUserTest.cs" />
     <Compile Include="ProfileTest.cs" />
     <Compile Include="ImportIngredientsTest.cs" />

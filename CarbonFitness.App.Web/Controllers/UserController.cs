@@ -3,6 +3,8 @@ using CarbonFitness.BusinessLogic;
 using CarbonFitness.Data.Model;
 
 namespace CarbonFitness.App.Web.Controllers {
+
+	[HandleError]
 	public class UserController : Controller {
 		private readonly IUserBusinessLogic userBusinessLogic;
 		private readonly IUserContext userContext;

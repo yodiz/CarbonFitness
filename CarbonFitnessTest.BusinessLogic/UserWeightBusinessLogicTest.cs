@@ -82,19 +82,19 @@ namespace CarbonFitnessTest.BusinessLogic {
 		}
 
 
-		[Test]
-		public void shouldGetWeightProjectionForUser() {
-			var weightProjectorMock = new Mock<IWeightProjector>(MockBehavior.Strict);
-			var userWeightBusinessLogic = new UserWeightBusinessLogic(null, weightProjectorMock.Object);
-			var user = new User("myUser");
-			ILine expectedLine = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now, 35M } });
+		//[Test]
+		//public void shouldGetWeightProjectionForUser() {
+		//   var weightProjectorMock = new Mock<IWeightProjector>(MockBehavior.Strict);
+		//   var userWeightBusinessLogic = new UserWeightBusinessLogic(null, weightProjectorMock.Object);
+		//   var user = new User("myUser");
+		//   ILine expectedLine = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now, 35M } });
 
-			weightProjectorMock.Setup(x => x.ComputePrognosis(It.Is<User>(y => y == user))).Returns(expectedLine);
+		//   weightProjectorMock.Setup(x => x.ComputePrognosis(It.Is<User>(y => y == user))).Returns(expectedLine);
 
-			var result = userWeightBusinessLogic.GetProjectionList(user);
+		//   var result = userWeightBusinessLogic.GetProjectionList(user);
 
-			Assert.That(result, Is.SameAs(expectedLine));
-			weightProjectorMock.VerifyAll();
-		}
+		//   Assert.That(result, Is.SameAs(expectedLine));
+		//   weightProjectorMock.VerifyAll();
+		//}
 	}
 }

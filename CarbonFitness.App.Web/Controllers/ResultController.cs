@@ -9,6 +9,8 @@ using MvcContrib.ActionResults;
 using System;
 
 namespace CarbonFitness.App.Web.Controllers {
+
+	[HandleError]
 	public class ResultController : Controller {
 		private readonly IGraphBuilder graphBuilder;
 		private readonly IUserWeightBusinessLogic userWeightBusinessLogic;
@@ -73,13 +75,14 @@ namespace CarbonFitness.App.Web.Controllers {
 			return writer.ToString();
 		}
 
-        public XmlResult ShowWeightPrognosisXml() {
-			  var graph = graphBuilder.GetGraph(userWeightBusinessLogic.GetProjectionList(userContext.User));
-			  var amChartData = new AmChartData();
+		[Authorize]
+      public XmlResult ShowWeightPrognosisXml() {
+		  var graph = graphBuilder.GetGraph(userWeightBusinessLogic.GetProjectionList(userContext.User));
+		  var amChartData = new AmChartData();
 
-			  Mapper.Map(graph, amChartData);
+		  Mapper.Map(graph, amChartData);
 
-			  return new XmlResult(amChartData);
-        }
-    }
+		  return new XmlResult(amChartData);
+      }
+   }
 }

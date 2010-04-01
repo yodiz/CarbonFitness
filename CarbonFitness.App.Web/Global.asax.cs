@@ -17,6 +17,7 @@ namespace CarbonFitness.App.Web {
 		private static IContainerProvider containerProvider;
 
 		private WebSessionStorage webSessionStorage;
+		private Bootstrapper bootstrapper;
 
 		public IContainerProvider ContainerProvider { get { return containerProvider; } }
 
@@ -25,9 +26,14 @@ namespace CarbonFitness.App.Web {
 
 			routes.MapRoute(
 				"Default", // Route name
-				"{controller}/{action}/{id}", // URL with parameters
+				"{controller}.aspx/{action}/{id}", // URL with parameters
 				new {controller = "Home", action = "Index", id = UrlParameter.Optional} // Parameter defaults
 				);
+
+			routes.MapRoute(
+				"Root",
+				"",
+				new {controller = "Home", action = "Index", id = UrlParameter.Optional});
 		}
 
 		public override void Init() {
@@ -38,9 +44,18 @@ namespace CarbonFitness.App.Web {
 
 		protected void Application_BeginRequest(object sender, EventArgs e) {
 			NHibernateInitializer.Instance().InitializeNHibernateOnce(() => {
-				var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
-				new Bootstrapper(nhibernateConfig).InitDatalayer(webSessionStorage);
+				Bootstrapper bootStrapper = getBootStrapper();
+				bootStrapper.InitDatalayer(webSessionStorage);
 			});
+		}
+
+		private Bootstrapper getBootStrapper() {
+			if (bootstrapper == null) {
+				var nhibernateConfig = Server.MapPath("~/bin/NHibernate.config");
+				bootstrapper = new Bootstrapper(nhibernateConfig);
+			}
+			
+			return bootstrapper;
 		}
 
 		protected void Application_Start() {
@@ -59,7 +74,7 @@ namespace CarbonFitness.App.Web {
 			builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
 			builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
 
-			new ComponentRegistrator().AutofacRegisterComponentes(builder);
+			new ComponentRegistrator().AutofacRegisterComponentes(builder, getBootStrapper());
 
 			containerProvider = new ContainerProvider(builder.Build());
 

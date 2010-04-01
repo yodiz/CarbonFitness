@@ -7,7 +7,7 @@ using WatiN.Core;
 namespace CarbonFitnessTest.Integration.Results {
 	[TestFixture]
 	public class ResultsShowTest : ResultsTestBase {
-		public override string Url { get { return BaseUrl + "/Result/Show"; } }
+		public override string Url { get { return getUrl("Result", "Show"); } }
 		private Element caloriHistoryFusionGraphElement { get { return Browser.Element(Find.By("classid", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000")); } }
 
 		private void reloadPage() {

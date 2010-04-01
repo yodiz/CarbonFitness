@@ -5,29 +5,24 @@ using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
 
 namespace CarbonFitness.App.SchemaExport {
-	internal class SchemaExportEngine : IContainerProviderAccessor {
+	internal class SchemaExportEngineApp : IContainerProviderAccessor {
 		private static IContainerProvider containerProvider;
-		private readonly string nhibernateConfiguration;
-
-		public SchemaExportEngine(string nhibernateConfiguration) {
-			this.nhibernateConfiguration = nhibernateConfiguration;
-			var builder = new ContainerBuilder();
-			new ComponentRegistrator().AutofacRegisterComponentes(builder);
-			containerProvider = new ContainerProvider(builder.Build());
-		}
 
 		public IContainerProvider ContainerProvider {
 			get { return containerProvider; }
 		}
 
-		private void Export() {
-			var initBusinessLogic = new Bootstrapper(nhibernateConfiguration);
-			initBusinessLogic.InitDatalayer();
-			initBusinessLogic.ExportDataBaseSchema();
-		}
 
 		private static void Main(string[] args) {
-			new SchemaExportEngine("NHibernate.config").Export();
+			var builder = new ContainerBuilder();
+			var bootstrapper = new Bootstrapper("NHibernate.config");
+			bootstrapper.InitDatalayer();
+
+			new ComponentRegistrator().AutofacRegisterComponentes(builder, bootstrapper);
+			containerProvider = new ContainerProvider(builder.Build());
+
+
+			new SchemaExportEngine(bootstrapper).Export();
 
 			Console.WriteLine("");
 			Console.WriteLine("Schema export finished. Press any key to continue...");

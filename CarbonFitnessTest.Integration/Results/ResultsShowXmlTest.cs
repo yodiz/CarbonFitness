@@ -9,7 +9,7 @@ namespace CarbonFitnessTest.Integration.Results {
 	[TestFixture]
     public class ResultsShowXmlTest : ResultsTestBase
     {
-        public override string Url { get { return BaseUrl + "/Result/ShowXmlInsideHtml"; } }
+		public override string Url { get { return getUrl("Result", "ShowXmlInsideHtml"); } }
 
 		[Test]
 		public void shouldHaveCalorieHistory() {

@@ -18,12 +18,12 @@ namespace CarbonFitnessTest.Integration {
 		private decimal firstWeight;
 		private decimal todayWeight;
 
-		public override string Url { get { return BaseUrl + "/Weight/Input"; } }
+		public override string Url { get { return getUrl("Weight", "Input"); } }
 
 		private Button submitButton { get { return Browser.Button(Find.By("type", "submit")); } }
 
 		private void reloadPage() {
-			Browser.Link(Find.ByText(SiteMasterConstant.WeightLinkText)).Click();
+			ReloadPage(SiteMasterConstant.WeightLinkText);
 		}
 
 		private string datePickerNameFieldName { get { return GetFieldNameOnModel<InputWeightModel>(m => m.Date); } }

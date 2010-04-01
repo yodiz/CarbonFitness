@@ -76,8 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppLogic\SchemaExportEngineTest.cs" />
     <Compile Include="AuthorizeTest.cs" />
     <Compile Include="Controller\AccountController\LogOnTest.cs" />
+    <Compile Include="Controller\AdminController\DBInitTest.cs" />
     <Compile Include="Controller\BaseTestController.cs" />
     <Compile Include="Controller\FoodController\InputTest.cs" />
     <Compile Include="Controller\HomeController\IndexTest.cs" />
@@ -101,6 +103,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarbonFitness.AppLogic\CarbonFitness.AppLogic.csproj">
+      <Project>{44A40002-B451-461B-B1DD-0CCEC381C9A3}</Project>
+      <Name>CarbonFitness.AppLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj">
       <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
       <Name>CarbonFitness.BusinessLogic</Name>

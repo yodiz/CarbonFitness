@@ -13,7 +13,7 @@ namespace CarbonFitnessTest.Integration {
 
 		public InputFoodTest(Browser browser) : base(browser) {}
 
-		public override string Url { get { return BaseUrl + "/Food/Input"; } }
+		public override string Url { get { return getUrl("Food", "Input");  } }
 
 		[TestFixtureSetUp]
 		public override void TestFixtureSetUp() {

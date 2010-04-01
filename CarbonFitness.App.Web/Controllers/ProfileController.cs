@@ -4,6 +4,8 @@ using CarbonFitness.BusinessLogic;
 using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web.Controllers {
+
+	[HandleError]
 	public class ProfileController : Controller {
 		public ProfileController(IUserProfileBusinessLogic userProfileBusinessLogic, IUserContext userContext) {
 			UserProfileBusinessLogic = userProfileBusinessLogic;

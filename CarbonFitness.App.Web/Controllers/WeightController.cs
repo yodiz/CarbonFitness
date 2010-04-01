@@ -9,6 +9,8 @@ using CarbonFitness.Data.Model;
 using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web.Controllers {
+
+	[HandleError]
 	public class WeightController : Controller {
 		private readonly IUserWeightBusinessLogic userWeightBusinessLogic;
 		private readonly IUserContext userContext;

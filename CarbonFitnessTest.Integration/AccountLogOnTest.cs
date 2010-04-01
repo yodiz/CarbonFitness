@@ -11,7 +11,7 @@ namespace CarbonFitnessTest.Integration {
 		public AccountLogOnTest(Browser browser) : base(browser) {}
 
 		public override string Url {
-			get { return BaseUrl + "/Account/LogOn"; }
+			get { return getUrl("Account", "LogOn") ; }
 		}
 
 		public void LogOn(string userName, string password) {
@@ -29,7 +29,7 @@ namespace CarbonFitnessTest.Integration {
 			var userNameConstraint = Find.ByText("Register");
 			Browser.Link(userNameConstraint).Click();
 
-			Assert.IsTrue(Browser.Url.Contains("User/Create"));
+			Assert.IsTrue(Browser.Url.Contains(getUrl("User", "Create")));
 		}
 
 		[Test]

@@ -10,6 +10,7 @@ namespace CarbonFitness.App.Importer {
 	public class IngredientImporterEngine : IContainerProviderAccessor {
 		private static IContainerProvider containerProvider;
 		private readonly IIngredientImporter ingredientImporter;
+
 		private Bootstrapper bootstrapper;
 
 		public IngredientImporterEngine(IIngredientImporter ingredientImporter) {
@@ -18,17 +19,16 @@ namespace CarbonFitness.App.Importer {
 
 		public IngredientImporterEngine(string nhibernateConfiguration, bool exportSchema) : this(nhibernateConfiguration) {
 			if (exportSchema) {
-				bootstrapper.ExportDataBaseSchema();
+				getBootStrapper(nhibernateConfiguration).ExportDataBaseSchema();
 			}
 		}
 
 		public IngredientImporterEngine(string nhibernateConfiguration) {
 			var builder = new ContainerBuilder();
-			new ComponentRegistrator().AutofacRegisterComponentes(builder);
+
+			new ComponentRegistrator().AutofacRegisterComponentes(builder, getBootStrapper(nhibernateConfiguration));
 			containerProvider = new ContainerProvider(builder.Build());
-
-			InitializeNHibernate(nhibernateConfiguration);
-
+         
 			ingredientImporter = containerProvider.ApplicationContainer.Resolve<IIngredientImporter>();
 		}
 
@@ -74,9 +74,12 @@ namespace CarbonFitness.App.Importer {
 			ingredientImporter.Import(filePath);
 		}
 
-		private void InitializeNHibernate(string nhibernateConfiguration) {
-			bootstrapper = new Bootstrapper(nhibernateConfiguration);
-			bootstrapper.InitDatalayer();
+		private IBootStrapper getBootStrapper(string nhibernateConfiguration) {
+			if (bootstrapper == null) {
+				bootstrapper = new Bootstrapper(nhibernateConfiguration);
+				bootstrapper.InitDatalayer();
+			}
+			return bootstrapper;
 		}
 	}
 }

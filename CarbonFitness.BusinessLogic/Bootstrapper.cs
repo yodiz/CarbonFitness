@@ -5,7 +5,7 @@ using SharpArch.Data.NHibernate;
 using System.IO;
 
 namespace CarbonFitness.BusinessLogic {
-	public class Bootstrapper {
+	public class Bootstrapper : IBootStrapper  {
 		private readonly DataLayer.Bootstrapper bootstrapper;
 		private readonly string nHibernateConfig;
 
