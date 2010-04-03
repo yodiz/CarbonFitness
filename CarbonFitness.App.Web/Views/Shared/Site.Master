@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title>
-		<asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+		<asp:ContentPlaceHolder ID="TitleContent" runat="server" >Viktprognos.se</asp:ContentPlaceHolder>
 	</title>
 	<%= Html.Css("Base.css") %>
 	<%= Html.Css("Site.css") %>	
