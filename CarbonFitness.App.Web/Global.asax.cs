@@ -33,7 +33,7 @@ namespace CarbonFitness.App.Web {
 			routes.MapRoute(
 				"Root",
 				"",
-				new {controller = "Home", action = "Index", id = UrlParameter.Optional});
+				new {controller = "Home", action = "Index", id = ""});
 		}
 
 		public override void Init() {

@@ -13,11 +13,9 @@ namespace CarbonFitness.BusinessLogic.Implementation {
         public void SaveIdealWeight(User user, decimal weight) {
 
             var userProfile = UserProfileRepository.Get(user.Id);
-            if (userProfile != null)
-            {
+            if (userProfile != null) {
                 userProfile.IdealWeight = weight;
-            }
-            else {
+            } else {
                 userProfile = new UserProfile() {IdealWeight = weight, User = user}; 
             }
 

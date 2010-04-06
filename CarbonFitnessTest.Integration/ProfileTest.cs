@@ -35,8 +35,7 @@ namespace CarbonFitnessTest.Integration
 		}
 
 		[Test]
-		public void shouldSaveIdealWeightSetting()
-		{
+		public void shouldSaveIdealWeightSetting() {
 			decimal weight = 75;
 
 			IdealWeightInputField.TypeText(weight.ToString());

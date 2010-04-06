@@ -28,7 +28,8 @@ namespace CarbonFitnessTest.Web {
 				case "AccountController.LogOn":
 				case "AccountController.Register":
 				case "HomeController.Index":
-				case "HomeController.About": 
+				case "HomeController.About":
+                case "AdminController.DBInit": 
 				
 				return true;
 			}
