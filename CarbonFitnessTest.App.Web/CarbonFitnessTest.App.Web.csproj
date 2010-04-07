@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppLogic\InitialDataValuesExportEngineTest.cs" />
     <Compile Include="AppLogic\SchemaExportEngineTest.cs" />
     <Compile Include="AuthorizeTest.cs" />
     <Compile Include="Controller\AccountController\LogOnTest.cs" />

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ResultModel>" %>
+<%@ Import Namespace="CarbonFitness.Data.Model"%>
 
 <%@ Import Namespace="CarbonFitness.App.Web.FusionCharts" %>
 <%@ Import Namespace="CarbonFitness.App.Web.ViewConstants" %>
@@ -12,9 +13,15 @@
 	<% using (Html.BeginForm())
 	 { %>
 	<div class="editor-label">
-		<strong>Your ideal weight is</strong>
+		<strong>Din ideal vikt är</strong>
 		<%= Model.IdealWeight.ToString("N1") %>kg
 	</div>
+	
+	<div class="editor-label">
+		<strong>Välj spårämnen för grafen</strong>
+		<%= Html.DropDownListFor(m => m.Nutrients, new SelectList(Model.Nutrients, "Id", "Name"), "-- Välj Resultat--" )%>
+	</div>
+	
 	<% } %>
 	
 	<div id="amChartContent">

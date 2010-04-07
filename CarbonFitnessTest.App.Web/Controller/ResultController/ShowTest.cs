@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
@@ -20,15 +21,17 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			userContextMock = new Mock<IUserContext>();
 			userProfileBusinessLogic = new Mock<IUserProfileBusinessLogic>();
 			graphBuilderMock = new Mock<IGraphBuilder>();
+            nutrientBusinessLogicMock = new Mock<INutrientBusinessLogic>();
 		}
 
 		private Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock;
 		private Mock<IUserContext> userContextMock;
 		private Mock<IUserProfileBusinessLogic> userProfileBusinessLogic;
 		private Mock<IGraphBuilder> graphBuilderMock;
+	    private Mock<INutrientBusinessLogic> nutrientBusinessLogicMock;
 
-		private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null);
+	    private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
+			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object);
 			return methodUnderTest(resultController);
 		}
 
@@ -67,5 +70,16 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			var model = GetModelFromActionResult(result);
 			Assert.That(model.IdealWeight, Is.EqualTo(userIdealWeight));
 		}
+
+        [Test]
+        public void shouldShowNutrients() {
+            IEnumerable<Nutrient> expectedNutrients = new[] {new Nutrient(), new Nutrient()};
+            nutrientBusinessLogicMock.Setup(x => x.GetNutrients()).Returns(expectedNutrients);
+
+            var result = RunMethodUnderTest(x => x.Show());
+            var model = GetModelFromActionResult(result);
+
+            Assert.That(model.Nutrients, Is.SameAs(expectedNutrients));
+        }
 	}
 }

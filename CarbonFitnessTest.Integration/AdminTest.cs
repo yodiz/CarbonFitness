@@ -32,16 +32,15 @@ namespace CarbonFitnessTest.Integration {
 			new CreateUserTest(Browser).getUniqueUserId();
 			new AccountLogOnTest(Browser).LogOn(CreateUserTest.UserName, CreateUserTest.Password);
 
-
-			Browser.GoTo(Url);
+            Browser.GoTo(Url);
 
 			clearIngredients();
 			Assert.That(FilePathTextField.Text, Is.EqualTo("~/App_data/Ingredients.csv"));
 			
-
 			Browser.Button(AdminConstant.RefreshDatabase).Click();
 
 			Assert.That(ingredientRepository.Get("Abborre"), Is.Not.Null);
+            Assert.That(new NutrientRepository().Get(2), Is.Not.Null, "Should have nutritients in db...");
 		}
 	}
 }

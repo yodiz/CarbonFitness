@@ -15,11 +15,12 @@ namespace CarbonFitness.AppLogic {
 			builder.RegisterType<IngredientBusinessLogic>().As<IIngredientBusinessLogic>();
 			builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
 			builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
-         builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
-
+            builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
+            builder.RegisterType<NutrientBusinessLogic>().As<INutrientBusinessLogic>();
 
 			builder.RegisterType<SchemaExportEngine>().As<ISchemaExportEngine>();
 			builder.RegisterType<IngredientImporterEngine>().As<IIngredientImporterEngine>();
+            builder.RegisterType<InitialDataValuesExportEngine>().As<IInitialDataValuesExportEngine>();
 
 			builder.RegisterInstance(bootStrapper);
 

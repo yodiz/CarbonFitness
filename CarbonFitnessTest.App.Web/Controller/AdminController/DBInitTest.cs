@@ -21,11 +21,13 @@ namespace CarbonFitnessTest.Web.Controller.AdminController {
 			var pathfinderMock = new Mock<IPathFinder>();
 			pathfinderMock.Setup(x => x.GetPath(expectedPath)).Returns(@"c:\/App_Data/Ingredients.csv");
 
+            var initialDataValuesExportEngine = new Mock<IInitialDataValuesExportEngine>();
+            initialDataValuesExportEngine.Setup(x => x.Export());
+
 			var ingredientImporterEngineMock = new Mock<IIngredientImporterEngine>();
 			ingredientImporterEngineMock.Setup(x => x.Import(It.Is<String>(y=>y.EndsWith("/App_Data/Ingredients.csv") && y.StartsWith("c:\\") )));
 
-			var controller = new CarbonFitness.App.Web.Controllers.AdminController(schemaExportEngineMock.Object, ingredientImporterEngineMock.Object, pathfinderMock.Object);
-
+			var controller = new CarbonFitness.App.Web.Controllers.AdminController(schemaExportEngineMock.Object, ingredientImporterEngineMock.Object, initialDataValuesExportEngine.Object, pathfinderMock.Object);
 			
 			InputDbInitModel model = new InputDbInitModel { ImportFilePath = expectedPath };
 
@@ -34,6 +36,7 @@ namespace CarbonFitnessTest.Web.Controller.AdminController {
 			pathfinderMock.VerifyAll();
 			schemaExportEngineMock.VerifyAll();
 			ingredientImporterEngineMock.VerifyAll();
+            initialDataValuesExportEngine.VerifyAll();
 		}
 
 		[Test]

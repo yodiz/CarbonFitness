@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Ingredient.cs" />
+    <Compile Include="Model\Nutrient.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserIngredientExtensions.cs" />
     <Compile Include="Model\UserProfile.cs" />

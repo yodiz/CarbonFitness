@@ -56,5 +56,12 @@ namespace CarbonFitnessTest.Integration.Results {
 			var idealWeightString = userIdealWeight.ToString("N1") + "kg";
 			Assert.That(Browser.ContainsText(idealWeightString), "Page did not contain: " + idealWeightString);
 		}
+
+        [Test]
+        public void shouldHaveNutrientResultDropDown() {
+            var nutrientDropDown = Browser.SelectList("Nutrients");
+
+            Assert.That(nutrientDropDown.Option("EnergyInKcal").Exists, "Page did not contain: Nutrients dropdown");
+        }
 	}
 }

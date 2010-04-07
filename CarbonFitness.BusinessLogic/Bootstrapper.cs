@@ -44,8 +44,9 @@ namespace CarbonFitness.BusinessLogic {
 			builder.RegisterType<IngredientRepository>().As<IIngredientRepository>();
 			builder.RegisterType<UserIngredientRepository>().As<IUserIngredientRepository>();
 			builder.RegisterType<UserWeightRepository>().As<IUserWeightRepository>();
-         builder.RegisterType<UserProfileRepository>().As<IUserProfileRepository>();
+            builder.RegisterType<UserProfileRepository>().As<IUserProfileRepository>();
 			builder.RegisterType<GraphBuilder>().As<IGraphBuilder>();
+            builder.RegisterType<NutrientRepository>().As<INutrientRepository>();
 		}
 	}
 }
