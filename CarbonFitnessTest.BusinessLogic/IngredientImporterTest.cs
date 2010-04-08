@@ -22,7 +22,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			const string fileName = "fileName";
 			ingredientFileReaderMock.Setup(x => x.ReadIngredientFile(fileName)).Returns(abc);
 			const string abborre = "Abborre";
-			ingredientParserMock.Setup(x => x.ParseTabSeparatedFileContents(abc)).Returns(new List<Ingredient> {new Ingredient {Name = abborre}});
+			ingredientParserMock.Setup(x => x.CreateIngredientFromFileContents(abc)).Returns(new List<Ingredient> {new Ingredient {Name = abborre}});
 			ingredientRepositoryMock
 				.Setup(x => x.SaveOrUpdate(It.Is<Ingredient>(y => y.Name == abborre)))
 				.Returns(null as Ingredient);

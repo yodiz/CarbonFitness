@@ -6,75 +6,88 @@ using CarbonFitness.Data.Model;
 
 namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 	public class IngredientParser : IIngredientParser {
-		public IList<Ingredient> ParseTabSeparatedFileContents(string fileContents) {
+	    private readonly INutrientBusinessLogic nutrientBusinessLogic;
+	    public IngredientParser(INutrientBusinessLogic nutrientBusinessLogic) {
+	        this.nutrientBusinessLogic = nutrientBusinessLogic;
+	    }
+
+	    public IList<Ingredient> CreateIngredientFromFileContents(string fileContents) {
 			IList<Ingredient> ingredients = new List<Ingredient>();
 			var rows = fileContents.Split(new[] {'\n'}, StringSplitOptions.RemoveEmptyEntries);
 			for (var j = 1; j < rows.Length; j++) {
 				var columns = rows[j].Split('\t');
 				var ingredient = new Ingredient();
+			    var ingredientNutrients = new List<IngredientNutrient>();
 				var i = 0;
 				ingredient.Name = columns[i++];
+                ingredient.WeightInG = GetDecimalValue(j, columns, i++);
 
-				ingredient.WeightInG = GetDecimalValue(j, columns, i++);
-				ingredient.FibresInG = GetDecimalValue(j, columns, i++);
-				ingredient.EnergyInKJ = GetDecimalValue(j, columns, i++);
-				ingredient.EnergyInKcal = GetDecimalValue(j, columns, i++);
-				ingredient.CarbonHydrateInG = GetDecimalValue(j, columns, i++);
-				ingredient.FatInG = GetDecimalValue(j, columns, i++);
-				ingredient.DVitaminInµG = GetDecimalValue(j, columns, i++);
-				ingredient.AscorbicAcidInmG = GetDecimalValue(j, columns, i++);
-				ingredient.IronInmG = GetDecimalValue(j, columns, i++);
-				ingredient.CalciumInmG = GetDecimalValue(j, columns, i++);
-				ingredient.NatriumInmG = GetDecimalValue(j, columns, i++);
-				ingredient.ProteinInG = GetDecimalValue(j, columns, i++);
-				ingredient.AlcoholInG = GetDecimalValue(j, columns, i++);
-				ingredient.SaturatedFatInG = GetDecimalValue(j, columns, i++);
-				ingredient.MonoUnSaturatedFatInG = GetDecimalValue(j, columns, i++);
-				ingredient.PolyUnSaturatedFatInG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC4C10InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC12InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC14InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC16InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC18InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC20InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC16_1InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC18_1InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC18_2InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC18_3InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC20_4InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC20_5InG = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC22_5InG = GetDecimalValue(j, columns, i++);
-				ingredient.MonosaccharidesInG = GetDecimalValue(j, columns, i++);
-				ingredient.DisaccharidesInG = GetDecimalValue(j, columns, i++);
-				ingredient.SucroseInG = GetDecimalValue(j, columns, i++);
-				ingredient.RetinolEquivalentInµG = GetDecimalValue(j, columns, i++);
-				ingredient.RetinolInµG = GetDecimalValue(j, columns, i++);
-				ingredient.EVitaminInmG = GetDecimalValue(j, columns, i++);
-				ingredient.TokopherolInmG = GetDecimalValue(j, columns, i++);
-				ingredient.CaroteneInµG = GetDecimalValue(j, columns, i++);
-				ingredient.ThiamineInmG = GetDecimalValue(j, columns, i++);
-				ingredient.RiboflavinInmG = GetDecimalValue(j, columns, i++);
-				ingredient.NiacinEquivalentInmG = GetDecimalValue(j, columns, i++);
-				ingredient.NiacinInmG = GetDecimalValue(j, columns, i++);
-				ingredient.VitaminB6InmG = GetDecimalValue(j, columns, i++);
-				ingredient.VitaminB12InµG = GetDecimalValue(j, columns, i++);
-				ingredient.FolicAcidInµG = GetDecimalValue(j, columns, i++);
-				ingredient.PhosphorusInmG = GetDecimalValue(j, columns, i++);
-				ingredient.PotassiumInmG = GetDecimalValue(j, columns, i++);
-				ingredient.MagnesiumInmG = GetDecimalValue(j, columns, i++);
-				ingredient.SeleniumInµG = GetDecimalValue(j, columns, i++);
-				ingredient.ZincInmG = GetDecimalValue(j, columns, i++);
-				ingredient.CholesteroleInmG = GetDecimalValue(j, columns, i++);
-				ingredient.AshInG = GetDecimalValue(j, columns, i++);
-				ingredient.AquaInG = GetDecimalValue(j, columns, i++);
-				ingredient.WasteInPercent = GetDecimalValue(j, columns, i++);
-				ingredient.FatAcidC22_6InG = GetDecimalValue(j, columns, i++);
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FibresInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.EnergyInKJ, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.EnergyInKcal, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.CarbonHydrateInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.DVitaminInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.AscorbicAcidInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.IronInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.CalciumInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.NatriumInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.ProteinInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.AlcoholInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.SaturatedFatInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.MonoUnSaturatedFatInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.PolyUnSaturatedFatInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC4C10InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC12InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC14InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC16InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC18InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC20InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC16_1InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC18_1InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC18_2InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC18_3InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC20_4InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC20_5InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC22_5InG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.MonosaccharidesInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.DisaccharidesInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.SucroseInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.RetinolEquivalentInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.RetinolInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.EVitaminInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.TokopherolInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.CaroteneInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.ThiamineInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.RiboflavinInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.NiacinEquivalentInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.NiacinInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.VitaminB6InmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.VitaminB12InµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FolicAcidInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.PhosphorusInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.PotassiumInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.MagnesiumInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.SeleniumInµG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.ZincInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.CholesteroleInmG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.AshInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.AquaInG, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.WasteInPercent, GetDecimalValue(j, columns, i++));
+				addIngredientNutrient(ingredient, ingredientNutrients, NutrientEntity.FatAcidC22_6InG, GetDecimalValue(j, columns, i++));
+
+			    ingredient.IngredientNutrients = ingredientNutrients;
 				ingredients.Add(ingredient);
 			}
 			return ingredients;
 		}
 
-		public decimal GetDecimalValue(int rowIndex, string[] columns, int columnIndex) {
+	    private void addIngredientNutrient(Ingredient ingredient, ICollection<IngredientNutrient> ingredientNutrients, NutrientEntity entity, decimal value) {
+	        var ingredientNutrient = new IngredientNutrient {Ingredient = ingredient, Nutrient = nutrientBusinessLogic.GetNutrient(entity), Value = value};
+            ingredientNutrients.Add(ingredientNutrient);
+	    }
+
+	    public decimal GetDecimalValue(int rowIndex, string[] columns, int columnIndex) {
 			var column = columns[columnIndex];
 			try {
 				if (column.Length == 0) {
@@ -89,4 +102,6 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 			}
 		}
 	}
+
+    
 }

@@ -1,11 +1,25 @@
+using System;
+using System.Collections.Generic;
+using NHibernate.Collection.Generic;
 using SharpArch.Core.DomainModel;
 
 namespace CarbonFitness.Data.Model {
 	public class Ingredient : Entity {
-		public virtual string Name { get; set; }
+        public virtual IList<IngredientNutrient> IngredientNutrients { get; set; }
+
+	    public virtual string Name { get; set; }
 
 		public virtual decimal WeightInG { get; set; }
-		public virtual decimal FibresInG { get; set; }
+
+        public virtual IngredientNutrient GetNutrient(NutrientEntity entity) {
+            foreach (IngredientNutrient ingredientNutrient in IngredientNutrients) {
+                if (ingredientNutrient.Nutrient.Name == Enum.GetName(typeof(NutrientEntity), entity)) {
+                    return ingredientNutrient;
+                }
+            }
+            return null;
+        }
+		/*public virtual decimal FibresInG { get; set; }
 
 		public virtual decimal EnergyInKJ { get; set; }
 
@@ -109,6 +123,6 @@ namespace CarbonFitness.Data.Model {
 
 		public virtual decimal AquaInG { get; set; }
 
-		public virtual decimal WasteInPercent { get; set; }
+		public virtual decimal WasteInPercent { get; set; }*/
 	}
 }

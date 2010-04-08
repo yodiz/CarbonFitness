@@ -25,7 +25,7 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		[HttpPost]
 		public ActionResult Create(string userName, string password) {
-			var user = userBusinessLogic.SaveOrUpdate(new User {Username = userName, Password = password});
+			var user = userBusinessLogic.Create(new User {Username = userName, Password = password});
 			userContext.LogIn(user, false);
 
 			return RedirectToAction("Details", new {id = user.Id});

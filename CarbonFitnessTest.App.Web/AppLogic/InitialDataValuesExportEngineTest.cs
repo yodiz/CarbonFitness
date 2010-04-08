@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using CarbonFitness.AppLogic;
+﻿using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
-using CarbonFitness.Data.Model;
 using Moq;
 using NUnit.Framework;
 

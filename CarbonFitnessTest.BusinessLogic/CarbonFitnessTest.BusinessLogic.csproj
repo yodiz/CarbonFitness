@@ -64,6 +64,7 @@
     <Compile Include="CarbonFitnessMembershipProviderTest.cs" />
     <Compile Include="GraphBuilderTest.cs" />
     <Compile Include="HistoryValuesContainerTest.cs" />
+    <Compile Include="IngredientSetup.cs" />
     <Compile Include="NutrientBusinessLogicTest.cs" />
     <Compile Include="UserIngredientExtensionsTest.cs" />
     <Compile Include="UserProfileBusinessLogicTest.cs" />

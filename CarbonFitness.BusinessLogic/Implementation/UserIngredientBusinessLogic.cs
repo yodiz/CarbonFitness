@@ -40,7 +40,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			var date = DateTime.Now.Date;
 			var userIngredients = userIngredientRepository.GetUserIngredientsByUser(user.Id, date.AddDays(-100), date.AddDays(1));
 
-			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.EnergyInKcal);
+			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.GetNutrient(NutrientEntity.EnergyInKcal).Value);
 
 			return new Line(valueSumPerDateFromUserIngredients);
 		}

@@ -13,12 +13,15 @@ namespace CarbonFitnessTest.BusinessLogic {
 		private DateTime todaysDate = DateTime.Now.Date;
 
 		private UserIngredient[] GetExpectedUserIngredients(DateTime date) {
-			var userIngredients = new UserIngredient[4];
-			userIngredients[0] = new UserIngredient {Ingredient = new Ingredient {WeightInG = 100, Name = "Pannbiff", EnergyInKcal = 28}, Measure = 100, Date = date};
-			userIngredients[1] = new UserIngredient {Ingredient = new Ingredient {WeightInG = 100, Name = "Lök", EnergyInKcal = 25}, Measure = 150, Date = date};
 
-			userIngredients[2] = new UserIngredient {Ingredient = new Ingredient {WeightInG = 100, Name = "Lök", EnergyInKcal = 25}, Measure = 150, Date = date.AddDays(-100)};
-			userIngredients[3] = new UserIngredient {Ingredient = new Ingredient {WeightInG = 100, Name = "Lök", EnergyInKcal = 27}, Measure = 150, Date = date.AddDays(-100)};
+            var ingredientSetup = new IngredientSetup();
+
+			var userIngredients = new UserIngredient[4];
+            userIngredients[0] = new UserIngredient { Ingredient = ingredientSetup.GetNewIngredient("Pannbiff", NutrientEntity.EnergyInKcal, 28, 100), Measure = 100, Date = date };
+			userIngredients[1] = new UserIngredient {Ingredient = ingredientSetup.GetNewIngredient("Lök", NutrientEntity.EnergyInKcal, 25, 100), Measure = 150, Date = date};
+
+			userIngredients[2] = new UserIngredient {Ingredient = ingredientSetup.GetNewIngredient("Lök", NutrientEntity.EnergyInKcal, 25, 100), Measure = 150, Date = date.AddDays(-100)};
+			userIngredients[3] = new UserIngredient {Ingredient =  ingredientSetup.GetNewIngredient("Lök", NutrientEntity.EnergyInKcal, 27, 100), Measure = 150, Date = date.AddDays(-100)};
 			return userIngredients;
 		}
 
@@ -58,8 +61,10 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var todaysUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate select ui);
 			var oldUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(-100) select ui);
 
-			Assert.That(returnedValues.GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
-			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.EnergyInKcal))));
+
+
+			Assert.That(returnedValues.GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.GetNutrient(NutrientEntity.EnergyInKcal).Value))));
+			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.GetNutrient(NutrientEntity.EnergyInKcal).Value))));
 		}
 
 		[Test]

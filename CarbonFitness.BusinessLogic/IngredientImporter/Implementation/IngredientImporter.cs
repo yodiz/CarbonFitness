@@ -18,7 +18,7 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 
 		public void Import(string filename) {
 			var fileContents = ingredientFileReader.ReadIngredientFile(filename);
-			var ingredients = ingredientParser.ParseTabSeparatedFileContents(fileContents);
+			var ingredients = ingredientParser.CreateIngredientFromFileContents(fileContents);
 
 			foreach (var ingredient in ingredients) {
 				SaveIngredient(ingredient);

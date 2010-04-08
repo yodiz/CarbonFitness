@@ -5,5 +5,6 @@ namespace CarbonFitness.BusinessLogic {
     public interface INutrientBusinessLogic {
         IEnumerable<Nutrient> GetNutrients();
         void Export();
+        Nutrient GetNutrient(NutrientEntity nutrientEntity);
     }
 }

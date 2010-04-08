@@ -13,7 +13,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController {
 			var userBusinessLogicMock = new Mock<IUserBusinessLogic>();
 			var theUsersName = "kalle";
 			var thePassword = "myPass";
-			userBusinessLogicMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User {Username = theUsersName});
+			userBusinessLogicMock.Setup(x => x.Create(It.IsAny<User>())).Returns(new User {Username = theUsersName});
 
 			var userContextMock = new Mock<IUserContext>();
 			userContextMock.Setup(x => x.LogIn(It.IsAny<User>(), It.IsAny<bool>()));
@@ -32,7 +32,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController {
 			var mock = factory.Create<IUserBusinessLogic>();
 			var userContextMock = new Mock<IUserContext>();
 
-			mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(new User());
+			mock.Setup(x => x.Create(It.Is<User>(y => y.Username == userName))).Returns(new User());
 
 			var controller = new CarbonFitness.App.Web.Controllers.UserController(mock.Object, userContextMock.Object);
 			controller.Create(userName, password);
@@ -48,7 +48,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController {
 			var userContextMock = new Mock<IUserContext>();
 			var mock = factory.Create<IUserBusinessLogic>();
 			var createdUser = new User {Username = userName};
-			mock.Setup(x => x.SaveOrUpdate(It.Is<User>(y => y.Username == userName))).Returns(createdUser);
+			mock.Setup(x => x.Create(It.Is<User>(y => y.Username == userName))).Returns(createdUser);
 
 			var controller = new CarbonFitness.App.Web.Controllers.UserController(mock.Object, userContextMock.Object);
 			var viewResult = (RedirectToRouteResult) controller.Create(userName, password);
@@ -64,7 +64,7 @@ namespace CarbonFitnessTest.Web.Controller.UserController {
 
 			var theUsersName = "kalle";
 			var thePassword = "myPass";
-			userBusinessLogicMock.Setup(x => x.SaveOrUpdate(It.IsAny<User>())).Returns(new User {Username = theUsersName});
+			userBusinessLogicMock.Setup(x => x.Create(It.IsAny<User>())).Returns(new User {Username = theUsersName});
 
 			var controller = new CarbonFitness.App.Web.Controllers.UserController(userBusinessLogicMock.Object, userContextMock.Object);
 

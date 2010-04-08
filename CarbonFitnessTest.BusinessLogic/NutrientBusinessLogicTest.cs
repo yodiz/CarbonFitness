@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
@@ -21,8 +22,19 @@ namespace CarbonFitnessTest.BusinessLogic {
         [Test]
         public void shouldNotExportInitialDataValuesIfAlreadyExported() {
             var nutrientRepositoryMock = new Mock<INutrientRepository>(MockBehavior.Strict);
-            nutrientRepositoryMock.Setup(x => x.GetAll()).Returns(new[] { new Nutrient(), new Nutrient(), });
+            
+            nutrientRepositoryMock.Setup(x => x.GetByName(NutrientEntity.ZincInmG.ToString())).Returns(null as Nutrient).Verifiable("Zink failed");
+            nutrientRepositoryMock.Setup(x => x.Save(It.Is<Nutrient>(y => y.Name.Equals(NutrientEntity.ZincInmG.ToString())))).Returns(new Nutrient());
+
+            foreach (var nutriant in Enum.GetNames(typeof(NutrientEntity))) {
+                if (nutriant != NutrientEntity.ZincInmG.ToString()) {
+                    string name = nutriant;
+                    nutrientRepositoryMock.Setup(x => x.GetByName(name)).Returns(new Nutrient()).Verifiable(name + " failed");
+                }
+            }
+
             new NutrientBusinessLogic(nutrientRepositoryMock.Object).Export();
+
             nutrientRepositoryMock.VerifyAll();
         }
 
@@ -36,6 +48,13 @@ namespace CarbonFitnessTest.BusinessLogic {
             new NutrientBusinessLogic(nutrientRepositoryMock.Object).Export();
             nutrientRepositoryMock.VerifyAll();
         }
-        
+
+        [Test] 
+        public void shouldGetNutrient() {
+            var nutrientRepositoryMock = new Mock<INutrientRepository>();
+            nutrientRepositoryMock.Setup(x => x.GetByName(It.Is<string>(y => y == "WasteInPercent")));
+            new NutrientBusinessLogic(nutrientRepositoryMock.Object).GetNutrient(NutrientEntity.WasteInPercent);
+            nutrientRepositoryMock.VerifyAll();
+        }
     }
 }

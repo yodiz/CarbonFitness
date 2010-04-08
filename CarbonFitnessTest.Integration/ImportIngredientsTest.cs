@@ -10,6 +10,7 @@ namespace CarbonFitnessTest.Integration {
 	[TestFixture]
 	public class ImportIngredientsTest {
 		[Test]
+        [Ignore]
 		public void shouldImportIngredients() {
 			new IngredientImporterEngine("Hibernate.cfg.xml", true).Import(@"TestData\Ingredients.csv");
 			IList<Ingredient> ingredients = new IngredientRepository().GetAll().OrderBy(x => x.Name).ToList();
