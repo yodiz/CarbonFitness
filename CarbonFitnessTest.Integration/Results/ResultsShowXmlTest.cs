@@ -29,7 +29,22 @@ namespace CarbonFitnessTest.Integration.Results {
 			Assert.That(Browser.Html, Contains.Substring(Now.ToShortDateString() + "</VALUE>"));
 			Assert.That(Browser.Html, !Contains.Substring(","));
 
-			//Assert.That(Browser.Html, Contains.Substring("<VALUE>" + Now.ToShortDateString() + "</VALUE>"));
 		}
+
+        [Test]
+        public void shouldHaveFatHistory() {
+            Browser.GoTo(Url + "/" + NutrientEntity.FatInG);
+
+            //var nutrientDropDown = Browser.SelectList("Nutrients");
+            //nutrientDropDown.Option(NutrientEntity.FatInG.ToString()).Select();
+
+            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
+            decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
+
+            var chartSumOfFatValue = ">" + String.Format("{0:0.00000}", sum) + "</VALUE>";
+            chartSumOfFatValue = chartSumOfFatValue.Replace(",", ".");
+
+            Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
+        }
 	}
 }

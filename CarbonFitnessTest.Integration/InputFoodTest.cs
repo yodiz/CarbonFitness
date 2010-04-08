@@ -56,11 +56,13 @@ namespace CarbonFitnessTest.Integration {
             //var ingredientNutrientRepository = new IngredientNutrientRepository();
 
             var nutriantRepository = new NutrientRepository();
-            Nutrient nutrient = nutriantRepository.GetByName(NutrientEntity.EnergyInKcal.ToString());
+            var energyInKcalNutrient = nutriantRepository.GetByName(NutrientEntity.EnergyInKcal.ToString());
+            var fatInG = nutriantRepository.GetByName(NutrientEntity.FatInG.ToString());
 
             if (ingredientRepository.Get(name) == null) {
                 var ingredient = new Ingredient {Name = name, WeightInG = 100};
-                ingredient.IngredientNutrients = new List<IngredientNutrient> {new IngredientNutrient {Nutrient = nutrient, Value = 100, Ingredient = ingredient}};
+                ingredient.IngredientNutrients = new List<IngredientNutrient> {new IngredientNutrient {Nutrient = energyInKcalNutrient, Value = 100, Ingredient = ingredient},
+                                                                                                            new IngredientNutrient {Nutrient = fatInG, Value = 200, Ingredient = ingredient}};
                 ingredientRepository.SaveOrUpdate(ingredient);
             }
         }
