@@ -35,9 +35,6 @@ namespace CarbonFitnessTest.Integration.Results {
         public void shouldHaveFatHistory() {
             Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.FatInG);
 
-            //var nutrientDropDown = Browser.SelectList("Nutrients");
-            //nutrientDropDown.Option(NutrientEntity.FatInG.ToString()).Select();
-
             var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
             decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
 
@@ -46,5 +43,12 @@ namespace CarbonFitnessTest.Integration.Results {
 
             Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
         }
-	}
+
+        [Test]
+        public void shouldHaveGidInGraph() {
+            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.EnergyInKcal);
+            var nutrient = new NutrientRepository().GetByName(NutrientEntity.EnergyInKcal.ToString());
+            Assert.That(Browser.Html, Contains.Substring("<GRAPH gid=\"" + nutrient.Id));
+        }
+    }
 }

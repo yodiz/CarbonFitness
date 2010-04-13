@@ -26,18 +26,223 @@
     </y_left>
   </axes>
 	<graphs>
-		<graph gid="0">
-			<title>Kalorier</title>
-			<color>009933</color>
-			<line_width>4</line_width>
-			<balloon_text>{value}</balloon_text>
-			<bullet>round_outline</bullet>
-		</graph>
-    <graph gid="1">
-      <title>Energi</title>
+		<graph gid="1">
+			<title>Fibrer (g)</title>
       <line_width>2</line_width>
-    </graph>	
-	</graphs>
+		</graph>
+    <graph gid="2">
+      <title>Energi (kJ)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="3">
+      <title>Energi (kcal)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="4">
+      <title>Kolhydrat (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="5">
+      <title>Fett (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="6">
+      <title>D vitamin (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="7">
+      <title>Askorbinsyra (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="8">
+      <title>Järn (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="9">
+      <title>Kalcium (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="10">
+      <title>Natrium (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="11">
+      <title>Protein (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="12">
+      <title>Alkohol (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="13">
+      <title>	Mättade fettsyror (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="14">
+      <title>Enkelomättade fettsyror (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="15">
+      <title>Fleromättade fettsyror (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="16">
+      <title>Fettsyra C4-C10 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="17">
+      <title>Fettsyra C12 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="18">
+      <title>Fettsyra C14 (g)	</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="19">
+      <title>Fettsyra C16 (g)	</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="20">
+      <title>Fettsyra C18 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="21">
+      <title>Fettsyra C20 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="22">
+      <title>Fettsyra C16:1 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="23">
+      <title>Fettsyra C18:1 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="24">
+      <title>Fettsyra C18:2 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="25">
+      <title>Fettsyra C18:3 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="26">
+      <title>Fettsyra C20:4 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="27">
+      <title>Fettsyra C20:5 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="28">
+      <title>Fettsyra C22:5 (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="29">
+      <title>Fettsyra C22:6 (g)	</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="30">
+      <title>Monosackarider (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="31">
+      <title>Disackarider (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="32">
+      <title>Sackaros (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="33">
+      <title>Retinolekvivalent (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="34">
+      <title>Retinol (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="35">
+      <title>E vitamin (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="36">
+      <title>Tokoferol (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="37">
+      <title>Karoten (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="38">
+      <title>Tiamin (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="39">
+      <title>Riboflavin (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="40">
+      <title>Niacinekvivalent (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="41">
+      <title>Niacin (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="42">
+      <title>Vitamin B6 (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="43">
+      <title>Vitamin B12 (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="44">
+      <title>Folat (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="45">
+      <title>Fosfor (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="46">
+      <title>Kalium (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="47">
+      <title>Magnesium (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="48">
+      <title>Selen (µg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="49">
+      <title>Zink (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="50">
+      <title>Kolesterol (mg)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="51">
+      <title>Aska (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="52">
+      <title>Vatten (g)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="53">
+      <title>Avfall (%)</title>
+      <line_width>2</line_width>
+    </graph>
+    <graph gid="52">
+      <title>Vatten (g)</title>
+      <line_width>2</line_width>
+    </graph>  
+  </graphs>
 	<labels>
 		<label lid="0">      
 			<y>20</y>

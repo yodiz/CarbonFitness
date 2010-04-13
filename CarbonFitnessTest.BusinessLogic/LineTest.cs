@@ -16,7 +16,14 @@ namespace CarbonFitnessTest.BusinessLogic {
 			};
 		}
 
-		[Test]
+        [Test]
+        public void shouldHaveNutrientIdAsGid() {
+            var expectedId = 3;
+            var line = new Line(expectedId, getTestValues());
+            Assert.That(line.Id, Is.EqualTo(expectedId));
+        }
+
+	    [Test]
 		public void ShouldGetAverageDifferencePerDay() {
 			var historyValues = new Line(getTestValues());
 			var result = historyValues.GetAverageDifferencePerDayBetweenActualValues(DateTime.Today.AddDays(-4));
@@ -63,7 +70,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 		[Test]
 		public void shouldGetTitle() {
 			const string expectedTitle = "titel";
-			var historyValues = new Line(new Dictionary<DateTime, decimal>(), expectedTitle);
+			var historyValues = new Line(1, new Dictionary<DateTime, decimal>(), expectedTitle);
 			Assert.That(historyValues.Title, Is.EqualTo(expectedTitle));
 		}
 

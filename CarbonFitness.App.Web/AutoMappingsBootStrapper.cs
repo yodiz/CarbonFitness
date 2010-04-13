@@ -18,9 +18,9 @@ namespace CarbonFitness.App.Web {
 				.ForMember(x => x.Value, y => y.MapFrom(z => z.Value.ToString(CultureInfo.InvariantCulture)))
 				.ForMember(x => x.xid, y => y.MapFrom(z => z.Index));
 
-			Mapper.CreateMap<ILine, chartGraphsGraph>()
-				.ForMember(x => x.values, y => y.MapFrom(z => z.GetValuePoints()))
-				.ForMember(x => x.gid, y => y.MapFrom(z => z.Title));
+		    Mapper.CreateMap<ILine, chartGraphsGraph>()
+		        .ForMember(x => x.values, y => y.MapFrom(z => z.GetValuePoints()))
+		        .ForMember(x => x.gid, y => y.MapFrom(z => z.Id));
 
 			//Mapper.CreateMap<Line, chartGraphsGraph>()
 			//.ForMember(x => x.values, y => y.MapFrom(z => z.GetValuePoints))

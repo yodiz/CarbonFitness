@@ -23,7 +23,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 
 			var graphBuilderMock = new Mock<IGraphBuilder>(MockBehavior.Strict);
 
-			ILine line = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now.AddDays(1), 35M } }, "MyTitle");
+			ILine line = new Line(1, new Dictionary<DateTime, decimal> { { DateTime.Now.AddDays(1), 35M } }, "MyTitle");
 			var graph = new Graph { Labels = new[] { new Label { Value = "val1", Index = "1" } }, LinesContainer = new LinesContainer { Lines = new[] { line } } };
 			var userWeightBusinessLogicMock = new Mock<IUserWeightBusinessLogic>();
 			userWeightBusinessLogicMock.Setup(x => x.GetProjectionList(It.Is<User>(y => y == user))).Returns(line);

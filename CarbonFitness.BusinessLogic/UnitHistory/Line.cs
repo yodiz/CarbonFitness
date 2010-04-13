@@ -6,20 +6,25 @@ using CarbonFitness.BusinessLogic.Exceptions;
 
 namespace CarbonFitness.BusinessLogic.UnitHistory {
 	public class Line : ILine {
-		private readonly List<ValuePoint> valuePoints = new List<ValuePoint>();
+	    private readonly List<ValuePoint> valuePoints = new List<ValuePoint>();
 		private LineEnumerator lineEnumerator;
+	    public int Id{ get; set;}
 
-		public Line(Dictionary<DateTime, decimal> values) {
-			foreach (var kv in values) {
-				valuePoints.Add(new ValuePoint {Date = kv.Key, Value = kv.Value});
-			}
+        public Line(Dictionary<DateTime, decimal> values) {
+            foreach (var kv in values) {
+                valuePoints.Add(new ValuePoint { Date = kv.Key, Value = kv.Value });
+            }
+        }
+
+        public Line(int id, Dictionary<DateTime, decimal> values) : this(values){
+            Id = id;
 		}
 
-		public Line(Dictionary<DateTime, decimal> values, string title) : this(values) {
-			Title = title;
+		public Line(int id, Dictionary<DateTime, decimal> values, string title) : this(id, values) {
+		    Title = title;
 		}
 
-		public Line() {}
+	    public Line() {}
 
 		public string Title { get; protected set; }
 

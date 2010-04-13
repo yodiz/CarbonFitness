@@ -10,10 +10,12 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 	public class UserIngredientBusinessLogic : IUserIngredientBusinessLogic {
 		private readonly IIngredientRepository ingredientRepository;
 		private readonly IUserIngredientRepository userIngredientRepository;
+        private readonly INutrientRepository nutrientRepository;
 
-		public UserIngredientBusinessLogic(IUserIngredientRepository userIngredientRepository, IIngredientRepository ingredientRepository) {
+		public UserIngredientBusinessLogic(IUserIngredientRepository userIngredientRepository, IIngredientRepository ingredientRepository, INutrientRepository nutrientRepository) {
 			this.userIngredientRepository = userIngredientRepository;
 			this.ingredientRepository = ingredientRepository;
+            this.nutrientRepository = nutrientRepository;
 		}
 
 		public UserIngredient AddUserIngredient(User user, string ingredientName, int measure, DateTime dateTime) {
@@ -42,7 +44,8 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
 			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => getNutrientIngredientValue(x.GetNutrient(nutrientEntity)) );
 
-			return new Line(valueSumPerDateFromUserIngredients);
+		    var nutrientId = nutrientRepository.GetByName(nutrientEntity.ToString()).Id;
+            return new Line(nutrientId, valueSumPerDateFromUserIngredients);
 		}
       
 		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {

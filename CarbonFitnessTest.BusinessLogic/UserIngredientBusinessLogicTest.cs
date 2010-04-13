@@ -39,7 +39,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			userIngredientRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserIngredient>(y => y.Ingredient.Name == ingredientName && y.Ingredient.Id > 0 && y.Measure == measure && y.Date == todaysDate))).Returns(new UserIngredient());
 			ingredientRepositoryMock.Setup(x => x.Get(ingredientName)).Returns(ingredientMock.Object);
 
-			var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object);
+			var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object, null);
 			userIngredientLogic.AddUserIngredient(new User(), ingredientName, measure, todaysDate);
 
 			userIngredientRepositoryMock.VerifyAll();
@@ -50,18 +50,24 @@ namespace CarbonFitnessTest.BusinessLogic {
 		public void shouldGetCalorieHistory() {
 			var expectedUserIngredients = GetExpectedUserIngredients(todaysDate);
 			var repositoryMock = new Mock<IUserIngredientRepository>();
+            var nutrientRepositoryMock = new Mock<INutrientRepository>();
+            var nutrientMock = new Mock<Nutrient>();
+		    var expectedNutrientId = 3;
+		    nutrientMock.Setup(x => x.Id).Returns(expectedNutrientId);
 
 			var firstDate = todaysDate.AddDays(-100).Date;
 			var lastDate = todaysDate;
+            nutrientRepositoryMock.Setup(x => x.GetByName(NutrientEntity.EnergyInKcal.ToString())).Returns(nutrientMock.Object);
 			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), firstDate, lastDate.AddDays(1))).Returns(expectedUserIngredients);
-			var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetNutrientHistory(NutrientEntity.EnergyInKcal ,new User());
+            var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null, nutrientRepositoryMock.Object).GetNutrientHistory(NutrientEntity.EnergyInKcal, new User());
 
 			repositoryMock.VerifyAll();
+            nutrientRepositoryMock.VerifyAll();
 
 			var todaysUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate select ui);
 			var oldUserIngredients = (from ui in expectedUserIngredients where ui.Date == todaysDate.AddDays(-100) select ui);
 
-
+            Assert.That(returnedValues.Id, Is.EqualTo(expectedNutrientId));
 
 			Assert.That(returnedValues.GetValue(firstDate).Value, Is.EqualTo(oldUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.GetNutrient(NutrientEntity.EnergyInKcal).Value))));
 			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.GetNutrient(NutrientEntity.EnergyInKcal).Value))));
@@ -69,7 +75,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 
         [Test]
         public void shouldGetZeroInNutrientIngredientValueWhenNoNutrientIngredient() {
-            decimal nutrientIngredientValue = new UserIngredientBusinessLogic(null, null).getNutrientIngredientValue(null as IngredientNutrient);
+            decimal nutrientIngredientValue = new UserIngredientBusinessLogic(null, null, null).getNutrientIngredientValue(null as IngredientNutrient);
             Assert.That(nutrientIngredientValue, Is.EqualTo(0));
         }
 
@@ -80,7 +86,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>(MockBehavior.Strict);
 			userIngredientRepositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), todaysDate, todaysDate.AddDays(1))).Returns(userIngredients);
 
-			var userIngredientssBusinessLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, null);
+            var userIngredientssBusinessLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, null, null);
 			var returnedUserIngredients = userIngredientssBusinessLogic.GetUserIngredients(new User("myUser"), todaysDate);
 
 			userIngredientRepositoryMock.VerifyAll();
@@ -97,7 +103,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var ingredientRepositoryMock = new Mock<IIngredientRepository>(MockBehavior.Strict);
 			ingredientRepositoryMock.Setup(x => x.Get(ingredientName)).Returns((Ingredient) null);
 
-			var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object);
+            var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object, null);
 			Assert.Throws<NoIngredientFoundException>(() => userIngredientLogic.AddUserIngredient(new User(), ingredientName, measure, DateTime.Now));
 
 			userIngredientRepositoryMock.VerifyAll();
@@ -108,8 +114,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 		public void shouldThrowWhenDateNotInSqlRange() {
 			var userRepositoryMock = new Mock<IUserIngredientRepository>(MockBehavior.Strict);
 			var ingredientRepositoryMock = new Mock<IIngredientRepository>(MockBehavior.Strict);
-			Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object).GetUserIngredients(new User("myUser"), new DateTime(1234)));
-			Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object).GetUserIngredients(new User("myUser"), DateTime.MaxValue));
+            Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object, null).GetUserIngredients(new User("myUser"), new DateTime(1234)));
+            Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object, null).GetUserIngredients(new User("myUser"), DateTime.MaxValue));
 		}
 	}
 }

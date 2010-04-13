@@ -6,8 +6,9 @@ namespace CarbonFitness.BusinessLogic.UnitHistory {
 		string Title { get; }
 
 		bool IsEmpty { get; }
+	    int Id { get; set; }
 
-		ValuePoint[] GetValuePoints();
+	    ValuePoint[] GetValuePoints();
 
 		ValuePoint GetValue(DateTime date);
 
