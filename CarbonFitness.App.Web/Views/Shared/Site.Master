@@ -10,12 +10,14 @@
 	</title>
 	<%= Html.Css("Base.css") %>
 	<%= Html.Css("Site.css") %>	
+	<%= Html.Css("dropdown-check-list.0.9/css/ui.dropdownchecklist.css")%>
 	<%= Html.Css("jquery-ui-1.7.2.custom/css/redmond/jquery-ui-1.7.2.custom.css")%>
 	<%= Html.Css("jquery-autocomplete/jquery.autocomplete.css")%>
 	<%= Html.Script("swfobject.js")%>
 	<%= Html.Script("jquery-1.3.2.min.js") %>
 	<%= Html.Script("jquery-ui-1.7.2.custom.min.js")%>
 	<%= Html.Script("jquery.autocomplete.js")%>
+	<%= Html.Script("ui.dropdownchecklist-min.js")%>	
 </head>
 <body>
 <div id="page">

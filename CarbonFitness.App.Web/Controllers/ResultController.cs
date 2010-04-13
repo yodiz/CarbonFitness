@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Web.Mvc;
 using System.Xml.Serialization;
@@ -6,6 +8,7 @@ using AutoMapper;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.UnitHistory;
+using CarbonFitness.Data.Model;
 using MvcContrib.ActionResults;
 
 namespace CarbonFitness.App.Web.Controllers {
@@ -32,16 +35,16 @@ namespace CarbonFitness.App.Web.Controllers {
         public ActionResult Show() {
             var model = new ResultModel();
             model.Nutrients = nutrientBusinessLogic.GetNutrients();
-            //model.CalorieHistoryList = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
+            //model.CalorieHistoryList = userIngredientBusinessLogic.GetNutrientHistory(userContext.User);
             model.IdealWeight = userProfileBusinessLogic.GetIdealWeight(userContext.User);
             return View(model);
         }
 
-        //For WatiN testing purposes the result needs to go inside an html result.
+        //For WatiN testing purposes the result needs to go inside an html result.    
         [Authorize]
-        public ActionResult ShowXmlInsideHtml() {
+        public ActionResult ShowXmlInsideHtml(params string[] nutrients) {
             return new ContentResult {
-                Content = "<html><head></head><body>" + getAmChartAsXml() + "</body></html>",
+                Content = "<html><head></head><body>" + getAmChartAsXml(GetNutrientEntitys(nutrients)) + "</body></html>",
                 ContentEncoding = Encoding.UTF8,
                 ContentType = "text/html"
             };
@@ -49,16 +52,15 @@ namespace CarbonFitness.App.Web.Controllers {
 
         [Authorize]
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
-        public ActionResult ShowXml() {
+        public ActionResult ShowXml(params string[] nutrients) {
             return new ContentResult {
-                Content = getAmChartAsXml(),
+                Content = getAmChartAsXml(GetNutrientEntitys(nutrients)),
                 ContentType = "text/xml"
             };
         }
 
-        private AmChartData getAmChartData() {
-            ILine calorieLine = userIngredientBusinessLogic.GetCalorieHistory(userContext.User);
-            Graph graph = graphBuilder.GetGraph(calorieLine);
+        private AmChartData getAmChartData(IEnumerable<NutrientEntity> nutrients) {
+            Graph graph = GetGraph(nutrients);
 
             var amChartData = new AmChartData();
 
@@ -66,8 +68,17 @@ namespace CarbonFitness.App.Web.Controllers {
             return amChartData;
         }
 
-        private string getAmChartAsXml() {
-            AmChartData amChartData = getAmChartData();
+        public Graph GetGraph(IEnumerable<NutrientEntity> nutrients) {
+            var lines = new List<ILine>();
+            foreach (var nutrient in nutrients) {
+                ILine line = userIngredientBusinessLogic.GetNutrientHistory(nutrient, userContext.User);
+                lines.Add(line);
+            }
+            return graphBuilder.GetGraph(lines.ToArray());
+        }
+
+        private string getAmChartAsXml(IEnumerable<NutrientEntity> nutrients) {
+            AmChartData amChartData = getAmChartData(nutrients);
             return serializeAmChartData(amChartData);
         }
 
@@ -86,6 +97,16 @@ namespace CarbonFitness.App.Web.Controllers {
             Mapper.Map(graph, amChartData);
 
             return new XmlResult(amChartData);
+        }
+
+        public NutrientEntity[] GetNutrientEntitys(string[] nutrients) {
+            var nutrientEntities = new List<NutrientEntity>();
+            foreach (var s in nutrients) {
+                try {
+                    nutrientEntities.Add((NutrientEntity)Enum.Parse(typeof(NutrientEntity), s));
+                } catch(ArgumentException ) {} //TODO:Please fix. When calling action the System.String gets added to Nutrient Collection
+            }
+            return nutrientEntities.ToArray();
         }
     }
 }

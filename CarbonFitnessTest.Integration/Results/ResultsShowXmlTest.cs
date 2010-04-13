@@ -17,7 +17,7 @@ namespace CarbonFitnessTest.Integration.Results {
 
 		[Test]
 		public void shouldHaveCalorieHistory() {
-			Browser.GoTo(Url);
+            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.EnergyInKcal);
 
             var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
             decimal sum = userIngredients.Sum(u => u.Ingredient.GetNutrient(NutrientEntity.EnergyInKcal).Value * (u.Measure / u.Ingredient.WeightInG)); 
@@ -33,7 +33,7 @@ namespace CarbonFitnessTest.Integration.Results {
 
         [Test]
         public void shouldHaveFatHistory() {
-            Browser.GoTo(Url + "/" + NutrientEntity.FatInG);
+            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.FatInG);
 
             //var nutrientDropDown = Browser.SelectList("Nutrients");
             //nutrientDropDown.Option(NutrientEntity.FatInG.ToString()).Select();

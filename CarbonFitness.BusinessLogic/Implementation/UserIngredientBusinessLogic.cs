@@ -36,11 +36,11 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			return userIngredientRepository.GetUserIngredientsByUser(user.Id, fromdate, todate);
 		}
 
-		public ILine GetCalorieHistory(User user) {
+		public ILine GetNutrientHistory(NutrientEntity nutrientEntity,User user) {
 			var date = DateTime.Now.Date;
 			var userIngredients = userIngredientRepository.GetUserIngredientsByUser(user.Id, date.AddDays(-100), date.AddDays(1));
 
-			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => x.GetNutrient(NutrientEntity.EnergyInKcal).Value);
+			var valueSumPerDateFromUserIngredients = GetValueSumPerDateFromUserIngredients(userIngredients, x => getNutrientIngredientValue(x.GetNutrient(nutrientEntity)) );
 
 			return new Line(valueSumPerDateFromUserIngredients);
 		}
@@ -68,5 +68,12 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			}
 			return ingredient;
 		}
+
+        public decimal getNutrientIngredientValue(IngredientNutrient nutrient) {
+	        if(nutrient ==null) {
+	            return 0;
+	        }
+	        return nutrient.Value;
+	    }
 	}
 }

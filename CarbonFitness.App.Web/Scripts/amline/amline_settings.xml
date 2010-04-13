@@ -3,32 +3,45 @@
 	<add_time_stamp>1</add_time_stamp>
 	<digits_after_decimal>2</digits_after_decimal>
 	<legend>
-		<values>
-			<enabled>1</enabled>
-			<width>44</width>
-			<align>left</align>
-			<text>{value}</text>
-		</values>
-	</legend>
+    <enabled>1</enabled>
+    <text_size>11</text_size>
+    <spacing>9</spacing>
+  </legend>
+  <grid>
+    <x>
+      <enabled>0</enabled>
+      <alpha>10</alpha>
+    </x>
+    <y_left>
+      <enabled>0</enabled>
+      <alpha>10</alpha>
+    </y_left>
+  </grid>
+  <axes>
+    <x>
+      <color>293a7c</color>
+    </x>
+    <y_left>
+      <color>293a7c</color>
+    </y_left>
+  </axes>
 	<graphs>
-		<graph gid="1">
+		<graph gid="0">
 			<title>Kalorier</title>
 			<color>009933</color>
-			<line_width>2</line_width>
+			<line_width>4</line_width>
 			<balloon_text>{value}</balloon_text>
 			<bullet>round_outline</bullet>
 		</graph>
-		<graph gid="2">
-			<title>????</title>
-			<color>999999</color>
-			<selected>0</selected>
-			<balloon_text>{value}</balloon_text>
-			<bullet>round_outline</bullet>
-		</graph>
+    <graph gid="1">
+      <title>Energi</title>
+      <line_width>2</line_width>
+    </graph>	
 	</graphs>
 	<labels>
-		<label lid="0">
+		<label lid="0">      
 			<y>20</y>
+      <text_size>13</text_size>
 			<width>520</width>
 			<align>center</align>
 		</label>

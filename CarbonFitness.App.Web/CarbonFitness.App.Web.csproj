@@ -717,6 +717,25 @@
     <Content Include="App_data\Ingredients.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\dropdown-check-list.0.9\css\dropdown.png" />
+    <Content Include="Content\dropdown-check-list.0.9\css\dropdown_hover.png" />
+    <Content Include="Content\dropdown-check-list.0.9\css\ui.dropdownchecklist.css" />
+    <Content Include="Content\dropdown-check-list.0.9\js\jquery-min.js" />
+    <Content Include="Content\dropdown-check-list.0.9\js\ui.core-min.js" />
+    <Content Include="Content\dropdown-check-list.0.9\js\ui.dropdownchecklist-min.js" />
+    <Content Include="Content\dropdown-check-list.0.9\src\changes.txt" />
+    <Content Include="Content\dropdown-check-list.0.9\src\demo.css" />
+    <Content Include="Content\dropdown-check-list.0.9\src\demo.html" />
+    <Content Include="Content\dropdown-check-list.0.9\src\demo.png" />
+    <Content Include="Content\dropdown-check-list.0.9\src\dropdown.png" />
+    <Content Include="Content\dropdown-check-list.0.9\src\dropdown_hover.png" />
+    <Content Include="Content\dropdown-check-list.0.9\src\GPL-LICENSE.txt" />
+    <Content Include="Content\dropdown-check-list.0.9\src\jquery.js" />
+    <Content Include="Content\dropdown-check-list.0.9\src\MIT-LICENSE.txt" />
+    <Content Include="Content\dropdown-check-list.0.9\src\ui.core.js" />
+    <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.css" />
+    <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.js" />
+    <Content Include="Scripts\ui.dropdownchecklist-min.js" />
     <None Include="Content\jquery-autocomplete\demo\emails.php" />
     <None Include="Content\jquery-autocomplete\demo\emails.phps" />
     <None Include="Content\jquery-autocomplete\demo\images.php" />

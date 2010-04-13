@@ -1,0 +1,45 @@
+0.9
+- fixed some warnings for unused variabled with yui processor (#52)
+- added patch from munkyboy to aoutomatically syncronize with the source select value changes (#48)
+- fixed a problem with positioning and z-index (#47, #53, #54, #56)
+- disabled options are not transformed in disabled checkboxes; the disabled checkboxes are displayed but ignored (#42)
+- !known issue: keyboard handling is broken
+
+0.8
+- changed zip structure to provide minified version and modified to ant build (#40)
+- fixed a problem where dropdown is not visible if displayed in modal dialog with z-index above some value (#41)
+- merged a patch from Kulikov.Dm to fix a problem with a trailing comma in IE (#43)
+- added keyboard handling with Alt+Key Down for showing hiding the dropdown, Tab, Shift+Tab for navigating the checkboxes and Space to check the items (#29)
+- updated jquery to 1.3.2 and ui.core to 1.7.2
+
+0.7
+- merged patch from bishiboosh for bgiframe integration (#34)
+- merged patch from neil.anthony.owen to display radio buttons instead of checkboxes when the select does not have a multiple attribute (#25)
+
+0.6
+- fixed a problem when the text is not shown when using groups (#17)
+- change event is now rises when the checkbox is clicked, the previous version only rised the event on label click (#18)
+- blur and focus events are rised when the ddl is shown/hidden (#19)
+- fixed a small issue with "float" keyword not correctly used from js (#20)
+- fixed the firstItemChecksAll incorect behavior when using groups (#23)
+
+0.5
+- fixed destroy function to allow dynamic updates scenarios (#7)
+- moved text height to css to fix the problem of zero text height when the control is initially hidden (#8)
+- fixed hover over items in firefox (#11)
+- fire onchange event on the source select when the chackboxes are checked (#12)
+- fixed control text when using select groups (#14)
+- other minor fixes
+
+0.4
+- added support for groups. The optgroup tags are visible in the drop down and have their own style. The options are indented if they are in a group (#5)
+- fixed a css issue with text remaining gray on hover
+
+0.3
+- fixed a problem where checkboxes are not checked when options are initially selected in IE6 (#3)
+
+0.2
+- works in Chrome and Opera
+
+0.1
+- initial version

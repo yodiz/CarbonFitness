@@ -54,7 +54,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 			var firstDate = todaysDate.AddDays(-100).Date;
 			var lastDate = todaysDate;
 			repositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), firstDate, lastDate.AddDays(1))).Returns(expectedUserIngredients);
-			var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetCalorieHistory(new User());
+			var returnedValues = new UserIngredientBusinessLogic(repositoryMock.Object, null).GetNutrientHistory(NutrientEntity.EnergyInKcal ,new User());
 
 			repositoryMock.VerifyAll();
 
@@ -67,7 +67,13 @@ namespace CarbonFitnessTest.BusinessLogic {
 			Assert.That(returnedValues.GetValue(lastDate).Value, Is.EqualTo(todaysUserIngredients.Sum(x => x.GetActualCalorieCount(y => y.GetNutrient(NutrientEntity.EnergyInKcal).Value))));
 		}
 
-		[Test]
+        [Test]
+        public void shouldGetZeroInNutrientIngredientValueWhenNoNutrientIngredient() {
+            decimal nutrientIngredientValue = new UserIngredientBusinessLogic(null, null).getNutrientIngredientValue(null as IngredientNutrient);
+            Assert.That(nutrientIngredientValue, Is.EqualTo(0));
+        }
+
+	    [Test]
 		public void shouldGetUserIngredients() {
 			var userIngredients = GetExpectedUserIngredients(todaysDate);
 
