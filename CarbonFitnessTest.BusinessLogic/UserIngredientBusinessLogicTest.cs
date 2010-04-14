@@ -75,7 +75,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 
         [Test]
         public void shouldGetZeroInNutrientIngredientValueWhenNoNutrientIngredient() {
-            decimal nutrientIngredientValue = new UserIngredientBusinessLogic(null, null, null).getNutrientIngredientValue(null as IngredientNutrient);
+            decimal nutrientIngredientValue = new Ingredient().GetNutrientIngredientDisplayValue(null as IngredientNutrient);
             Assert.That(nutrientIngredientValue, Is.EqualTo(0));
         }
 

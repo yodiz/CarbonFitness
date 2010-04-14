@@ -141,7 +141,6 @@
     <Compile Include="IUserContext.cs" />
     <Compile Include="AutoMappingsBootStrapper.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\ActionLinkExtension.cs" />
     <Compile Include="Models\AmChartData.cs" />
     <Compile Include="Models\InputDbInitModel.cs" />
     <Compile Include="Models\ProfileModel.cs" />

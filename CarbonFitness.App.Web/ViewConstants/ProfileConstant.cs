@@ -1,6 +1,6 @@
 ﻿namespace CarbonFitness.App.Web.ViewConstants {
 	public class ProfileConstant {
-		public static string ProfileInputTitle = "Profile";
-		public const string InvalidIdealWeightInput = "Invalid input. Correct errors and press save.";
+		public static string ProfileInputTitle = "Profil";
+		public const string InvalidIdealWeightInput = "Invalid input. Var vänlig rätta felen och tryck spara igen.";
 	}
 }

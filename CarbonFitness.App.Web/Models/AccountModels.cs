@@ -36,55 +36,55 @@ namespace CarbonFitness.App.Web.Models {
 	public class ChangePasswordModel {
 		[Required]
 		[DataType(DataType.Password)]
-		[DisplayName("Current password")]
+		[DisplayName("Nuvarande lösenord")]
 		public string OldPassword { get; set; }
 
 		[Required]
 		[ValidatePasswordLength]
 		[DataType(DataType.Password)]
-		[DisplayName("New password")]
+        [DisplayName("Nytt lösenord")]
 		public string NewPassword { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
-		[DisplayName("Confirm new password")]
+		[DisplayName("Bekräfta nytt lösenord")]
 		public string ConfirmPassword { get; set; }
 	}
 
 	public class LogOnModel {
 		[Required]
-		[DisplayName("User name")]
+		[DisplayName("Användarnamn")]
 		public string UserName { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
-		[DisplayName("Password")]
+		[DisplayName("Lösenord")]
 		public string Password { get; set; }
 
-		[DisplayName("Remember me?")]
+		[DisplayName("Kom ihåg mig?")]
 		public bool RememberMe { get; set; }
 	}
 
 	[PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "The password and confirmation password do not match.")]
 	public class RegisterModel {
 		[Required]
-		[DisplayName("User name")]
+		[DisplayName("Användarnamn")]
 		public string UserName { get; set; }
 
 		[Required]
 		[DataType(DataType.EmailAddress)]
-		[DisplayName("Email address")]
+		[DisplayName("E-post adress")]
 		public string Email { get; set; }
 
 		[Required]
 		[ValidatePasswordLength]
 		[DataType(DataType.Password)]
-		[DisplayName("Password")]
+		[DisplayName("Lösenord")]
 		public string Password { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
-		[DisplayName("Confirm password")]
+		[DisplayName("Bekräfta lösenord")]
 		public string ConfirmPassword { get; set; }
 	}
 

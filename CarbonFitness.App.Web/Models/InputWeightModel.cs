@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using CarbonFitness.Data.Model;
 
@@ -11,8 +12,10 @@ namespace CarbonFitness.App.Web.Models {
 		}
 
 		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayName("Datum")]
 		public DateTime Date { get; set; }
-
+        
+        [DisplayName("Vikt")]
 		public decimal Weight { get; set; }
 
 		public IEnumerable<UserWeight> UserWeightHistoryList { get; set; }

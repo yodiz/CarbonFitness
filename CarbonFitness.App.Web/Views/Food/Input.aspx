@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<InputFoodModel>" %>
+<%@ Import Namespace="CarbonFitness.Data.Model"%>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -73,6 +74,11 @@
 					 <tr>
 						  <th>Livsmedel</th>
 						  <th>Vikt (g)</th>
+						  <th>Protein (g)</th>
+						  <th>Fett (g)</th>
+						  <th>Kolhydrater (g)</th>
+						  <th>Fibrer (g)</th>
+						  <th>Järn (g)</th>
 					 </tr>
 				<%
 				
@@ -81,7 +87,12 @@
 					 <tr>
 						  <td><%=userIngredient.Ingredient.Name%></td>
 						  <td><%=userIngredient.Measure%></td>
-					 </tr>
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.ProteinInG))).ToString("N2")%></td>
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.FatInG))).ToString("N2")%></td>
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.CarbonHydrateInG))).ToString("N2")%></td>
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.FibresInG))).ToString("N2")%></td>
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.IronInmG))).ToString("N2")%></td>
+					</tr>
 					 <%
 				}
 				

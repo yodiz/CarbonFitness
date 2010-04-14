@@ -19,6 +19,14 @@ namespace CarbonFitness.Data.Model {
             }
             return null;
         }
+
+        public virtual decimal GetNutrientIngredientDisplayValue(IngredientNutrient nutrient) {
+            if (nutrient == null) {
+                return 0;
+            }
+            return nutrient.Value;
+        }
+
 		/*public virtual decimal FibresInG { get; set; }
 
 		public virtual decimal EnergyInKJ { get; set; }
