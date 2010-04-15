@@ -734,6 +734,7 @@
     <Content Include="Content\dropdown-check-list.0.9\src\ui.core.js" />
     <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.css" />
     <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.js" />
+    <Content Include="Content\halsa.jpg" />
     <Content Include="Scripts\ui.dropdownchecklist-min.js" />
     <None Include="Content\jquery-autocomplete\demo\emails.php" />
     <None Include="Content\jquery-autocomplete\demo\emails.phps" />

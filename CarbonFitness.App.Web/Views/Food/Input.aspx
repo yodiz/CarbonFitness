@@ -33,7 +33,7 @@
 	<hr style="clear: both" />
 	 
 	 <%=Html.ValidationSummary() %>
-	 <% using (var form = Html.BeginForm()) { %>
+	 <% using ( Html.BeginForm()) { %>
 		  <div class="input-fields">
 				<div class="date-fields">
 					 <div class="editor-label">

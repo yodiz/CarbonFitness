@@ -35,7 +35,7 @@ namespace CarbonFitnessTest.Integration {
 		public void shouldGoToLogOnPageAfterClickingAddFoodLinkIfNotLoggedOn() {
 			Browser.GoTo(BaseUrl);
 
-			var logOffButton = Browser.Link(Find.ByText("Log Off"));
+			var logOffButton = Browser.Link(Find.ByText("Logga ut"));
 			if (logOffButton.Exists) {
 				logOffButton.Click();
 			}

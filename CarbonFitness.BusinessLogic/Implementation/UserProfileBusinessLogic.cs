@@ -1,3 +1,4 @@
+using System;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -8,16 +9,33 @@ namespace CarbonFitness.BusinessLogic.Implementation {
         }
 
         public IUserProfileRepository UserProfileRepository { get; set; }
-
-        public void SaveIdealWeight(User user, decimal weight) {
-            var userProfile = GetUserProfile(user);
-            userProfile.IdealWeight = weight;
-            UserProfileRepository.SaveOrUpdate(userProfile);
+        
+        public decimal GetIdealWeight(User user) {
+            return GetUserProfile(user).IdealWeight;
         }
 
-        public decimal GetIdealWeight(User user) {
+        public decimal GetLength(User user) {
+            return GetUserProfile(user).Length;
+        }
+
+        public decimal GetWeight(User user) {
+            return GetUserProfile(user).Weight;
+        }
+
+        public decimal GetBMI(User user) {
+            var profile = GetUserProfile(user);
+            if(profile.Length == 0 ) {
+                return 0;
+            }
+            return profile.Weight / (profile.Length * profile.Length);
+        }
+
+        public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight) {
             var userProfile = GetUserProfile(user);
-            return userProfile.IdealWeight;
+            userProfile.IdealWeight = idealWeight;
+            userProfile.Length = length;
+            userProfile.Weight = weight;
+            UserProfileRepository.SaveOrUpdate(userProfile);
         }
 
         private UserProfile GetUserProfile(User user) {
@@ -27,5 +45,6 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             }
             return userProfile;
         }
+
     }
 }

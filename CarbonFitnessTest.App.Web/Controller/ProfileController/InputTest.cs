@@ -16,43 +16,90 @@ namespace CarbonFitnessTest.Web.Controller.ProfileController {
 			return userContextMock;
 		}
 
-		[Test]
-		public void shouldNotSaveWeightWhenModelStateIsInvalid() {
-			var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
+        [Test]
+        public void shouldSaveProfile() {
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            const decimal length = 1.80M;
+            const int idealWeight = 75;
+            const int weight = 83;
+            userProfileBusinessLogicMock.Setup(y => y.SaveProfile(It.IsAny<User>(), idealWeight, length, weight));
+            runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input(new ProfileModel { IdealWeight = idealWeight, Length = length, Weight = weight }));
+            userProfileBusinessLogicMock.VerifyAll();
+        }
 
-			var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, null);
-			profileController.ModelState.AddModelError("ff", "ll");
+        [Test]
+        public void shouldShowBMIAfterSaveProfile() {
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            var expectedBMI = 23;
+            userProfileBusinessLogicMock.Setup(x => x.GetBMI(It.IsAny<User>())).Returns(expectedBMI);
+            var model =  runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input(new ProfileModel()));
+            userProfileBusinessLogicMock.VerifyAll();
+            Assert.That(model.BMI, Is.EqualTo(expectedBMI));
+        }
 
-			profileController.Input(new ProfileModel { IdealWeight = 70});
+	    [Test]
+        public void shouldShowStoredWeightValueForLoggedinUser() {
+            const decimal expectedWeight = 85;
 
-			userProfileBusinessLogicMock.Verify(x => x.SaveIdealWeight(It.IsAny<User>(), It.IsAny<Decimal>()), Times.Never());
-		}
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            userProfileBusinessLogicMock.Setup(x => x.GetWeight(It.IsAny<User>())).Returns(expectedWeight);
 
-		[Test]
-		public void shouldSaveIdealWeightValue() {
-			const int idealWeight = 75;
-			var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
-			userProfileBusinessLogicMock.Setup(x => x.SaveIdealWeight(It.IsAny<User>(), idealWeight));
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input());
 
-			var userContextMock = getSetuppedUserContextMock();
-			var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, userContextMock.Object);
-			var actionResult = (ViewResult) profileController.Input(new ProfileModel {IdealWeight = idealWeight, Length = 1.80M});
+            Assert.That(profileModel.Weight, Is.EqualTo(expectedWeight));
+        }
 
-			Assert.That(((ProfileModel) actionResult.ViewData.Model).IdealWeight, Is.EqualTo(idealWeight));
-		}
+        [Test]
+        public void shouldShowBMIForLoggedinUser() {
+            const decimal expectedBMI = 32;
 
-		[Test]
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            userProfileBusinessLogicMock.Setup(x => x.GetBMI(It.IsAny<User>())).Returns(expectedBMI);
+
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input());
+
+            Assert.That(profileModel.BMI, Is.EqualTo(expectedBMI));
+        }
+
+	    [Test]
 		public void shouldShowStoredIdealWeightValueForLoggedinUser() {
 			const decimal expectedIdealWeight = 65;
 
-			var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
+			var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
 			userProfileBusinessLogicMock.Setup(x => x.GetIdealWeight(It.IsAny<User>())).Returns(expectedIdealWeight);
-			var userContextMock = getSetuppedUserContextMock();
+            
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input());
 
-			var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, userContextMock.Object);
-			var actionResult = (ViewResult) profileController.Input();
-
-			Assert.That(((ProfileModel) actionResult.ViewData.Model).IdealWeight, Is.EqualTo(expectedIdealWeight));
+            Assert.That(profileModel.IdealWeight, Is.EqualTo(expectedIdealWeight));
 		}
+
+        [Test]
+        public void shouldShowStoredLengthForLoggedinUser() {
+            const decimal expectedLenght = 1.82M;
+
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            userProfileBusinessLogicMock.Setup(x => x.GetLength(It.IsAny<User>())).Returns(expectedLenght);
+
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input());
+
+            Assert.That(profileModel.Length, Is.EqualTo(expectedLenght));
+        }
+
+        private ProfileModel runMethodUnderTest(Mock<IUserProfileBusinessLogic> userProfileBusinessLogicMock, Func<CarbonFitness.App.Web.Controllers.ProfileController, ActionResult> methodUnderTest) {
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, getSetuppedUserContextMock().Object);
+            var actionResult = (ViewResult)methodUnderTest(profileController);
+            return (ProfileModel)actionResult.ViewData.Model;
+        }
+
+        [Test]
+        public void shouldNotSaveWeightWhenModelStateIsInvalid() {
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
+
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, null);
+            profileController.ModelState.AddModelError("ff", "ll");
+            profileController.Input(new ProfileModel { IdealWeight = 70 });
+
+            userProfileBusinessLogicMock.Verify(x => x.SaveProfile(It.IsAny<User>(), It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<Decimal>()), Times.Never());
+        }
 	}
 }

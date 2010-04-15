@@ -17,18 +17,22 @@ namespace CarbonFitness.App.Web.Controllers {
 
 		[Authorize]
 		public ActionResult Input() {
-			var profileModel = new ProfileModel {IdealWeight = UserProfileBusinessLogic.GetIdealWeight(UserContext.User)};
+			var profileModel = new ProfileModel {IdealWeight = UserProfileBusinessLogic.GetIdealWeight(UserContext.User),
+                                                                  Length = UserProfileBusinessLogic.GetLength(UserContext.User),
+                                                                  Weight = UserProfileBusinessLogic.GetWeight(UserContext.User),
+                                                                  BMI = UserProfileBusinessLogic.GetBMI(UserContext.User)
+            };
 
 			return View(profileModel);
 		}
-
-
+        
 		[Authorize]
 		[HttpPost]
 		[Transaction]
 		public ActionResult Input(ProfileModel profileModel) {
 			if (ModelState.IsValid) {
-				UserProfileBusinessLogic.SaveIdealWeight(UserContext.User, profileModel.IdealWeight);
+				UserProfileBusinessLogic.SaveProfile(UserContext.User, profileModel.IdealWeight, profileModel.Length, profileModel.Weight);
+			    profileModel.BMI = UserProfileBusinessLogic.GetBMI(UserContext.User);
 			}
 			return View(profileModel);
 		}

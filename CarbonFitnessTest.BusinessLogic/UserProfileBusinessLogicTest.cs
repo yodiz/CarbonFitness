@@ -1,4 +1,5 @@
-﻿using CarbonFitness.BusinessLogic;
+﻿using System;
+using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
@@ -14,17 +15,18 @@ namespace CarbonFitnessTest.BusinessLogic {
             userMock.Setup(x => x.Id).Returns(expectedUserId);
             return userMock;
         }
-
+        
+        private User User { get { return getUserMock().Object; } }
+    
         [Test]
         public void shouldCreateUserProfileIfNotExistingForUser() {
             decimal expectedIdealWeight = 42;
-            var userMock = getUserMock();
 
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            userProfileRepositoryMock.Setup(x => x.GetByUserId(userMock.Object.Id)).Returns((UserProfile) null);
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns((UserProfile)null);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Id == 0)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveIdealWeight(userMock.Object, expectedIdealWeight);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, 1, 1);
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -40,44 +42,87 @@ namespace CarbonFitnessTest.BusinessLogic {
         [Test]
         public void shouldReuseExistingUserProfileForUserIfExisting() {
             decimal expectedIdealWeight = 42;
-            var userMock = getUserMock();
 
             var userProfileMock = new Mock<UserProfile>();
             userProfileMock.Setup(x => x.Id).Returns(234);
             var userProfile = userProfileMock.Object;
 
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            userProfileRepositoryMock.Setup(x => x.GetByUserId(userMock.Object.Id)).Returns(userProfile);
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(userProfile));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveIdealWeight(userMock.Object, expectedIdealWeight);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, 1, 1);
 
             userProfileRepositoryMock.VerifyAll();
         }
 
         [Test]
-        public void shouldSaveIdealWeight() {
-            var userMock = getUserMock();
-
-            var expectedIdealWeight = 64;
+        public void shouldSaveProfile() {
+            const decimal expectedIdealWeight = 64;
+            const decimal expectedLength = 1.83M;
+            const decimal expectedWeight = 78M;
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.IdealWeight == expectedIdealWeight && y.User == userMock.Object)));
+            userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Weight == expectedWeight && y.Length == expectedLength && y.IdealWeight == expectedIdealWeight && y.User.Id == User.Id)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveIdealWeight(userMock.Object, expectedIdealWeight);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight);
             userProfileRepositoryMock.VerifyAll();
         }
-
+        
         [Test]
         public void shouldGetIdealWeight() {
-            var user = getUserMock().Object;
             const decimal expectedIdealWeight = 42M;
-            var userProfile = new UserProfile {IdealWeight = expectedIdealWeight, User = user};
+            var userProfile = new UserProfile { IdealWeight = expectedIdealWeight, User = User };
+            AssertProperty(expectedIdealWeight, User, userProfile, x => x.GetIdealWeight(User));
+        }
+        
+        [Test]
+        public void shouldGetLength(){
+            const decimal expectedLength = 1.83M;
+            var userProfile = new UserProfile { Length = expectedLength, User = User };
+            AssertProperty(expectedLength, User, userProfile, x => x.GetLength(User));
+        }
+
+        [Test]
+        public void shouldGetWeight() {
+            const decimal expectedWeight = 83M;
+            var userProfile = new UserProfile { Weight = expectedWeight, User = User };
+            AssertProperty(expectedWeight, User, userProfile, x => x.GetWeight(User));
+        }
+
+        [Test]
+        public void shouldGetBMI() {
+            const decimal weight = 83M;
+            const decimal length = 83M;
+            var userProfile = new UserProfile { Weight = weight, Length = length, User = User };
+
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            userProfileRepositoryMock.Setup(x => x.GetByUserId(user.Id)).Returns(userProfile);
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
 
-            var returnedIdealWeight = new UserProfileBusinessLogic(userProfileRepositoryMock.Object).GetIdealWeight(user);
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object).GetBMI(User);
 
-            Assert.That(returnedIdealWeight, Is.EqualTo(expectedIdealWeight));
+            Assert.That(result, Is.EqualTo(weight / (length * length)));
+        }
+
+
+        [Test]
+        public void shouldGetZeroAsBMIIfLenghtIsZero() {
+            const decimal weight = 83M;
+            var userProfile = new UserProfile { Weight = weight, Length = 0, User = User };
+
+            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
+
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object).GetBMI(User);
+            Assert.That(result, Is.EqualTo(0));
+        }
+
+        private void AssertProperty(decimal expectedResult, User user, UserProfile resultProfile, Func<UserProfileBusinessLogic, decimal> propertyToFetch) {
+           var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(user.Id)).Returns(resultProfile);
+
+            var result = propertyToFetch(new UserProfileBusinessLogic(userProfileRepositoryMock.Object));
+
+            Assert.That(result, Is.EqualTo(expectedResult));
             userProfileRepositoryMock.VerifyAll();
         }
     }
