@@ -65,7 +65,9 @@
     <Compile Include="Exceptions\InvalidWeightException.cs" />
     <Compile Include="Exceptions\NoValuesOnLineException.cs" />
     <Compile Include="Exceptions\UserAlreadyExistException.cs" />
+    <Compile Include="Implementation\GenderTypeBusinessLogic.cs" />
     <Compile Include="IBootStrapper.cs" />
+    <Compile Include="IGenderTypeBusinessLogic.cs" />
     <Compile Include="Implementation\NutrientBusinessLogic.cs" />
     <Compile Include="INutrientBusinessLogic.cs" />
     <Compile Include="UnitHistory\GraphBuilder.cs" />

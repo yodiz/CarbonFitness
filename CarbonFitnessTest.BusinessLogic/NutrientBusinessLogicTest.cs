@@ -33,7 +33,7 @@ namespace CarbonFitnessTest.BusinessLogic {
                 }
             }
 
-            new NutrientBusinessLogic(nutrientRepositoryMock.Object).Export();
+            new NutrientBusinessLogic(nutrientRepositoryMock.Object).ExportInitialValues();
 
             nutrientRepositoryMock.VerifyAll();
         }
@@ -45,7 +45,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             nutrientRepositoryMock.Setup(x => x.Save(It.Is<Nutrient>(y => y.Name == "FibresInG")));
             nutrientRepositoryMock.Setup(x => x.Save(It.Is<Nutrient>(y => y.Name == "CarbonHydrateInG")));
 
-            new NutrientBusinessLogic(nutrientRepositoryMock.Object).Export();
+            new NutrientBusinessLogic(nutrientRepositoryMock.Object).ExportInitialValues();
             nutrientRepositoryMock.VerifyAll();
         }
 

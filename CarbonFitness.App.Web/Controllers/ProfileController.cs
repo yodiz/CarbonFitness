@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 using SharpArch.Web.NHibernate;
@@ -7,12 +8,15 @@ namespace CarbonFitness.App.Web.Controllers {
 
 	[HandleError]
 	public class ProfileController : Controller {
-		public ProfileController(IUserProfileBusinessLogic userProfileBusinessLogic, IUserContext userContext) {
-			UserProfileBusinessLogic = userProfileBusinessLogic;
+
+	    public ProfileController(IUserProfileBusinessLogic userProfileBusinessLogic, IGenderTypeBusinessLogic genderTypeBusinessLogic, IUserContext userContext) {
+            GenderTypeBusinessLogic = genderTypeBusinessLogic;
+		    UserProfileBusinessLogic = userProfileBusinessLogic;
 			UserContext = userContext;
 		}
 
-		public IUserProfileBusinessLogic UserProfileBusinessLogic { get; private set; }
+        public IGenderTypeBusinessLogic GenderTypeBusinessLogic { get; private set; }
+	    public IUserProfileBusinessLogic UserProfileBusinessLogic { get; private set; }
 		public IUserContext UserContext { get; private set; }
 
 		[Authorize]
@@ -20,7 +24,10 @@ namespace CarbonFitness.App.Web.Controllers {
 			var profileModel = new ProfileModel {IdealWeight = UserProfileBusinessLogic.GetIdealWeight(UserContext.User),
                                                                   Length = UserProfileBusinessLogic.GetLength(UserContext.User),
                                                                   Weight = UserProfileBusinessLogic.GetWeight(UserContext.User),
-                                                                  BMI = UserProfileBusinessLogic.GetBMI(UserContext.User)
+                                                                  BMI = UserProfileBusinessLogic.GetBMI(UserContext.User),
+                                                                  Gender = UserProfileBusinessLogic.GetGender(UserContext.User),
+                                                                  GenderTypes = GenderTypeBusinessLogic.GetGenderTypes()
+                                                                  
             };
 
 			return View(profileModel);

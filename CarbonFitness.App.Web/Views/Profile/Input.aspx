@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ProfileModel>" %>
+<%@ Import Namespace="CarbonFitness.Data.Model"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -43,6 +44,21 @@
 		                </div>
 		            </div>
 		        </div>
+		        
+		         <div class="editor-label" style="clear:both;">
+	                <%= Html.LabelFor(m => m.GenderTypes)%>
+                </div>
+                <div class="editor-field">
+	               
+	                <% foreach (GenderType genderType in Model.GenderTypes) {
+                            string selected = "";
+                            if (Model.Gender.Name == genderType.Name) {
+                                selected = "checked";
+                            }
+                            %><%= String.Format("<input type=\"radio\" value=\"{0}\" name=\"{1}\" id=\"{2}\" {4}><label for=\"{2}\">{3}</label>", genderType.Id, "fieldName", genderType.Id, genderType.Name, selected)%><br />
+                <% } %>
+                </div>
+		        
 		        		        
 		        <div style="clear:both;">
 			        <input type="submit" value="Spara" style="margin-top:20px;"/>

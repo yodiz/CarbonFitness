@@ -4,7 +4,7 @@ using CarbonFitness.Data.Model;
 namespace CarbonFitness.BusinessLogic {
     public interface INutrientBusinessLogic {
         IEnumerable<Nutrient> GetNutrients();
-        void Export();
+        void ExportInitialValues();
         Nutrient GetNutrient(NutrientEntity nutrientEntity);
     }
 }

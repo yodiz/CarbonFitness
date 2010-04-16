@@ -4,11 +4,14 @@ using CarbonFitness.DataLayer.Repository;
 
 namespace CarbonFitness.BusinessLogic.Implementation {
     public class UserProfileBusinessLogic : IUserProfileBusinessLogic {
-        public UserProfileBusinessLogic(IUserProfileRepository userProfileRepository) {
+
+        public UserProfileBusinessLogic(IUserProfileRepository userProfileRepository, IGenderTypeBusinessLogic genderTypeBusinessLogic) {
+            GenderTypeBusinessLogic = genderTypeBusinessLogic;
             UserProfileRepository = userProfileRepository;
         }
 
         public IUserProfileRepository UserProfileRepository { get; set; }
+        public IGenderTypeBusinessLogic GenderTypeBusinessLogic { get; set; }
         
         public decimal GetIdealWeight(User user) {
             return GetUserProfile(user).IdealWeight;
@@ -30,6 +33,14 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             return profile.Weight / (profile.Length * profile.Length);
         }
 
+        public GenderType GetGender(User user) {
+            var gender = GetUserProfile(user).Gender;
+            if(gender == null) {
+                return GenderTypeBusinessLogic.GetGenderType("Man"); //Default
+            }
+            return gender;
+        }
+
         public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight) {
             var userProfile = GetUserProfile(user);
             userProfile.IdealWeight = idealWeight;
@@ -37,6 +48,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             userProfile.Weight = weight;
             UserProfileRepository.SaveOrUpdate(userProfile);
         }
+
 
         private UserProfile GetUserProfile(User user) {
             var userProfile = UserProfileRepository.GetByUserId(user.Id);

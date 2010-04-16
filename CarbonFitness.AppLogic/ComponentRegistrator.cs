@@ -17,6 +17,7 @@ namespace CarbonFitness.AppLogic {
 			builder.RegisterType<UserIngredientBusinessLogic>().As<IUserIngredientBusinessLogic>();
             builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
             builder.RegisterType<NutrientBusinessLogic>().As<INutrientBusinessLogic>();
+            builder.RegisterType<GenderTypeBusinessLogic>().As<IGenderTypeBusinessLogic>();
 
 			builder.RegisterType<SchemaExportEngine>().As<ISchemaExportEngine>();
 			builder.RegisterType<IngredientImporterEngine>().As<IIngredientImporterEngine>();

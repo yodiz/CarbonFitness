@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using CarbonFitness.App.Web;
 using CarbonFitness.App.Web.Models;
@@ -85,17 +86,50 @@ namespace CarbonFitnessTest.Web.Controller.ProfileController {
             Assert.That(profileModel.Length, Is.EqualTo(expectedLenght));
         }
 
-        private ProfileModel runMethodUnderTest(Mock<IUserProfileBusinessLogic> userProfileBusinessLogicMock, Func<CarbonFitness.App.Web.Controllers.ProfileController, ActionResult> methodUnderTest) {
-            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, getSetuppedUserContextMock().Object);
-            var actionResult = (ViewResult)methodUnderTest(profileController);
-            return (ProfileModel)actionResult.ViewData.Model;
+        [Test]
+        public void shouldShowGenderTypesForLoggedinUser() {
+            var genderTypeBusinessLogicMock = new Mock<IGenderTypeBusinessLogic>();
+            var expectedGenderTypes = new List<GenderType>();
+            genderTypeBusinessLogicMock.Setup(x => x.GetGenderTypes()).Returns(expectedGenderTypes);
+            
+            var profileController = GetProfileController(new Mock<IUserProfileBusinessLogic>(), genderTypeBusinessLogicMock);
+            var profileModel = getModel(x => x.Input(), profileController);
+            
+            genderTypeBusinessLogicMock.VerifyAll();
+            Assert.That(profileModel.GenderTypes, Is.SameAs(expectedGenderTypes));
         }
 
-        [Test]
+	    [Test]
+        public void shouldShowStoredGenderForLoggedinUser() {
+            var expectedGender = new GenderType();
+
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            userProfileBusinessLogicMock.Setup(x => x.GetGender(It.IsAny<User>())).Returns(expectedGender);
+
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock, x => x.Input());
+
+            Assert.That(profileModel.Gender, Is.SameAs(expectedGender));
+        }
+
+        private ProfileModel runMethodUnderTest(Mock<IUserProfileBusinessLogic> userProfileBusinessLogicMock, Func<CarbonFitness.App.Web.Controllers.ProfileController, ActionResult> methodUnderTest) {
+            var profileController = GetProfileController(userProfileBusinessLogicMock, null);
+            return getModel(methodUnderTest, profileController);
+        }
+
+	    private ProfileModel getModel(Func<CarbonFitness.App.Web.Controllers.ProfileController, ActionResult> methodUnderTest, CarbonFitness.App.Web.Controllers.ProfileController profileController) {
+	        var actionResult = (ViewResult)methodUnderTest(profileController);
+	        return (ProfileModel)actionResult.ViewData.Model;
+	    }
+
+        private CarbonFitness.App.Web.Controllers.ProfileController GetProfileController(Mock<IUserProfileBusinessLogic> userProfileBusinessLogicMock, Mock<IGenderTypeBusinessLogic> genderTypeBusinessLogicMock) {
+            return new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, genderTypeBusinessLogicMock.Object, getSetuppedUserContextMock().Object);
+	    }
+
+	    [Test]
         public void shouldNotSaveWeightWhenModelStateIsInvalid() {
             var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>(MockBehavior.Strict);
 
-            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, null);
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, null, null);
             profileController.ModelState.AddModelError("ff", "ll");
             profileController.Input(new ProfileModel { IdealWeight = 70 });
 

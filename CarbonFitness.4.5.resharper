@@ -46,7 +46,10 @@
           <Item>volatile</Item>
         </MODIFIERS_ORDER>
         <OTHER_BRACES>END_OF_LINE</OTHER_BRACES>
+        <PLACE_CATCH_ON_NEW_LINE>False</PLACE_CATCH_ON_NEW_LINE>
+        <PLACE_ELSE_ON_NEW_LINE>False</PLACE_ELSE_ON_NEW_LINE>
         <PLACE_FIELD_ATTRIBUTE_ON_SAME_LINE>False</PLACE_FIELD_ATTRIBUTE_ON_SAME_LINE>
+        <PLACE_FINALLY_ON_NEW_LINE>False</PLACE_FINALLY_ON_NEW_LINE>
         <PLACE_SIMPLE_ACCESSORHOLDER_ON_SINGLE_LINE>True</PLACE_SIMPLE_ACCESSORHOLDER_ON_SINGLE_LINE>
         <SPACE_AROUND_MULTIPLICATIVE_OP>True</SPACE_AROUND_MULTIPLICATIVE_OP>
         <SPACE_BEFORE_SIZEOF_PARENTHESES>False</SPACE_BEFORE_SIZEOF_PARENTHESES>
@@ -297,6 +300,7 @@ II.2.12 <HandlesEvent />
       <Abbreviation Text="KJ" />
       <Abbreviation Text="DB" />
       <Abbreviation Text="MVC" />
+      <Abbreviation Text="BMI" />
     </Naming2>
   </CodeStyleSettings>
 </Configuration>

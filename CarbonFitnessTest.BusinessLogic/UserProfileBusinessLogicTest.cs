@@ -26,7 +26,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns((UserProfile)null);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Id == 0)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, 1, 1);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1);
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -34,7 +34,7 @@ namespace CarbonFitnessTest.BusinessLogic {
         [Test]
         public void shouldHaveImplementation() {
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            IUserProfileBusinessLogic userProfileBusinessLogic = new UserProfileBusinessLogic(userProfileRepositoryMock.Object);
+            IUserProfileBusinessLogic userProfileBusinessLogic = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null);
             Assert.That(userProfileBusinessLogic, Is.Not.Null);
         }
 
@@ -51,7 +51,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(userProfile));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, 1, 1);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1);
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -64,7 +64,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Weight == expectedWeight && y.Length == expectedLength && y.IdealWeight == expectedIdealWeight && y.User.Id == User.Id)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight);
             userProfileRepositoryMock.VerifyAll();
         }
         
@@ -90,6 +90,27 @@ namespace CarbonFitnessTest.BusinessLogic {
         }
 
         [Test]
+        public void shouldGetGender() {
+            var expectedGender = new GenderType();
+            var userProfile = new UserProfile { Gender = expectedGender, User = User };
+            AssertProperty(expectedGender, User, userProfile, x => x.GetGender(User));
+        }
+
+        [Test]
+        public void shouldIfNoGenderExistDefaultMale() {
+            GenderType expectedGender = null;
+            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
+            var userProfile = new UserProfile { Gender = expectedGender, User = User };
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
+
+            var genderTypeBusinessLogic = new Mock<IGenderTypeBusinessLogic>();
+            genderTypeBusinessLogic.Setup(x => x.GetGenderType(It.IsAny<string>())).Returns(new GenderType {Name = "Man"});
+
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, genderTypeBusinessLogic.Object).GetGender(User);
+            Assert.That(result.Name, Is.EqualTo("Man"));
+        }
+
+        [Test]
         public void shouldGetBMI() {
             const decimal weight = 83M;
             const decimal length = 83M;
@@ -98,11 +119,10 @@ namespace CarbonFitnessTest.BusinessLogic {
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
 
-            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object).GetBMI(User);
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).GetBMI(User);
 
             Assert.That(result, Is.EqualTo(weight / (length * length)));
         }
-
 
         [Test]
         public void shouldGetZeroAsBMIIfLenghtIsZero() {
@@ -112,15 +132,16 @@ namespace CarbonFitnessTest.BusinessLogic {
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
 
-            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object).GetBMI(User);
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).GetBMI(User);
             Assert.That(result, Is.EqualTo(0));
         }
 
-        private void AssertProperty(decimal expectedResult, User user, UserProfile resultProfile, Func<UserProfileBusinessLogic, decimal> propertyToFetch) {
+        private void AssertProperty(object expectedResult, User user, UserProfile resultProfile, Func<UserProfileBusinessLogic, object> propertyToFetch)
+        {
            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
             userProfileRepositoryMock.Setup(x => x.GetByUserId(user.Id)).Returns(resultProfile);
 
-            var result = propertyToFetch(new UserProfileBusinessLogic(userProfileRepositoryMock.Object));
+            var result = propertyToFetch(new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null));
 
             Assert.That(result, Is.EqualTo(expectedResult));
             userProfileRepositoryMock.VerifyAll();

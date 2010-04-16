@@ -17,7 +17,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             return nutrientRepository.GetAll();
         }
 
-        public void Export() {
+        public void ExportInitialValues() {
             foreach (var name in Enum.GetNames(typeof(NutrientEntity))) {
                 if(nutrientRepository.GetByName(name) == null) {
                     nutrientRepository.Save(new Nutrient { Name = name });

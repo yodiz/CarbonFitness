@@ -1,5 +1,4 @@
-﻿using System;
-using CarbonFitness.App.Web.Models;
+﻿using CarbonFitness.App.Web.Models;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
 using SharpArch.Data.NHibernate;
@@ -43,6 +42,7 @@ namespace CarbonFitnessTest.Integration {
 
 			Assert.That(ingredientRepository.Get("Abborre"), Is.Not.Null);
             Assert.That(new NutrientRepository().Get(2), Is.Not.Null, "Should have nutritients in db...");
+            Assert.That(new GenderTypeRepository().GetAll().Count, Is.EqualTo(2), "Should have GenderTypes in db...");
 		}
 	}
 }
