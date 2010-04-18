@@ -46,17 +46,12 @@
 		        </div>
 		        
 		         <div class="editor-label" style="clear:both;">
-	                <%= Html.LabelFor(m => m.GenderTypes)%>
+	                <%= Html.LabelFor(m => m.GenderViewTypes)%>
                 </div>
                 <div class="editor-field">
-	               
-	                <% foreach (GenderType genderType in Model.GenderTypes) {
-                            string selected = "";
-                            if (Model.Gender.Name == genderType.Name) {
-                                selected = "checked";
-                            }
-                            %><%= String.Format("<input type=\"radio\" value=\"{0}\" name=\"{1}\" id=\"{2}\" {4}><label for=\"{2}\">{3}</label>", genderType.Id, "fieldName", genderType.Id, genderType.Name, selected)%><br />
-                <% } %>
+	                <% foreach (var genderType in Model.GenderViewTypes) {%>
+                            <%=Html.RadioButton("SelectedGender", genderType.Text, genderType.Selected)%><label><%=genderType.Text%></label>
+                    <% } %>
                 </div>
 		        
 		        		        

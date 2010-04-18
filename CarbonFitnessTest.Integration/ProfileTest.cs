@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.Data.Model;
@@ -22,8 +23,9 @@ namespace CarbonFitnessTest.Integration
         private Div BMIField { get { return Browser.Div("BMIField"); } }
         private string BMIFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.BMI); } }
 
-        private RadioButton GenderRadioButtons { get { return Browser.RadioButton(GenderRadioButtonsFieldName); } }
-        private string GenderRadioButtonsFieldName { get { return GetFieldNameOnModel<ProfileModel, IEnumerable<GenderType>>(m => m.GenderTypes); } }
+        private RadioButtonCollection GenderRadioButtons { get { return Browser.RadioButtons; } }
+        private RadioButton GenderRadioButton { get { return Browser.RadioButton(GenderRadioButtonsFieldName); } }
+        private string GenderRadioButtonsFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.SelectedGender); } }
 
 		private Button SaveButton { get { return Browser.Button(Find.ByValue("Spara")); } }
 
@@ -51,7 +53,29 @@ namespace CarbonFitnessTest.Integration
 
         [Test]
         public void shouldShowGenderRadioButtonsOnPage() {
-            Assert.That(GenderRadioButtons.Exists, "No field with name:" + GenderRadioButtonsFieldName + " exist on page");
+            Assert.That(GenderRadioButton.Exists, "No field with name:" + GenderRadioButtonsFieldName + " exist on page");
+        }
+
+        [Test]
+        public void shouldShowGenderWomanOnPageAfterSave() {
+            foreach (var gender in GenderRadioButtons) {
+                if(gender.OuterHtml.Contains("Kvinna")) {
+                    gender.Click();
+                }
+            }
+            SaveButton.Click();
+            reloadPage();
+            RadioButton kvinna = null;
+            foreach (var gender in GenderRadioButtons)
+            {
+                if (gender.OuterHtml.Contains("Kvinna"))
+                {
+                    kvinna = gender;
+                }
+            }
+
+            Assert.That(kvinna, Is.Not.Null);
+            Assert.That(kvinna.Checked, "Kvinna is not checked after checking it.");
         }
 
 

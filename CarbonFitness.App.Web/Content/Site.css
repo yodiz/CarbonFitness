@@ -113,9 +113,12 @@ div#page-main
 .date-fields
 {
 	height: 40px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	background-color: #eef1f6; /*d5e9fc*/
-	border-top: solid 1px #c4c4c4;
-	border-bottom: solid 1px #c4c4c4;
+	border: solid 1px #c4c4c4;
+	/*border-bottom: solid 1px #c4c4c4;*/
 	margin-bottom: 20px;
 }
 

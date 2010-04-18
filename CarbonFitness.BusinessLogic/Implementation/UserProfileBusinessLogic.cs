@@ -41,7 +41,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             return gender;
         }
 
-        public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight) {
+        public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight, string @is) {
             var userProfile = GetUserProfile(user);
             userProfile.IdealWeight = idealWeight;
             userProfile.Length = length;

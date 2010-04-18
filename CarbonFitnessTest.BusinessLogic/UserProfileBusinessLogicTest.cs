@@ -26,7 +26,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns((UserProfile)null);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Id == 0)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1, "");
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -51,7 +51,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(userProfile));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1, "");
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -64,7 +64,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Weight == expectedWeight && y.Length == expectedLength && y.IdealWeight == expectedIdealWeight && y.User.Id == User.Id)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight);
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight, "");
             userProfileRepositoryMock.VerifyAll();
         }
         
