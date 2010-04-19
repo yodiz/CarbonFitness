@@ -45,7 +45,8 @@ namespace CarbonFitness.App.Web.Controllers {
                 Age = UserProfileBusinessLogic.GetAge(UserContext.User),
                 GenderViewTypes = GenderTypeConverter.GetViewTypes(UserContext.User),
                 ActivityLevelViewTypes = ActivityLevelViewTypeConverter.GetViewTypes(UserContext.User),
-                BMR = UserProfileBusinessLogic.GetBMR(UserContext.User)
+                BMR = UserProfileBusinessLogic.GetBMR(UserContext.User),
+                DailyCalorieNeed = UserProfileBusinessLogic.GetDailyCalorieNeed(UserContext.User)
             };
         }
     }

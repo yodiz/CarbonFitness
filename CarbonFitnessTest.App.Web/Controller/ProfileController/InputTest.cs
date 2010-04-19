@@ -93,6 +93,19 @@ namespace CarbonFitnessTest.Web.Controller.ProfileController {
         }
 
         [Test]
+        public void shouldShowDailyCalorieNeedForLoggedinUser() {
+            const decimal expectedDailyCalorieNeed = 32;
+
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+            userProfileBusinessLogicMock.Setup(x => x.GetDailyCalorieNeed(It.IsAny<User>())).Returns(expectedDailyCalorieNeed);
+
+            var profileModel = runMethodUnderTest(userProfileBusinessLogicMock.Object, x => x.Input());
+
+            Assert.That(profileModel.DailyCalorieNeed, Is.EqualTo(expectedDailyCalorieNeed));
+        }
+
+
+        [Test]
         public void shouldShowBMRForLoggedinUser() {
             const decimal expectedBMR = 32;
 

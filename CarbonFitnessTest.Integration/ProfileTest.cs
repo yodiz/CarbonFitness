@@ -23,6 +23,9 @@ namespace CarbonFitnessTest.Integration
         private Div BMRField { get { return Browser.Div("BMRField"); } }
         private string BMRFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.BMR); } }
 
+        private Div DailyCalorieNeedField { get { return Browser.Div("DailyCalorieNeedField"); } }
+        private string DailyCalorieNeedFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.DailyCalorieNeed); } }
+
         private TextField AgeField { get { return Browser.TextField(AgeFieldName); } }
         private string AgeFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.Age); } }
 
@@ -72,6 +75,11 @@ namespace CarbonFitnessTest.Integration
         }
 
         [Test]
+        public void shouldShowDailyCalorieNeedFieldOnPage() {
+            Assert.That(DailyCalorieNeedField.Exists, "No field with name:" + DailyCalorieNeedFieldName + " exist on page");
+        }
+
+        [Test]
         public void shouldShowGenderRadioButtonsOnPage() {
             Assert.That(GenderRadioButton.Exists, "No field with name:" + GenderRadioButtonsFieldName + " exist on page");
         }
@@ -114,9 +122,21 @@ namespace CarbonFitnessTest.Integration
             AgeField.TypeText("32");
             WeightInputField.TypeText("73");
             LengthInputField.TypeText("183");
+            GetRadioButtonFromName("Man").Click();
             GetRadioButtonFromName("Mycket hög").Click();
             SaveButton.Click();
             Assert.That(BMRField.InnerHtml, Contains.Substring("1554,58"));
+        }
+
+        [Test]
+        public void shouldShowDailyCalorieNeedOnPageAfterSave() {
+            AgeField.TypeText("32");
+            WeightInputField.TypeText("73");
+            LengthInputField.TypeText("183");
+            GetRadioButtonFromName("Man").Click();
+            GetRadioButtonFromName("Mycket hög").Click();
+            SaveButton.Click();
+            Assert.That(DailyCalorieNeedField.InnerHtml, Contains.Substring("3269,10"));
         }
 
         [Test]

@@ -41,6 +41,10 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             return CalorieCalculator.GetBMR(GetWeight(user), GetLength(user), GetAge(user), GetGender(user));
         }
 
+        public decimal GetDailyCalorieNeed(User user) {
+            return CalorieCalculator.GetDailyCalorieNeed(GetWeight(user), GetLength(user), GetAge(user), GetGender(user), GetActivityLevel(user));
+        }
+
         public int GetAge(User user) {
             return GetUserProfile(user).Age;
         }

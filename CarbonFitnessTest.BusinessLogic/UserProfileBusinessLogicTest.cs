@@ -188,6 +188,28 @@ namespace CarbonFitnessTest.BusinessLogic {
         }
 
         [Test]
+        public void shouldGetDailyCalorieNeed()
+        {
+            const decimal weight = 83M;
+            const int age = 24;
+            const int height = 174;
+            var gender = new GenderType { Name = "Man" };
+            var activityLevel = new ActivityLevelType { Name = "Medel" };
+            var calorieCalculator = new Mock<ICalorieCalculator>();
+
+            var userProfile = new UserProfile { Weight = weight, Age = age, Length = height, Gender = gender, ActivityLevel = activityLevel, User = User };
+
+            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
+            userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
+
+            calorieCalculator.Setup(x => x.GetDailyCalorieNeed(weight, height, age, gender, activityLevel)).Returns(123);
+
+            var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null, null, calorieCalculator.Object).GetDailyCalorieNeed(User);
+
+            Assert.That(result, Is.EqualTo(123));
+        }
+
+        [Test]
         public void shouldGetZeroAsBMIIfLenghtIsZero() {
             const decimal weight = 83M;
             var userProfile = new UserProfile { Weight = weight, Length = 0, User = User };

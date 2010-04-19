@@ -79,6 +79,12 @@
                         <div class="editor-field" id="BMRField">
 	                        <%= Html.DisplayFor(m => m.BMR)%> Kcal / dag
                         </div>
+                        <div class="editor-label">
+	                        <%= Html.LabelFor(m => m.DailyCalorieNeed)%>
+                        </div>
+                        <div class="editor-field" id="DailyCalorieNeedField">
+	                        <%= Html.DisplayFor(m => m.DailyCalorieNeed)%> Kcal / dag
+                        </div>
                      </div>
 		        </div>
 		        		        
