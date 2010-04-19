@@ -7,6 +7,6 @@ namespace CarbonFitness.BusinessLogic {
         decimal GetWeight(User user);
         decimal GetBMI(User user);
         GenderType GetGender(User user);
-        void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight, string @is);
+        void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight, string genderName);
     }
 }

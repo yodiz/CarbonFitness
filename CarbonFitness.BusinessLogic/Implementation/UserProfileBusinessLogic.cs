@@ -1,4 +1,3 @@
-using System;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -36,17 +35,22 @@ namespace CarbonFitness.BusinessLogic.Implementation {
         public GenderType GetGender(User user) {
             var gender = GetUserProfile(user).Gender;
             if(gender == null) {
-                return GenderTypeBusinessLogic.GetGenderType("Man"); //Default
+                return getGender("Man"); //Default
             }
             return gender;
         }
 
-        public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight, string @is) {
+        public void SaveProfile(User user, decimal idealWeight, decimal length, decimal weight, string genderName) {
             var userProfile = GetUserProfile(user);
             userProfile.IdealWeight = idealWeight;
             userProfile.Length = length;
             userProfile.Weight = weight;
+            userProfile.Gender = getGender(genderName);
             UserProfileRepository.SaveOrUpdate(userProfile);
+        }
+
+        public GenderType getGender(string gender) {
+            return GenderTypeBusinessLogic.GetGenderType(gender);
         }
 
 

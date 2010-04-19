@@ -94,6 +94,9 @@ namespace CarbonFitnessTest.Integration
 	    private decimal GetBmi() {
 	        decimal weight = decimal.Parse(WeightInputField.Text);
 	        decimal lenght = decimal.Parse(LengthInputField.Text);
+            if(lenght == 0) {
+                return 0;
+            }
 	        return weight / (lenght * lenght);
 	    }
 

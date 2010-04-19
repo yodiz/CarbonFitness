@@ -26,7 +26,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns((UserProfile)null);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Id == 0)));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1, "");
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, new Mock<IGenderTypeBusinessLogic>().Object).SaveProfile(User, expectedIdealWeight, 1, 1, "");
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -37,8 +37,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             IUserProfileBusinessLogic userProfileBusinessLogic = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null);
             Assert.That(userProfileBusinessLogic, Is.Not.Null);
         }
-
-
+        
         [Test]
         public void shouldReuseExistingUserProfileForUserIfExisting() {
             decimal expectedIdealWeight = 42;
@@ -51,7 +50,7 @@ namespace CarbonFitnessTest.BusinessLogic {
             userProfileRepositoryMock.Setup(x => x.GetByUserId(User.Id)).Returns(userProfile);
             userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(userProfile));
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, 1, 1, "");
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, new Mock<IGenderTypeBusinessLogic>().Object).SaveProfile(User, expectedIdealWeight, 1, 1, "");
 
             userProfileRepositoryMock.VerifyAll();
         }
@@ -61,10 +60,16 @@ namespace CarbonFitnessTest.BusinessLogic {
             const decimal expectedIdealWeight = 64;
             const decimal expectedLength = 1.83M;
             const decimal expectedWeight = 78M;
-            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
-            userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Weight == expectedWeight && y.Length == expectedLength && y.IdealWeight == expectedIdealWeight && y.User.Id == User.Id)));
+            const string expectedGenderToGet = "Man";
+            var expectedGender = new GenderType();
+            
+            var genderTypeBusinessLogicMock = new Mock<IGenderTypeBusinessLogic>();
+            genderTypeBusinessLogicMock.Setup(x => x.GetGenderType(expectedGenderToGet)).Returns(expectedGender);
 
-            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight, "");
+            var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
+            userProfileRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserProfile>(y => y.Weight == expectedWeight && y.Length == expectedLength && y.IdealWeight == expectedIdealWeight && y.User.Id == User.Id && y.Gender == expectedGender)));
+
+            new UserProfileBusinessLogic(userProfileRepositoryMock.Object, genderTypeBusinessLogicMock.Object).SaveProfile(User, expectedIdealWeight, expectedLength, expectedWeight, expectedGenderToGet);
             userProfileRepositoryMock.VerifyAll();
         }
         
