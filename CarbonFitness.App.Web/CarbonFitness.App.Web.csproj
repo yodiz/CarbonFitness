@@ -120,6 +120,9 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ControllerExtension.cs" />
+    <Compile Include="Controllers\ViewTypeConverters\BaseViewTypeConverter.cs" />
+    <Compile Include="Controllers\ViewTypeConverters\GenderViewTypeConverter.cs" />
+    <Compile Include="Controllers\ViewTypeConverters\ActivityLevelViewTypeConverter.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\FoodController.cs" />

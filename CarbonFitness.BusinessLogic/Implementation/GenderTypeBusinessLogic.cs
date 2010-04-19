@@ -16,8 +16,8 @@ namespace CarbonFitness.BusinessLogic.Implementation {
         }
 
         public void ExportInitialValues() {
-            genderTypeRepository.Save(new GenderType {Name = "Man" });
-            genderTypeRepository.Save(new GenderType { Name = "Kvinna" });
+            genderTypeRepository.Save(new GenderType {Name = "Man", GenderBMRFactor = 5});
+            genderTypeRepository.Save(new GenderType { Name = "Kvinna", GenderBMRFactor = -161});
         }
 
         public GenderType GetGenderType(string genderName) {

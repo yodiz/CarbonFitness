@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
-using CarbonFitness.Data.Model;
 using NUnit.Framework;
 using WatiN.Core;
 
@@ -23,14 +20,27 @@ namespace CarbonFitnessTest.Integration
         private Div BMIField { get { return Browser.Div("BMIField"); } }
         private string BMIFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.BMI); } }
 
-        private RadioButtonCollection GenderRadioButtons { get { return Browser.RadioButtons; } }
+        private Div BMRField { get { return Browser.Div("BMRField"); } }
+        private string BMRFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.BMR); } }
+
+        private TextField AgeField { get { return Browser.TextField(AgeFieldName); } }
+        private string AgeFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.Age); } }
+
         private RadioButton GenderRadioButton { get { return Browser.RadioButton(GenderRadioButtonsFieldName); } }
         private string GenderRadioButtonsFieldName { get { return GetFieldNameOnModel<ProfileModel>(m => m.SelectedGender); } }
 
 		private Button SaveButton { get { return Browser.Button(Find.ByValue("Spara")); } }
+        
+        private RadioButton GetRadioButtonFromName(string genderName) {
+            foreach (var gender in Browser.RadioButtons) {
+                if (gender.OuterHtml.Contains(genderName)) {
+                    return gender;
+                }
+            }
+            return null;
+        }
 
-		public override void TestFixtureSetUp()
-		{
+		public override void TestFixtureSetUp() {
 			base.TestFixtureSetUp();
 			new CreateUserTest(Browser).getUniqueUserId();
 			new AccountLogOnTest(Browser).LogOn(CreateUserTest.UserName, CreateUserTest.Password);
@@ -47,8 +57,18 @@ namespace CarbonFitnessTest.Integration
         }
 
         [Test]
+        public void shouldShowAgeFieldOnPage() {
+            Assert.That(AgeField.Exists, "No field with name:" + AgeFieldName + " exist on page");
+        }
+
+        [Test]
         public void shouldShowBMIFieldOnPage() {
             Assert.That(BMIField.Exists, "No field with name:" + BMIFieldName + " exist on page");
+        }
+
+        [Test]
+        public void shouldShowBMRFieldOnPage() {
+            Assert.That(BMRField.Exists, "No field with name:" + BMRFieldName + " exist on page");
         }
 
         [Test]
@@ -56,32 +76,47 @@ namespace CarbonFitnessTest.Integration
             Assert.That(GenderRadioButton.Exists, "No field with name:" + GenderRadioButtonsFieldName + " exist on page");
         }
 
-        [Test]
-        public void shouldShowGenderWomanOnPageAfterSave() {
-            foreach (var gender in GenderRadioButtons) {
-                if(gender.OuterHtml.Contains("Kvinna")) {
-                    gender.Click();
-                }
-            }
+        [Test] 
+        public void shouldShowActivityOnPageAfterSave() {
+            GetRadioButtonFromName("Medel").Click();
             SaveButton.Click();
             reloadPage();
-            RadioButton kvinna = null;
-            foreach (var gender in GenderRadioButtons)
-            {
-                if (gender.OuterHtml.Contains("Kvinna"))
-                {
-                    kvinna = gender;
-                }
-            }
+            var middleActivityRadioButton = GetRadioButtonFromName("Medel");
 
-            Assert.That(kvinna, Is.Not.Null);
-            Assert.That(kvinna.Checked, "Kvinna is not checked after checking it.");
+            Assert.That(middleActivityRadioButton, Is.Not.Null);
+            Assert.That(middleActivityRadioButton.Checked, "Activitylevel medel is not checked after checking it.");
         }
 
 
         [Test]
-        public void shouldShowBMIOnPage() {
-            Assert.That(BMIField.InnerHtml, Contains.Substring(GetBmi().ToString("N2")));
+        public void shouldShowGenderWomanOnPageAfterSave() {
+            GetRadioButtonFromName("Kvinna").Click();
+            SaveButton.Click();
+            reloadPage();
+            var kvinna = GetRadioButtonFromName("Kvinna");
+   
+            Assert.That(kvinna, Is.Not.Null);
+            Assert.That(kvinna.Checked, "Kvinna is not checked after checking it.");
+        }
+
+        [Test]
+        public void shouldStoredAgeAfterSave() {
+            const string expectedAge = "23";
+            AgeField.TypeText(expectedAge); 
+            SaveButton.Click();
+            Assert.That(AgeField.Exists, "No field with name:" + AgeFieldName + " exist on page");
+            reloadPage();
+            Assert.That(AgeField.Text, Is.EqualTo(expectedAge));
+        }
+
+        [Test]
+        public void shouldShowBMROnPageAfterSave() {
+            AgeField.TypeText("32");
+            WeightInputField.TypeText("73");
+            LengthInputField.TypeText("183");
+            GetRadioButtonFromName("Mycket hög").Click();
+            SaveButton.Click();
+            Assert.That(BMRField.InnerHtml, Contains.Substring("1554,58"));
         }
 
         [Test]
@@ -136,7 +171,6 @@ namespace CarbonFitnessTest.Integration
 
 		[Test]
 		public void shouldShowNiceErrorMessageWhenSavingInvalidIdealWeightNumber() {
-
 			IdealWeightInputField.TypeText("notANumber");
 			SaveButton.Click();
 
@@ -159,13 +193,11 @@ namespace CarbonFitnessTest.Integration
 			Assert.That(Convert.ToDecimal(IdealWeightInputField.Text), Is.EqualTo(expectedWeight));
 		}
 
-		private void reloadPage()
-		{
+		private void reloadPage() {
 			ReloadPage(SiteMasterConstant.ProfileInputLinkText);
 		}
 
-		public override string Url
-		{
+		public override string Url {
 			get { return getUrl("Profile", "Input"); }
 		}
 	}

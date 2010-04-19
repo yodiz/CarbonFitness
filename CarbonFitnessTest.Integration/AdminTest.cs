@@ -35,7 +35,6 @@ namespace CarbonFitnessTest.Integration {
                 clearIngredients(); // Might throw if no database exists...
             }catch (NHibernate.ADOException) { }
 			
-			
             Assert.That(FilePathTextField.Text, Is.EqualTo("~/App_data/Ingredients.csv"));
 			
 			Browser.Button(AdminConstant.RefreshDatabase).Click();
@@ -43,6 +42,7 @@ namespace CarbonFitnessTest.Integration {
 			Assert.That(ingredientRepository.Get("Abborre"), Is.Not.Null);
             Assert.That(new NutrientRepository().Get(2), Is.Not.Null, "Should have nutritients in db...");
             Assert.That(new GenderTypeRepository().GetAll().Count, Is.EqualTo(2), "Should have GenderTypes in db...");
+            Assert.That(new ActivityLevelTypeRepository().GetAll().Count, Is.EqualTo(2), "Should have ActivityTypes in db...");
 		}
 	}
 }

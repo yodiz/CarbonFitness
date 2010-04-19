@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ActivityLevelType.cs" />
     <Compile Include="Model\GenderType.cs" />
+    <Compile Include="Model\ILookUpTypes.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\IngredientNutrient.cs" />
     <Compile Include="Model\Nutrient.cs" />

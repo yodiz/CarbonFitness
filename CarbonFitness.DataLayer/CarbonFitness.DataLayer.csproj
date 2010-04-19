@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Repository\ActivityLevelTypeRepository.cs" />
+    <Compile Include="Repository\IActivityLevelTypeRepository.cs" />
     <Compile Include="Repository\GenderTypeRepository.cs" />
     <Compile Include="Repository\IGenderTypeRepository.cs" />
     <Compile Include="Maps\IngredientMap.cs" />

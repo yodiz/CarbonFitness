@@ -18,6 +18,8 @@ namespace CarbonFitness.AppLogic {
             builder.RegisterType<UserProfileBusinessLogic>().As<IUserProfileBusinessLogic>();
             builder.RegisterType<NutrientBusinessLogic>().As<INutrientBusinessLogic>();
             builder.RegisterType<GenderTypeBusinessLogic>().As<IGenderTypeBusinessLogic>();
+            builder.RegisterType<ActivityLevelTypeBusinessLogic>().As<IActivityLevelTypeBusinessLogic>();
+            builder.RegisterType<CalorieCalculator>().As<ICalorieCalculator>();
 
 			builder.RegisterType<SchemaExportEngine>().As<ISchemaExportEngine>();
 			builder.RegisterType<IngredientImporterEngine>().As<IIngredientImporterEngine>();

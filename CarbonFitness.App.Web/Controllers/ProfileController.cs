@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using CarbonFitness.App.Web.Controllers.ViewTypeConverters;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
-using CarbonFitness.Data.Model;
 using SharpArch.Web.NHibernate;
 
 namespace CarbonFitness.App.Web.Controllers {
     [HandleError]
     public class ProfileController : Controller {
-        public ProfileController(IUserProfileBusinessLogic userProfileBusinessLogic, IGenderTypeBusinessLogic genderTypeBusinessLogic, IUserContext userContext) {
-            GenderTypeBusinessLogic = genderTypeBusinessLogic;
+        public ProfileController(IUserProfileBusinessLogic userProfileBusinessLogic, IGenderViewTypeConverter genderTypeConverter, IActivityLevelViewTypeConverter activityLevelViewTypeConverter, IUserContext userContext) {
+            ActivityLevelViewTypeConverter = activityLevelViewTypeConverter;
+            GenderTypeConverter = genderTypeConverter;
             UserProfileBusinessLogic = userProfileBusinessLogic;
             UserContext = userContext;
         }
 
-        public IGenderTypeBusinessLogic GenderTypeBusinessLogic { get; private set; }
+        public IActivityLevelViewTypeConverter ActivityLevelViewTypeConverter { get; private set; }
+        public IGenderViewTypeConverter GenderTypeConverter { get; private set; }
         public IUserProfileBusinessLogic UserProfileBusinessLogic { get; private set; }
         public IUserContext UserContext { get; private set; }
 
@@ -29,7 +30,7 @@ namespace CarbonFitness.App.Web.Controllers {
         [Transaction]
         public ActionResult Input(ProfileModel profileModel) {
             if (ModelState.IsValid) {
-                UserProfileBusinessLogic.SaveProfile(UserContext.User, profileModel.IdealWeight, profileModel.Length, profileModel.Weight, profileModel.SelectedGender);
+                UserProfileBusinessLogic.SaveProfile(UserContext.User, profileModel.IdealWeight, profileModel.Length, profileModel.Weight, profileModel.Age, profileModel.SelectedGender, profileModel.SelectedActivityLevel);
             }
             profileModel = GetProfileModel();
             return View(profileModel);
@@ -41,20 +42,11 @@ namespace CarbonFitness.App.Web.Controllers {
                 Length = UserProfileBusinessLogic.GetLength(UserContext.User),
                 Weight = UserProfileBusinessLogic.GetWeight(UserContext.User),
                 BMI = UserProfileBusinessLogic.GetBMI(UserContext.User),
-                GenderViewTypes = GetGenderViewTypes()
+                Age = UserProfileBusinessLogic.GetAge(UserContext.User),
+                GenderViewTypes = GenderTypeConverter.GetViewTypes(UserContext.User),
+                ActivityLevelViewTypes = ActivityLevelViewTypeConverter.GetViewTypes(UserContext.User),
+                BMR = UserProfileBusinessLogic.GetBMR(UserContext.User)
             };
-        }
-
-        private IEnumerable<SelectListItem> GetGenderViewTypes() {
-            return PopulateGenderViewTypes(GenderTypeBusinessLogic.GetGenderTypes(), UserProfileBusinessLogic.GetGender(UserContext.User));
-        }
-
-        private IEnumerable<SelectListItem> PopulateGenderViewTypes(IEnumerable<GenderType> genderTypes, GenderType selectedGender) {
-            var result = new List<SelectListItem>();
-            foreach (GenderType genderType in genderTypes) {
-                result.Add(new SelectListItem {Text = genderType.Name, Value = genderType.Id.ToString(), Selected = selectedGender.Name == genderType.Name});
-            }
-            return result;
         }
     }
 }

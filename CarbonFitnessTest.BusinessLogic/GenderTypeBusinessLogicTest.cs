@@ -23,8 +23,8 @@ namespace CarbonFitnessTest.BusinessLogic {
         [Test]
         public void shouldExportInitialValues() {
             var genderTypeRepositoryMock = new Mock<IGenderTypeRepository>();
-            genderTypeRepositoryMock.Setup(x => x.Save(It.Is<GenderType>(y => y.Name == "Man")));
-            genderTypeRepositoryMock.Setup(x => x.Save(It.Is<GenderType>(y => y.Name == "Kvinna")));
+            genderTypeRepositoryMock.Setup(x => x.Save(It.Is<GenderType>(y => y.Name == "Man" && y.GenderBMRFactor == 5)));
+            genderTypeRepositoryMock.Setup(x => x.Save(It.Is<GenderType>(y => y.Name == "Kvinna" && y.GenderBMRFactor == -161)));
             new GenderTypeBusinessLogic(genderTypeRepositoryMock.Object).ExportInitialValues();
             genderTypeRepositoryMock.VerifyAll();
         }

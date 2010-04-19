@@ -86,6 +86,8 @@
     <Compile Include="Controller\HomeController\IndexTest.cs" />
     <Compile Include="Controller\IngredientController\SearchTest.cs" />
     <Compile Include="Controller\ProfileController\InputTest.cs" />
+    <Compile Include="Controller\ProfileController\ViewTypeConverter\ActivityLevelViewTypeConverterTest.cs" />
+    <Compile Include="Controller\ProfileController\ViewTypeConverter\GenderViewTypeConverterTest.cs" />
     <Compile Include="Controller\ResultController\ShowTest.cs" />
     <Compile Include="Controller\ResultController\ShowWeightPrognosisXmlTest.cs" />
     <Compile Include="Controller\UserController\CreateTest.cs" />

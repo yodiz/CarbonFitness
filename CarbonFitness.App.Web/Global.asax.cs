@@ -6,6 +6,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
+using CarbonFitness.App.Web.Controllers.ViewTypeConverters;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
@@ -69,6 +70,9 @@ namespace CarbonFitness.App.Web {
 
 		private void AutofacRegisterComponentes() {
 			var builder = new ContainerBuilder();
+
+            builder.RegisterType<GenderViewTypeConverter>().As<IGenderViewTypeConverter>();
+            builder.RegisterType<ActivityLevelViewTypeConverter>().As<IActivityLevelViewTypeConverter>();
 
 			builder.RegisterControllers(Assembly.GetExecutingAssembly());
 			builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();

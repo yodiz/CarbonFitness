@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLevelTypeBusinessLogicTest.cs" />
+    <Compile Include="CalorieCalculatorTest.cs" />
     <Compile Include="CarbonFitnessMembershipProviderTest.cs" />
     <Compile Include="GenderTypeBusinessLogicTest.cs" />
     <Compile Include="GraphBuilderTest.cs" />

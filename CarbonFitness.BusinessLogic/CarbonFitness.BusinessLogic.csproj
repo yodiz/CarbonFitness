@@ -59,12 +59,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CalorieCalculator.cs" />
     <Compile Include="Exceptions\IngredientInsertionException.cs" />
     <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
     <Compile Include="Exceptions\InvalidWeightException.cs" />
     <Compile Include="Exceptions\NoValuesOnLineException.cs" />
     <Compile Include="Exceptions\UserAlreadyExistException.cs" />
+    <Compile Include="IActivityLevelTypeBusinessLogic.cs" />
+    <Compile Include="Implementation\ActivityLevelTypeBusinessLogic.cs" />
     <Compile Include="Implementation\GenderTypeBusinessLogic.cs" />
     <Compile Include="IBootStrapper.cs" />
     <Compile Include="IGenderTypeBusinessLogic.cs" />
