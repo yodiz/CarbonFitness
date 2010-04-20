@@ -95,8 +95,17 @@
 					</tr>
 					 <%
 				}
-				
 				%>
+				    <tr class="nutrientSum">
+						  <td ></td>
+						  <td ></td>
+						  <td ><%=Model.SumOfProtein.ToString("N2")%></td>
+						  <td ><%=Model.SumOfFat.ToString("N2")%></td>
+						  <td ><%=Model.SumOfCarbonHydrates.ToString("N2")%></td>
+						  <td ><%=Model.SumOfFiber.ToString("N2")%></td>
+						  <td ><%=Model.SumOfIron.ToString("N2")%></td>
+					</tr>
+				
 				</table>
 				<%
 		  }

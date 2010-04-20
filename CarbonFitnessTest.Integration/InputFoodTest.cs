@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.Data.Model;
@@ -16,12 +17,14 @@ namespace CarbonFitnessTest.Integration {
 
         public override string Url { get { return getUrl("Food", "Input"); } }
 
+        private int userId;
+
         [TestFixtureSetUp]
         public override void TestFixtureSetUp() {
             base.TestFixtureSetUp();
 
             var createUserTest = new CreateUserTest(Browser);
-            createUserTest.getUniqueUserId();
+            userId = createUserTest.getUniqueUserId();
             var accountLogOnTest = new AccountLogOnTest(Browser);
             accountLogOnTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
         }
@@ -184,6 +187,18 @@ namespace CarbonFitnessTest.Integration {
         public void shouldShowViewAfterNewFoodInput() {
             bool addFoodHeaderExists = Browser.ContainsText(FoodConstant.FoodInputTitle);
             Assert.That(addFoodHeaderExists);
+        }
+
+        [Test]
+        public void shouldShowDailySumElementsInTable() {
+            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
+            decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
+
+            var chartSumOfFatValue = ">" + sum.ToString("n2") + "</TD>";
+
+            var sumElement = Browser.Element(Find.ByClass("nutrientSum"));
+            Assert.That(sumElement.Exists);
+            Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
         }
     }
 }

@@ -32,7 +32,7 @@ namespace CarbonFitness.App.Web.Models {
 		}
 	}
 
-	[PropertiesMustMatch("NewPassword", "ConfirmPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+    [PropertiesMustMatch("NewPassword", "ConfirmPassword", ErrorMessage = "Det nya lösenordet och det bekräftade lösenorden måste vara lika.")]
 	public class ChangePasswordModel {
 		[Required]
 		[DataType(DataType.Password)]
@@ -65,7 +65,7 @@ namespace CarbonFitness.App.Web.Models {
 		public bool RememberMe { get; set; }
 	}
 
-	[PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "The password and confirmation password do not match.")]
+	[PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "Lösenordet och det bekräftade lösenorden måste vara lika.")]
 	public class RegisterModel {
 		[Required]
 		[DisplayName("Användarnamn")]
@@ -90,7 +90,7 @@ namespace CarbonFitness.App.Web.Models {
 
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
 	public sealed class PropertiesMustMatchAttribute : ValidationAttribute {
-		private const string defaultErrorMessage = "'{0}' and '{1}' do not match.";
+		private const string defaultErrorMessage = "'{0}' och '{1}' är inte lika.";
 
 		private readonly object typeId = new object();
 
@@ -123,7 +123,7 @@ namespace CarbonFitness.App.Web.Models {
 
 	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 	public sealed class ValidatePasswordLengthAttribute : ValidationAttribute {
-		private const string defaultErrorMessage = "'{0}' must be at least {1} characters long.";
+		private const string defaultErrorMessage = "'{0}' måste vara minst {1} bokstäver långt.";
 
 		private readonly int minCharacters = Membership.Provider.MinRequiredPasswordLength;
 

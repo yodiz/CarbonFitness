@@ -20,7 +20,26 @@ namespace CarbonFitness.App.Web.Controllers
 			this.userContext = userContext;
 		}
 
-		[HttpPost]
+        //First time when coming to the "kost" page
+        [Transaction]
+        [Authorize]
+        public ActionResult Input() {
+            return View( GetInputFoodModel(DateTime.Now));
+        }
+
+	    private InputFoodModel GetInputFoodModel(DateTime date) {
+	        return new InputFoodModel {
+	            UserIngredients = getUserIngredients(date),
+	            Date = date,
+	            SumOfProtein = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.ProteinInG, date),
+	            SumOfFat = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FatInG, date),
+	            SumOfFiber = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FibresInG, date),
+	            SumOfCarbonHydrates = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.CarbonHydrateInG, date),
+	            SumOfIron = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.IronInmG, date),
+	        };
+	    }
+
+	    [HttpPost]
 		[Transaction]
 		[Authorize]
 		//When pressing submit, trying to add an ingredient to user
@@ -29,41 +48,9 @@ namespace CarbonFitness.App.Web.Controllers
 				AddUserIngredient(model);
 			}
 
-			model.UserIngredients = getUserIngredients(model.Date);
-
-			return View(model);
+	        return View(GetInputFoodModel(model.Date));
 		}
 
-		private void AddUserIngredient(InputFoodModel model) {
-			try {
-				userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
-				RemoveFoodInputValues(model);
-			}
-			catch (NoIngredientFoundException e) {
-				this.AddModelError<InputFoodModel>(x => x.Ingredient, FoodConstant.NoIngredientFoundMessage + e.IngredientName);
-			}
-		}
-
-		private void RemoveFoodInputValues(InputFoodModel model) {
-			model.Ingredient = "";
-			model.Measure = 0;
-
-			ModelState.Remove("Ingredient");
-			ModelState.Remove("Measure");
-		}
-
-		public static string GetPropertyNameFromModel<T>(Controller controller, Expression<Func<T, string>> namedPropertyToGet) {
-			return ExpressionHelper.GetExpressionText(namedPropertyToGet);
-		}
-
-		//First time when coming to the "kost" page
-		[Transaction]
-		[Authorize]
-		public ActionResult Input() {
-			var inputFoodModel = new InputFoodModel {UserIngredients = getUserIngredients(DateTime.Now), Date = DateTime.Now};
-
-			return View(inputFoodModel);
-		}
 
 		private UserIngredient[] getUserIngredients(DateTime date) {
 			try {
@@ -74,5 +61,32 @@ namespace CarbonFitness.App.Web.Controllers
 			}
 			return null;
 		}
+
+        private void AddUserIngredient(InputFoodModel model)
+        {
+            try
+            {
+                userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
+                RemoveFoodInputValues(model);
+            }
+            catch (NoIngredientFoundException e)
+            {
+                this.AddModelError<InputFoodModel>(x => x.Ingredient, FoodConstant.NoIngredientFoundMessage + e.IngredientName);
+            }
+        }
+
+        private void RemoveFoodInputValues(InputFoodModel model)
+        {
+            model.Ingredient = "";
+            model.Measure = 0;
+
+            ModelState.Remove("Ingredient");
+            ModelState.Remove("Measure");
+        }
+
+        public static string GetPropertyNameFromModel<T>(Controller controller, Expression<Func<T, string>> namedPropertyToGet)
+        {
+            return ExpressionHelper.GetExpressionText(namedPropertyToGet);
+        }
 	}
 }

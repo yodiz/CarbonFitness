@@ -43,7 +43,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 
 		[Test]
 		public void shouldAddIngredientToCurrentUser() {
-			var mockFactory = new MockFactory(MockBehavior.Strict);
+			var mockFactory = new MockFactory(MockBehavior.Loose);
 			var userContextMock = GetSetuppedUserContextMock(mockFactory);
 
 			var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
@@ -69,7 +69,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 
 		[Test]
 		public void shouldGetTodaysUserIngredientsOnLoad() {
-			var mockFactory = new MockFactory(MockBehavior.Strict);
+			var mockFactory = new MockFactory(MockBehavior.Loose);
 			var userContextMock = GetSetuppedUserContextMock(mockFactory);
 
 			var userIngredientBusinessLogicMock = GetSetuppedUserIngredientBusinessLogicMock(mockFactory);
@@ -81,7 +81,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 
 		[Test]
 		public void shouldLoadUserIngredientsAfterAddedIngredients() {
-			var mockFactory = new MockFactory(MockBehavior.Strict);
+            var mockFactory = new MockFactory(MockBehavior.Loose);
 			var userContextMock = GetSetuppedUserContextMock(mockFactory);
 			var userIngredientBusinessLogicMock = GetSetuppedUserIngredientBusinessLogicMock(mockFactory);
 
@@ -93,11 +93,33 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 			AssertUserIngredientsExist(mockFactory, model);
 		}
 
+
+        [Test]
+        public void shouldGetSumOfNutrients() {
+            var userContextMock = new Mock<IUserContext>();
+            userContextMock.Setup(x => x.User).Returns(new User {Username = "myUser"});
+
+            var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>();
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumForDate(It.IsAny<User>(), It.Is<NutrientEntity>(y=>y == NutrientEntity.ProteinInG), It.IsAny<DateTime>())).Returns(12M);
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumForDate(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FatInG), It.IsAny<DateTime>())).Returns(12M);
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumForDate(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.CarbonHydrateInG), It.IsAny<DateTime>())).Returns(12M);
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumForDate(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FibresInG), It.IsAny<DateTime>())).Returns(12M);
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumForDate(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.IronInmG), It.IsAny<DateTime>())).Returns(12M);
+            var model = testController(x => x.Input(), userIngredientBusinessLogicMock, userContextMock);
+
+            userIngredientBusinessLogicMock.VerifyAll();
+            Assert.That(model.SumOfProtein, Is.EqualTo(12M));
+            Assert.That(model.SumOfFat, Is.EqualTo(12M));
+            Assert.That(model.SumOfCarbonHydrates, Is.EqualTo(12M));
+            Assert.That(model.SumOfFiber, Is.EqualTo(12M));
+            Assert.That(model.SumOfIron, Is.EqualTo(12M));
+        }
+
 		[Test]
 		public void shouldReportErrorWhenInvalidDateEnteredOnPage() {
 			var m = new InputFoodModel {Date = new DateTime(1234)};
 
-			var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Strict);
+            var userIngredientBusinessLogicMock = new Mock<IUserIngredientBusinessLogic>(MockBehavior.Loose);
 			var userContextMock = new Mock<IUserContext>(MockBehavior.Strict);
 			userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Throws(new InvalidDateException());
 			userContextMock.Setup(x => x.User).Returns(new User());
@@ -111,7 +133,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 
 		[Test]
 		public void shouldReportErrorWhenNoIngredientFound() {
-			var mockFactory = new MockFactory(MockBehavior.Strict);
+            var mockFactory = new MockFactory(MockBehavior.Loose);
 			var userContextMock = GetSetuppedUserContextMock(mockFactory);
 
 			var ingredientName = "afafafafafafafa";
@@ -132,5 +154,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 			Assert.That(errormessage.Contains(ingredientName));
 			Assert.That(errormessage, Is.EqualTo(FoodConstant.NoIngredientFoundMessage + ingredientName));
 		}
+
+
 	}
 }

@@ -19,10 +19,10 @@ namespace CarbonFitnessTest.Integration.Results {
 		public void shouldHaveCalorieHistory() {
             Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.EnergyInKcal);
 
-            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
-            decimal sum = userIngredients.Sum(u => u.Ingredient.GetNutrient(NutrientEntity.EnergyInKcal).Value * (u.Measure / u.Ingredient.WeightInG)); 
-            
-            var chartSumOfCalorieValue = ">" + String.Format("{0:0.00000}", sum) +"</VALUE>";
+            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now.AddDays(1));
+            decimal sum = userIngredients.Sum(u => u.Ingredient.GetNutrient(NutrientEntity.EnergyInKcal).Value * (u.Measure / u.Ingredient.WeightInG));
+
+            var chartSumOfCalorieValue = ">" + String.Format("{0:0.00000}", sum) + "</VALUE>";
 		    chartSumOfCalorieValue = chartSumOfCalorieValue.Replace(",", ".");
 
             Assert.That(Browser.Html, Contains.Substring(chartSumOfCalorieValue));
@@ -35,7 +35,7 @@ namespace CarbonFitnessTest.Integration.Results {
         public void shouldHaveFatHistory() {
             Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.FatInG);
 
-            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now);
+            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now.AddDays(1));
             decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
 
             var chartSumOfFatValue = ">" + String.Format("{0:0.00000}", sum) + "</VALUE>";

@@ -8,7 +8,7 @@
 		<%=ProfileConstant.ProfileInputTitle%>
 	</h1>
 	<div class="profile-input">			
-		<%=Html.ValidationSummary(ProfileConstant.InvalidIdealWeightInput) %>
+		<%=Html.ValidationSummary(ProfileConstant.InvalidInput) %>
 		<% using (Html.BeginForm()) { %>
 		<div style="height:358px;">
 		    <div style="float:left;">       		

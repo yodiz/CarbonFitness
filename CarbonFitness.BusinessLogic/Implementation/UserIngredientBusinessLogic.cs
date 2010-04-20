@@ -23,7 +23,7 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 			userIngredient.User = user;
 			userIngredient.Ingredient = GetExistingIngredient(ingredientName);
 			userIngredient.Measure = measure;
-			userIngredient.Date = dateTime;
+			userIngredient.Date = dateTime.AddSeconds(1); // Otherwise it will show up on both today and yesterday
 			return userIngredientRepository.SaveOrUpdate(userIngredient);
 		}
 
@@ -47,8 +47,15 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 		    var nutrientId = nutrientRepository.GetByName(nutrientEntity.ToString()).Id;
             return new Line(nutrientId, valueSumPerDateFromUserIngredients);
 		}
-      
-		private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {
+
+	    public decimal GetNutrientSumForDate(User user, NutrientEntity entity, DateTime date) {
+	        var userIngredients = GetUserIngredients(user, date);
+	        decimal value ;
+            GetValueSumPerDateFromUserIngredients(userIngredients, x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(entity))).TryGetValue(date.Date,out value);
+	        return value;
+	    }
+
+	    private Dictionary<DateTime, decimal> GetValueSumPerDateFromUserIngredients(IEnumerable<UserIngredient> userIngredients, Func<Ingredient, decimal> valueToSum) {
 			var history = new Dictionary<DateTime, decimal>();
 
 			foreach (var userIngredient in userIngredients) {

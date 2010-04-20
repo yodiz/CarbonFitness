@@ -19,6 +19,11 @@ namespace CarbonFitness.App.Web.Models {
         public DateTime Date { get; set; }
 
 		public IEnumerable<UserIngredient> UserIngredients { get; set; }
-        
+
+        public decimal SumOfProtein { get; set; }
+        public decimal SumOfFat { get; set; }
+        public decimal SumOfCarbonHydrates { get; set; }
+        public decimal SumOfFiber { get; set; }
+        public decimal SumOfIron { get; set; }
 	}
 }

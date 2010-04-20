@@ -117,5 +117,14 @@ namespace CarbonFitnessTest.BusinessLogic {
             Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object, null).GetUserIngredients(new User("myUser"), new DateTime(1234)));
             Assert.Throws<InvalidDateException>(() => new UserIngredientBusinessLogic(userRepositoryMock.Object, ingredientRepositoryMock.Object, null).GetUserIngredients(new User("myUser"), DateTime.MaxValue));
 		}
+
+	    [Test]
+	    public void shouldGetNutrientSumForDate() {
+	        var userIngredientRepository = new Mock<IUserIngredientRepository>();
+            userIngredientRepository.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), DateTime.Now.Date, DateTime.Now.Date)).Returns(GetExpectedUserIngredients(DateTime.Now.Date));
+
+            decimal nutrientSum = new UserIngredientBusinessLogic(userIngredientRepository.Object, null, null).GetNutrientSumForDate(new User(), NutrientEntity.EnergyInKcal, DateTime.Now.Date);
+            Assert.That(nutrientSum, Is.EqualTo(65.5m));
+	    }
 	}
 }

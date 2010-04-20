@@ -166,5 +166,18 @@ namespace CarbonFitnessTest.Web.Controller.ProfileController {
 
             userProfileBusinessLogicMock.Verify(x => x.SaveProfile(It.IsAny<User>(), It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never());
         }
+
+
+        [Test]
+        public void shouldNotSaveLengthWhenLenghtIsInMeters()
+        {
+            var userProfileBusinessLogicMock = new Mock<IUserProfileBusinessLogic>();
+
+            var profileController = new CarbonFitness.App.Web.Controllers.ProfileController(userProfileBusinessLogicMock.Object, new Mock<IGenderViewTypeConverter>().Object, new Mock<IActivityLevelViewTypeConverter>().Object, getSetuppedUserContextMock().Object);
+            profileController.ModelState.AddModelError("ff", "ll");
+            profileController.Input(new ProfileModel { Length = 1.83M });
+
+            userProfileBusinessLogicMock.Verify(x => x.SaveProfile(It.IsAny<User>(), It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>()), Times.Never());
+        }
 	}
 }

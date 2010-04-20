@@ -125,7 +125,7 @@ namespace CarbonFitnessTest.Integration
             GetRadioButtonFromName("Man").Click();
             GetRadioButtonFromName("Mycket hög").Click();
             SaveButton.Click();
-            Assert.That(BMRField.InnerHtml, Contains.Substring("1554,58"));
+            Assert.That(BMRField.InnerHtml, Contains.Substring("1720,58"));
         }
 
         [Test]
@@ -167,11 +167,23 @@ namespace CarbonFitnessTest.Integration
 
 	    [Test]
         public void shouldSaveLength() {
-            const string expectedLenght = "1,83";
+            const string expectedLenght = "183,00";
             LengthInputField.TypeText(expectedLenght);
             SaveButton.Click();
             reloadPage();
             Assert.That(LengthInputField.Text, Is.EqualTo(expectedLenght));
+        }
+
+        [Test]
+        public void shouldShowErrorMessageWhenLengthIsUnderTwentyCentimeters() {
+            const string expectedLenght = "1,83";
+            LengthInputField.TypeText(expectedLenght);
+            SaveButton.Click();
+            var expectedErrorMessage = ProfileConstant.InvalidInput;
+            var errorElement = Browser.Element(Find.ByClass("validation-summary-errors"));
+
+            Assert.That(errorElement.Text, Contains.Substring(expectedErrorMessage));
+            //Assert.That(LengthInputField.Exists, "No Textfield with name:" + lenghtFieldName + " exist on page");
         }
 
 	    [Test]
@@ -194,7 +206,7 @@ namespace CarbonFitnessTest.Integration
 			IdealWeightInputField.TypeText("notANumber");
 			SaveButton.Click();
 
-			var expectedErrorMessage = ProfileConstant.InvalidIdealWeightInput;
+			var expectedErrorMessage = ProfileConstant.InvalidInput;
 			var errorElement = Browser.Element(Find.ByClass("validation-summary-errors"));
 
 			Assert.That(errorElement.Text, Contains.Substring(expectedErrorMessage));
