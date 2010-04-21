@@ -1,8 +1,10 @@
+using System;
 using SharpArch.Core.DomainModel;
 
 namespace CarbonFitness.Data.Model {
     public class Nutrient : Entity {
-        public virtual string Name { get; set; }    
+        public virtual string Name { get; set; }
+        public virtual decimal RDI { get; set; }
     }
 
     public enum NutrientEntity {

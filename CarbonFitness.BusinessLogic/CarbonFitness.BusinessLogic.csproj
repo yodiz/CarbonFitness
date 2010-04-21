@@ -73,6 +73,7 @@
     <Compile Include="IGenderTypeBusinessLogic.cs" />
     <Compile Include="Implementation\NutrientBusinessLogic.cs" />
     <Compile Include="INutrientBusinessLogic.cs" />
+    <Compile Include="RDICalculator.cs" />
     <Compile Include="UnitHistory\GraphBuilder.cs" />
     <Compile Include="IGraphBuilder.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />

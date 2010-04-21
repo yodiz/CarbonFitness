@@ -302,6 +302,7 @@ II.2.12 <HandlesEvent />
       <Abbreviation Text="MVC" />
       <Abbreviation Text="BMI" />
       <Abbreviation Text="BMR" />
+      <Abbreviation Text="RDI" />
     </Naming2>
   </CodeStyleSettings>
 </Configuration>

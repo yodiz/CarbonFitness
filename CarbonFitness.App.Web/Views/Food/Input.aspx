@@ -78,7 +78,7 @@
 						  <th>Fett (g)</th>
 						  <th>Kolhydrater (g)</th>
 						  <th>Fibrer (g)</th>
-						  <th>Järn (g)</th>
+						  <th>Järn (mg)</th>
 					 </tr>
 				<%
 				

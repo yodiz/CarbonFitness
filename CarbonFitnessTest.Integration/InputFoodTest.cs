@@ -190,11 +190,12 @@ namespace CarbonFitnessTest.Integration {
         }
 
         [Test]
-        public void shouldShowDailySumElementsInTable() {
+        public void shouldShowDailySumWithRDIElementsInTable() {
             var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
             decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
+            decimal RDI = 12;
 
-            var chartSumOfFatValue = ">" + sum.ToString("n2") + "</TD>";
+            var chartSumOfFatValue = ">" + sum.ToString("n2").Replace(" ", "&nbsp;") + "/ " + RDI + "</TD>";
 
             var sumElement = Browser.Element(Find.ByClass("nutrientSum"));
             Assert.That(sumElement.Exists);

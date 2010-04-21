@@ -69,6 +69,7 @@
     <Compile Include="HistoryValuesContainerTest.cs" />
     <Compile Include="IngredientSetup.cs" />
     <Compile Include="NutrientBusinessLogicTest.cs" />
+    <Compile Include="RDICalculatorTest.cs" />
     <Compile Include="UserIngredientExtensionsTest.cs" />
     <Compile Include="UserProfileBusinessLogicTest.cs" />
     <Compile Include="LineTest.cs" />

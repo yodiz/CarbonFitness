@@ -36,7 +36,7 @@ namespace CarbonFitnessTest.BusinessLogic {
 
 			var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>();
 			var ingredientRepositoryMock = new Mock<IIngredientRepository>();
-			userIngredientRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserIngredient>(y => y.Ingredient.Name == ingredientName && y.Ingredient.Id > 0 && y.Measure == measure && y.Date == todaysDate))).Returns(new UserIngredient());
+			userIngredientRepositoryMock.Setup(x => x.SaveOrUpdate(It.Is<UserIngredient>(y => y.Ingredient.Name == ingredientName && y.Ingredient.Id > 0 && y.Measure == measure && y.Date == todaysDate.AddSeconds(1)))).Returns(new UserIngredient());
 			ingredientRepositoryMock.Setup(x => x.Get(ingredientName)).Returns(ingredientMock.Object);
 
 			var userIngredientLogic = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, ingredientRepositoryMock.Object, null);
@@ -121,9 +121,10 @@ namespace CarbonFitnessTest.BusinessLogic {
 	    [Test]
 	    public void shouldGetNutrientSumForDate() {
 	        var userIngredientRepository = new Mock<IUserIngredientRepository>();
-            userIngredientRepository.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), DateTime.Now.Date, DateTime.Now.Date)).Returns(GetExpectedUserIngredients(DateTime.Now.Date));
+            userIngredientRepository.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), DateTime.Now.Date, DateTime.Now.AddDays(1).Date)).Returns(GetExpectedUserIngredients(DateTime.Now.Date));
 
             decimal nutrientSum = new UserIngredientBusinessLogic(userIngredientRepository.Object, null, null).GetNutrientSumForDate(new User(), NutrientEntity.EnergyInKcal, DateTime.Now.Date);
+            userIngredientRepository.VerifyAll();
             Assert.That(nutrientSum, Is.EqualTo(65.5m));
 	    }
 	}

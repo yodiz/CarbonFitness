@@ -14,10 +14,13 @@ namespace CarbonFitness.App.Web.Controllers
 	public class FoodController : Controller {
 		private readonly IUserContext userContext;
 		private readonly IUserIngredientBusinessLogic userIngredientBusinessLogic;
+        private readonly IRDICalculator rdiCalculator;
 
-		public FoodController(IUserIngredientBusinessLogic userIngredientBusinessLogic, IUserContext userContext) {
+        public FoodController(IUserIngredientBusinessLogic userIngredientBusinessLogic, IRDICalculator rdiCalculator, IUserContext userContext)
+        {
 			this.userIngredientBusinessLogic = userIngredientBusinessLogic;
-			this.userContext = userContext;
+            this.rdiCalculator = rdiCalculator;
+            this.userContext = userContext;
 		}
 
         //First time when coming to the "kost" page
@@ -36,6 +39,11 @@ namespace CarbonFitness.App.Web.Controllers
 	            SumOfFiber = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FibresInG, date),
 	            SumOfCarbonHydrates = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.CarbonHydrateInG, date),
 	            SumOfIron = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.IronInmG, date),
+                RDIOfProtein = rdiCalculator.GetRDI(userContext.User, NutrientEntity.ProteinInG),
+                RDIOfFat = rdiCalculator.GetRDI(userContext.User, NutrientEntity.FatInG),
+                RDIOfFiber = rdiCalculator.GetRDI(userContext.User, NutrientEntity.FibresInG),
+                RDIOfCarbonHydrates = rdiCalculator.GetRDI(userContext.User, NutrientEntity.CarbonHydrateInG),
+                RDIOfIron = rdiCalculator.GetRDI(userContext.User, NutrientEntity.IronInmG),
 	        };
 	    }
 

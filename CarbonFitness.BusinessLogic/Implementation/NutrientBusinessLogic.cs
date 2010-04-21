@@ -36,5 +36,9 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 
             return getNutrientCache[nutrientEntity];
         }
+
+        public decimal GetRDI(NutrientEntity entity) {
+            return GetNutrient(entity).RDI;
+        }
     }
 }
