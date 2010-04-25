@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -6,10 +8,13 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
+using CarbonFitness.App.Web.Controllers.RDI;
 using CarbonFitness.App.Web.Controllers.ViewTypeConverters;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
+using CarbonFitness.BusinessLogic.RDI.Calculators;
+using CarbonFitness.BusinessLogic.RDI.Importers;
 using SharpArch.Data.NHibernate;
 using SharpArch.Web.NHibernate;
 
@@ -69,20 +74,25 @@ namespace CarbonFitness.App.Web {
 		}
 
 		private void AutofacRegisterComponentes() {
-			var builder = new ContainerBuilder();
+		    var builder = new ContainerBuilder();
 
             builder.RegisterType<GenderViewTypeConverter>().As<IGenderViewTypeConverter>();
             builder.RegisterType<ActivityLevelViewTypeConverter>().As<IActivityLevelViewTypeConverter>();
+            builder.RegisterType<RDIProxy>().As<IRDIProxy>();
 
 			builder.RegisterControllers(Assembly.GetExecutingAssembly());
 			builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();
 			builder.RegisterType<UserContext>().As<IUserContext>().HttpRequestScoped();
-
-			new ComponentRegistrator().AutofacRegisterComponentes(builder, getBootStrapper());
+		    var componentRegistrator = new ComponentRegistrator();
+            componentRegistrator.AutofacRegisterComponentes(builder, getBootStrapper());
 
 			containerProvider = new ContainerProvider(builder.Build());
 
+            componentRegistrator.populateRDICalculatorFactory(containerProvider.ApplicationContainer);
+            componentRegistrator.populateNutrientRecommendationImporter(containerProvider.ApplicationContainer);
+
 			ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(ContainerProvider));
 		}
+
 	}
 }

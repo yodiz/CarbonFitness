@@ -9,19 +9,21 @@ namespace CarbonFitness.App.Web.Controllers {
         private readonly IInitialDataValuesExportEngine initialDataValuesExportEngine;
 
         private readonly ISchemaExportEngine schemaExportEngine;
+        private readonly INutrientRecommendationImporter nutrientRecommendationImporter;
         private IPathFinder pathFinder;
 
-        public AdminController(ISchemaExportEngine schemaExportEngine, IIngredientImporterEngine ingredientImporterEngine, IInitialDataValuesExportEngine initialDataValuesExportEngine) {
+        public AdminController(ISchemaExportEngine schemaExportEngine, INutrientRecommendationImporter nutrientRecommendationImporter, IIngredientImporterEngine ingredientImporterEngine, IInitialDataValuesExportEngine initialDataValuesExportEngine) {
             this.schemaExportEngine = schemaExportEngine;
+            this.nutrientRecommendationImporter = nutrientRecommendationImporter;
             this.ingredientImporterEngine = ingredientImporterEngine;
             this.initialDataValuesExportEngine = initialDataValuesExportEngine;
         }
 
-        public AdminController(ISchemaExportEngine schemaExportEngine, IIngredientImporterEngine ingredientImporterEngine, IInitialDataValuesExportEngine initialDataValuesExportEngine, IPathFinder pathFinder)
-            : this(schemaExportEngine, ingredientImporterEngine, initialDataValuesExportEngine)
-        {
+        public AdminController(ISchemaExportEngine schemaExportEngine, INutrientRecommendationImporter nutrientRecommendationImporter, IIngredientImporterEngine ingredientImporterEngine, IInitialDataValuesExportEngine initialDataValuesExportEngine, IPathFinder pathFinder)
+            : this(schemaExportEngine, nutrientRecommendationImporter, ingredientImporterEngine, initialDataValuesExportEngine) {
             this.pathFinder = pathFinder;
         }
+
 
         private IPathFinder PathFinder {
             get {
@@ -39,6 +41,8 @@ namespace CarbonFitness.App.Web.Controllers {
             initialDataValuesExportEngine.Export();
 
             ingredientImporterEngine.Import(PathFinder.GetPath(model.ImportFilePath));
+
+            nutrientRecommendationImporter.Import();
 
             return View(model);
         }

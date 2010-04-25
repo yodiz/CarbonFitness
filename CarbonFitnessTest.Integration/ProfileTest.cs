@@ -152,7 +152,8 @@ namespace CarbonFitnessTest.Integration
             if(lenght == 0) {
                 return 0;
             }
-	        return weight / (lenght * lenght);
+	        var lenghtInMeter = (lenght / 100);
+            return weight / (lenghtInMeter * lenghtInMeter);
 	    }
 
 	    [Test]

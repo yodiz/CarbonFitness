@@ -49,6 +49,7 @@ namespace CarbonFitness.BusinessLogic {
             builder.RegisterType<NutrientRepository>().As<INutrientRepository>();
             builder.RegisterType<GenderTypeRepository>().As<IGenderTypeRepository>();
             builder.RegisterType<ActivityLevelTypeRepository>().As<IActivityLevelTypeRepository>();
+            builder.RegisterType<NutrientRecommendationRepository>().As<INutrientRecommendationRepository>();
 		}
 	}
 }

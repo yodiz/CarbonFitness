@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using CarbonFitness.App.Web;
+using CarbonFitness.App.Web.Controllers.RDI;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.BusinessLogic;
@@ -40,7 +41,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 	    }
 
 	    private CarbonFitness.App.Web.Controllers.FoodController getFoodController(Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock, Mock<IUserContext> userContextMock) {
-            return new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDICalculator>().Object, userContextMock.Object);
+            return new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDIProxy>().Object, userContextMock.Object);
 	    }
 
 	    private Mock<IUserContext> GetSetuppedUserContextMock(MockFactory mockFactory) {
@@ -124,22 +125,21 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 
 
         [Test]
-        public void shouldGetRDIOfNutrients()
-        {
+        public void shouldGetRDIOfNutrients() {
             var userContextMock = new Mock<IUserContext>();
             userContextMock.Setup(x => x.User).Returns(new User { Username = "myUser" });
 
-            var rdiCalculator = new Mock<IRDICalculator>();
-            rdiCalculator.Setup(x => x.GetRDI(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.ProteinInG))).Returns(12M);
-            rdiCalculator.Setup(x => x.GetRDI(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FatInG))).Returns(12M);
-            rdiCalculator.Setup(x => x.GetRDI(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.CarbonHydrateInG))).Returns(12M);
-            rdiCalculator.Setup(x => x.GetRDI(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FibresInG))).Returns(12M);
-            rdiCalculator.Setup(x => x.GetRDI(It.IsAny<User>(), It.Is<NutrientEntity>(y => y == NutrientEntity.IronInmG))).Returns(12M);
+            var rdiProxy = new Mock<IRDIProxy>();
+            rdiProxy.Setup(x => x.getRDI(It.IsAny<User>(), It.IsAny<DateTime>(), It.Is<NutrientEntity>(y => y == NutrientEntity.ProteinInG))).Returns(12M);
+            rdiProxy.Setup(x => x.getRDI(It.IsAny<User>(), It.IsAny<DateTime>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FatInG))).Returns(12M);
+            rdiProxy.Setup(x => x.getRDI(It.IsAny<User>(), It.IsAny<DateTime>(), It.Is<NutrientEntity>(y => y == NutrientEntity.CarbonHydrateInG))).Returns(12M);
+            rdiProxy.Setup(x => x.getRDI(It.IsAny<User>(), It.IsAny<DateTime>(), It.Is<NutrientEntity>(y => y == NutrientEntity.FibresInG))).Returns(12M);
+            rdiProxy.Setup(x => x.getRDI(It.IsAny<User>(), It.IsAny<DateTime>(), It.Is<NutrientEntity>(y => y == NutrientEntity.IronInmG))).Returns(12M);
 
-            var controller = new CarbonFitness.App.Web.Controllers.FoodController(new Mock<IUserIngredientBusinessLogic>().Object, rdiCalculator.Object, userContextMock.Object);
+            var controller = new CarbonFitness.App.Web.Controllers.FoodController(new Mock<IUserIngredientBusinessLogic>().Object, rdiProxy.Object, userContextMock.Object);
             var model = runMethodUnderTest(x => x.Input(), controller);
 
-            rdiCalculator.VerifyAll();
+            rdiProxy.VerifyAll();
             Assert.That(model.RDIOfProtein, Is.EqualTo(12M));
             Assert.That(model.RDIOfFat, Is.EqualTo(12M));
             Assert.That(model.RDIOfCarbonHydrates, Is.EqualTo(12M));
@@ -157,7 +157,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 			userIngredientBusinessLogicMock.Setup(x => x.GetUserIngredients(It.IsAny<User>(), It.IsAny<DateTime>())).Throws(new InvalidDateException());
 			userContextMock.Setup(x => x.User).Returns(new User());
 
-            var foodController = new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDICalculator>().Object, userContextMock.Object);
+            var foodController = new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDIProxy>().Object, userContextMock.Object);
 			foodController.Input(m);
 
 			var errormessage = getErrormessage(foodController, "Date");
@@ -177,7 +177,7 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 			userIngredientBusinessLogicMock.Setup(x => x.AddUserIngredient(It.IsAny<User>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<DateTime>()))
 				.Throws(new NoIngredientFoundException(ingredientName));
 
-            var foodController = new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDICalculator>().Object, userContextMock.Object);
+            var foodController = new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDIProxy>().Object, userContextMock.Object);
 			foodController.Input(new InputFoodModel {Ingredient = ingredientName, Measure = 10});
 
 			//var model = testController(x => x.Input(new InputFoodModel()), userIngredientBusinessLogicMock, userContextMock);

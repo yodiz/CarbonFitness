@@ -97,6 +97,7 @@
     <Compile Include="AccountLogOnTest.cs" />
     <Compile Include="AdminTest.cs" />
     <Compile Include="CreateUserTest.cs" />
+    <Compile Include="ImportRDITest.cs" />
     <Compile Include="ProfileTest.cs" />
     <Compile Include="ImportIngredientsTest.cs" />
     <Compile Include="InputFoodTest.cs" />
@@ -124,10 +125,6 @@
     <ProjectReference Include="..\CarbonFitness.App.Importer\CarbonFitness.App.Importer.csproj">
       <Project>{3ED91741-5E26-4069-860A-5B4F144F32BC}</Project>
       <Name>CarbonFitness.App.Importer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarbonFitness.BusinessLogic\CarbonFitness.BusinessLogic.csproj">
-      <Project>{D93A9DD8-A93F-4276-8F62-C87507063892}</Project>
-      <Name>CarbonFitness.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarbonFitness.DataLayer\CarbonFitness.DataLayer.csproj">
       <Project>{5054CADA-7829-45AD-A842-098A2EB80FD4}</Project>

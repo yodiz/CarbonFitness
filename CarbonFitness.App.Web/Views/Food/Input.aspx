@@ -83,7 +83,7 @@
 				<%
 				
 				foreach (var userIngredient in Model.UserIngredients) {
-					 %>
+				%>
 					 <tr>
 						  <td><%=userIngredient.Ingredient.Name%></td>
 						  <td><%=userIngredient.Measure%></td>
@@ -95,17 +95,20 @@
 					</tr>
 					 <%
 				}
+                if (Model.UserIngredients.Count() > 0) {
 				%>
 				    <tr class="nutrientSum">
 						  <td ></td>
 						  <td ></td>
-						  <td ><%=Model.SumOfProtein.ToString("N2")%></td>
-						  <td ><%=Model.SumOfFat.ToString("N2")%></td>
-						  <td ><%=Model.SumOfCarbonHydrates.ToString("N2")%></td>
-						  <td ><%=Model.SumOfFiber.ToString("N2")%></td>
-						  <td ><%=Model.SumOfIron.ToString("N2")%></td>
+						  <td ><%=Model.SumOfProtein.ToString("N2")%> / <%=Model.RDIOfProtein.ToString("N2")%></td>
+						  <td ><%=Model.SumOfFat.ToString("N2")%> / <%=Model.RDIOfFat.ToString("N2")%></td>
+						  <td ><%=Model.SumOfCarbonHydrates.ToString("N2")%> / <%=Model.RDIOfCarbonHydrates.ToString("N2")%></td>
+						  <td ><%=Model.SumOfFiber.ToString("N2")%> / <%=Model.RDIOfFiber.ToString("N2")%></td>
+						  <td ><%=Model.SumOfIron.ToString("N2")%> / <%=Model.RDIOfIron.ToString("N2")%></td>
 					</tr>
-				
+				<%
+		        }
+		        %>  
 				</table>
 				<%
 		  }

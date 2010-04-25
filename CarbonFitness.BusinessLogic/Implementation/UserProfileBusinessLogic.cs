@@ -34,7 +34,8 @@ namespace CarbonFitness.BusinessLogic.Implementation {
             if(profile.Length == 0 ) {
                 return 0;
             }
-            return profile.Weight / (profile.Length * profile.Length);
+            var lenghtInMeter = profile.Length / 100;
+            return profile.Weight / (lenghtInMeter * lenghtInMeter);
         }
 
         public decimal GetBMR(User user) {

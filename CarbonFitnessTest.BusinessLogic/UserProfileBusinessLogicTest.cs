@@ -153,8 +153,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 
         [Test]
         public void shouldGetBMI() {
-            const decimal weight = 83M;
-            const decimal length = 83M;
+            const decimal weight = 73M;
+            const decimal length = 183M;
             var userProfile = new UserProfile { Weight = weight, Length = length, User = User };
 
             var userProfileRepositoryMock = new Mock<IUserProfileRepository>();
@@ -162,7 +162,8 @@ namespace CarbonFitnessTest.BusinessLogic {
 
             var result = new UserProfileBusinessLogic(userProfileRepositoryMock.Object, null, null, null).GetBMI(User);
 
-            Assert.That(result, Is.EqualTo(weight / (length * length)));
+            var lenghtInMeter = length / 100;
+            Assert.That(result, Is.EqualTo(weight / (lenghtInMeter * lenghtInMeter)));
         }
 
 

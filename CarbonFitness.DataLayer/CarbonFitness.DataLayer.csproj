@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Maps\GenderNutrientRecommendationMap.cs" />
+    <Compile Include="Maps\NutrientRecommendationMap.cs" />
+    <Compile Include="Repository\INutrientRecommendationRepository.cs" />
     <Compile Include="Repository\ActivityLevelTypeRepository.cs" />
     <Compile Include="Repository\IActivityLevelTypeRepository.cs" />
     <Compile Include="Repository\GenderTypeRepository.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Repository\IngredientRepository.cs" />
     <Compile Include="Repository\IUserIngredientRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\NutrientRecommendationRepository.cs" />
     <Compile Include="Repository\NutrientRepository.cs" />
     <Compile Include="Repository\UserIngredientRepository.cs" />
     <Compile Include="Repository\UserProfileRepository.cs" />

@@ -27,7 +27,10 @@ namespace CarbonFitnessTest.Web.Controller.AdminController {
 			var ingredientImporterEngineMock = new Mock<IIngredientImporterEngine>();
 			ingredientImporterEngineMock.Setup(x => x.Import(It.Is<String>(y=>y.EndsWith("/App_Data/Ingredients.csv") && y.StartsWith("c:\\") )));
 
-			var controller = new CarbonFitness.App.Web.Controllers.AdminController(schemaExportEngineMock.Object, ingredientImporterEngineMock.Object, initialDataValuesExportEngine.Object, pathfinderMock.Object);
+            var nutrientRecommendationImporterMock = new Mock<INutrientRecommendationImporter>();
+            nutrientRecommendationImporterMock.Setup(x => x.Import());
+
+            var controller = new CarbonFitness.App.Web.Controllers.AdminController(schemaExportEngineMock.Object,nutrientRecommendationImporterMock.Object, ingredientImporterEngineMock.Object, initialDataValuesExportEngine.Object, pathfinderMock.Object);
 			
 			InputDbInitModel model = new InputDbInitModel { ImportFilePath = expectedPath };
 
@@ -37,11 +40,12 @@ namespace CarbonFitnessTest.Web.Controller.AdminController {
 			schemaExportEngineMock.VerifyAll();
 			ingredientImporterEngineMock.VerifyAll();
             initialDataValuesExportEngine.VerifyAll();
+            nutrientRecommendationImporterMock.VerifyAll();
 		}
 
 		[Test]
 		public void shouldBeAbleToViewPage() {
-			var controller = new CarbonFitness.App.Web.Controllers.AdminController(null, null, null);
+			var controller = new CarbonFitness.App.Web.Controllers.AdminController(null, null, null, null);
 
 			ViewResult result = (ViewResult)controller.DBInit();
 			Assert.That(result, Is.Not.Null);

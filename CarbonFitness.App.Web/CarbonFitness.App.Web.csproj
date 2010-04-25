@@ -120,6 +120,8 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ControllerExtension.cs" />
+    <Compile Include="Controllers\RDI\IRDIProxy.cs" />
+    <Compile Include="Controllers\RDI\RDIProxy.cs" />
     <Compile Include="Controllers\ViewTypeConverters\BaseViewTypeConverter.cs" />
     <Compile Include="Controllers\ViewTypeConverters\GenderViewTypeConverter.cs" />
     <Compile Include="Controllers\ViewTypeConverters\ActivityLevelViewTypeConverter.cs" />

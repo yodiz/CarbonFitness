@@ -60,6 +60,16 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="CalorieCalculator.cs" />
+    <Compile Include="RDI\Importers\INutrientRDIImporter.cs" />
+    <Compile Include="RDI\Importers\IronRDIImporter.cs" />
+    <Compile Include="RDI\Importers\BaseRDIImporter.cs" />
+    <Compile Include="Implementation\NutrientRecommendationBusinessLogic.cs" />
+    <Compile Include="IRDICalculatorFactory.cs" />
+    <Compile Include="RDI\Calculators\FibresRDICalculator.cs" />
+    <Compile Include="RDI\Calculators\ProteinRDICalculator.cs" />
+    <Compile Include="RDI\Calculators\FatRDICalculator.cs" />
+    <Compile Include="RDI\Calculators\RDICalculatorFactory.cs" />
+    <Compile Include="RDI\Calculators\CarbonHydrateRDICalculator.cs" />
     <Compile Include="Exceptions\IngredientInsertionException.cs" />
     <Compile Include="Exceptions\IngredientParserException.cs" />
     <Compile Include="Exceptions\InvalidDateException.cs" />
@@ -73,7 +83,9 @@
     <Compile Include="IGenderTypeBusinessLogic.cs" />
     <Compile Include="Implementation\NutrientBusinessLogic.cs" />
     <Compile Include="INutrientBusinessLogic.cs" />
-    <Compile Include="RDICalculator.cs" />
+    <Compile Include="INutrientRecommendationBusinessLogic.cs" />
+    <Compile Include="IRDICalculator.cs" />
+    <Compile Include="RDI\Calculators\MineralRDICalculator.cs" />
     <Compile Include="UnitHistory\GraphBuilder.cs" />
     <Compile Include="IGraphBuilder.cs" />
     <Compile Include="IIngredientBusinessLogic.cs" />

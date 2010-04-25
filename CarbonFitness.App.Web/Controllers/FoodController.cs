@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using CarbonFitness.App.Web.Controllers.RDI;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.BusinessLogic;
@@ -14,12 +15,11 @@ namespace CarbonFitness.App.Web.Controllers
 	public class FoodController : Controller {
 		private readonly IUserContext userContext;
 		private readonly IUserIngredientBusinessLogic userIngredientBusinessLogic;
-        private readonly IRDICalculator rdiCalculator;
+        private readonly IRDIProxy rdiProxy;
 
-        public FoodController(IUserIngredientBusinessLogic userIngredientBusinessLogic, IRDICalculator rdiCalculator, IUserContext userContext)
-        {
+        public FoodController(IUserIngredientBusinessLogic userIngredientBusinessLogic, IRDIProxy rdiProxy, IUserContext userContext) {
 			this.userIngredientBusinessLogic = userIngredientBusinessLogic;
-            this.rdiCalculator = rdiCalculator;
+            this.rdiProxy = rdiProxy;
             this.userContext = userContext;
 		}
 
@@ -39,14 +39,16 @@ namespace CarbonFitness.App.Web.Controllers
 	            SumOfFiber = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FibresInG, date),
 	            SumOfCarbonHydrates = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.CarbonHydrateInG, date),
 	            SumOfIron = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.IronInmG, date),
-                RDIOfProtein = rdiCalculator.GetRDI(userContext.User, NutrientEntity.ProteinInG),
-                RDIOfFat = rdiCalculator.GetRDI(userContext.User, NutrientEntity.FatInG),
-                RDIOfFiber = rdiCalculator.GetRDI(userContext.User, NutrientEntity.FibresInG),
-                RDIOfCarbonHydrates = rdiCalculator.GetRDI(userContext.User, NutrientEntity.CarbonHydrateInG),
-                RDIOfIron = rdiCalculator.GetRDI(userContext.User, NutrientEntity.IronInmG),
+
+                RDIOfProtein = rdiProxy.getRDI(userContext.User, date, NutrientEntity.ProteinInG),
+                RDIOfFat = rdiProxy.getRDI(userContext.User, date, NutrientEntity.FatInG),
+                RDIOfFiber = rdiProxy.getRDI(userContext.User, date, NutrientEntity.FibresInG),
+                RDIOfCarbonHydrates = rdiProxy.getRDI(userContext.User, date, NutrientEntity.CarbonHydrateInG),
+                RDIOfIron = rdiProxy.getRDI(userContext.User, date, NutrientEntity.IronInmG),
 	        };
 	    }
 
+	    
 	    [HttpPost]
 		[Transaction]
 		[Authorize]
@@ -70,8 +72,7 @@ namespace CarbonFitness.App.Web.Controllers
 			return null;
 		}
 
-        private void AddUserIngredient(InputFoodModel model)
-        {
+        private void AddUserIngredient(InputFoodModel model) {
             try
             {
                 userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
@@ -83,8 +84,7 @@ namespace CarbonFitness.App.Web.Controllers
             }
         }
 
-        private void RemoveFoodInputValues(InputFoodModel model)
-        {
+        private void RemoveFoodInputValues(InputFoodModel model) {
             model.Ingredient = "";
             model.Measure = 0;
 
@@ -92,8 +92,7 @@ namespace CarbonFitness.App.Web.Controllers
             ModelState.Remove("Measure");
         }
 
-        public static string GetPropertyNameFromModel<T>(Controller controller, Expression<Func<T, string>> namedPropertyToGet)
-        {
+        public static string GetPropertyNameFromModel<T>(Controller controller, Expression<Func<T, string>> namedPropertyToGet) {
             return ExpressionHelper.GetExpressionText(namedPropertyToGet);
         }
 	}

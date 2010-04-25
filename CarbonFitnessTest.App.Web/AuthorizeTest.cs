@@ -9,8 +9,8 @@ using NUnit.Framework;
 namespace CarbonFitnessTest.Web {
 	[TestFixture]
 	public class AuthorizeTest {
-		private static IEnumerable<Type> getControllerTypes(Assembly controllerAssmbly) {
-			return controllerAssmbly.GetExportedTypes().Where(t => typeof(System.Web.Mvc.Controller).IsAssignableFrom(t)).ToList();
+		private static IEnumerable<Type> getControllerTypes(Assembly controllerAssembly) {
+			return controllerAssembly.GetExportedTypes().Where(t => typeof(System.Web.Mvc.Controller).IsAssignableFrom(t)).ToList();
 		}
 
 		private static IEnumerable<MethodInfo> getActionMethods(IEnumerable<Type> controllerTypes) {

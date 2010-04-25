@@ -191,15 +191,13 @@ namespace CarbonFitnessTest.Integration {
 
         [Test]
         public void shouldShowDailySumWithRDIElementsInTable() {
-            var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(userId, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
-            decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
-            decimal RDI = 12;
+            decimal RDI = 30M; //for fibres
 
-            var chartSumOfFatValue = ">" + sum.ToString("n2").Replace(" ", "&nbsp;") + "/ " + RDI + "</TD>";
+            var chartSumOfIronValue =  "/ " + RDI.ToString("N2") + "</TD>";
 
             var sumElement = Browser.Element(Find.ByClass("nutrientSum"));
             Assert.That(sumElement.Exists);
-            Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
+            Assert.That(Browser.Html, Contains.Substring(chartSumOfIronValue));
         }
     }
 }

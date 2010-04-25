@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=2.1.9.747, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Autofac\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=1.0.0.155, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\AutoMapper\AutoMapper.dll</HintPath>
@@ -83,6 +87,7 @@
     <Compile Include="Controller\AdminController\DBInitTest.cs" />
     <Compile Include="Controller\BaseTestController.cs" />
     <Compile Include="Controller\FoodController\InputTest.cs" />
+    <Compile Include="Controller\FoodController\RDIProxyTest.cs" />
     <Compile Include="Controller\HomeController\IndexTest.cs" />
     <Compile Include="Controller\IngredientController\SearchTest.cs" />
     <Compile Include="Controller\ProfileController\InputTest.cs" />

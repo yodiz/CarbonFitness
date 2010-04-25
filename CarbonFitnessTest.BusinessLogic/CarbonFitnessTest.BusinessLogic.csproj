@@ -69,7 +69,10 @@
     <Compile Include="HistoryValuesContainerTest.cs" />
     <Compile Include="IngredientSetup.cs" />
     <Compile Include="NutrientBusinessLogicTest.cs" />
-    <Compile Include="RDICalculatorTest.cs" />
+    <Compile Include="NutrientRecommendationBusinessLogicTest.cs" />
+    <Compile Include="RDICalculatorFactoryTest.cs" />
+    <Compile Include="RDICalculators\CarbonHydrateRDICalculatorTest.cs" />
+    <Compile Include="RDICalculators\MineralRDICalculatorTest.cs" />
     <Compile Include="UserIngredientExtensionsTest.cs" />
     <Compile Include="UserProfileBusinessLogicTest.cs" />
     <Compile Include="LineTest.cs" />

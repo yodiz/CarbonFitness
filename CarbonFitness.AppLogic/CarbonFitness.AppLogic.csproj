@@ -54,7 +54,9 @@
     <Compile Include="IInitialDataValuesExportEngine.cs" />
     <Compile Include="IngredientImporterEngine.cs" />
     <Compile Include="InitialDataValuesExportEngine.cs" />
+    <Compile Include="INutrientRecommendationImporter.cs" />
     <Compile Include="ISchemaExportEngine.cs" />
+    <Compile Include="NutrientRecommendationImportEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchemaExportEngine.cs" />
   </ItemGroup>

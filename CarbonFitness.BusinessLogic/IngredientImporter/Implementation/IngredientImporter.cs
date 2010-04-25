@@ -9,8 +9,7 @@ namespace CarbonFitness.BusinessLogic.IngredientImporter.Implementation {
 		private readonly IIngredientParser ingredientParser;
 		private readonly IIngredientRepository ingredientRepository;
 
-		public IngredientImporter(IIngredientParser ingredientParser, IIngredientFileReader ingredientFileReader,
-			IIngredientRepository ingredientRepository) {
+		public IngredientImporter(IIngredientParser ingredientParser, IIngredientFileReader ingredientFileReader, IIngredientRepository ingredientRepository) {
 			this.ingredientParser = ingredientParser;
 			this.ingredientFileReader = ingredientFileReader;
 			this.ingredientRepository = ingredientRepository;

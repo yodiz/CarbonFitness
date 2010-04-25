@@ -56,13 +56,5 @@ namespace CarbonFitnessTest.BusinessLogic {
             new NutrientBusinessLogic(nutrientRepositoryMock.Object).GetNutrient(NutrientEntity.WasteInPercent);
             nutrientRepositoryMock.VerifyAll();
         }
-
-        [Test]
-        public void  shouldGetRDI() {
-            var nutrientRepositoryMock = new Mock<INutrientRepository>();
-            nutrientRepositoryMock.Setup(x => x.GetByName(It.Is<string>(y => y == "WasteInPercent"))).Returns(new Nutrient{RDI = 12});
-            var result = new NutrientBusinessLogic(nutrientRepositoryMock.Object).GetRDI(NutrientEntity.WasteInPercent);
-            Assert.That(result, Is.EqualTo(12));
-        }
     }
 }

@@ -6,6 +6,5 @@ namespace CarbonFitness.BusinessLogic {
         IEnumerable<Nutrient> GetNutrients();
         void ExportInitialValues();
         Nutrient GetNutrient(NutrientEntity nutrientEntity);
-        decimal GetRDI(NutrientEntity entity);
     }
 }
