@@ -61,7 +61,7 @@ namespace CarbonFitnessTest.Integration.Results {
         public void shouldHaveNutrientResultDropDown() {
             var nutrientDropDown = Browser.SelectList("Nutrients");
 
-            Assert.That(nutrientDropDown.Option("Energi i Kcal").Exists, "Page did not contain: Nutrients dropdown");
+            Assert.That(nutrientDropDown.Option("Energi (Kcal)").Exists, "Page did not contain: Nutrients dropdown");
         }
 	}
 }

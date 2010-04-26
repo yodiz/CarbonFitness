@@ -9,7 +9,7 @@ namespace CarbonFitnessTest.Web.AppLogic
         [Test]
         public void shouldFetchTranlsationForNutrient() {
             var result = new NutrientTranslator().GetString("EnergyInKcal");
-            Assert.That(result, Is.EqualTo("Energi i Kcal"));
+            Assert.That(result, Is.EqualTo("Energi (Kcal)"));
         }
     }
 }

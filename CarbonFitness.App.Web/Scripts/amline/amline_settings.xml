@@ -261,9 +261,9 @@
 		</label>
 	</labels>
   <guides>
-    <guide gid="0">
-      <start_value>73</start_value>
-      <end_value>70</end_value>
+    <guide gid="3">
+      <start_value>1400</start_value>
+      <end_value>2666</end_value>
       <color>33FFFF</color>
       <alpha>20</alpha>
       <fill_alpha>20</fill_alpha>

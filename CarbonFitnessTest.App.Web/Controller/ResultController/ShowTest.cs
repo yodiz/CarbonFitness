@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using CarbonFitness.App.Web;
@@ -9,6 +9,7 @@ using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
+using CarbonFitness.Translation;
 using Moq;
 using NUnit.Framework;
 
@@ -23,6 +24,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			graphBuilderMock = new Mock<IGraphBuilder>();
             nutrientBusinessLogicMock = new Mock<INutrientBusinessLogic>();
             userWeightBusinessLogicMock = new Mock<IUserWeightBusinessLogic>();
+            nutrientTranslatorMock = new Mock<INutrientTranslator>();
             
 		}
 
@@ -32,9 +34,10 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		private Mock<IGraphBuilder> graphBuilderMock;
 	    private Mock<INutrientBusinessLogic> nutrientBusinessLogicMock;
         private Mock<IUserWeightBusinessLogic> userWeightBusinessLogicMock;
+	    private Mock<INutrientTranslator> nutrientTranslatorMock;
 
 	    private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, nutrientBusinessLogicMock.Object, null);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, nutrientBusinessLogicMock.Object, nutrientTranslatorMock.Object);
 			return methodUnderTest(resultController);
 		}
 
@@ -72,7 +75,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
             userWeightBusinessLogicMock.Setup(x => x.GetHistoryLine(It.IsAny<User>())).Returns(line);
             graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
 
-            var actionResult = (ContentResult)RunMethodUnderTest(x => x.ShowXml("Weight"));
+            RunMethodUnderTest(x => x.ShowXml("Weight"));
 
             userWeightBusinessLogicMock.VerifyAll();
             userIngredientBusinessLogicMock.Verify(x => x.GetNutrientHistory(NutrientEntity.EnergyInKcal, It.IsAny<User>()), Times.Never());
@@ -134,11 +137,13 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
         public void shouldShowNutrients() {
             IEnumerable<Nutrient> expectedNutrients = new[] {new Nutrient(), new Nutrient()};
             nutrientBusinessLogicMock.Setup(x => x.GetNutrients()).Returns(expectedNutrients);
-
+            var translatedNutrient= "expect :)";
+            nutrientTranslatorMock.Setup(x => x.GetString(It.IsAny<string>())).Returns(translatedNutrient);
             var result = RunMethodUnderTest(x => x.Show());
             var model = GetModelFromActionResult(result);
+            var nutrient = (from n in model.Nutrients select n).FirstOrDefault();
 
-            Assert.That(model.Nutrients, Is.SameAs(expectedNutrients));
+            Assert.That(nutrient.Text, Is.EqualTo(translatedNutrient));
         }
 	}
 }
