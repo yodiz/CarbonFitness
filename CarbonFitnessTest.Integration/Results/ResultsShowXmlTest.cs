@@ -1,13 +1,8 @@
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 using NUnit.Framework;
-using System.Net;
-using WatiN.Core;
 
 namespace CarbonFitnessTest.Integration.Results {
 	[TestFixture]
@@ -17,7 +12,7 @@ namespace CarbonFitnessTest.Integration.Results {
 
 		[Test]
 		public void shouldHaveCalorieHistory() {
-            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.EnergyInKcal);
+            Browser.GoTo(Url + "/?graphlines=" + NutrientEntity.EnergyInKcal);
 
             var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now.AddDays(1));
             decimal sum = userIngredients.Sum(u => u.Ingredient.GetNutrient(NutrientEntity.EnergyInKcal).Value * (u.Measure / u.Ingredient.WeightInG));
@@ -33,7 +28,7 @@ namespace CarbonFitnessTest.Integration.Results {
 
         [Test]
         public void shouldHaveFatHistory() {
-            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.FatInG);
+            Browser.GoTo(Url + "/?graphlines=" + NutrientEntity.FatInG);
 
             var userIngredients = new UserIngredientRepository().GetUserIngredientsByUser(UserId, Now, Now.AddDays(1));
             decimal sum = userIngredients.Sum(u => u.GetActualCalorieCount(x => x.GetNutrient(NutrientEntity.FatInG).Value));
@@ -43,10 +38,22 @@ namespace CarbonFitnessTest.Integration.Results {
 
             Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
         }
+        
+        [Test]
+        public void shouldHaveWeightHistory() {
+            Browser.GoTo(Url + "/?graphlines=" + "Weight");
+
+            var userWeight = new UserWeightRepository().GetAll().Where(x=>x.User.Id == UserId).FirstOrDefault();
+
+            var chartSumOfFatValue = ">" + String.Format("{0:0.00000}", userWeight.Weight) + "</VALUE>";
+            chartSumOfFatValue = chartSumOfFatValue.Replace(",", ".");
+
+            Assert.That(Browser.Html, Contains.Substring(chartSumOfFatValue));
+        }
 
         [Test]
         public void shouldHaveGidInGraph() {
-            Browser.GoTo(Url + "/?Nutrients=" + NutrientEntity.EnergyInKcal);
+            Browser.GoTo(Url + "/?graphlines=" + NutrientEntity.EnergyInKcal);
             var nutrient = new NutrientRepository().GetByName(NutrientEntity.EnergyInKcal.ToString());
             Assert.That(Browser.Html, Contains.Substring("<GRAPH gid=\"" + nutrient.Id));
         }

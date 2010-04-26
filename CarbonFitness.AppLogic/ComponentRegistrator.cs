@@ -11,7 +11,7 @@ namespace CarbonFitness.AppLogic {
 	public class ComponentRegistrator {
 
 		public void AutofacRegisterComponentes(ContainerBuilder builder, IBootStrapper bootStrapper) {
-			builder.RegisterModule(new BusinessLoginUsageModule());
+			builder.RegisterModule(new BusinessLogicUsageModule());
 			builder.RegisterType<MembershipBusinessLogic>().As<IMembershipBusinessLogic>();
 			builder.RegisterType<IngredientBusinessLogic>().As<IIngredientBusinessLogic>();
 			builder.RegisterType<UserBusinessLogic>().As<IUserBusinessLogic>();
@@ -29,6 +29,8 @@ namespace CarbonFitness.AppLogic {
 
             builder.RegisterType<NutrientRecommendationImportEngine>().SingleInstance().As<INutrientRecommendationImporter>();
             builder.RegisterType<IronRDIImporter>().As<IIronRDIImporter>();
+
+            
 
 			builder.RegisterInstance(bootStrapper);
 
@@ -72,4 +74,6 @@ namespace CarbonFitness.AppLogic {
             }
         }
 	}
+
+    
 }

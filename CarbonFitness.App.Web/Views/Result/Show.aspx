@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ResultModel>" %>
+<%@ Import Namespace="CarbonFitness.Translation"%>
 
 <%@ Import Namespace="CarbonFitness.Data.Model" %>
 <%@ Import Namespace="CarbonFitness.App.Web.FusionCharts" %>
@@ -12,20 +13,20 @@
         $(document).ready(function() {
             $("#<%=Html.IdFor(m => m.Nutrients) %>").dropdownchecklist({ maxDropHeight: 250 });
             $("#<%=Html.IdFor(m => m.Nutrients) %>").change(function() {
-                var nutrients = "" + $("#<%=Html.IdFor(m => m.Nutrients) %>").val();            
-                nutrients = nutrients.replace(/,/gi, "&nutrients=");
-                writeAmChartFlash(nutrients);
+            var graphLines = "" + $("#<%=Html.IdFor(m => m.Nutrients) %>").val();
+            graphLines = graphLines.replace(/,/gi, "&graphlines=");
+            writeAmChartFlash(graphLines);
             });
 
-            writeAmChartFlash("EnergyInKcal");
+            writeAmChartFlash("EnergyInKcal&graphlines=Weight");
         });
 
-        function writeAmChartFlash(nutrients) {
+        function writeAmChartFlash(graphLines) {
             var so = new SWFObject('<%=Url.Content("~/scripts/amline/amline.swf") %>', 'amline', '600', '300', '8', '#FFFFFF');
             //so.addVariable("path", "../../amline/");
             so.addVariable("settings_file", encodeURIComponent('<%=Url.Content("~/scripts/amline/amline_settings.xml") %>?RID=<%= DateTime.Now.Ticks %>'));
-            so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>&Nutrients=' + nutrients + '&RID=<%= DateTime.Now.Ticks %>'));
-            //so.addVariable('data_file', encodeURIComponent('<%= Url.Content("~/scripts/amline/amline_data2.xml") %>?RID=<%= DateTime.Now.Ticks %>'));
+            so.addVariable('data_file', encodeURIComponent('<%= Url.Action<ResultController>(c => c.ShowXml()) %>&graphlines=' + graphLines + '&RID=<%= DateTime.Now.Ticks %>'));
+            //so.addVariable('data_file', encodeURIComponent('<%= Url.Content("~/scripts/amline/amline_data3.xml") %>?RID=<%= DateTime.Now.Ticks %>'));
             so.write("amChartContent");
         }
     </script>
@@ -48,7 +49,7 @@
             </div>
             <div style="float: left; margin-left:8px;">
                 <strong>Välj spårämnen för grafen</strong><br />
-                <%= Html.DropDownListFor(m => m.Nutrients, new SelectList(Model.Nutrients, "Name", "Name"), new Dictionary<String, object> { { "multiple", "multiple" } })%>
+                <%= Html.DropDownListFor(m => m.Nutrients, new SelectList(Model.Nutrients, "Value", "Text"), new Dictionary<String, object> { { "multiple", "multiple" } })%>
             </div>
        </div>
     <% } %>

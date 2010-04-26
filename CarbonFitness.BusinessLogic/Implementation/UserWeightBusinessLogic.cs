@@ -44,5 +44,18 @@ namespace CarbonFitness.BusinessLogic.Implementation {
 		{
 			throw new NotImplementedException();
 		}
+
+	    public ILine GetHistoryLine(User user) {
+	        var userWeights = GetUserWeightDictionary(GetHistoryList(user));
+	        return new Line(0, userWeights, "Vikt");
+	    }
+
+	    private Dictionary<DateTime, decimal> GetUserWeightDictionary(IEnumerable<UserWeight> userWeights) {
+	        var result = new Dictionary<DateTime, decimal>();
+	        foreach (var userWeight in userWeights) {
+                result.Add(userWeight.Date, userWeight.Weight);    
+	        }
+	        return result;
+	    }
 	}
 }

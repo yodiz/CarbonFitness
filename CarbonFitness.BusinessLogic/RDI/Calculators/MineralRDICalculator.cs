@@ -19,7 +19,7 @@ namespace CarbonFitness.BusinessLogic.RDI.Calculators {
         }
 
         public decimal GetRDI(User user, DateTime date, NutrientEntity nutrientEntity) {
-            return GetNutrientRecommendation(nutrientEntity).GetValue(GetUserGender(user).Name, GetUserAge(user)) * GetUserWeight(user);
+            return GetNutrientRecommendation(nutrientEntity).GetValue(GetUserGender(user).Name, GetUserAge(user));
         }
 
         public NutrientRecommendation GetNutrientRecommendation(NutrientEntity entity){

@@ -85,7 +85,7 @@ namespace CarbonFitnessTest.BusinessLogic.RDICalculators {
 
             decimal result = new MineralRDICalculator(nutrientRecommendationBusinessLogicMock.Object, userProfileBusinessLogicMock.Object).GetRDI(new User(), DateTime.Now, NutrientEntity.ProteinInG);
 
-            Assert.That(result, Is.EqualTo(weight * proteinRDI));
+            Assert.That(result, Is.EqualTo(proteinRDI));
         }
 
         [Test]

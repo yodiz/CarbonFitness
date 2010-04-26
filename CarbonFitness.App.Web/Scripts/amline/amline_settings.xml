@@ -24,8 +24,17 @@
     <y_left>
       <color>293a7c</color>
     </y_left>
+    <y_right>
+      <color>FF0000</color>
+      <alpha>71</alpha>
+    </y_right>
   </axes>
 	<graphs>
+    <graph gid="0">
+      <title>Vikt (kg)</title>
+      <axis>right</axis>
+      <line_width>2</line_width>
+    </graph>
 		<graph gid="1">
 			<title>Fibrer (g)</title>
       <line_width>2</line_width>
@@ -251,7 +260,13 @@
 			<align>center</align>
 		</label>
 	</labels>
-	<guides>
-		<guide gid="1"/>
-	</guides>
+  <guides>
+    <guide gid="0">
+      <start_value>73</start_value>
+      <end_value>70</end_value>
+      <color>33FFFF</color>
+      <alpha>20</alpha>
+      <fill_alpha>20</fill_alpha>
+    </guide>
+  </guides>
 </settings>

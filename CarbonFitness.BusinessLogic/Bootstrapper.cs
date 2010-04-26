@@ -38,7 +38,7 @@ namespace CarbonFitness.BusinessLogic {
 		}
 	}
 
-	public class BusinessLoginUsageModule : Module {
+	public class BusinessLogicUsageModule : Module {
 		protected override void Load(ContainerBuilder builder) {
 			builder.RegisterType<UserRepository>().As<IUserRepository>();
 			builder.RegisterType<IngredientRepository>().As<IIngredientRepository>();

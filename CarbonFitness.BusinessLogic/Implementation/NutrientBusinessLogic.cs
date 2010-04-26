@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Web.Caching;
 using CarbonFitness.Data.Model;
 using CarbonFitness.DataLayer.Repository;
 
@@ -23,14 +24,17 @@ namespace CarbonFitness.BusinessLogic.Implementation {
                     nutrientRepository.Save(new Nutrient { Name = name });
                 }
             }
-        }
+        } 
 
         public Nutrient GetNutrient(NutrientEntity nutrientEntity) {
-            lock (cacheLock)
-            {
-                if (!getNutrientCache.ContainsKey(nutrientEntity))
-                {
-                    getNutrientCache[nutrientEntity] = nutrientRepository.GetByName(Enum.GetName(typeof(NutrientEntity), nutrientEntity));
+            //var cache = new Cache();
+
+            //cache.Get(nutrientEntity.ToString());
+            lock (cacheLock) {
+                if (!getNutrientCache.ContainsKey(nutrientEntity)) {
+                    var nutrient = nutrientRepository.GetByName(Enum.GetName(typeof(NutrientEntity), nutrientEntity));
+                    //cache.Add(nutrientEntity.ToString(), nutrient, null, DateTime.MaxValue, TimeSpan.MaxValue, CacheItemPriority.NotRemovable, null);
+                    getNutrientCache[nutrientEntity] = nutrient;
                 }
             }
 

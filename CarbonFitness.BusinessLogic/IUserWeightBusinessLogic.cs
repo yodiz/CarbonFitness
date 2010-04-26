@@ -10,5 +10,6 @@ namespace CarbonFitness.BusinessLogic {
 		IEnumerable<UserWeight> GetHistoryList(User user);
 
 		ILine GetProjectionList(User user);
+	    ILine GetHistoryLine(User user);
 	}
 }

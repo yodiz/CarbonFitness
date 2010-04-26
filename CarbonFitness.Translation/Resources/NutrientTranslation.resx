@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlcoholInG" xml:space="preserve">
+    <value>Alkohol (g)</value>
+  </data>
+  <data name="AquaInG" xml:space="preserve">
+    <value>Vatten (g)</value>
+  </data>
+  <data name="AscorbicAcidInmG" xml:space="preserve">
+    <value>Askorbinsyra (mg)</value>
+  </data>
+  <data name="AshInG" xml:space="preserve">
+    <value>Aska (g)</value>
+  </data>
+  <data name="CalciumInmG" xml:space="preserve">
+    <value>Kalcium (mg)</value>
+  </data>
+  <data name="CarbonHydrateInG" xml:space="preserve">
+    <value>Kolhydrat (g)</value>
+  </data>
+  <data name="CaroteneInµG" xml:space="preserve">
+    <value>Karoten (µg)</value>
+  </data>
+  <data name="CholesteroleInmG" xml:space="preserve">
+    <value>Kolesterol (mg)</value>
+  </data>
+  <data name="DisaccharidesInG" xml:space="preserve">
+    <value>Disackarider (g)</value>
+  </data>
+  <data name="DVitaminInµG" xml:space="preserve">
+    <value>D vitamin (µg)</value>
+  </data>
+  <data name="EnergyInKcal" xml:space="preserve">
+    <value>Energi (Kcal)</value>
+  </data>
+  <data name="EnergyInKJ" xml:space="preserve">
+    <value>Energi (kJ)</value>
+  </data>
+  <data name="EVitaminInmG" xml:space="preserve">
+    <value>E vitamin (mg)</value>
+  </data>
+  <data name="FatAcidC12InG" xml:space="preserve">
+    <value>Fettsyra C12 (g)</value>
+  </data>
+  <data name="FatAcidC14InG" xml:space="preserve">
+    <value>Fettsyra C14 (g)</value>
+  </data>
+  <data name="FatAcidC16InG" xml:space="preserve">
+    <value>Fettsyra C16 (g)</value>
+  </data>
+  <data name="FatAcidC16_1InG" xml:space="preserve">
+    <value>Fettsyra C16:1 (g)</value>
+  </data>
+  <data name="FatAcidC18InG" xml:space="preserve">
+    <value>Fettsyra C18 (g)</value>
+  </data>
+  <data name="FatAcidC18_1InG" xml:space="preserve">
+    <value>Fettsyra C18:1 (g)</value>
+  </data>
+  <data name="FatAcidC18_2InG" xml:space="preserve">
+    <value>Fettsyra C18:2 (g)</value>
+  </data>
+  <data name="FatAcidC18_3InG" xml:space="preserve">
+    <value>Fettsyra C18:3 (g)</value>
+  </data>
+  <data name="FatAcidC20InG" xml:space="preserve">
+    <value>Fettsyra C20 (g)</value>
+  </data>
+  <data name="FatAcidC20_4InG" xml:space="preserve">
+    <value>Fettsyra C20:4 (g)</value>
+  </data>
+  <data name="FatAcidC20_5InG" xml:space="preserve">
+    <value>Fettsyra C20:5 (g)</value>
+  </data>
+  <data name="FatAcidC22_5InG" xml:space="preserve">
+    <value>Fettsyra C22:5 (g)</value>
+  </data>
+  <data name="FatAcidC22_6InG" xml:space="preserve">
+    <value>Fettsyra C22:6 (g)</value>
+  </data>
+  <data name="FatAcidC4C10InG" xml:space="preserve">
+    <value>Fettsyra C4-C10 (g)</value>
+  </data>
+  <data name="FatInG" xml:space="preserve">
+    <value>Fett (g)</value>
+  </data>
+  <data name="FibresInG" xml:space="preserve">
+    <value>Fibrer (g)</value>
+  </data>
+  <data name="FolicAcidInµG" xml:space="preserve">
+    <value>Folat (µg)</value>
+  </data>
+  <data name="IronInmG" xml:space="preserve">
+    <value>Järn (mg)</value>
+  </data>
+  <data name="MagnesiumInmG" xml:space="preserve">
+    <value>Magnesium (mg)</value>
+  </data>
+  <data name="MonosaccharidesInG" xml:space="preserve">
+    <value>Monosackarider (g)</value>
+  </data>
+  <data name="MonoUnSaturatedFatInG" xml:space="preserve">
+    <value>Enkelomättade fettsyror (g)</value>
+  </data>
+  <data name="NatriumInmG" xml:space="preserve">
+    <value>Natrium (mg)</value>
+  </data>
+  <data name="NiacinEquivalentInmG" xml:space="preserve">
+    <value>Niacinekvivalent (mg)</value>
+  </data>
+  <data name="NiacinInmG" xml:space="preserve">
+    <value>Niacin (mg)</value>
+  </data>
+  <data name="PhosphorusInmG" xml:space="preserve">
+    <value>Fosfor (mg)</value>
+  </data>
+  <data name="PolyUnSaturatedFatInG" xml:space="preserve">
+    <value>Fleromättade fettsyror (g)</value>
+  </data>
+  <data name="PotassiumInmG" xml:space="preserve">
+    <value>Kalium (mg)</value>
+  </data>
+  <data name="ProteinInG" xml:space="preserve">
+    <value>Protein (g)</value>
+  </data>
+  <data name="RetinolEquivalentInµG" xml:space="preserve">
+    <value>Retinolekvivalent (µg)</value>
+  </data>
+  <data name="RetinolInµG" xml:space="preserve">
+    <value>Retinol (µg)</value>
+  </data>
+  <data name="RiboflavinInmG" xml:space="preserve">
+    <value>Riboflavin (mg)</value>
+  </data>
+  <data name="SaturatedFatInG" xml:space="preserve">
+    <value>Mättade fettsyror (g)</value>
+  </data>
+  <data name="SeleniumInµG" xml:space="preserve">
+    <value>Selen (µg)</value>
+  </data>
+  <data name="SucroseInG" xml:space="preserve">
+    <value>Sackaros (g)</value>
+  </data>
+  <data name="ThiamineInmG" xml:space="preserve">
+    <value>Tiamin (mg)</value>
+  </data>
+  <data name="TokopherolInmG" xml:space="preserve">
+    <value>Tokoferol (mg)</value>
+  </data>
+  <data name="VitaminB12InµG" xml:space="preserve">
+    <value>Vitamin B12 (µg)</value>
+  </data>
+  <data name="VitaminB6InmG" xml:space="preserve">
+    <value>Vitamin B6 (mg)</value>
+  </data>
+  <data name="WasteInPercent" xml:space="preserve">
+    <value>Avfall (%)</value>
+  </data>
+  <data name="ZincInmG" xml:space="preserve">
+    <value>Zink (mg)</value>
+  </data>
+</root>

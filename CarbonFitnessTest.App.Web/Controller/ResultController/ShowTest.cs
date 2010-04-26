@@ -22,6 +22,8 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			userProfileBusinessLogic = new Mock<IUserProfileBusinessLogic>();
 			graphBuilderMock = new Mock<IGraphBuilder>();
             nutrientBusinessLogicMock = new Mock<INutrientBusinessLogic>();
+            userWeightBusinessLogicMock = new Mock<IUserWeightBusinessLogic>();
+            
 		}
 
 		private Mock<IUserIngredientBusinessLogic> userIngredientBusinessLogicMock;
@@ -29,9 +31,10 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		private Mock<IUserProfileBusinessLogic> userProfileBusinessLogic;
 		private Mock<IGraphBuilder> graphBuilderMock;
 	    private Mock<INutrientBusinessLogic> nutrientBusinessLogicMock;
+        private Mock<IUserWeightBusinessLogic> userWeightBusinessLogicMock;
 
 	    private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-			var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, nutrientBusinessLogicMock.Object, null);
 			return methodUnderTest(resultController);
 		}
 
@@ -62,9 +65,30 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			Assert.That(decimal.Parse(deserialized.GraphRoot.Graphs[0].values[0].Value), Is.EqualTo(graph.LinesContainer.Lines[0].GetValuePoints()[0].Value));
 		}
 
+        [Test] 
+        public void shouldGetUserWeightHistoryForGraph(){
+            ILine line = new Line(new Dictionary<DateTime, decimal> { { DateTime.Now, 35M } });
+            var graph = new Graph { Labels = new[] { new Label { Value = "val1", Index = "1" } }, LinesContainer = new LinesContainer { Lines = new[] { line } } };
+            userWeightBusinessLogicMock.Setup(x => x.GetHistoryLine(It.IsAny<User>())).Returns(line);
+            graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
+
+            var actionResult = (ContentResult)RunMethodUnderTest(x => x.ShowXml("Weight"));
+
+            userWeightBusinessLogicMock.VerifyAll();
+            userIngredientBusinessLogicMock.Verify(x => x.GetNutrientHistory(NutrientEntity.EnergyInKcal, It.IsAny<User>()), Times.Never());
+        }
+
+        [Test]
+        public void shouldTellWhenGraphlineWeightIsIncluded() {
+            var controller = new CarbonFitness.App.Web.Controllers.ResultController(null, null, null, null, null, null, null);
+			
+            Assert.That(controller.shouldShowWeight(new [] { "adfssaf", "Weight", "dsf"}));
+            Assert.That(controller.shouldShowWeight(new[] { "adfssaf", "noewigh", "dsf" }), Is.EqualTo(false));
+        }
+
 	    [Test]
         public void shouldNotThrowWhenUnexpectedStringTransformsToNutrientEntity() {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
             string[] nutrients = new[] { "No GOod Nutrient Entity", NutrientEntity.ZincInmG.ToString() };
             NutrientEntity[] nutrientEntitys = resultController.GetNutrientEntitys(nutrients);
 
@@ -75,7 +99,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 
 	    [Test]
         public void shouldGetNutrientEntitysFromStrings() {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
             string[] nutrients = new[] { NutrientEntity.ZincInmG.ToString(), NutrientEntity.EVitaminInmG.ToString() };
             NutrientEntity[] nutrientEntitys = resultController.GetNutrientEntitys(nutrients);
             
@@ -89,9 +113,9 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
             userContextMock.Setup(x => x.User).Returns(new User());
             graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y.Length == 2))).Returns(new Graph());
             userIngredientBusinessLogicMock.Setup(x => x.GetNutrientHistory(It.IsAny<NutrientEntity>(), It.IsAny<User>())).Returns(new Line( new Dictionary<DateTime, decimal>{{DateTime.Now, 123}}));
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
 			NutrientEntity[] nutrients = new [] {NutrientEntity.ZincInmG, NutrientEntity.EVitaminInmG };
-            var graph = resultController.GetGraph(nutrients);
+            var graph = resultController.GetGraph(nutrients, false);
             userIngredientBusinessLogicMock.VerifyAll();
             graphBuilderMock.VerifyAll();
         }

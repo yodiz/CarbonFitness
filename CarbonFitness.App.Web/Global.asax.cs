@@ -15,6 +15,7 @@ using CarbonFitness.AppLogic;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.RDI.Calculators;
 using CarbonFitness.BusinessLogic.RDI.Importers;
+using CarbonFitness.Translation;
 using SharpArch.Data.NHibernate;
 using SharpArch.Web.NHibernate;
 
@@ -79,6 +80,7 @@ namespace CarbonFitness.App.Web {
             builder.RegisterType<GenderViewTypeConverter>().As<IGenderViewTypeConverter>();
             builder.RegisterType<ActivityLevelViewTypeConverter>().As<IActivityLevelViewTypeConverter>();
             builder.RegisterType<RDIProxy>().As<IRDIProxy>();
+            builder.RegisterModule(new TranslationModule());
 
 			builder.RegisterControllers(Assembly.GetExecutingAssembly());
 			builder.RegisterType<FormsAuthenticationService>().As<IFormsAuthenticationService>();

@@ -81,8 +81,22 @@ namespace CarbonFitnessTest.BusinessLogic {
 			userWeightRepositoryMock.VerifyAll();
 		}
 
+        [Test]
+        public void shouldGetWeightHístoryLineForGraph() {
+            var firstdate = DateTime.Now.AddDays(-5).Date;
+            var lastdate = DateTime.Now.Date;
+            var expected = 22;
+            var originalUserWeightHistory = new List<UserWeight> {new UserWeight{Date = firstdate, Weight = expected}, new UserWeight{Date = lastdate, Weight = 34}};
+			userWeightRepositoryMock.Setup(x => x.GetHistoryList(It.Is<User>(y => y.Username == expectedUserWeightMock.Object.User.Username))).Returns(originalUserWeightHistory);
+            ILine line = new UserWeightBusinessLogic(userWeightRepositoryMock.Object).GetHistoryLine(expectedUserWeightMock.Object.User);
+            Assert.That(line.GetFirstDate(), Is.EqualTo(firstdate));
+            Assert.That(line.GetLastDate(), Is.EqualTo(lastdate));
+            Assert.That(line.GetValue(firstdate).Value, Is.EqualTo(expected));
+            
+        }
 
-		//[Test]
+
+	    //[Test]
 		//public void shouldGetWeightProjectionForUser() {
 		//   var weightProjectorMock = new Mock<IWeightProjector>(MockBehavior.Strict);
 		//   var userWeightBusinessLogic = new UserWeightBusinessLogic(null, weightProjectorMock.Object);

@@ -12,11 +12,11 @@ namespace CarbonFitness.App.Web {
 		public static void MapHistoryGraphToAmChartData() {
 			Mapper.CreateMap<Label, value>()
 				.ForMember(x => x.Value, y => y.MapFrom(z => z.Value))
-				.ForMember(x => x.xid, y => y.MapFrom(z => z.Index));
+                .ForMember(x => x.xid, y => y.MapFrom(z => z.Value)); //not index...
 
 			Mapper.CreateMap<ValuePoint, value>()
 				.ForMember(x => x.Value, y => y.MapFrom(z => z.Value.ToString(CultureInfo.InvariantCulture)))
-				.ForMember(x => x.xid, y => y.MapFrom(z => z.Index));
+				.ForMember(x => x.xid, y => y.MapFrom(z => z.Date.ToShortDateString()));
 
 		    Mapper.CreateMap<ILine, chartGraphsGraph>()
 		        .ForMember(x => x.values, y => y.MapFrom(z => z.GetValuePoints()))

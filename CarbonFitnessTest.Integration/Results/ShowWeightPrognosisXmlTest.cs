@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CarbonFitnessTest.Integration.Results
 {
@@ -10,7 +6,7 @@ namespace CarbonFitnessTest.Integration.Results
     [TestFixture]
     class ShowWeightPrognosisXmlTest : ResultsTestBase
     {
-        public override string Url { get { return BaseUrl + "/Result/ShowWeightPrognosisXml"; } }
+        public override string Url { get { return getUrl("Result", "ShowWeightPrognosisXml"); } }
 
 
         [Test]
