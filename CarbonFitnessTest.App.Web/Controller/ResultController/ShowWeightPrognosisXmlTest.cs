@@ -29,7 +29,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			userWeightBusinessLogicMock.Setup(x => x.GetProjectionList(It.Is<User>(y => y == user))).Returns(line);
 			graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
 
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(null, null, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, null, null);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(null, null, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, null);
 
 			var result = resultController.ShowWeightPrognosisXml();
 			Assert.That(result.ObjectToSerialize, Is.AssignableTo(typeof(AmChartData)));

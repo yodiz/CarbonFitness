@@ -70,15 +70,16 @@
 		  <%
 		  if (Model.UserIngredients != null) {
 				%>
-				<table class="">
+				<table class="" id="userIngredientTable">
 					 <tr>
 						  <th>Livsmedel</th>
 						  <th>Vikt (g)</th>
+						  <th>Energi (Kcal)</th>
 						  <th>Protein (g)</th>
 						  <th>Fett (g)</th>
 						  <th>Kolhydrater (g)</th>
 						  <th>Fibrer (g)</th>
-						  <th>Järn (mg)</th>
+						  <!--<th>Järn (mg)</th>-->
 					 </tr>
 				<%
 				
@@ -86,12 +87,14 @@
 				%>
 					 <tr>
 						  <td><%=userIngredient.Ingredient.Name%></td>
-						  <td><%=userIngredient.Measure%></td>
+						  <td><%=userIngredient.Measure%></td>						  
+						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.EnergyInKcal))).ToString("N2")%></td>
 						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.ProteinInG))).ToString("N2")%></td>
 						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.FatInG))).ToString("N2")%></td>
 						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.CarbonHydrateInG))).ToString("N2")%></td>
 						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.FibresInG))).ToString("N2")%></td>
-						  <td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.IronInmG))).ToString("N2")%></td>
+						  <!--<td><%=userIngredient.GetActualCalorieCount(x => x.GetNutrientIngredientDisplayValue(x.GetNutrient(NutrientEntity.IronInmG))).ToString("N2")%></td>-->
+						  <td width="1%"><a href="<%=Url.Action<FoodController>(c => c.DeleteUserIngredient( userIngredient.Id, Model.Date))%>" id="removeUserIngredient"><%=Html.Image("~/Content/ico-delete.png",new Dictionary<string,object>{{"height","12px"}})%></a></td>
 					</tr>
 					 <%
 				}
@@ -100,11 +103,12 @@
 				    <tr class="nutrientSum">
 						  <td ></td>
 						  <td ></td>
+						  <td ><%=Model.SumOfEnergy.ToString("N2")%> / <%=Model.RDIOfEnergy.ToString("N2")%></td>
 						  <td ><%=Model.SumOfProtein.ToString("N2")%> / <%=Model.RDIOfProtein.ToString("N2")%></td>
 						  <td ><%=Model.SumOfFat.ToString("N2")%> / <%=Model.RDIOfFat.ToString("N2")%></td>
 						  <td ><%=Model.SumOfCarbonHydrates.ToString("N2")%> / <%=Model.RDIOfCarbonHydrates.ToString("N2")%></td>
 						  <td ><%=Model.SumOfFiber.ToString("N2")%> / <%=Model.RDIOfFiber.ToString("N2")%></td>
-						  <td ><%=Model.SumOfIron.ToString("N2")%> / <%=Model.RDIOfIron.ToString("N2")%></td>
+						  <!--<td ><%=Model.SumOfIron.ToString("N2")%> / <%=Model.RDIOfIron.ToString("N2")%></td>-->
 					</tr>
 				<%
 		        }

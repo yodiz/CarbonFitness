@@ -77,6 +77,7 @@ namespace CarbonFitness.App.Web {
 		private void AutofacRegisterComponentes() {
 		    var builder = new ContainerBuilder();
 
+            builder.RegisterType<GraphLineOptionViewTypeConverter>().As<IGraphLineOptionViewTypeConverter>();
             builder.RegisterType<GenderViewTypeConverter>().As<IGenderViewTypeConverter>();
             builder.RegisterType<ActivityLevelViewTypeConverter>().As<IActivityLevelViewTypeConverter>();
             builder.RegisterType<RDIProxy>().As<IRDIProxy>();

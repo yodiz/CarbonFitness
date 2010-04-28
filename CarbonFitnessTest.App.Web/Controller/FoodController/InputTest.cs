@@ -188,6 +188,18 @@ namespace CarbonFitnessTest.Web.Controller.FoodController {
 			Assert.That(errormessage, Is.EqualTo(FoodConstant.NoIngredientFoundMessage + ingredientName));
 		}
 
+        [Test]
+        public void shouldRemoveUserIngredient() {
+            var mockFactory = new MockFactory(MockBehavior.Loose);
+            var userContextMock = GetSetuppedUserContextMock(mockFactory);
+            var userIngredientBusinessLogicMock = mockFactory.Create<IUserIngredientBusinessLogic>();
+            userIngredientBusinessLogicMock.Setup(x => x.DeleteUserIngredient(It.IsAny<User>(), It.IsAny<int>(), It.IsAny<DateTime>()));
+            var foodController = new CarbonFitness.App.Web.Controllers.FoodController(userIngredientBusinessLogicMock.Object, new Mock<IRDIProxy>().Object, userContextMock.Object);
+            foodController.DeleteUserIngredient(3, DateTime.Now);
+
+            userIngredientBusinessLogicMock.VerifyAll();
+        }
+
 
 	}
 }

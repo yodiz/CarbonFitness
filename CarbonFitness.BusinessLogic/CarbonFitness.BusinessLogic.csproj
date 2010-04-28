@@ -60,6 +60,9 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="CalorieCalculator.cs" />
+    <Compile Include="NutrientAverageList.cs" />
+    <Compile Include="NutrientSumList.cs" />
+    <Compile Include="RDI\Calculators\EnergyKcalRDICalculator.cs" />
     <Compile Include="RDI\Importers\INutrientRDIImporter.cs" />
     <Compile Include="RDI\Importers\IronRDIImporter.cs" />
     <Compile Include="RDI\Importers\BaseRDIImporter.cs" />

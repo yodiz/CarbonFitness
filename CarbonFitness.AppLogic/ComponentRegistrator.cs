@@ -43,6 +43,7 @@ namespace CarbonFitness.AppLogic {
             builder.RegisterType<MineralRDICalculator>().As<IMineralRDICalculator>();
             builder.RegisterType<CarbonHydrateRDICalculator>().As<ICarbonHydrateRDICalculator>();
             builder.RegisterType<FatRDICalculator>().As<IFatRDICalculator>();
+            builder.RegisterType<EnergyKcalRDICalculator>().As<IEnergyKcalRDICalculator>();
             builder.RegisterType<FibresRDICalculator>().As<IFibresRDICalculator>();
             builder.RegisterType<ProteinRDICalculator>().As<IProteinRDICalculator>();
 
@@ -54,6 +55,7 @@ namespace CarbonFitness.AppLogic {
         public void populateRDICalculatorFactory(IComponentContext container)
         {
             var calculatorFactory = container.Resolve<IRDICalculatorFactory>();
+            calculatorFactory.AddRDICalculator(container.Resolve<IEnergyKcalRDICalculator>());
             calculatorFactory.AddRDICalculator(container.Resolve<IMineralRDICalculator>());
             calculatorFactory.AddRDICalculator(container.Resolve<ICarbonHydrateRDICalculator>());
             calculatorFactory.AddRDICalculator(container.Resolve<IFatRDICalculator>());
@@ -68,8 +70,7 @@ namespace CarbonFitness.AppLogic {
             var nutrinetImporterAssembly = typeof(IIronRDIImporter).Assembly;
             var types = nutrinetImporterAssembly.GetExportedTypes().Where(t => typeof(INutrientRDIImporter).IsAssignableFrom(t)).ToList();
             var importerTypes = from t in types where t.IsInterface && t.Name != "INutrientRDIImporter" select t;
-            foreach (var type in importerTypes)
-            {
+            foreach (var type in importerTypes) {
                 nutrientRecommendationImporter.AddImporter(componentContext.Resolve(type) as INutrientRDIImporter);
             }
         }

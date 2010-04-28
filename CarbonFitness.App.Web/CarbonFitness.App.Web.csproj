@@ -132,6 +132,7 @@
     <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ViewTypeConverters\GraphLineOptionViewTypeConverter.cs" />
     <Compile Include="Controllers\WeightController.cs" />
     <Compile Include="FusionCharts\FusionChartLine2DBuilder.cs" />
     <Compile Include="FusionCharts\FusionChartMSLineBuilder.cs" />
@@ -744,8 +745,11 @@
     <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.css" />
     <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.js" />
     <Content Include="Content\halsa.jpg" />
+    <Content Include="Content\ico-delete.png" />
     <Content Include="Scripts\amline\amline_data3.xml" />
     <Content Include="Scripts\ui.dropdownchecklist-min.js" />
+    <Content Include="Views\Result\ShowAdvanced.aspx" />
+    <Content Include="Views\Result\ShowResultList.aspx" />
     <None Include="Content\jquery-autocomplete\demo\emails.php" />
     <None Include="Content\jquery-autocomplete\demo\emails.phps" />
     <None Include="Content\jquery-autocomplete\demo\images.php" />

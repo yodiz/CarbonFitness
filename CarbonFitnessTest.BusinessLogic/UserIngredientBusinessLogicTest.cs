@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.Exceptions;
 using CarbonFitness.BusinessLogic.Implementation;
 using CarbonFitness.Data.Model;
@@ -127,5 +129,46 @@ namespace CarbonFitnessTest.BusinessLogic {
             userIngredientRepository.VerifyAll();
             Assert.That(nutrientSum, Is.EqualTo(65.5m));
 	    }
+
+        [Test]
+        public void shouldGetNutrientSumList() {
+            var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>();
+            userIngredientRepositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>())).Returns(GetExpectedUserIngredients(DateTime.Now.Date));
+
+            var nutrientSums = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, null, null).GetNutrientSumList(new List<NutrientEntity> { NutrientEntity.ProteinInG, NutrientEntity.EnergyInKcal }, new User());
+            
+            Assert.That(nutrientSums, Is.Not.Null);
+            Assert.That(nutrientSums.Count(), Is.GreaterThan(0));
+
+            var nutrientSum = (from a in nutrientSums select a).FirstOrDefault();
+            Assert.That(nutrientSum.Date, Is.GreaterThan(DateTime.MinValue));
+            Assert.That(nutrientSum.NutrientValues.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void shouldGetUniqueDatesFromUserIngredients() {
+            var result = new UserIngredientBusinessLogic(null, null, null).getDatesfromuserIngredient(GetExpectedUserIngredients(DateTime.Now));
+            Assert.That(result.Count(), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void shouldGetNutrientAverage() {
+            var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>();
+            userIngredientRepositoryMock.Setup(x => x.GetUserIngredientsByUser(It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>())).Returns(GetExpectedUserIngredients(DateTime.Now.Date));
+
+            var result = new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, null, null).GetNutrientAverage(new List<NutrientEntity> {NutrientEntity.ProteinInG, NutrientEntity.EnergyInKcal}, new User());
+        
+            Assert.That(result.NutrientValues.Count(), Is.EqualTo(2));
+            Assert.That(result.NutrientValues[NutrientEntity.EnergyInKcal], Is.EqualTo(71.75m));
+        }
+
+        [Test]
+        public void shouldDeleteUserIngredient() {
+            var userIngredientRepositoryMock = new Mock<IUserIngredientRepository>();
+            userIngredientRepositoryMock.Setup(x => x.Get(It.IsAny<int>())).Returns(new UserIngredient());
+            userIngredientRepositoryMock.Setup(x => x.Delete(It.IsAny<UserIngredient>()));
+            new UserIngredientBusinessLogic(userIngredientRepositoryMock.Object, null, null).DeleteUserIngredient(new User(), 3, DateTime.Now );
+            userIngredientRepositoryMock.VerifyAll();
+        }
 	}
 }

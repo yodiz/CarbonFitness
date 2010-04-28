@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Routing;
 using CarbonFitness.App.Web.Controllers.RDI;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
@@ -27,19 +28,25 @@ namespace CarbonFitness.App.Web.Controllers
         [Transaction]
         [Authorize]
         public ActionResult Input() {
-            return View( GetInputFoodModel(DateTime.Now));
+            var date = DateTime.Now.Date;
+            if(TempData["Date"] != null) {
+                date = DateTime.Parse(TempData["Date"].ToString());
+            }
+            return View(GetInputFoodModel(date));
         }
 
 	    private InputFoodModel GetInputFoodModel(DateTime date) {
 	        return new InputFoodModel {
 	            UserIngredients = getUserIngredients(date),
 	            Date = date,
-	            SumOfProtein = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.ProteinInG, date),
+                SumOfEnergy = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.EnergyInKcal, date),
+                SumOfProtein = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.ProteinInG, date),
 	            SumOfFat = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FatInG, date),
 	            SumOfFiber = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.FibresInG, date),
 	            SumOfCarbonHydrates = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.CarbonHydrateInG, date),
 	            SumOfIron = userIngredientBusinessLogic.GetNutrientSumForDate(userContext.User, NutrientEntity.IronInmG, date),
 
+                RDIOfEnergy = rdiProxy.getRDI(userContext.User, date, NutrientEntity.EnergyInKcal),
                 RDIOfProtein = rdiProxy.getRDI(userContext.User, date, NutrientEntity.ProteinInG),
                 RDIOfFat = rdiProxy.getRDI(userContext.User, date, NutrientEntity.FatInG),
                 RDIOfFiber = rdiProxy.getRDI(userContext.User, date, NutrientEntity.FibresInG),
@@ -61,25 +68,29 @@ namespace CarbonFitness.App.Web.Controllers
 	        return View(GetInputFoodModel(model.Date));
 		}
 
+        /*[AcceptVerbs(HttpVerbs.Delete)] */
+        [Transaction]
+        [Authorize]
+        public ActionResult DeleteUserIngredient( int userIngredientId, DateTime date) {
+            userIngredientBusinessLogic.DeleteUserIngredient(userContext.User, userIngredientId, date);
+            TempData["Date"] = date;
+            return RedirectToAction("Input", new RouteValueDictionary(GetInputFoodModel(date)));
+        }  
 
 		private UserIngredient[] getUserIngredients(DateTime date) {
 			try {
 				return userIngredientBusinessLogic.GetUserIngredients(userContext.User, date);
-			}
-			catch (InvalidDateException) {
+			} catch (InvalidDateException) {
 				this.AddModelError<InputFoodModel>(x => x.Date, FoodConstant.InvalidDateErrorMessage);
 			}
 			return null;
 		}
 
         private void AddUserIngredient(InputFoodModel model) {
-            try
-            {
+            try {
                 userIngredientBusinessLogic.AddUserIngredient(userContext.User, model.Ingredient, model.Measure, model.Date);
                 RemoveFoodInputValues(model);
-            }
-            catch (NoIngredientFoundException e)
-            {
+            } catch (NoIngredientFoundException e) {
                 this.AddModelError<InputFoodModel>(x => x.Ingredient, FoodConstant.NoIngredientFoundMessage + e.IngredientName);
             }
         }

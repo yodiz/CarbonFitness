@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.App.Web.ViewConstants;
 using CarbonFitness.Data.Model;
@@ -17,14 +16,13 @@ namespace CarbonFitnessTest.Integration {
 
         public override string Url { get { return getUrl("Food", "Input"); } }
 
-        private int userId;
 
         [TestFixtureSetUp]
         public override void TestFixtureSetUp() {
             base.TestFixtureSetUp();
 
             var createUserTest = new CreateUserTest(Browser);
-            userId = createUserTest.getUniqueUserId();
+            createUserTest.getUniqueUserId();
             var accountLogOnTest = new AccountLogOnTest(Browser);
             accountLogOnTest.LogOn(CreateUserTest.UserName, CreateUserTest.Password);
         }
@@ -99,6 +97,22 @@ namespace CarbonFitnessTest.Integration {
 
             Assert.That(IngredientTextField.Text, Is.Null, "Expected that " + IngredientFieldName + " was null.");
             Assert.That(MeasureTextField.Text, Is.EqualTo("0"), "Expected that " + MeasureFieldName + " was empty.");
+        }
+
+        [Test]
+        public void shouldRemoveUserIngredient() {
+            getUniqueIngredientAndAddUserIngredient("Pannbiff", "150");
+
+            var useringredientTable = Browser.Table("userIngredientTable");
+            var rows = useringredientTable.TableRows;
+            foreach (var row in rows) {
+                if(row.InnerHtml.Contains("Pannbiff")) {
+                    row.Link("removeUserIngredient").Click();
+                    break;
+                }
+            }
+        
+            Assert.That(Browser.Html, Contains.Substring("Pannbiff"), "Expected no Pannbiff on page after remove button was pressed.");
         }
 
         [Test]

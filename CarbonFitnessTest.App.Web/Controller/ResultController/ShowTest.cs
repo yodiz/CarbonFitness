@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using CarbonFitness.App.Web;
+using CarbonFitness.App.Web.Controllers.ViewTypeConverters;
 using CarbonFitness.App.Web.Models;
 using CarbonFitness.BusinessLogic;
 using CarbonFitness.BusinessLogic.UnitHistory;
 using CarbonFitness.Data.Model;
-using CarbonFitness.Translation;
 using Moq;
 using NUnit.Framework;
 
@@ -22,9 +21,8 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			userContextMock = new Mock<IUserContext>();
 			userProfileBusinessLogic = new Mock<IUserProfileBusinessLogic>();
 			graphBuilderMock = new Mock<IGraphBuilder>();
-            nutrientBusinessLogicMock = new Mock<INutrientBusinessLogic>();
             userWeightBusinessLogicMock = new Mock<IUserWeightBusinessLogic>();
-            nutrientTranslatorMock = new Mock<INutrientTranslator>();
+            graphLineOptionViewTypeConverterMock = new Mock<IGraphLineOptionViewTypeConverter>();
             
 		}
 
@@ -32,16 +30,19 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 		private Mock<IUserContext> userContextMock;
 		private Mock<IUserProfileBusinessLogic> userProfileBusinessLogic;
 		private Mock<IGraphBuilder> graphBuilderMock;
-	    private Mock<INutrientBusinessLogic> nutrientBusinessLogicMock;
         private Mock<IUserWeightBusinessLogic> userWeightBusinessLogicMock;
-	    private Mock<INutrientTranslator> nutrientTranslatorMock;
+	    private Mock<IGraphLineOptionViewTypeConverter> graphLineOptionViewTypeConverterMock;
 
 	    private ActionResult RunMethodUnderTest(Func<CarbonFitness.App.Web.Controllers.ResultController, ActionResult> methodUnderTest) {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, nutrientBusinessLogicMock.Object, nutrientTranslatorMock.Object);
-			return methodUnderTest(resultController);
-		}
+	        var resultController = GetResultController();
+	        return methodUnderTest(resultController);
+	    }
 
-		private ResultModel GetModelFromActionResult(ActionResult result) {
+	    private CarbonFitness.App.Web.Controllers.ResultController GetResultController() {
+	        return new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, userWeightBusinessLogicMock.Object, graphLineOptionViewTypeConverterMock.Object);
+	    }
+
+	    private ResultModel GetModelFromActionResult(ActionResult result) {
 			return (ResultModel) ((ViewResult) result).ViewData.Model;
 		}
 
@@ -53,7 +54,7 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
 			var graph = new Graph {Labels = new[] {new Label {Value = "val1", Index = "1"}}, LinesContainer = new LinesContainer {Lines = new[] {line}}};
 			userIngredientBusinessLogicMock.Setup(x => x.GetNutrientHistory(NutrientEntity.EnergyInKcal, It.IsAny<User>())).Returns(line);
 			graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
-
+		    graphLineOptionViewTypeConverterMock.Setup(x => x.GetNutrientEntitys(It.IsAny<string[]>())).Returns(new[] {NutrientEntity.EnergyInKcal});
             var actionResult = (ContentResult)RunMethodUnderTest(x => x.ShowXml(NutrientEntity.EnergyInKcal.ToString()));
 
 			var serializer = new XmlSerializer(typeof(AmChartData));
@@ -74,41 +75,12 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
             var graph = new Graph { Labels = new[] { new Label { Value = "val1", Index = "1" } }, LinesContainer = new LinesContainer { Lines = new[] { line } } };
             userWeightBusinessLogicMock.Setup(x => x.GetHistoryLine(It.IsAny<User>())).Returns(line);
             graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y[0] == line))).Returns(graph);
-
+            graphLineOptionViewTypeConverterMock.Setup(x => x.GetNutrientEntitys(It.IsAny<string[]>())).Returns(null as NutrientEntity[]);
+            graphLineOptionViewTypeConverterMock.Setup(x => x.shouldShowWeight(It.IsAny<string[]>())).Returns(true);
             RunMethodUnderTest(x => x.ShowXml("Weight"));
 
             userWeightBusinessLogicMock.VerifyAll();
             userIngredientBusinessLogicMock.Verify(x => x.GetNutrientHistory(NutrientEntity.EnergyInKcal, It.IsAny<User>()), Times.Never());
-        }
-
-        [Test]
-        public void shouldTellWhenGraphlineWeightIsIncluded() {
-            var controller = new CarbonFitness.App.Web.Controllers.ResultController(null, null, null, null, null, null, null);
-			
-            Assert.That(controller.shouldShowWeight(new [] { "adfssaf", "Weight", "dsf"}));
-            Assert.That(controller.shouldShowWeight(new[] { "adfssaf", "noewigh", "dsf" }), Is.EqualTo(false));
-        }
-
-	    [Test]
-        public void shouldNotThrowWhenUnexpectedStringTransformsToNutrientEntity() {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
-            string[] nutrients = new[] { "No GOod Nutrient Entity", NutrientEntity.ZincInmG.ToString() };
-            NutrientEntity[] nutrientEntitys = resultController.GetNutrientEntitys(nutrients);
-
-            Assert.That(nutrientEntitys.Length, Is.EqualTo(1));
-            Assert.That(nutrientEntitys[0], Is.EqualTo(NutrientEntity.ZincInmG));
-            
-        }
-
-	    [Test]
-        public void shouldGetNutrientEntitysFromStrings() {
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
-            string[] nutrients = new[] { NutrientEntity.ZincInmG.ToString(), NutrientEntity.EVitaminInmG.ToString() };
-            NutrientEntity[] nutrientEntitys = resultController.GetNutrientEntitys(nutrients);
-            
-            Assert.That(nutrientEntitys.Length, Is.EqualTo(2));
-            Assert.That(nutrientEntitys[0], Is.EqualTo(NutrientEntity.ZincInmG));
-            Assert.That(nutrientEntitys[1], Is.EqualTo(NutrientEntity.EVitaminInmG));
         }
 
 	    [Test]
@@ -116,34 +88,63 @@ namespace CarbonFitnessTest.Web.Controller.ResultController {
             userContextMock.Setup(x => x.User).Returns(new User());
             graphBuilderMock.Setup(x => x.GetGraph(It.Is<ILine[]>(y => y.Length == 2))).Returns(new Graph());
             userIngredientBusinessLogicMock.Setup(x => x.GetNutrientHistory(It.IsAny<NutrientEntity>(), It.IsAny<User>())).Returns(new Line( new Dictionary<DateTime, decimal>{{DateTime.Now, 123}}));
-            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null, nutrientBusinessLogicMock.Object, null);
+            var resultController = new CarbonFitness.App.Web.Controllers.ResultController(userProfileBusinessLogic.Object, userIngredientBusinessLogicMock.Object, userContextMock.Object, graphBuilderMock.Object, null,  null);
 			NutrientEntity[] nutrients = new [] {NutrientEntity.ZincInmG, NutrientEntity.EVitaminInmG };
-            var graph = resultController.GetGraph(nutrients, false);
+            resultController.GetGraph(nutrients, false);
             userIngredientBusinessLogicMock.VerifyAll();
             graphBuilderMock.VerifyAll();
         }
-
 
 	    [Test]
 		public void shouldShowIdealWeight() {
 			const decimal userIdealWeight = 65;
 			userProfileBusinessLogic.Setup(x => x.GetIdealWeight(It.IsAny<User>())).Returns(userIdealWeight);
-			var result = RunMethodUnderTest(x => x.Show());
+			var result = RunMethodUnderTest(x => x.ShowAdvanced());
 			var model = GetModelFromActionResult(result);
 			Assert.That(model.IdealWeight, Is.EqualTo(userIdealWeight));
 		}
 
         [Test]
-        public void shouldShowNutrients() {
-            IEnumerable<Nutrient> expectedNutrients = new[] {new Nutrient(), new Nutrient()};
-            nutrientBusinessLogicMock.Setup(x => x.GetNutrients()).Returns(expectedNutrients);
-            var translatedNutrient= "expect :)";
-            nutrientTranslatorMock.Setup(x => x.GetString(It.IsAny<string>())).Returns(translatedNutrient);
+        public void shouldShowGraphlineOptions() {
+            var expectedGraphLineOptions = new List<SelectListItem>{new SelectListItem()};
+            graphLineOptionViewTypeConverterMock.Setup(x => x.GetViewTypes(It.IsAny<User>())).Returns(expectedGraphLineOptions);
+            var result = RunMethodUnderTest(x => x.ShowAdvanced());
+            var model = GetModelFromActionResult(result);
+            Assert.That(model.GraphLineOptions, Is.EqualTo(expectedGraphLineOptions));
+        }
+
+        [Test]
+        public void shouldShowWeightEnergy() {
             var result = RunMethodUnderTest(x => x.Show());
             var model = GetModelFromActionResult(result);
-            var nutrient = (from n in model.Nutrients select n).FirstOrDefault();
+            Assert.That(model, Is.Null);
+        }
 
-            Assert.That(nutrient.Text, Is.EqualTo(translatedNutrient));
+        [Test]
+        public void shouldGetResultListModel() {
+            var expected = new List<INutrientSum>{ new NutrientSum() };
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientSumList(It.IsAny<IEnumerable<NutrientEntity>>(), It.IsAny<User>())).Returns(expected);
+
+            var resultController = GetResultController();
+            var result = (ViewResult)resultController.ShowResultList();
+           
+            userIngredientBusinessLogicMock.VerifyAll();
+            Assert.That(result.ViewData.Model, Is.TypeOf(typeof(ResultListModel)));
+            var model = (ResultListModel)result.ViewData.Model;
+            Assert.That(model.NutrientSumList, Is.SameAs(expected));
+        }
+
+        [Test]
+        public void shouldGetNutrientAvreage() {
+            var expected =  new NutrientAverage() ;
+            userIngredientBusinessLogicMock.Setup(x => x.GetNutrientAverage(It.IsAny<IEnumerable<NutrientEntity>>(), It.IsAny<User>())).Returns(expected);
+
+            var resultController = GetResultController();
+            var result = (ViewResult)resultController.ShowResultList();
+            var model = (ResultListModel)result.ViewData.Model;
+            
+            userIngredientBusinessLogicMock.VerifyAll();
+            Assert.That(model.NutrientAverage, Is.SameAs(expected));
         }
 	}
 }

@@ -103,7 +103,8 @@
     <Compile Include="InputFoodTest.cs" />
     <Compile Include="IntegrationBaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Results\ResultsShowTest.cs" />
+    <Compile Include="Results\ResultsListShowTest.cs" />
+    <Compile Include="Results\ResultsShowAdvancedTest.cs" />
     <Compile Include="Results\ResultsShowXmlTest.cs" />
     <Compile Include="Results\ResultsTestBase.cs" />
     <Compile Include="Results\ShowWeightPrognosisXmlTest.cs" />
