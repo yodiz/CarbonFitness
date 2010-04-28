@@ -10,9 +10,9 @@
     <h2><%= AccountConstant.LoginTitle %></h2>
        
     <p>
-        Var vänlig skriv in ditt namn och lösen. <%= Html.ActionLink<UserController>(x => x.Create(), "Register")%> om du inte har ett konto.
+        Var vänlig skriv in ditt namn och lösen. <%= Html.ActionLink<UserController>(x => x.Create(), "Registrera konto")%> om du inte har ett konto.
     </p>
-    <%= Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary(true, "Inloggningen misslyckades. Var snäll att åtgärda felen och försök igen.") %>
 
     <% using (Html.BeginForm()) { %>
         <div>

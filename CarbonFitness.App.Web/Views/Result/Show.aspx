@@ -6,6 +6,7 @@
 <%@ Import Namespace="CarbonFitness.App.Web.ViewConstants" %>
 <%@ Import Namespace="CarbonFitness.App.Web.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    viktprognos.se - Vad äter du?
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 

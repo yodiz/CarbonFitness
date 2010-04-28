@@ -26,7 +26,7 @@
 		<div class="main-container-top"></div>
 		
 		<div class="title">
-			<a href="<%= Url.Action<HomeController>(c => c.Index()) %>"><%= Html.Image("~/Content/Logo.png")%></a>
+			<a href="<%= Url.Action<HomeController>(c => c.Index()) %>"><%= Html.Image("~/Content/viktprognos-logo-beta.jpg")%></a>
 		</div>
 		
 		<div class="login-menu">

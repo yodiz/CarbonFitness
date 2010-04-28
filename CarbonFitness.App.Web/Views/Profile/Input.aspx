@@ -2,6 +2,7 @@
 <%@ Import Namespace="CarbonFitness.Data.Model"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    viktprognos.se - BMI, BMR och daglig energi förbrukning
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<h1>

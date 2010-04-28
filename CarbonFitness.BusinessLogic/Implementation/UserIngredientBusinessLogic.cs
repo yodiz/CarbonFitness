@@ -79,9 +79,14 @@ namespace CarbonFitness.BusinessLogic.Implementation {
         }
 
         public INutrientAverage GetNutrientAverage(IEnumerable<NutrientEntity> nutrientEntities, User user) {
-            var nutrientSums = GetNutrientSumList(nutrientEntities, user);
             var result = new NutrientAverage();
             result.NutrientValues = new Dictionary<NutrientEntity, decimal>();
+
+            var nutrientSums = GetNutrientSumList(nutrientEntities, user);
+            if(nutrientSums.Count() == 0) {
+                return result;
+            }
+
             foreach (var nutrientEntity in nutrientEntities) {
                 var nutrientSum = 0M;
                 foreach (var sum in nutrientSums) {

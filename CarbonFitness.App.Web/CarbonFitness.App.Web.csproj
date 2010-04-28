@@ -726,6 +726,7 @@
     <Content Include="App_data\Ingredients.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\about.jpg" />
     <Content Include="Content\dropdown-check-list.0.9\css\dropdown.png" />
     <Content Include="Content\dropdown-check-list.0.9\css\dropdown_hover.png" />
     <Content Include="Content\dropdown-check-list.0.9\css\ui.dropdownchecklist.css" />
@@ -746,6 +747,7 @@
     <Content Include="Content\dropdown-check-list.0.9\src\ui.dropdownchecklist.js" />
     <Content Include="Content\halsa.jpg" />
     <Content Include="Content\ico-delete.png" />
+    <Content Include="Content\viktprognos-logo-beta.jpg" />
     <Content Include="Scripts\amline\amline_data3.xml" />
     <Content Include="Scripts\ui.dropdownchecklist-min.js" />
     <Content Include="Views\Result\ShowAdvanced.aspx" />
@@ -758,6 +760,7 @@
     <None Include="Content\jquery-autocomplete\todo" />
     <None Include="Content\jquery-ui-1.7.2.custom\development-bundle\external\bgiframe\META.json" />
     <None Include="Content\jquery-ui-1.7.2.custom\development-bundle\external\cookie\jquery.cookie.zip" />
+    <None Include="Content\viktprognos-logo-beta.ai" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
